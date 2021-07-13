@@ -30,7 +30,7 @@ msgstr "Apéndice: Soluciones del taller"
 
 #: ../../build/docs/chapters/appendix-1.rst:18
 msgid "Solutions to :doc:`chapter-5`"
-msgstr "Solucionds para :doc:`chapter-5`"
+msgstr "Soluciones para :doc:`chapter-5`"
 
 #: ../../build/docs/chapters/appendix-1.rst:22
 msgid "Query results for chapter 5 exercise 1"
@@ -38,7 +38,7 @@ msgstr "Resultados de la consulta para el ejercicio 1 del capítulo 5"
 
 #: ../../build/docs/chapters/appendix-1.rst:24
 msgid ":ref:`Exercise 1: Single pedestrian routing`"
-msgstr ":ref:`Ejercicio 1: Ruteo para un sólo peatón"
+msgstr ":ref:`Ejercicio 1: Ruteo para un sólo peatón`"
 
 #: ../../build/docs/chapters/appendix-1.rst:30
 msgid "Query results for chapter 5 exercise 2"
@@ -46,7 +46,7 @@ msgstr "Resultados de la consulta para el ejercicio 2 del capítulo 5"
 
 #: ../../build/docs/chapters/appendix-1.rst:32
 msgid ":ref:`Exercise 2: Many Pedestrians going to the same destination`"
-msgstr ":ref:`Ejercicio 2: Muchos Peatones que van al mismo destino`"
+msgstr ":ref:`Ejercicio 2: Muchos peatones van al mismo destino`"
 
 #: ../../build/docs/chapters/appendix-1.rst:38
 msgid "Query results for chapter 5 exercise 3"
@@ -54,7 +54,7 @@ msgstr "Resultados de la consulta para el ejercicio 3 del capítulo 5"
 
 #: ../../build/docs/chapters/appendix-1.rst:40
 msgid ":ref:`Exercise 3: Many Pedestrians departing from the same location`"
-msgstr ":ref:`Ejercicio 3: Muchos Peatones que parten de la misma ubicación`"
+msgstr ":ref:`Ejercicio 3: Muchos peatones que salen de la misma ubicación`"
 
 #: ../../build/docs/chapters/appendix-1.rst:46
 msgid "Query results for chapter 5 exercise 4"
@@ -98,7 +98,7 @@ msgstr "Resultados de la consulta para el ejercicio 1 del capítulo 6"
 
 #: ../../build/docs/chapters/appendix-1.rst:75
 msgid ":ref:`Exercise 1: Vehicle routing - going`"
-msgstr ":ref:`Ejercicio 1: Ruteo del vehículo: en marcha`"
+msgstr ":ref:`Ejercicio 1: Ruteo de vehículos - ida`"
 
 #: ../../build/docs/chapters/appendix-1.rst:81
 msgid "Query results for chapter 6 exercise 2"
@@ -106,7 +106,7 @@ msgstr "Resultados de la consulta para el ejercicio 2 del capítulo 6"
 
 #: ../../build/docs/chapters/appendix-1.rst:83
 msgid ":ref:`Exercise 2: Vehicle routing - returning`"
-msgstr ":ref:`Ejercicio 2: Ruteo del vehículo: retornando`"
+msgstr ":ref:`Ejercicio 2: Ruteo de vehículos - regreso`"
 
 #: ../../build/docs/chapters/appendix-1.rst:89
 msgid "Query results for chapter 6 exercise 3"
@@ -150,7 +150,7 @@ msgstr "Resultados de la consulta para el ejercicio 2 del capítulo 7"
 
 #: ../../build/docs/chapters/appendix-1.rst:128
 msgid ":ref:`Exercise 2: Limiting the road network within an area`"
-msgstr ":ref:`Ejercicio 2: Limitación de la red viaria dentro de un área`"
+msgstr ":ref:`Ejercicio 2: Limitar la red viaria dentro de un área`"
 
 #: ../../build/docs/chapters/appendix-1.rst:133
 msgid "Query results for chapter 7 exercise 3"

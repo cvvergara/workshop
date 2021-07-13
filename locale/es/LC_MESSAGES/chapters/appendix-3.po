@@ -72,8 +72,8 @@ msgid ""
 msgstr ""
 "Los datos sin procesar de OpenStreetMap contienen muchas más características"
 " e información de la necesaria para el enrutamiento. Además, el formato no "
-"es adecuado para usar automáticamente en pgRouting. Un archivo XML ''.osm'' "
-"consta de tres tipos de atributos principales:"
+"es adecuado para usar automáticamente en pgRouting. Un archivo XML ``.osm``"
+"  consta de tres tipos de atributos principales:"
 
 #: ../../build/docs/chapters/appendix-3.rst:34
 msgid "nodes"
