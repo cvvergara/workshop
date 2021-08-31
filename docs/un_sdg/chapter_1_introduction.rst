@@ -50,7 +50,7 @@ Prerequisite knowledge
 United Nations
 -------------------------------------------------------------------------------
 
-.. image:: /images/un_logo.jpg 
+.. image:: images/introduction/un_logo.jpg 
   :align: center
 
 The United Nations (UN) is an intergovernmental organization founded in 1945
@@ -70,7 +70,7 @@ The Major Objectives of the UN are to:
 
 What are the Sustainable Development Goals?
 -------------------------------------------------------------------------------
-.. image:: /images/un_17_sdgs.png 
+.. image:: images/introduction/un_17_sdgs.png 
   :align: center
 
 The Sustainable Development Goals (SDGs) are 17 interconnected goals that were
@@ -87,7 +87,9 @@ who's furthest behind. The following table gives an overview of all the SDGs.
    :widths:25 25 50 
    :header-rows: 1
  
-   * - Goal Number - Goal Name - Objective
+   * - Goal Number 
+     - Goal Name 
+     - Objective
    * - Goal 1
      - No Poverty
      - End poverty in all its forms everywhere

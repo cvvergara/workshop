@@ -7,17 +7,17 @@
   Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
   ****************************************************************************
 
-Prepare Data for SDG3
+Prepare Data for Sustainable Development Goal 3
 ###############################################################################
 
-.. image:: /images/prepareData.png
+.. image:: ../basic/images/chapter4/prepareData.png
   :align: center
 
 To be able to use pgRouting, data has to be imported into a database.
 
 .. contents:: Chapter Contents
 
-Prepare the database
+Prepare the Mumbai database
 ===============================================================================
 
 pgRouting is installed as an extension. This requires:
@@ -31,49 +31,43 @@ instructions.  Information about installing OSGeoLive can be found in `Chapter 3
 pgRouting Workshop 
 
 .. note:: If you don't have pgRouting installed. You can find the installation
-procedure at `here
-<https://docs.pgrouting.org/3.1/en/pgRouting-installation.html>`_
+  procedure at `here
+  <https://docs.pgrouting.org/latest/en/pgRouting-installation.html>`__
 
 
-.. foo*
-
-
-Create a pgRouting compatible database
+Create Mumbai area database compatible with pgRouting
 -------------------------------------------------------------------------------
 
-.. note:: Depending on the postgres configuration :code:`-U <user>` is needed on
-:code:`psql` commands
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/create_mumbai.sh 
-:start-after: create_mumbai from-here 
-:end-before:  create_mumbai to-here 
-:language: bash
-:linenos:
+  :start-after: create_mumbai from-here 
+  :end-before:  create_mumbai to-here 
+  :language: bash
+  :linenos:
 
 
 
-Get the Workshop Data
+Get the Mumbai Data
 ===============================================================================
 
-.. TODO get date
 
 The pgRouting workshop will make use of OpenStreetMap data of an area in Mumbai
 City. The instructions for downloading the data are given below
 
-2.2.1. Make a directory for pgRouting data manipulation
-...............................................................................
-
-.. code-block:: bash 
-mkdir ~/Desktop/workshop cd ~/Desktop/workshop
-
-
-Getting the data
+Work Directory for pgRouting data manipulation
 -------------------------------------------------------------------------------
 
-Downloading the data from OpenStreetMaps
-...............................................................................
+.. code-block:: bash 
 
-The exact same data can be found on the OSGeoLive download page.
+   mkdir ~/Desktop/workshop 
+   cd ~/Desktop/workshop
+
+
+Getting Mumbai data
+-------------------------------------------------------------------------------
+
+Downloading Mumbai data from OpenStreetMap
+...............................................................................
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/get_mumbai.sh 
     :start-after: get_mumbai from-here 
@@ -82,7 +76,7 @@ The exact same data can be found on the OSGeoLive download page.
     :linenos:
 
 
-Upload data to the database
+Upload Mubai data to the database
 ==============================================================================
 
 The next step is to run ``osm2pgrouting`` converter, which is a command line
@@ -90,19 +84,18 @@ tool that inserts the data in the database, "ready" to be used with pgRouting.
 Additional information about ``osm2pgrouting`` can be found `here
 <https://workshop.pgrouting.org/2.6/en/chapters/osm2pgrouting.html#osm2pgrouting>`_
 
-For this step:
+For this stepi the follwing is used:
 
-* the osm2pgrouting ``mumbai_buildings.xml`` and  ``mumbai_roads.xml``configuration files 
-are used 
-* and the ``~/Desktop/workshop/mumbai.osm`` data
-* with the ``mumbai`` database
+* The ``mumbai_buildings.xml`` and ``mumbai_roads.xml`` configuration files 
+  for osm2pgrouting.
+* The ``~/Desktop/workshop/mumbai.osm`` data from the previous step
+* The ``mumbai`` database.
+* The terminal window :code:`ctrl-alt-t`.
 
-From a terminal window :code:`ctrl-alt-t`.
-
-Run the osm2pgrouting converter
+Run the osm2pgrouting converter on Mumbai data
 -------------------------------------------------------------------------------
 
-Importing the Roads
+Importing Mumbai Roads
 ...............................................................................
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/import_mumbai_roads.sh 
@@ -119,7 +112,7 @@ Importing the Roads
     :linenos:
 
 
-Importing the Buildings
+Importing Mumbai Buildings
 ...............................................................................
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/import_mumbai_buildings.sh 
@@ -137,45 +130,43 @@ Importing the Buildings
 
 To connect to the database, type the following in the terminal.
 
-.. codeblock:: bash
-psql mumbai
+.. code-block:: bash
+
+  psql mumbai
 
 
-Setting the Search Path
+TODO move to chapter 3 Setting the Search Path
 ...............................................................................
 Set the search path of the `Roads` and `Buildings` to their respective schemas.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg1.sql
     :start-after: \o setting_search_path.txt 
     :end-before:  \o count_roads_and_buildings.txt
-    :language: sql 
     :linenos:
 
 
 
 
-Counting the number of Roads and Buildings
+TODO move to chapter 3 Counting the number of Roads and Buildings
 ...............................................................................
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg1.sql
     :start-after: \o count_roads_and_buildings.txt
     :end-before:  \o preprocessing_buildings.txt
-    :language: sql 
     :linenos:
 
 
-Preprocessing Buildings
+TODO move to chapter 3 Preprocessing Buildings
 ...............................................................................
 Polygons with less than 3 points/vertices are not considered valid polygons in PostgreSQL. Hence, they need to be cleaned up.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg1.sql
     :start-after: \o preprocessing_buildings.txt
     :end-before:  \o discard_disconnected_roads.txt
-    :language: sql 
     :linenos:
 
 
-Process to discard disconnected roads
+TODO move to chapter 3 Process to discard disconnected roads
 ...............................................................................
 pgRouting algorithms are only useful when the road netowrk belongs to a single graph (or all the roads are connected to each other). Hence, the disconnected roads have to be removed from ther network to get accurate results.
 This image gives an example of the diconnected edges.
@@ -190,13 +181,12 @@ This image gives an example of the diconnected edges.
     :linenos:
 
  
-Calculating the population residing along the road
+TODO move to chapter 3 Calculating the population residing along the road
 ...............................................................................
 More hospitals are needed in the areas where more people live. To solve this problem we will first have to estimate the population of each building.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg1.sql
     :start-after: \o population_residing_along_the_road.txt
     :end-before:  \o
-    :language: sql 
     :linenos:
 
