@@ -59,6 +59,7 @@ Set the search path of the `Roads` and `Buildings` to their respective schemas.
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg1.sql
     :start-after: \o setting_search_path.txt 
     :end-before:  \o count_roads_and_buildings.txt
+    :language: sql 
     :linenos:
 
 
@@ -71,6 +72,7 @@ Display the number of roads and buildings which were imported in Chapter 2
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg1.sql
     :start-after: \o count_roads_and_buildings.txt
     :end-before:  \o preprocessing_buildings.txt
+    :language: sql 
     :linenos:
 
 
@@ -81,9 +83,11 @@ Polygons with less than 3 points/vertices are not considered valid polygons in P
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg1.sql
     :start-after: \o preprocessing_buildings.txt
     :end-before:  \o discard_disconnected_roads.txt
+    :language: sql 
     :linenos:
 
 
+>>>>>>> f5391715... Modifying Chapter 2 and Chapter 3
 Process to discard disconnected roads
 ...............................................................................
 pgRouting algorithms are only useful when the road netowrk belongs to a single graph (or all the roads are connected to each other). Hence, the disconnected roads have to be removed from ther network to get accurate results.
@@ -106,6 +110,7 @@ More hospitals are needed in the areas where more people live. To solve this pro
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg1.sql
     :start-after: \o population_residing_along_the_road.txt
     :end-before:  \o
+    :language: sql 
     :linenos:
  
 Estimating the population of buildings
