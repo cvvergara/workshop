@@ -19,9 +19,9 @@ pgRouting Workshop
    :maxdepth: 2
    :caption: Workshop
 
-   general-intro/chapter-1.rst
-   general-intro/chapter-2.rst
-   general-intro/chapter-3.rst
+   general-intro/g1-introduction.rst
+   general-intro/g2-about.rst
+   general-intro/g3-osgeolive.rst
 
 .. toctree::
    :numbered:

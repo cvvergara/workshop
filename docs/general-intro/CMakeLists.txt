@@ -5,9 +5,9 @@ add_custom_target(general-intro ALL)
 # Files
 #---------------------
 set(PGR_WORKSHOP_FILES
-  chapter-1.rst
-  chapter-2.rst
-  chapter-3.rst
+  g1-introduction.rst
+  g2-about.rst
+  g3-osgeolive.rst
   )
 
 
