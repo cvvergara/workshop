@@ -74,7 +74,7 @@ Option 2) Download data form OSGeoLive website
 
 The exact same data can be found on the OSGeoLive download page.
 
-.. literalinclude:: ../scripts/chapter_4/section-4.2.2.sh
+.. literalinclude:: ../scripts/get-data/get-osgeolive-data.sh
    :start-after: 4.2.2 from-here
    :end-before:  4.2.2 to-here
    :language: bash

@@ -28,7 +28,7 @@ pgRouting Workshop
    :maxdepth: 2
    :caption: Basic
 
-   basic/chapter-4.rst
+   basic/b1-data.rst
    basic/chapter-5.rst
    basic/chapter-6.rst
    basic/chapter-7.rst

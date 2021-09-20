@@ -5,7 +5,6 @@
 #---------------------
 set(PGR_WORKSHOP_FILES
   "section-4.1.1.sh"
-  "section-4.2.2.sh"
   "section-4.3.1.sh"
   "section-4.3.2.sh"
     )
@@ -34,19 +33,6 @@ execute_process(
   INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/section-4.1.1.sh
   )
 
-message(STATUS "chapter 4 2")
-#----------------------------------------------
-# 4.2 Download and unzipping the data
-#---------------------------------------------
-
-if (NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/${PGR_WORKSHOP_CITY_FILE}.osm)
-execute_process(
-  OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PGR_WORKSHOP_CITY_FILE}.osm
-  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/section-4.2.2.sh
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-  INPUT_FILE  ${CMAKE_CURRENT_BINARY_DIR}/section-4.2.2.sh
-  )
-endif()
 
 message(STATUS "chapter 4 3")
 #----------------------------------------------
@@ -56,7 +42,7 @@ message(STATUS "chapter 4 3")
 execute_process(
   OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.1.txt
   COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.1.sh > ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.1.txt
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/../get-data
   INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.1.sh
   )
 
