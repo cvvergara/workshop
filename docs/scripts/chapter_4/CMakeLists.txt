@@ -21,30 +21,15 @@ foreach (f ${PGR_WORKSHOP_FILES})
 endforeach()
 
 
-message(STATUS "chapter 4 3")
-#----------------------------------------------
-# 4.3.1 Run osm2pgrouting converter
-#---------------------------------------------
-
-execute_process(
-  OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.1.txt
-  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.1.sh > ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.1.txt
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/../get-data
-  INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.1.sh
-  )
-
-message(STATUS "chapter 4 4")
-#----------------------------------------------
-# 4.3.2 generated tables
-#---------------------------------------------
-
 add_custom_command(
-  OUTPUT section-4.3.2.txt
-  COMMAND bash section-4.3.2.sh > section-4.3.2.txt
-  DEPENDS section-4.3.2.sh
+  OUTPUT section-4.3.2.txt section-4.3.1.txt
+  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.1.sh > ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.1.txt
+  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.2.sh > ${CMAKE_CURRENT_BINARY_DIR}/section-4.3.2.txt
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/../get-data
+  DEPENDS section-4.3.1.sh section-4.3.1.sh
+  COMMENT "import to database"
   )
 
-message(STATUS "chapter 4 5")
 add_custom_target(chapter_4_scripts
-  DEPENDS "section-4.3.2.txt"
+  DEPENDS section-4.3.2.txt section-4.3.1.sh
   )
