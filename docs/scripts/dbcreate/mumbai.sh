@@ -1,6 +1,4 @@
 set -e
-echo "Processing create_mumbai"
-dropdb --if-exists mumbai
 
 # create_mumbai from-here
 # Create the database
@@ -20,11 +18,5 @@ CREATE EXTENSION pgrouting;
 CREATE SCHEMA roads;
 CREATE SCHEMA buildings;
 CREATE EXTENSION hstore;
--- create_mumbai to-here
 EOF
-
-
-
-
-
-echo "End create_mumbai"
+# create_mumbai to-here

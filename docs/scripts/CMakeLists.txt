@@ -14,10 +14,16 @@ set(PGR_WORKSHOP_SUBDIRS
   )
 
 
+add_subdirectory(dbcreate)
+add_dependencies(scripts dbcreate_scripts)
+
 add_subdirectory(get-data)
 add_dependencies(scripts get_data_scripts)
 
 add_subdirectory(chapter_4)
+add_dependencies(chapter_4_scripts
+	dbcreate_scripts
+	get_data_scripts)
 add_dependencies(scripts chapter_4_scripts)
 
 add_subdirectory(configuration)

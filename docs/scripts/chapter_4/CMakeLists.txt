@@ -4,7 +4,6 @@
 # Files
 #---------------------
 set(PGR_WORKSHOP_FILES
-  "section-4.1.1.sh"
   "section-4.3.1.sh"
   "section-4.3.2.sh"
     )
@@ -20,18 +19,6 @@ foreach (f ${PGR_WORKSHOP_FILES})
     endif()
     configure_file(${f} ${f})
 endforeach()
-
-#----------------------------------------------
-# 4.1 Creating the database
-#---------------------------------------------
-
-message(STATUS "chapter 4 1")
-execute_process(
-  OUTPUT_FILE created_database.txt
-  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/section-4.1.1.sh > created_database.txt
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-  INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/section-4.1.1.sh
-  )
 
 
 message(STATUS "chapter 4 3")

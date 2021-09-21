@@ -41,7 +41,7 @@ Create a pgRouting compatible database
 
 .. note:: Depending on the postgres configuration :code:`-U <user>` is needed on :code:`psql` commands
 
-.. literalinclude:: ../scripts/chapter_4/section-4.1.1.sh
+.. literalinclude:: ../scripts/dbcreate/city_routing.sh
    :start-after: 4.1.1 from-here
    :end-before:  4.1.1 to-here
    :language: bash

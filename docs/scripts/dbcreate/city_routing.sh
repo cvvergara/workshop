@@ -1,7 +1,4 @@
 set -e
-echo "Processing 4.1.1"
-rm -f database_created.txt
-dropdb --if-exists city_routing
 
 # 4.1.1 from-here
 

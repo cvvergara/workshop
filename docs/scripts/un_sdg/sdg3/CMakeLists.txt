@@ -5,7 +5,6 @@
 #---------------------
 set(PGR_WORKSHOP_FILES
   # TODO these files need to be processed
-  create_mumbai.sh
   get_mumbai.sh
   import_mumbai_roads.sh
   import_mumbai_buildings.sh
