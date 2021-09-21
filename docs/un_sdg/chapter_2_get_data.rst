@@ -63,7 +63,7 @@ To connect to the database do the following
 After connecting to the database, first step is to create ``EXTENSION`` to enable 
 pgRouting and PostGIS in the database. Then add the ``SCHEMA`` for each table.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/create_mumbai.sh 
+.. literalinclude:: ../scripts/dbcreate/mumbai.sh 
   :start-after: -- Commands inside the database
   :end-before:  -- create_mumbai to-here 
   :language: postgresql

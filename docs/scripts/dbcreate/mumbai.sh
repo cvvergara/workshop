@@ -18,5 +18,5 @@ CREATE EXTENSION pgrouting;
 CREATE SCHEMA roads;
 CREATE SCHEMA buildings;
 CREATE EXTENSION hstore;
+-- create_mumbai to-here
 EOF
-# create_mumbai to-here
