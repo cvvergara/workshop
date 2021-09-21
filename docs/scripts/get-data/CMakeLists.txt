@@ -25,8 +25,8 @@ endforeach()
 #---------------------------------------------
 
 add_custom_command(
-  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/get-osgeolive-data.sh
-  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/get-mumbai-data.sh
+  COMMAND bash get-osgeolive-data.sh
+  COMMAND bash get-mumbai-data.sh
   OUTPUT "${PGR_WORKSHOP_CITY_FILE}.osm" "mumbai.osm"
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   COMMENT "getting data"
