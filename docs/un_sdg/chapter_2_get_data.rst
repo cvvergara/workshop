@@ -277,7 +277,7 @@ Appendix
 Configuration information for Buildings
 -------------------------------------------------------------------------------
 
-.. literalinclude:: ../scripts/un_sdg/buildings.xml
+.. literalinclude:: ../scripts/un_sdg/sdg3/buildings.xml
     :language: xml 
     :linenos:
 
@@ -285,6 +285,6 @@ Configuration information for Buildings
 Configuration information for Waterways
 -------------------------------------------------------------------------------
 
-.. literalinclude:: ../scripts/un_sdg/waterways.xml
+.. literalinclude:: ../scripts/un_sdg/sdg3/waterways.xml
     :language: xml 
     :linenos:
