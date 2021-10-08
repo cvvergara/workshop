@@ -29,9 +29,9 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js "></script>
 <script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
 <script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
 
   </head>
@@ -276,7 +276,7 @@
 <li>(<code class="docutils literal"><span class="pre">target,</span> <span class="pre">source</span></code>) segmento <code class="docutils literal"><span class="pre">IF</span> <span class="pre">cost</span> <span class="pre">&lt;</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">reverse_cost</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code></li>
 </ul>
 <p>Un <strong>camino incorrecto</strong> se indica con un <strong>valor negativo</strong> y no se inserta en el grafo para su procesamiento.</p>
-<p>Carreteras de <strong>dos vías</strong> - <code class="docutils literal"><span class="pre">IF</span> <span class="pre">cost</span> <span class="pre">&gt;=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">reverse_cost</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> y sus valores pueden ser diferentes. Por ejemplo, es más rápido bajar colina en una carretera inclinada. En general, no es necesario que la longitud no sea <code class="docutils literal"><span class="pre">cost</span></code> y <code class="docutils literal"><span class="pre">reverse_cost</span></code> pueden ser casi cualquier cosa, por ejemplo; tiempo, pendiente, superficie, tipo de carretera, etc., o pueden ser una combinación de múltiples parámetros.</p>
+<p><strong>Carreteras bidireccionales</strong> -<code class="docutils literal"><span class="pre">IF</span> <span class="pre">cost</span> <span class="pre">&gt;=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">reverse_cost</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> y sus valores pueden ser diferentes. Por ejemplo, es más rápido ir cuesta abajo en una carretera inclinada. En general, <code class="docutils literal"><span class="pre">cost</span></code> y <code class="docutils literal"><span class="pre">reverse_cost</span></code>  no necesitan ser de longitud; pueden ser 84c2aa29125fdae1aae0cb25bc0ef2c097e7537ealmost casi cualquier cosa, por ejemplo, tiempo, pendiente, superficie, tipo de carretera, etc., o pueden ser una combinación de múltiples parámetros.</p>
 <p class="rubric">Las siguientes consultas indican el número de segmentos de carretera, donde se aplica una regla «unidireccional»:</p>
 <ol class="arabic">
 <li><p class="first">Número de (<code class="docutils literal"><span class="pre">source,</span> <span class="pre">target</span></code>) segmentos con <code class="docutils literal"><span class="pre">cost</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> (line <strong>3</strong>).</p>
@@ -348,8 +348,8 @@
 <span class="s1">  SELECT gid AS id,</span>
 <span class="s1">    source,</span>
 <span class="s1">    target,</span>
-<span class="hll"><span class="s1">    cost_s AS cost,</span>
-</span><span class="hll"><span class="s1">    reverse_cost_s AS reverse_cost</span>
+<span class="hll"><span class="s1">    cost,</span>
+</span><span class="hll"><span class="s1">    reverse_cost</span>
 </span><span class="hll"><span class="s1">  FROM ways</span>
 </span><span class="hll"><span class="s1">  &#39;</span><span class="p">,</span>
 </span><span class="hll"><span class="mi">6646</span><span class="p">,</span>
@@ -387,8 +387,8 @@
 <span class="s1">    SELECT gid AS id,</span>
 <span class="s1">      source,</span>
 <span class="s1">      target,</span>
-<span class="hll"><span class="s1">      cost_s AS cost,</span>
-</span><span class="hll"><span class="s1">      reverse_cost_s AS reverse_cost</span>
+<span class="hll"><span class="s1">      cost,</span>
+</span><span class="hll"><span class="s1">      reverse_cost</span>
 </span><span class="hll"><span class="s1">    FROM ways</span>
 </span><span class="hll"><span class="s1">  &#39;</span><span class="p">,</span>
 </span><span class="hll"><span class="mi">1993</span><span class="p">,</span>
@@ -399,7 +399,7 @@
 <p><a class="reference internal" href="appendix-1.html#query-results-for-chapter-6-exercise-2"><span class="std std-ref">Resultados de la consulta para el ejercicio 2 del capítulo 6</span></a></p>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
-<p class="last">En un grafo dirigido, ir y volver rutas, la mayoría de las veces son diferentes.</p>
+<p class="last">En un grafo dirigido, las rutas para ir y volver, la mayoría de las veces son diferentes.</p>
 </div>
 </div>
 <div class="section" id="exercise-3-vehicle-routing-when-time-is-money">
@@ -414,8 +414,8 @@
 <li>El vehículo va desde vértice <code class="docutils literal"><span class="pre">1993</span></code> (line <strong>10</strong>) hacia <code class="docutils literal"><span class="pre">6646</span></code> (line <strong>11</strong>).</li>
 <li>El costo es de <code class="docutils literal"><span class="pre">$100</span> <span class="pre">por</span> <span class="pre">hora</span></code>.</li>
 <li>Utilice las columnas <code class="docutils literal"><span class="pre">cost_s</span></code> (línea <strong>6</strong>) y <code class="docutils literal"><span class="pre">reverse_cost_s</span></code> (línea <strong>7</strong>) which are in unit <code class="docutils literal"><span class="pre">seconds</span></code>.</li>
-<li>La duración en horas es <code class="docutils literal"><span class="pre">costo</span> <span class="pre">/</span> <span class="pre">3600</span></code>.</li>
-<li>El costo en <code class="docutils literal"><span class="pre">$</span></code> es <code class="docutils literal"><span class="pre">costo</span> <span class="pre">/</span> <span class="pre">3600</span> <span class="pre">*</span> <span class="pre">100</span></code>.</li>
+<li>La duración en horas es <code class="docutils literal"><span class="pre">cost_s</span> <span class="pre">/</span> <span class="pre">3600</span></code>.</li>
+<li>El costo en <code class="docutils literal"><span class="pre">$</span></code> es <code class="docutils literal"><span class="pre">cost_s</span> <span class="pre">/</span> <span class="pre">3600</span> <span class="pre">*</span> <span class="pre">100</span></code>.</li>
 </ul>
 <div class="highlight-sql"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -488,18 +488,18 @@
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>                                                          <span class="n">Table</span> <span class="s2">&quot;public.configuration&quot;</span>
-      <span class="n">Column</span>       <span class="o">|</span>       <span class="n">Type</span>       <span class="o">|</span> <span class="n">Collation</span> <span class="o">|</span> <span class="n">Nullable</span> <span class="o">|</span>                  <span class="n">Default</span>                  <span class="o">|</span> <span class="n">Storage</span>  <span class="o">|</span> <span class="n">Stats</span> <span class="n">target</span> <span class="o">|</span> <span class="n">Description</span> 
-<span class="o">-------------------+------------------+-----------+----------+-------------------------------------------+----------+--------------+-------------</span>
- <span class="nb">id</span>                <span class="o">|</span> <span class="n">integer</span>          <span class="o">|</span>           <span class="o">|</span> <span class="ow">not</span> <span class="n">null</span> <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;configuration_id_seq&#39;</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span> <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>              <span class="o">|</span> 
- <span class="n">tag_id</span>            <span class="o">|</span> <span class="n">integer</span>          <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>              <span class="o">|</span> 
- <span class="n">tag_key</span>           <span class="o">|</span> <span class="n">text</span>             <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">extended</span> <span class="o">|</span>              <span class="o">|</span> 
- <span class="n">tag_value</span>         <span class="o">|</span> <span class="n">text</span>             <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">extended</span> <span class="o">|</span>              <span class="o">|</span> 
- <span class="n">priority</span>          <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>              <span class="o">|</span> 
- <span class="n">maxspeed</span>          <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>              <span class="o">|</span> 
- <span class="n">maxspeed_forward</span>  <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>              <span class="o">|</span> 
- <span class="n">maxspeed_backward</span> <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>              <span class="o">|</span> 
- <span class="n">force</span>             <span class="o">|</span> <span class="n">character</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>     <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">extended</span> <span class="o">|</span>              <span class="o">|</span> 
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>                                                                 <span class="n">Table</span> <span class="s2">&quot;public.configuration&quot;</span>
+      <span class="n">Column</span>       <span class="o">|</span>       <span class="n">Type</span>       <span class="o">|</span> <span class="n">Collation</span> <span class="o">|</span> <span class="n">Nullable</span> <span class="o">|</span>                  <span class="n">Default</span>                  <span class="o">|</span> <span class="n">Storage</span>  <span class="o">|</span> <span class="n">Compression</span> <span class="o">|</span> <span class="n">Stats</span> <span class="n">target</span> <span class="o">|</span> <span class="n">Description</span> 
+<span class="o">-------------------+------------------+-----------+----------+-------------------------------------------+----------+-------------+--------------+-------------</span>
+ <span class="nb">id</span>                <span class="o">|</span> <span class="n">integer</span>          <span class="o">|</span>           <span class="o">|</span> <span class="ow">not</span> <span class="n">null</span> <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;configuration_id_seq&#39;</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span> <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>             <span class="o">|</span>              <span class="o">|</span> 
+ <span class="n">tag_id</span>            <span class="o">|</span> <span class="n">integer</span>          <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>             <span class="o">|</span>              <span class="o">|</span> 
+ <span class="n">tag_key</span>           <span class="o">|</span> <span class="n">text</span>             <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">extended</span> <span class="o">|</span>             <span class="o">|</span>              <span class="o">|</span> 
+ <span class="n">tag_value</span>         <span class="o">|</span> <span class="n">text</span>             <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">extended</span> <span class="o">|</span>             <span class="o">|</span>              <span class="o">|</span> 
+ <span class="n">priority</span>          <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>             <span class="o">|</span>              <span class="o">|</span> 
+ <span class="n">maxspeed</span>          <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>             <span class="o">|</span>              <span class="o">|</span> 
+ <span class="n">maxspeed_forward</span>  <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>             <span class="o">|</span>              <span class="o">|</span> 
+ <span class="n">maxspeed_backward</span> <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">plain</span>    <span class="o">|</span>             <span class="o">|</span>              <span class="o">|</span> 
+ <span class="n">force</span>             <span class="o">|</span> <span class="n">character</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>     <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>                                           <span class="o">|</span> <span class="n">extended</span> <span class="o">|</span>             <span class="o">|</span>              <span class="o">|</span> 
 <span class="n">Indexes</span><span class="p">:</span>
     <span class="s2">&quot;configuration_pkey&quot;</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span> <span class="n">btree</span> <span class="p">(</span><span class="nb">id</span><span class="p">)</span>
     <span class="s2">&quot;configuration_tag_id_key&quot;</span> <span class="n">UNIQUE</span> <span class="n">CONSTRAINT</span><span class="p">,</span> <span class="n">btree</span> <span class="p">(</span><span class="n">tag_id</span><span class="p">)</span>
@@ -815,6 +815,7 @@
 <li>La secuencia de nodos cambió.</li>
 <li>La secuencia de bordes cambió.</li>
 <li>La ruta está evitando las carreteras residenciales que tienen <code class="docutils literal"><span class="pre">tag_id</span> <span class="pre">=</span> <span class="pre">110</span></code>.</li>
+<li>El costo no cambió proporcionalmente debido a la penalización a algunas de las carreteras que era uniforme (penalización = 1) mientras que el enrutamiento con el costo como dinero.</li>
 </ul>
 </div>
 </div>
@@ -834,7 +835,7 @@
     </p>
     <p>
         &copy; Copyright 2010-2021 Daniel Kastl, Vicky Vergara.<br/>
-      Actualizado por última vez en ago. 31, 2021.<br/>
+      Actualizado por última vez en oct. 08, 2021.<br/>
     </p>
   </div>
 </footer>
