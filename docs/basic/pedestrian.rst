@@ -7,7 +7,7 @@
   Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
   ****************************************************************************
 
-pgRouting Algorithms
+Pedestrian Routing
 ===============================================================================
 
 .. image:: images/chapter5/route.png
@@ -79,7 +79,7 @@ Connect to the database, if not connected:
 
 Get the vertex identifiers
 
-.. literalinclude:: ../scripts/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
   :language: sql
   :start-after: exercise_5_0.txt
   :end-before: exercise_5_1.txt
@@ -87,7 +87,7 @@ Get the vertex identifiers
 
 |
 
-.. literalinclude:: ../scripts/chapter_5/exercise_5_0.txt
+.. literalinclude:: ../scripts/basic/chapter_5/exercise_5_0.txt
   :linenos:
 
 * |osmid_1| |place_1|  (|id_1|)
@@ -99,7 +99,6 @@ Get the vertex identifiers
 
 The corresponding :code:`id` are shown in the following image, and a sample route from
 "|place_3|" to "|place_5|".
-
 
 .. image:: images/chapter5/route.png
   :scale: 25%
@@ -123,7 +122,7 @@ Exercise 1: Single pedestrian routing
 * From a pedestrian perspective the graph is ``undirected`` (line **11**), that is, the
   pedestrian can move in both directions on all segments.
 
-.. literalinclude:: ../scripts/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
   :language: sql
   :start-after: exercise_5_1.txt
   :end-before: exercise_5_2.txt
@@ -132,7 +131,7 @@ Exercise 1: Single pedestrian routing
 
 |
 
-:ref:`Query results for chapter 5 exercise 1`
+:ref:`**Exercise**: 1 (**Chapter:** Pedestrian)`
 
 .. note::
   * The returned cost attribute represents the cost specified in the
@@ -159,7 +158,7 @@ Exercise 2: Many Pedestrians going to the same destination
 * All pedestrians want to go to vertex |id_3| (line **10**).
 * The cost to be in meters using attribute ``length_m`` (line **6**).
 
-.. literalinclude:: ../scripts/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
   :language: sql
   :start-after: exercise_5_2.txt
   :end-before: exercise_5_3.txt
@@ -168,7 +167,7 @@ Exercise 2: Many Pedestrians going to the same destination
 
 |
 
-:ref:`Query results for chapter 5 exercise 2`
+:ref:`**Exercise**: 2 (**Chapter:** Pedestrian)`
 
 
 Exercise 3: Many Pedestrians departing from the same location
@@ -188,14 +187,14 @@ Exercise 3: Many Pedestrians departing from the same location
 * Pedestrians want to go to locations |id_1| and |id_2| (line **10**).
 * The cost to be in seconds, with a walking speed ``s = 1.3 m/s`` and ``t = d/s`` (line **6**).
 
-.. literalinclude:: ../scripts/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
   :language: sql
   :start-after: exercise_5_3.txt
   :end-before: exercise_5_4.txt
   :linenos:
   :emphasize-lines: 10
 
-:ref:`Query results for chapter 5 exercise 3`
+:ref:`**Exercise**: 3 (**Chapter:** Pedestrian)`
 
 
 Exercise 4: Many Pedestrians going to different destinations
@@ -216,7 +215,7 @@ Exercise 4: Many Pedestrians going to different destinations
 * The cost to be in minutes, with a walking speed ``s = 1.3 m/s`` and ``t = d/s`` (line **6**).
 * Result adds the costs per destination.
 
-.. literalinclude:: ../scripts/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
   :language: sql
   :start-after: exercise_5_4.txt
   :end-before: exercise_5_5.txt
@@ -225,7 +224,7 @@ Exercise 4: Many Pedestrians going to different destinations
 
 |
 
-:ref:`Query results for chapter 5 exercise 4`
+:ref:`**Exercise**: 4 (**Chapter:** Pedestrian)`
 
 
 .. note::
@@ -283,7 +282,7 @@ Exercise 5: Many Pedestrians going to different destinations returning aggregate
 * The cost to be in minutes, with a walking speed ``s = 1.3 m/s`` and ``t = d/s`` (line **7**).
 * Result as aggregated costs.
 
-.. literalinclude:: ../scripts/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
   :language: sql
   :start-after: exercise_5_5.txt
   :end-before: exercise_5_6.txt
@@ -292,7 +291,7 @@ Exercise 5: Many Pedestrians going to different destinations returning aggregate
 
 |
 
-:ref:`Query results for chapter 5 exercise 5`
+:ref:`**Exercise**: 5 (**Chapter:** Pedestrian)`
 
 Compare with :ref:`Exercise 4 <Exercise 4: Many Pedestrians going to different destinations>` 's note.
 
@@ -311,7 +310,7 @@ Exercise 6: Many Pedestrians going to different destinations summarizing the tot
 * The cost to be in minutes, with a walking speed s = 1.3 m/s and t = d/s (line **7**).
 * Result adds the costs per destination.
 
-.. literalinclude:: ../scripts/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
   :language: sql
   :start-after: exercise_5_6.txt
   :linenos:
@@ -319,7 +318,7 @@ Exercise 6: Many Pedestrians going to different destinations summarizing the tot
 
 |
 
-:ref:`Query results for chapter 5 exercise 6`
+:ref:`**Exercise**: 6 (**Chapter:** Pedestrian)`
 
 
 .. note:: An interpretation of the result can be: In general, it is faster to depart from the "|place_2|" than from the "|place_1|".

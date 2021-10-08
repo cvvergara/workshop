@@ -40,7 +40,7 @@ Create a pgRouting compatible database
 
 .. note:: Depending on the postgres configuration :code:`-U <user>` is needed on :code:`psql` commands
 
-.. literalinclude:: ../scripts/chapter_4/section-4.1.1.sh
+.. literalinclude:: ../scripts/get_data/process_osgeolive_data.sh
    :start-after: 4.1.1 from-here
    :end-before:  4.1.1 to-here
    :language: bash
@@ -73,7 +73,7 @@ Option 2) Download data form OSGeoLive website
 
 The exact same data can be found on the OSGeoLive download page.
 
-.. literalinclude:: ../scripts/chapter_4/section-4.2.2.sh
+.. literalinclude:: ../scripts/get_data/get_osgeolive_data.sh
    :start-after: 4.2.2 from-here
    :end-before:  4.2.2 to-here
    :language: bash
@@ -117,7 +117,7 @@ From a terminal window :code:`ctrl-alt-t`.
 Run the osm2pgrouting converter
 -------------------------------------------------------------------------------
 
-.. literalinclude:: ../scripts/chapter_4/section-4.3.1.sh
+.. literalinclude:: ../scripts/get_data/process_osgeolive_data.sh
    :start-after: 4.3.1 from-here
    :end-before:  4.3.1 to-here
    :language: bash
@@ -127,20 +127,22 @@ Run the osm2pgrouting converter
 
 .. rubric:: Output:
 
-.. literalinclude:: ../scripts/chapter_4/section-4.3.1.txt
+.. literalinclude:: ../scripts/get_data/process_osgeolive_data.sh
+   :start-after: 4.3.1 from-here
+   :end-before:  4.3.1 to-here
    :linenos:
 
 Tables on the database
 -------------------------------------------------------------------------------
 
-.. literalinclude:: ../scripts/chapter_4/section-4.3.2.sh
+.. literalinclude:: ../scripts/basic/chapter_4/section-4.3.2.sh
    :start-after: 4.3.2 from-here
    :end-before:  4.3.2 to-here
    :language: bash
 
 If everything went well the result should look like this:
 
-.. literalinclude:: ../scripts/chapter_4/section-4.3.2.txt
+.. literalinclude:: ../scripts/basic/chapter_4/section-4.3.2.txt
 
 
 Chapter: Appendix
