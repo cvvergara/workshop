@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - develop
-      - un-challenge
 
 jobs:
   update-documentation:
@@ -111,6 +110,8 @@ jobs:
 
       - name: Update Website
         run: |
+          # TODO have the directory to be the same name that will simplify this
+          # FOLDER_NAME="${{ env.BRANCH }}"
           if [[ "${{ env.BRANCH }}" == "develop" ]]; then
             FOLDER_NAME="dev"
           elif [[ "${{ env.BRANCH }}" == "un-challenge" ]]; then
