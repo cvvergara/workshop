@@ -522,7 +522,7 @@ The function's body:
 Exercise 7: Using the main function
 -------------------------------------------------------------------------------
 
-.. image:: /images/chapter8/ch8-e7.png
+.. image:: images/chapter8/ch8-e7.png
   :scale: 25%
   :alt: View of roads for taxis along with source and destination
 
