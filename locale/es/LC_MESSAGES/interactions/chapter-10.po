@@ -13,22 +13,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Argentina 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-19 13:37-0500\n"
-"PO-Revision-Date: 2021-04-23 15:22+0000\n"
+"POT-Creation-Date: 2021-10-10 17:38+0000\n"
+"PO-Revision-Date: 2021-10-10 17:39+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.1\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/docs/chapters/chapter-10.rst:13
+#: ../../build/docs/interactions/chapter-10.rst:13
 msgid "WMS server with GeoServer"
 msgstr "Servidor WMS con GeoServer"
 
-#: ../../build/docs/chapters/chapter-10.rst:15
+#: ../../build/docs/interactions/chapter-10.rst:15
 msgid ""
 "Now that we have a pl/pgsql wrapper, we will make it available as a WMS "
 "layer using `GeoServer <http://geoserver.org/>`_."
@@ -36,7 +36,7 @@ msgstr ""
 "Ahora que tenemos un contenedor pl/pgsql lo haremos disponible como una capa"
 " WMS usando `GeoServer <http://geoserver.org/>`_."
 
-#: ../../build/docs/chapters/chapter-10.rst:18
+#: ../../build/docs/interactions/chapter-10.rst:18
 msgid ""
 "The installation of GeoServer is out of the scope of this workshop, but if "
 "you're using the `OSGeo Live <http://live.osgeo.org>`_ for this workshop "
@@ -46,11 +46,11 @@ msgstr ""
 "está utilizando el  `OSGeo Live <http://live.osgeo.org>`_ para este taller, "
 "entonces ya tiene GeoServer instalado."
 
-#: ../../build/docs/chapters/chapter-10.rst:23
+#: ../../build/docs/interactions/chapter-10.rst:23
 msgid "Connect to the administration page"
 msgstr "Conéctese a la página de administración"
 
-#: ../../build/docs/chapters/chapter-10.rst:25
+#: ../../build/docs/interactions/chapter-10.rst:25
 msgid ""
 "In order to create the WMS layer, we need to connect to the administration "
 "interface of GeoServer. On `OSGeo LiveDVD <http://live.osgeo.org>`_ Desktop,"
@@ -62,7 +62,7 @@ msgstr ""
 "<http://live.osgeo.org>`_ abra el menú *Aplicaciones* en el escritorio y, a "
 "continuación, Servicios Web* > *GeoServer* > *Start GeoServer*."
 
-#: ../../build/docs/chapters/chapter-10.rst:29
+#: ../../build/docs/interactions/chapter-10.rst:29
 msgid ""
 "Once the server is up and running, open the `administration page "
 "<http://localhost:8082/geoserver/web>`_ in your browser, click the *Login* "
@@ -73,30 +73,30 @@ msgstr ""
 "haga clic en el botón *Iniciar sesión* e introduzca las credenciales de "
 "administrador de GeoServer:"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: ../../build/docs/chapters/chapter-10.rst:33
+#: ../../build/docs/interactions/chapter-10.rst:33
 msgid "``admin``"
 msgstr "``admin``"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "Password"
 msgstr "Contraseña"
 
-#: ../../build/docs/chapters/chapter-10.rst:34
+#: ../../build/docs/interactions/chapter-10.rst:34
 msgid "``geoserver``"
 msgstr "``geoserver``"
 
-#: ../../build/docs/chapters/chapter-10.rst:37
+#: ../../build/docs/interactions/chapter-10.rst:37
 msgid "Create the layer"
 msgstr "Crear la capa"
 
-#: ../../build/docs/chapters/chapter-10.rst:39
+#: ../../build/docs/interactions/chapter-10.rst:39
 msgid ""
-"Now that your are logged in as an administrator you can create the WMS "
-"layer. In GeoServer terminology you will create an SQL View (see the "
+"Now that your are logged in as an administrator you can create the "
+"WMS layer. In GeoServer terminology you will create an SQL View (see the "
 "`official documentation "
 "<https://docs.geoserver.org/latest/en/user/data/database/sqlview.html>`_ for"
 " more info)."
@@ -107,7 +107,7 @@ msgstr ""
 "<https://docs.geoserver.org/latest/en/user/data/database/sqlview.html>` _ "
 "para obtener más información)."
 
-#: ../../build/docs/chapters/chapter-10.rst:44
+#: ../../build/docs/interactions/chapter-10.rst:44
 msgid ""
 "The first thing to do is to create a new **Workspace** for pgrouting: in the"
 " left menu of the page, inside the *Data* section, click *Workspaces* and "
@@ -118,34 +118,34 @@ msgstr ""
 "haga clic en *Espacios de trabajo* y luego *Agregar nuevo espacio de "
 "trabajo*."
 
-#: ../../build/docs/chapters/chapter-10.rst:48
-#: ../../build/docs/chapters/chapter-10.rst:59
+#: ../../build/docs/interactions/chapter-10.rst:48
+#: ../../build/docs/interactions/chapter-10.rst:59
 msgid "Fill the form with:"
 msgstr "Rellene el formulario con:"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "Name"
 msgstr "Nombre"
 
-#: ../../build/docs/chapters/chapter-10.rst:50
-#: ../../build/docs/chapters/chapter-10.rst:63
-#: ../../build/docs/chapters/chapter-10.rst:64
+#: ../../build/docs/interactions/chapter-10.rst:50
+#: ../../build/docs/interactions/chapter-10.rst:63
+#: ../../build/docs/interactions/chapter-10.rst:64
 msgid "``pgrouting``"
 msgstr "``pgrouting``"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "Namespace URI"
 msgstr "URI de espacio de nombres"
 
-#: ../../build/docs/chapters/chapter-10.rst:51
+#: ../../build/docs/interactions/chapter-10.rst:51
 msgid "``http://pgrouting.org``"
 msgstr "``http://pgrouting.org``"
 
-#: ../../build/docs/chapters/chapter-10.rst:53
+#: ../../build/docs/interactions/chapter-10.rst:53
 msgid "And press the ``submit`` button."
 msgstr "Y pulse el botón ``enviar``."
 
-#: ../../build/docs/chapters/chapter-10.rst:55
+#: ../../build/docs/interactions/chapter-10.rst:55
 msgid ""
 "Next step: create a new **Store** linked to the workspace. Still in the left"
 " menu, click *Stores* and then *Add new Store*. Here you can choose the type"
@@ -156,72 +156,72 @@ msgstr ""
 "*Agregar nuevo almacén* Aquí puede elegir el tipo de origen de datos que "
 "desea configurar. Elija *PostGIS*."
 
-#: ../../build/docs/chapters/chapter-10.rst:61
+#: ../../build/docs/interactions/chapter-10.rst:61
 msgid "Basic Store Info:"
 msgstr "Información Básica de la Tienda:"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "Workspace"
 msgstr "Espacio de trabajo"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "Data Source"
 msgstr "Fuente de Datos"
 
-#: ../../build/docs/chapters/chapter-10.rst:66
+#: ../../build/docs/interactions/chapter-10.rst:66
 msgid "Connection Parameters:"
 msgstr "Parámetros de conexión:"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "host"
 msgstr "anfitrión"
 
-#: ../../build/docs/chapters/chapter-10.rst:68
+#: ../../build/docs/interactions/chapter-10.rst:68
 msgid "``localhost``"
 msgstr "``localhost``"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "port"
 msgstr "puerto"
 
-#: ../../build/docs/chapters/chapter-10.rst:69
+#: ../../build/docs/interactions/chapter-10.rst:69
 msgid "``5432``"
 msgstr "``5432``"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "database"
 msgstr "base de datos"
 
-#: ../../build/docs/chapters/chapter-10.rst:70
+#: ../../build/docs/interactions/chapter-10.rst:70
 msgid "``city_routing``"
 msgstr "``city_routing``"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "schema"
 msgstr "esquema"
 
-#: ../../build/docs/chapters/chapter-10.rst:71
+#: ../../build/docs/interactions/chapter-10.rst:71
 msgid "``public``"
 msgstr "``public``"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "user"
 msgstr "usuario"
 
-#: ../../build/docs/chapters/chapter-10.rst:72
-#: ../../build/docs/chapters/chapter-10.rst:73
+#: ../../build/docs/interactions/chapter-10.rst:72
+#: ../../build/docs/interactions/chapter-10.rst:73
 msgid "``user``"
 msgstr "``user``"
 
-#: ../../build/docs/chapters/chapter-10.rst
+#: ../../build/docs/interactions/chapter-10.rst
 msgid "password"
 msgstr "contraseña"
 
-#: ../../build/docs/chapters/chapter-10.rst:75
+#: ../../build/docs/interactions/chapter-10.rst:75
 msgid "The rest of the values can be left untouched."
 msgstr "El resto de los valores pueden dejarse como están."
 
-#: ../../build/docs/chapters/chapter-10.rst:77
+#: ../../build/docs/interactions/chapter-10.rst:77
 msgid ""
 "Finally, your next task is to create the **Layer**. Click the *Layers* menu "
 "and then *Add a new resource*. Select the newly created workspace and store "
@@ -231,15 +231,15 @@ msgstr ""
 "*Capas* y, a continuación, en *Agregar un nuevo recurso*. Seleccione el "
 "espacio de trabajo recién creado y almacene el par: ``pgrouting:pgrouting``."
 
-#: ../../build/docs/chapters/chapter-10.rst:81
+#: ../../build/docs/interactions/chapter-10.rst:81
 msgid "Inside the text, click *Configure new SQL view*."
 msgstr "Dentro del texto, haga click en *Configure new SQL view*."
 
-#: ../../build/docs/chapters/chapter-10.rst:83
+#: ../../build/docs/interactions/chapter-10.rst:83
 msgid "Name the view ``pgrouting`` and fill the *SQL statement* with:"
 msgstr "Nombrar la vista``pgrouting`` y llene la *SQL statement* con:"
 
-#: ../../build/docs/chapters/chapter-10.rst:91
+#: ../../build/docs/interactions/chapter-10.rst:91
 msgid ""
 "In the *SQL view parameters*, click *Guess parameters from SQL*; the list "
 "displayed represents the parameters from the SQL above."
@@ -247,31 +247,31 @@ msgstr ""
 "En el *SQL view parameters*, haga clic en *Guess parameters from SQL*; la "
 "lista mostrada representa los parámetros de la anterior de SQL."
 
-#: ../../build/docs/chapters/chapter-10.rst:94
+#: ../../build/docs/interactions/chapter-10.rst:94
 msgid "For each parameter:"
 msgstr "Para cada parámetro:"
 
-#: ../../build/docs/chapters/chapter-10.rst:96
+#: ../../build/docs/interactions/chapter-10.rst:96
 msgid "Set the default value to: `0`"
 msgstr "Establecer el valor predeterminado: `0`"
 
-#: ../../build/docs/chapters/chapter-10.rst:97
+#: ../../build/docs/interactions/chapter-10.rst:97
 msgid "Change the validation regular expression to ``^-?[\\d.]+$``"
 msgstr "Cambiar la expresión regular de validación a ``^-?[\\d.]+$``"
 
-#: ../../build/docs/chapters/chapter-10.rst:99
+#: ../../build/docs/interactions/chapter-10.rst:99
 msgid "The regular expression will only match numbers."
 msgstr "La expresión regular sólo igualará números."
 
-#: ../../build/docs/chapters/chapter-10.rst:101
+#: ../../build/docs/interactions/chapter-10.rst:101
 msgid "In the *Attributes* list:"
 msgstr "En la lista de *Atributos*:"
 
-#: ../../build/docs/chapters/chapter-10.rst:103
+#: ../../build/docs/interactions/chapter-10.rst:103
 msgid "Hit *Refresh*, one attribute should appear (called *st_makeline*)"
 msgstr "Pulsa *Actualizar*, debe aparecer un atributo (llamado *st_makeline*)"
 
-#: ../../build/docs/chapters/chapter-10.rst:104
+#: ../../build/docs/interactions/chapter-10.rst:104
 msgid ""
 "Change the type to ``LineString`` and the SRID of the geometry column from "
 "``-1`` to ``4326``"
@@ -279,15 +279,15 @@ msgstr ""
 "Cambie el tipo a ``LineString`` y el SRID de la columna geometría de ``-1`` "
 "a ``4326``"
 
-#: ../../build/docs/chapters/chapter-10.rst:107
+#: ../../build/docs/interactions/chapter-10.rst:107
 msgid "Save the form."
 msgstr "Guardar el formulario."
 
-#: ../../build/docs/chapters/chapter-10.rst:109
+#: ../../build/docs/interactions/chapter-10.rst:109
 msgid "Finally, we need to setup the rest of the layer."
 msgstr "Por último, tenemos que configurar el resto de la capa."
 
-#: ../../build/docs/chapters/chapter-10.rst:111
+#: ../../build/docs/interactions/chapter-10.rst:111
 msgid ""
 "The only thing to do in this screen is to make sure that the coordinate "
 "reference system is correct: the geometries in the database are in "
@@ -299,7 +299,7 @@ msgstr ""
 "datos están en ``EPSG:4326`` pero queremos mostrarlas en `EPSG:3857` porque "
 "el mapa openlayers donde se desasignará la capa está en esta proyección."
 
-#: ../../build/docs/chapters/chapter-10.rst:116
+#: ../../build/docs/interactions/chapter-10.rst:116
 msgid ""
 "Scroll down to the *coordinate reference system* section and change the "
 "**Declared SRS** to ``EPSG:3857`` and the **SRS handling** to ``Reproject "
@@ -309,7 +309,7 @@ msgstr ""
 "coordenadas* y cambia el SRS **Declarado** a ``EPSG:3857`` y el **control "
 "SRS** a ``Reproyecto nativo para declarar``."
 
-#: ../../build/docs/chapters/chapter-10.rst:120
+#: ../../build/docs/interactions/chapter-10.rst:120
 msgid ""
 "Click the *Compute from data* and *Compute from native bounds* link to "
 "automatically set the layer bounds. Click the *Save* at the bottom of the "

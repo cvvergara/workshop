@@ -12,26 +12,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Argentina 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-19 13:37-0500\n"
-"PO-Revision-Date: 2021-04-23 15:22+0000\n"
+"POT-Creation-Date: 2021-10-10 17:38+0000\n"
+"PO-Revision-Date: 2021-10-10 17:39+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.1\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/docs/chapters/appendix-5.rst:11
+#: ../../build/docs/examples/hanoslav.rst:11
 msgid "Internet Examples"
 msgstr "Ejemplos de Internet"
 
-#: ../../build/docs/chapters/appendix-5.rst:14
+#: ../../build/docs/examples/hanoslav.rst:14
 msgid "Hanoslav Example"
 msgstr "Ejemplo de Hanoslav"
 
-#: ../../build/docs/chapters/appendix-5.rst:15
+#: ../../build/docs/examples/hanoslav.rst:15
 msgid ""
 "pgRouting can solve the example problem like the one shown down below "
 "(`picture from hanoslav.net <http://hansolav.net/sql/graphs.html>`_)"
@@ -40,15 +40,15 @@ msgstr ""
 "continuación (`picture from hanoslav.net "
 "<http://hansolav.net/sql/graphs.html>`_)"
 
-#: ../../build/docs/chapters/appendix-5.rst:95
+#: ../../build/docs/examples/hanoslav.rst:95
 msgid "The following code outputs the table down below."
 msgstr "El código siguiente genera la tabla a continuación."
 
-#: ../../build/docs/chapters/appendix-5.rst:115
+#: ../../build/docs/examples/hanoslav.rst:115
 msgid "Boost Dijkstra Example"
 msgstr "Ejemplo de Boost Dijkstra"
 
-#: ../../build/docs/chapters/appendix-5.rst:116
+#: ../../build/docs/examples/hanoslav.rst:116
 msgid ""
 "Using, pgRouting you can translate `C++ dijkstra code "
 "<https://www.boost.org/doc/libs/1_59_0/libs/graph/example/dijkstra-"
@@ -58,22 +58,22 @@ msgstr ""
 "<https://www.boost.org/doc/libs/1_59_0/libs/graph/example/dijkstra-"
 "example.cpp>`_ en comandos SQL."
 
-#: ../../build/docs/chapters/appendix-5.rst:119
+#: ../../build/docs/examples/hanoslav.rst:119
 msgid "Boost Code"
 msgstr "Código Boost"
 
-#: ../../build/docs/chapters/appendix-5.rst:130
+#: ../../build/docs/examples/hanoslav.rst:130
 msgid "Here is the tranlasted SQL commands."
 msgstr "Aquí están los comandos SQL tranlasted."
 
-#: ../../build/docs/chapters/appendix-5.rst:133
+#: ../../build/docs/examples/hanoslav.rst:133
 msgid "Translated Code"
 msgstr "Código Traducido"
 
-#: ../../build/docs/chapters/appendix-5.rst:182
+#: ../../build/docs/examples/hanoslav.rst:182
 msgid "Output from running the following SQL command:"
 msgstr "Salida de la ejecución del siguiente comando SQL:"
 
-#: ../../build/docs/chapters/appendix-5.rst:185
+#: ../../build/docs/examples/hanoslav.rst:185
 msgid "Output"
 msgstr "Salida"
