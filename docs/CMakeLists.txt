@@ -72,7 +72,7 @@ if (LOCALE)
 
   COMMENT "Generating POT & PO files ..."
   )
-  add_dependencies(locale examples general-intro advanced  appendix  basic un-sdg scripts)
+  add_dependencies(locale examples general-intro advanced  appendix  basic un_sdg scripts)
   add_dependencies(doc locale)
 endif()
 
