@@ -7,10 +7,10 @@
   Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
   ****************************************************************************
 
-Appendix: Basic workshop solutions 
+Appendix: Basic workshop solutions
 ===============================================================================
 
-Solutions to :ref:`Pedestrian routing`
+Solutions to :doc:`pedestrian`
 -------------------------------------------------------------------------------
 
 **Exercise**: 1 (**Chapter:** Pedestrian)

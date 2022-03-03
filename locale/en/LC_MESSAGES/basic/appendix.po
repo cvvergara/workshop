@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Argentina 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 17:38+0000\n"
+"POT-Creation-Date: 2022-03-03 09:28-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgid "Appendix: Basic workshop solutions"
 msgstr ""
 
 #: ../../build/docs/basic/appendix.rst:14
-msgid "Solutions to :ref:`Pedestrian routing`"
+msgid "Solutions to :doc:`pedestrian`"
 msgstr ""
 
 #: ../../build/docs/basic/appendix.rst:17
@@ -329,4 +329,7 @@ msgstr ""
 #: ../../build/docs/basic/appendix.rst:319
 msgid "For ``walk_net``"
 msgstr ""
+
+#~ msgid "Solutions to :ref:`Pedestrian routing`"
+#~ msgstr ""
 

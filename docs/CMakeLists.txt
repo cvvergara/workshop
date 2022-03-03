@@ -67,12 +67,12 @@ if (LOCALE)
     "${CMAKE_CURRENT_BINARY_DIR}"
     "${CMAKE_SOURCE_DIR}/locale/pot"
 
-  COMMAND sphinx-intl update -d ${CMAKE_SOURCE_DIR}/locale -l en > locale_changes.txt
+  COMMAND sphinx-intl update -d ${CMAKE_SOURCE_DIR}/locale -l en,es > locale_changes.txt
   DEPENDS "conf.py"
 
   COMMENT "Generating POT & PO files ..."
   )
-  add_dependencies(locale examples general-intro advanced  appendix  basic scripts)
+  add_dependencies(locale examples general-intro advanced  appendix  basic un-sdg scripts)
   add_dependencies(doc locale)
 endif()
 
@@ -101,6 +101,7 @@ foreach (target ${PGR_WORKSHOP_DOC_TARGETS})
       -b ${target}
       -c "${CMAKE_CURRENT_BINARY_DIR}"
       -D language='${lang}'
+      -v
 
       # Convert warnings to errors
       ${WARNINGS_TO_ERRORS}
