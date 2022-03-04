@@ -30,7 +30,6 @@ msgid "Appendix: Basic workshop solutions"
 msgstr "Apéndice: Soluciones básicas para el taller"
 
 #: ../../build/docs/basic/appendix.rst:14
-#, fuzzy
 msgid "Solutions to :doc:`pedestrian`"
 msgstr "Soluciones a :doc:`pedestrian`"
 
@@ -39,7 +38,6 @@ msgid "**Exercise**: 1 (**Chapter:** Pedestrian)"
 msgstr "**Ejercicio**: 1 (**Capítulo:** Peatón)"
 
 #: ../../build/docs/basic/appendix.rst:19
-#, fuzzy
 msgid ":ref:`basic/pedestrian:Exercise 1: Single pedestrian routing`"
 msgstr ":ref:`basic/pedestrian:Ejercicio 1: Ruteo para un sólo peatón`"
 
@@ -48,7 +46,6 @@ msgid "**Exercise**: 2 (**Chapter:** Pedestrian)"
 msgstr "**Ejercicio**: 2 (**Capítulo:** Peatón)"
 
 #: ../../build/docs/basic/appendix.rst:27
-#, fuzzy
 msgid ""
 ":ref:`basic/pedestrian:Exercise 2: Many Pedestrians going to the same "
 "destination`"
@@ -59,7 +56,6 @@ msgid "**Exercise**: 3 (**Chapter:** Pedestrian)"
 msgstr "**Ejercicio**: 3 (**Capítulo:** Peatón)"
 
 #: ../../build/docs/basic/appendix.rst:35
-#, fuzzy
 msgid ""
 ":ref:`basic/pedestrian:Exercise 3: Many Pedestrians departing from the "
 "same location`"
@@ -70,7 +66,6 @@ msgid "**Exercise**: 4 (**Chapter:** Pedestrian)"
 msgstr "**Ejercicio**: 4 (**Capítulo:** Peatón)"
 
 #: ../../build/docs/basic/appendix.rst:43
-#, fuzzy
 msgid ""
 ":ref:`basic/pedestrian:Exercise 4: Many Pedestrians going to different "
 "destinations`"
@@ -155,7 +150,7 @@ msgstr ":ref:`basic/vehicle:Ejercicio 5: Ruteo de vehículos con penalización`"
 #: ../../build/docs/basic/appendix.rst:109
 #, fuzzy
 msgid "Solutions to :doc:`sql_function`"
-msgstr "Soluciones a :ref:`pl/pgsql function`"
+msgstr "Soluciones a :doc:`sql_function`"
 
 #: ../../build/docs/basic/appendix.rst:113
 msgid "**Exercise**: 1 (**Chapter:** SQL)"
