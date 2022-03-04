@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Argentina 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-04 10:35-0600\n"
+"POT-Creation-Date: 2022-03-04 11:09-0600\n"
 "PO-Revision-Date: 2021-10-10 17:39+0000\n"
 "Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2022\n"
 "Language: es\n"
@@ -138,14 +138,14 @@ msgid ""
 "data is of required quality. pgRouting can also be used to do some Data "
 "Adjustments. This will be discussed in further sections."
 msgstr ""
-"El primer paso es preprocesar los datos obtenidos de :ref:`un_sdg/data:Datos para los"
-" Objetivos de Desarrollo Sostenible`. En esta sección se trabajará el "
-"gráfico que se va a utilizar para el procesamiento. Al construir el "
-"gráfico, los datos deben inspeccionarse para determinar si hay datos no "
-"válidos. Este es un paso muy importante para asegurarse de que los datos "
-"sean de la calidad requerida. pgRouting también se puede utilizar para "
-"realizar algunos ajustes de datos. Esto se discutirá en secciones "
-"posteriores."
+"El primer paso es preprocesar los datos obtenidos de "
+":ref:`un_sdg/data:Datos para los Objetivos de Desarrollo Sostenible`. En "
+"esta sección se trabajará el gráfico que se va a utilizar para el "
+"procesamiento. Al construir el gráfico, los datos deben inspeccionarse "
+"para determinar si hay datos no válidos. Este es un paso muy importante "
+"para asegurarse de que los datos sean de la calidad requerida. pgRouting "
+"también se puede utilizar para realizar algunos ajustes de datos. Esto se"
+" discutirá en secciones posteriores."
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:69
 msgid "Inspecting the database structure"
@@ -669,18 +669,20 @@ msgid ""
 "``distance/speed``, ``length_m`` / ``1 m/s`` / ``60`` gives the time in "
 "minutes"
 msgstr ""
-"En la línea 3, se supone que la velocidad de los peatones es de ''1 "
-"m/s''. Como ``tiempo`` = ``distancia/velocidad``, ``length_m`` / ``1 "
+"En la línea 3, se supone que la velocidad de los peatones es de ``1 "
+"m/s`` Como ``tiempo`` = ``distancia/velocidad``, ``length_m`` / ``1 "
 "m/s`` / ``60`` da el tiempo en minutos"
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:491
+#, fuzzy
 msgid ""
 "In line 7, ``tag_id = '318'``  as 318 is the tag_id of hospital in the "
-"configuration file of buildings. Reference for Tag ID : :ref:`Appendix`"
+"configuration file of buildings. Reference for Tag ID : "
+":ref:`un_sdg/data:Appendix`"
 msgstr ""
 "En la línea 7, ``tag_id = '318'`` como 318 es el ``tag_id`` de hospital "
 "en el archivo de configuración de edificios. Referencia para el ID de "
-"etiqueta : :ref:`Apéndice`"
+"etiqueta : :ref:`un_sdg/data:Apéndice`"
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:493
 msgid ""
@@ -693,7 +695,7 @@ msgstr ""
 #: ../../build/docs/un_sdg/sdg3-health.rst:494
 msgid "In line 8, ``FALSE`` is written as the query is for undirected graph"
 msgstr ""
-"En la línea 8, ``FALSE` se escribe como la consulta es para el grafo no "
+"En la línea 8, ``FALSE`` se escribe como la consulta es para el grafo no "
 "dirigido"
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:502
@@ -821,7 +823,8 @@ msgid "Very Dense: A large sized residential building."
 msgstr "Muy denso: Un edificio residencial de gran tamaño."
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:572
-msgid "Reference: :ref:`Appendix`"
+#, fuzzy
+msgid "Reference: :ref:`un_sdg/data:Appendix`"
 msgstr "Referencia: :ref:`Apéndice`"
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:574

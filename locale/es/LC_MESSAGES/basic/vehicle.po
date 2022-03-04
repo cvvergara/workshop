@@ -245,7 +245,7 @@ msgstr ""
 
 #: ../../build/docs/basic/vehicle.rst:146
 msgid "Exercise 3: Vehicle routing when time is money"
-msgstr "Ejercicio 3: Enrutamiento del vehículo cuando el tiempo es dinero"
+msgstr "Ejercicio 3: Ruteo de vehículos cuando el tiempo es dinero"
 
 #: ../../build/docs/basic/vehicle.rst:150
 msgid "From \"|place_1|\" to the \"|place_3|\" by taxi."

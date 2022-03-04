@@ -64,7 +64,7 @@ msgstr ""
 "Estos requisitos se cumplen en OSGeoLive. Cuando se instale el software "
 "necesario, abrir una ventana de terminal presionando :code:`ctrl-alt-t` y "
 "siguir las instrucciones. Se puede encontrar información sobre la "
-"instalación de OSGeoLive en  :doc:`chapter-3`."
+"instalación de OSGeoLive en  :doc:`../general-intro/chapter-3`."
 
 #: ../../build/docs/basic/data.rst:33
 msgid ""
