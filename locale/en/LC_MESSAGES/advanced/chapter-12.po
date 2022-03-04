@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Argentina 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-03 11:07-0600\n"
+"POT-Creation-Date: 2022-03-04 09:41-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,7 +235,9 @@ msgid "Additional columns are for analyzing the topology."
 msgstr ""
 
 #: ../../build/docs/advanced/chapter-12.rst:165
-msgid "Now we are ready for our first routing query with :ref:`pgr_dijkstra`"
+msgid ""
+"Now we are ready for our first routing query with "
+":ref:`basic/pedestrian:pgr_dijkstra`"
 msgstr ""
 
 #: ../../build/docs/advanced/chapter-12.rst:170
@@ -284,4 +286,7 @@ msgid ""
 "/topology-functions.html>`_ functions help to detect and fix some of the "
 "topological errors in the data."
 msgstr ""
+
+#~ msgid "Now we are ready for our first routing query with :ref:`pgr_dijkstra`"
+#~ msgstr ""
 
