@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Argentina 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-04 10:35-0600\n"
+"POT-Creation-Date: 2022-03-04 11:09-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -541,7 +541,8 @@ msgstr ""
 #: ../../build/docs/un_sdg/sdg3-health.rst:491
 msgid ""
 "In line 7, ``tag_id = '318'``  as 318 is the tag_id of hospital in the "
-"configuration file of buildings. Reference for Tag ID : :ref:`Appendix`"
+"configuration file of buildings. Reference for Tag ID : "
+":ref:`un_sdg/data:Appendix`"
 msgstr ""
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:493
@@ -656,7 +657,7 @@ msgid "Very Dense: A large sized residential building."
 msgstr ""
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:572
-msgid "Reference: :ref:`Appendix`"
+msgid "Reference: :ref:`un_sdg/data:Appendix`"
 msgstr ""
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:574
@@ -766,81 +767,3 @@ msgstr ""
 #: ../../build/docs/un_sdg/sdg3-health.rst:701
 msgid ":ref:`un_sdg/appendix:**Exercise:** 20 (**Chapter:** SDG 3)`"
 msgstr ""
-
-#~ msgid ""
-#~ "First step is to pre-process the"
-#~ " data obtained from :ref:`Data for "
-#~ "Sustainable Development Goals`. This section"
-#~ " will work the graph that is "
-#~ "going to be used for processing. "
-#~ "While building the graph, the data "
-#~ "has to be inspected to determine "
-#~ "if there is any invalid data. This"
-#~ " is a very important step to "
-#~ "make sure that the data is of "
-#~ "required quality. pgRouting can also be"
-#~ " used to do some Data Adjustments."
-#~ " This will be discussed in further"
-#~ " sections."
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 5 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 6 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 7 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 8 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 9 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 10 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 11 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 12 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 13 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 15 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 16 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 17 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 18 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 19 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ":ref:`**Exercise:** 20 (**Chapter:** SDG 3)`"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Final step is to find the total"
-#~ " population served by the hospital "
-#~ "based on travel-time. Use the "
-#~ "query from :ref:`Exercise 16: Generalising "
-#~ "the served roads` as a subquery to"
-#~ " get all the edges in the roads"
-#~ " served. Note that ``s.population`` is "
-#~ "added in line 14 which gives the"
-#~ " population. After getting the population"
-#~ " for each edge/road, use ``sum()`` to"
-#~ " get the total population which is"
-#~ " dependant on the hospital."
-#~ msgstr ""
-

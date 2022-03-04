@@ -489,7 +489,7 @@ For the following query,
 * In line 3, Pedestrian speed is assumed to be as ``1 m/s``. As ``time`` = ``distance/speed``,
   ``length_m`` / ``1 m/s`` / ``60`` gives the time in minutes
 * In line 7, ``tag_id = '318'``  as 318 is the tag_id of hospital in the configuration
-  file of buildings. Reference for Tag ID : :ref:`Appendix`
+  file of buildings. Reference for Tag ID : :ref:`un_sdg/data:Appendix`
 * In line 8, ``10`` is written for 10 minutes which is a threshold for ``agg_cost``
 * In line 8, ``FALSE`` is written as the query is for undirected graph
 
@@ -569,7 +569,7 @@ this exercise, the buildings are classified into the following classes:
 - Dense: A medium sized residential building.
 - Very Dense: A large sized residential building.
 
-Reference: :ref:`Appendix`
+Reference: :ref:`un_sdg/data:Appendix`
 
 This class-specific factor is multiplied with the area of each building to get
 the population. Follow the steps given below to complete this task.

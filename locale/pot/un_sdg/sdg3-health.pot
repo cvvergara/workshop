@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Argentina 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-04 10:35-0600\n"
+"POT-Creation-Date: 2022-03-04 11:09-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -419,7 +419,7 @@ msgid "In line 3, Pedestrian speed is assumed to be as ``1 m/s``. As ``time`` = 
 msgstr ""
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:491
-msgid "In line 7, ``tag_id = '318'``  as 318 is the tag_id of hospital in the configuration file of buildings. Reference for Tag ID : :ref:`Appendix`"
+msgid "In line 7, ``tag_id = '318'``  as 318 is the tag_id of hospital in the configuration file of buildings. Reference for Tag ID : :ref:`un_sdg/data:Appendix`"
 msgstr ""
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:493
@@ -500,7 +500,7 @@ msgid "Very Dense: A large sized residential building."
 msgstr ""
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:572
-msgid "Reference: :ref:`Appendix`"
+msgid "Reference: :ref:`un_sdg/data:Appendix`"
 msgstr ""
 
 #: ../../build/docs/un_sdg/sdg3-health.rst:574
