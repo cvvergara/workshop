@@ -436,6 +436,7 @@ msgstr ""
 "(líneas **4** y **9**)"
 
 #: ../../build/docs/basic/plpgsql_function.rst:165
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 1 (**Chapter:** pl/pgsql)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 1 (**Capítulo:** pl/pgsql)`"
 
@@ -539,6 +540,7 @@ msgstr ""
 "(líneas **3**, **8** y **11**)"
 
 #: ../../build/docs/basic/plpgsql_function.rst:240
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 2 (**Chapter:** pl/pgsql)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 2 (**Capítulo:** pl/pgsql)`"
 
@@ -662,6 +664,7 @@ msgstr ""
 "``walk_net_vertices_pgr``. (línea **2**)"
 
 #: ../../build/docs/basic/plpgsql_function.rst:315
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 3 (**Chapter:** pl/pgsql)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 3 (**Capítulo:** pl/pgsql)`"
 
@@ -775,6 +778,7 @@ msgstr ""
 "de la función que estamos creando. (línea **19**)"
 
 #: ../../build/docs/basic/plpgsql_function.rst:368
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 4 (**Chapter:** pl/pgsql)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 4 (**Capítulo:** pl/pgsql)`"
 
@@ -857,6 +861,7 @@ msgstr ""
 "``walk_net_vertices_pgr``. (líneas **2**)"
 
 #: ../../build/docs/basic/plpgsql_function.rst:443
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 5 (**Chapter:** pl/pgsql)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 5 (**Capítulo:** pl/pgsql)`"
 
@@ -905,6 +910,7 @@ msgid "Obtains the OSM identifier needed by ``wrk_dijkstra``."
 msgstr "Obtiene el identificador OSM necesario por  ``wrk_dijkstra``."
 
 #: ../../build/docs/basic/plpgsql_function.rst:466
+#, fuzzy
 msgid ""
 "``wrk_dijkstra`` created on :ref:`basic/sql_function:Exercise 10: "
 "Function for an application`."
@@ -1023,6 +1029,7 @@ msgstr ""
 "(líneas **20** a **22**)"
 
 #: ../../build/docs/basic/plpgsql_function.rst:520
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 6 (**Chapter:** pl/pgsql)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 6 (**Capítulo:** pl/pgsql)`"
 
@@ -1109,6 +1116,7 @@ msgstr ""
 " **8** y **9**)."
 
 #: ../../build/docs/basic/plpgsql_function.rst:592
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 7 (**Chapter:** pl/pgsql)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 7 (**Capítulo:** pl/pgsql)`"
 

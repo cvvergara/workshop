@@ -233,7 +233,7 @@ msgstr ""
 #: ../../build/docs/basic/vehicle.rst:140
 #, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 2 (**Chapter:** Vehicle)`"
-msgstr ":ref:`basic/appendix:**Ejercicio**: 2 (**Capítulo:** Vehículo)`"
+msgstr ":ref:`basic/appendix:**Ejercicio**: 2 (**Capítulo:** vehículo)`"
 
 #: ../../build/docs/basic/vehicle.rst:142
 msgid ""
@@ -276,8 +276,9 @@ msgid "The cost in ``$`` is ``cost_s / 3600 * 100``."
 msgstr "El costo en ``$`` es ``cost_s / 3600 * 100``."
 
 #: ../../build/docs/basic/vehicle.rst:173
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 3 (**Chapter:** Vehicle)`"
-msgstr ":ref:`basic/appendix:**Ejercicio**: 3 (**Capítulo:** Vehículo)`"
+msgstr ":ref:`basic/appendix:**Ejercicio**: 3 (**Capítulo:** vehículo)`"
 
 #: ../../build/docs/basic/vehicle.rst:176
 msgid "Comparing with `Exercise 2: Vehicle routing - returning`_:"
@@ -419,8 +420,9 @@ msgstr ""
 "**14** y **15**)."
 
 #: ../../build/docs/basic/vehicle.rst:282
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 4 (**Chapter:** Vehicle)`"
-msgstr ":ref:`basic/appendix:**Ejercicio**: 4 (**Capítulo:** Vehículo)`"
+msgstr ":ref:`basic/appendix:**Ejercicio**: 4 (**Capítulo:** vehículo)`"
 
 #: ../../build/docs/basic/vehicle.rst:286
 msgid "Exercise 5: Vehicle routing with penalization"
@@ -487,14 +489,13 @@ msgstr ""
 "**9**)."
 
 #: ../../build/docs/basic/vehicle.rst:329
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 5 (**Chapter:** Vehicle)`"
-msgstr ":ref:`basic/appendix:**Ejercicio**: 5 (**Capítulo:** Vehículo)`"
+msgstr ":ref:`basic/appendix:**Ejercicio**: 5 (**Capítulo:** vehículo)`"
 
 #: ../../build/docs/basic/vehicle.rst:332
 msgid "Comparing with `Exercise 3: Vehicle routing when time is money`_:"
-msgstr ""
-"Comparación con `Ejercicio 3: Ruteo de vehículos cuando el tiempo es"
-" dinero`_:"
+msgstr "Comparando con `Ejercicio 3: Ruteo de vehículos cuando el tiempo es dinero`_"
 
 #: ../../build/docs/basic/vehicle.rst:334
 msgid "The total number of records changed."

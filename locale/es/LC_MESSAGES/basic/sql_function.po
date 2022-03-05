@@ -448,6 +448,7 @@ msgid "Count the rows on the view ``vehicle_net`` (line **2**)"
 msgstr "Contar las filas en la vista ``vehicle_net`` (línea **2**)"
 
 #: ../../build/docs/basic/sql_function.rst:155
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 1 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 1 (**Capítulo:** SQL)`"
 
@@ -509,6 +510,7 @@ msgid "Count the rows on the original ``taxi_net``"
 msgstr "Cuente las filas en el ``taxi_net`` original."
 
 #: ../../build/docs/basic/sql_function.rst:201
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 2 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 2 (**Capítulo:** SQL)`"
 
@@ -551,6 +553,7 @@ msgid "Count the rows on the view ``walk_net`` (line **1**)"
 msgstr "Cuente las filas de la vista ``walk_net`` (line **1**)"
 
 #: ../../build/docs/basic/sql_function.rst:253
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 3 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 3 (**Capítulo:** SQL)`"
 
@@ -692,6 +695,7 @@ msgstr ""
 "vistas."
 
 #: ../../build/docs/basic/sql_function.rst:337
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 4 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 4 (**Capítulo:** SQL)`"
 
@@ -761,6 +765,7 @@ msgstr ""
 "en ``vehicle_net``"
 
 #: ../../build/docs/basic/sql_function.rst:379
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 5 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 5 (**Capítulo:** SQL)`"
 
@@ -844,6 +849,7 @@ msgid "Like before ``LEFT JOIN`` with ``vehicle_net``. (line **11**)"
 msgstr "Como antes ``LEFT JOIN`` con ``vehicle_net``. (línea **11**)"
 
 #: ../../build/docs/basic/sql_function.rst:431
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 6 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 6 (**Capítulo:** SQL)`"
 
@@ -876,6 +882,7 @@ msgid "The ``the_geom`` including the renaming (line **9**)"
 msgstr "``the_geom``, incluido el cambio de nombre (línea **9**)"
 
 #: ../../build/docs/basic/sql_function.rst:469
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 7 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 7 (**Capítulo:** SQL)`"
 
@@ -984,6 +991,7 @@ msgid "The geometry when ``node`` is the ``source`` column. (line **17**)"
 msgstr "La geometría cuando ``node`` es la columna ``source``. (línea **17**)"
 
 #: ../../build/docs/basic/sql_function.rst:539
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 8 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 8 (**Capítulo:** SQL)`"
 
@@ -1059,6 +1067,7 @@ msgid "Calculates the azimuth of ``route_geom``. (line **26**)"
 msgstr "Calcula el azimut de ``route_geom``. (línea **26**)"
 
 #: ../../build/docs/basic/sql_function.rst:588
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 9 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 9 (**Capítulo:** SQL)`"
 
@@ -1169,6 +1178,7 @@ msgstr ""
 "subconjunto de ``ways`` (línea **25**)"
 
 #: ../../build/docs/basic/sql_function.rst:651
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 10 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 10 (**Capítulo:** SQL)`"
 
@@ -1193,6 +1203,7 @@ msgid "The first parameter changes based on the view to be tested"
 msgstr "El primer parámetro cambia en función de la vista que se va a probar"
 
 #: ../../build/docs/basic/sql_function.rst:673
+#, fuzzy
 msgid ":ref:`basic/appendix:**Exercise**: 11 (**Chapter:** SQL)`"
 msgstr ":ref:`basic/appendix:**Ejercicio**: 11 (**Capítulo:** SQL)`"
 

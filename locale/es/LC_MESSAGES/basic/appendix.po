@@ -38,6 +38,7 @@ msgid "**Exercise**: 1 (**Chapter:** Pedestrian)"
 msgstr "**Ejercicio**: 1 (**Capítulo:** Peatón)"
 
 #: ../../build/docs/basic/appendix.rst:19
+#, fuzzy
 msgid ":ref:`basic/pedestrian:Exercise 1: Single pedestrian routing`"
 msgstr ":ref:`basic/pedestrian:Ejercicio 1: Ruteo para un sólo peatón`"
 
@@ -46,6 +47,7 @@ msgid "**Exercise**: 2 (**Chapter:** Pedestrian)"
 msgstr "**Ejercicio**: 2 (**Capítulo:** Peatón)"
 
 #: ../../build/docs/basic/appendix.rst:27
+#, fuzzy
 msgid ""
 ":ref:`basic/pedestrian:Exercise 2: Many Pedestrians going to the same "
 "destination`"
@@ -56,6 +58,7 @@ msgid "**Exercise**: 3 (**Chapter:** Pedestrian)"
 msgstr "**Ejercicio**: 3 (**Capítulo:** Peatón)"
 
 #: ../../build/docs/basic/appendix.rst:35
+#, fuzzy
 msgid ""
 ":ref:`basic/pedestrian:Exercise 3: Many Pedestrians departing from the "
 "same location`"
@@ -66,6 +69,7 @@ msgid "**Exercise**: 4 (**Chapter:** Pedestrian)"
 msgstr "**Ejercicio**: 4 (**Capítulo:** Peatón)"
 
 #: ../../build/docs/basic/appendix.rst:43
+#, fuzzy
 msgid ""
 ":ref:`basic/pedestrian:Exercise 4: Many Pedestrians going to different "
 "destinations`"

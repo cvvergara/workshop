@@ -186,7 +186,7 @@ msgstr ""
 
 #: ../../build/docs/basic/pedestrian.rst:107
 msgid "Exercise 1: Single pedestrian routing"
-msgstr "Ejercicio 1: Ruteo para un sólo peatón"
+msgstr "Ejercicio 1: Ruteo para un solo peatón"
 
 #: ../../build/docs/basic/pedestrian.rst:110
 #: ../../build/docs/basic/pedestrian.rst:148
