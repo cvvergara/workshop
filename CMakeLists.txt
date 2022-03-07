@@ -12,7 +12,6 @@ endif()
 
 project(PGR_WORKSHOP LANGUAGES NONE)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
-#set_property(GLOBAL PROPERTY GLOBAL_DEPENDS_DEBUG_MODE 1)
 
 #---------------------------------------------
 #---------------------------------------------

@@ -67,7 +67,7 @@ if (LOCALE)
     "${CMAKE_CURRENT_BINARY_DIR}"
     "${CMAKE_SOURCE_DIR}/locale/pot"
 
-  COMMAND sphinx-intl update -d ${CMAKE_SOURCE_DIR}/locale -l en,es > locale_changes.txt
+  COMMAND sphinx-intl update -d ${CMAKE_SOURCE_DIR}/locale -l en > locale_changes.txt
   DEPENDS "conf.py"
 
   COMMENT "Generating POT & PO files ..."
@@ -86,7 +86,7 @@ foreach (target ${PGR_WORKSHOP_DOC_TARGETS})
 
   foreach (lang ${PGR_WORKSHOP_BUILD_LANGUAGES})
     if (lang STREQUAL "en")
-      set(WARNINGS_TO_ERRORS "")
+      set(WARNINGS_TO_ERRORS "-W")
     else()
       set(WARNINGS_TO_ERRORS "")
     endif()
@@ -101,7 +101,6 @@ foreach (target ${PGR_WORKSHOP_DOC_TARGETS})
       -b ${target}
       -c "${CMAKE_CURRENT_BINARY_DIR}"
       -D language='${lang}'
-      -v
 
       # Convert warnings to errors
       ${WARNINGS_TO_ERRORS}
