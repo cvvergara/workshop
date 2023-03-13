@@ -23,7 +23,7 @@ endforeach()
 if (NOT EXISTS ${CMAKE_SOURCE_DIR}/downloads/${PGR_WORKSHOP_CITY_FILE}.osm)
 execute_process(
   OUTPUT_FILE ${CMAKE_SOURCE_DIR}/downloads/${PGR_WORKSHOP_CITY_FILE}.osm
-  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/get_osgeolive_data.sh
+  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/get_osgeolive_daa.sh
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/downloads
   INPUT_FILE  ${CMAKE_CURRENT_BINARY_DIR}/get_osgeolive_data.sh
   )
