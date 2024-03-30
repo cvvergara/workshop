@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 
-<html lang="es">
+<html lang="es" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Interfaz de Ruteo Basada en OpenLayers &#8212; Workshop - FOSS4G 2022 Firenze - Routing with pgRouting</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/translations.js"></script>
+    <title>3. Interfaz de Ruteo Basada en OpenLayers &#8212; Workshop - FOSS4G 2023 Prizren - Routing with pgRouting</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=fa3951f0" />
+    <script src="../_static/documentation_options.js?v=20becd35"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=efdbd0b9"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="1. Ejemplo de Boost Dijkstra" href="../examples/boost_dijkstra.html" />
@@ -38,8 +38,8 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="../index.html">
-          Workshop FOSS4G Firenze</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.8</b></span>
+          Workshop FOSS4G Prizren</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.9</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -55,15 +55,23 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../general-intro/chapter-1.html">1. Introducción</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general-intro/chapter-2.html">2. Sobre El Taller</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../general-intro/chapter-2.html#pgrouting-overview">2.1. Visión General de pgRouting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general-intro/chapter-2.html#osm2pgrouting-overview">2.2. Visión General de osm2pgrouting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general-intro/chapter-2.html#openstreetmap-overview">2.3. Visión general de OpenStreetMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general-intro/introduction.html">1. Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general-intro/introduction.html#basic">1.1. Básico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general-intro/introduction.html#advanced">1.2. Avanzado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general-intro/introduction.html#aknowledments">1.3. Aknowledments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general-intro/introduction.html#become-a-sponsor">1.4. Become a sponsor</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../general-intro/chapter-3.html">3. Instalación</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../general-intro/chapter-3.html#osgeolive-on-a-virtualbox">3.1. OSGeoLive en una VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general-intro/osgeolive.html">2. OSGeoLive Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general-intro/osgeolive.html#install-virtualbox">2.1. Install VirtualBox.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general-intro/osgeolive.html#osgeolive-on-a-virtualbox">2.2. OSGeoLive on a VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general-intro/osgeolive.html#ubuntu-installation">2.3. Ubuntu installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general-intro/overview.html">3. Software and Data Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general-intro/overview.html#pgrouting-overview">3.1. pgRouting Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general-intro/overview.html#osm2pgrouting-overview">3.2. osm2pgrouting Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general-intro/overview.html#openstreetmap-overview">3.3. OpenStreetMap Overview</a></li>
 </ul>
 </li>
 </ul>
@@ -100,9 +108,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../basic/appendix.html">6. Apéndice: Soluciones básicas para el taller</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../basic/appendix.html#solutions-to-pedestrian">6.1. Soluciones a <span class="xref std std-doc">pedestrian</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic/appendix.html#solutions-to-vehicle">6.2. Solutions to <span class="xref std std-doc">vehicle</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic/appendix.html#solutions-to-sql-function">6.3. Solutions to <span class="xref std std-doc">sql_function</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic/appendix.html#solutions-to-plpgsql-function">6.4. Solutions to <span class="xref std std-doc">plpgsql_function</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/appendix.html#solutions-to-vehicle">6.2. Soluciones a <span class="xref std std-doc">vehicle</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/appendix.html#solutions-to-sql-function">6.3. Soluciones a <span class="xref std std-doc">sql_function</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/appendix.html#solutions-to-plpgsql-function">6.4. Soluciones a <span class="xref std std-doc">plpgsql_function</span></a></li>
 </ul>
 </li>
 </ul>
@@ -150,7 +158,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../un_sdg/sdg11-cities.html">5. Ciudades y comunidades sostenibles</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../un_sdg/sdg11-cities.html#problem-city-getting-affected-by-rain-or-not">5.1. Problema: Ciudad afectada por la lluvia o no?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../un_sdg/sdg11-cities.html#problem-city-getting-affected-by-rain-or-not">5.1. Problema: Ciudad afectada por la lluvia o no</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../un_sdg/sdg11-cities.html#choose-a-city">5.2. Eligir una ciudad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../un_sdg/sdg11-cities.html#pre-processing-waterways-data">5.3. Preprocesamiento de datos de vías navegables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../un_sdg/sdg11-cities.html#pgr-connectedcomponents-for-preprocessing-waterways">5.4. <code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code> para el preprocesamiento de vías navegables</a></li>
@@ -194,7 +202,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/boost_dijkstra.html">1. Ejemplo de Boost Dijkstra</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/hanoslav.html">2. Ejemplos de Internet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/hanoslav.html">2. Ejemplos del Internet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/wiki_example.html">3. Ejemplo de Wikipedia Dijkstra</a></li>
 </ul>
 <ul>
@@ -270,20 +278,20 @@
     <div class="body col-md-12 content" role="main">
       
   <section id="openlayers-based-routing-interface">
-<span id="openlayers"></span><h1><span class="section-number">3. </span>Interfaz de Ruteo Basada en OpenLayers<a class="headerlink" href="#openlayers-based-routing-interface" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="openlayers"></span><h1><span class="section-number">3. </span>Interfaz de Ruteo Basada en OpenLayers<a class="headerlink" href="#openlayers-based-routing-interface" title="Link to this heading">¶</a></h1>
 <p>El objetivo de este capítulo es crear una interfaz de usuario sencilla basada en web a pgRouting basada en OpenLayers. El usuario podrá elegir ubicaciones de inicio y destino y obtener la ruta desde el punto de inicio hasta el punto de destino.</p>
 <p>Los puntos de inicio y destino son creados por el usuario, con simples clics en el mapa. A continuación, las coordenadas de inicio y destino se envían al servidor WMS (GeoServer), como parámetros a una solicitud WMS <code class="docutils literal notranslate"><span class="pre">GetMap</span></code>. La imagen resultante se agrega como una capa <em>image</em> al mapa.</p>
 <section id="openlayers-introduction">
-<h2><span class="section-number">3.1. </span>Introducción a OpenLayers<a class="headerlink" href="#openlayers-introduction" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Introducción a OpenLayers<a class="headerlink" href="#openlayers-introduction" title="Link to this heading">¶</a></h2>
 <p>OpenLayers utiliza tecnologías JavaScript y HTML5 modernas, como Canvas y WebGL, para la representación de imágenes/iconos y vectores.</p>
-<p>Crear un mapa openlayers en una página web implica crear un objeto <em>map</em>, que es una instancia de la clase de mapa  <code class="docutils literal notranslate"><span class="pre">ol.Map</span></code>. Posteriormente, se pueden agregar capas y controles de datos a ese objeto de mapa.</p>
+<p>Crear un mapa openlayers en una página web implica crear un objeto <em>map</em>, que es una instancia de la clase de mapa <code class="docutils literal notranslate"><span class="pre">ol.Map</span></code>. Posteriormente, se pueden agregar capas y controles de datos a ese objeto de mapa.</p>
 <p>The center and resolution (zoom level) of the map are controlled through the
 <em>view</em> object. Unless other mapping libraries, the view is separated from the
 map; one advantage is to allow multiple maps to share the same view.</p>
 <p>OpenLayers cuenta con tres renderizadores: el representador <em>Canvas</em>, el representador <em>WebGL</em> y el representador <em>DOM</em>. Actualmente, el renderizador más capaz es Canvas. En particular, el renderizador Canvas admite capas vectoriales, mientras que las otras dos no. Canvas es el representador predeterminado y el renderizador utilizado en este taller.</p>
 </section>
 <section id="creating-a-minimal-map">
-<h2><span class="section-number">3.2. </span>Crear un mapa mínimo<a class="headerlink" href="#creating-a-minimal-map" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.2. </span>Crear un mapa mínimo<a class="headerlink" href="#creating-a-minimal-map" title="Link to this heading">¶</a></h2>
 <p>Vamos a crear nuestro primer mapa OpenLayers: abramos un editor de texto y copiemos este código en un archivo denominado <code class="docutils literal notranslate"><span class="pre">ol.html</span></code>. Puede guardar este archivo en <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> y abrirlo con un navegador web.</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -326,7 +334,10 @@ map; one advantage is to allow multiple maps to share the same view.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>En este taller se asume que utiliza OSGeo Live, que incluye la biblioteca Javascript de OpenLayers accesible bajo la siguiente URL: <a class="reference external" href="http://localhost/openlayers/dist/">http://localhost/openlayers/dist/</a> Si no utiliza OSGeo Live para este taller, debe ajustar la dirección URL al archivo Javascript y CSS de OpenLayers.</p>
+<p>This workshop assumes, that you use OSGeoLive, which includes the OpenLayers
+Javascript library accessible under the following URL: <a class="reference external" href="http://localhost/openlayers/dist/">http://localhost/openlayers/dist/</a>
+If you don’t use OSGeo Live for this workshop, you need to adjust the URL to
+OpenLayers Javascript and CSS file.</p>
 </div>
 <p>Esta página web incluye un mapa simple con una capa OpenStreetMap y un centro a una ubicación predifinida. No hay código relacionado con el ruteo por ahora; sólo un mapa simple con herramientas de navegación stantard.</p>
 <p>Línea por línea tenemos:</p>
@@ -357,10 +368,10 @@ map; one advantage is to allow multiple maps to share the same view.</p>
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>Este código crea un  <code class="docutils literal notranslate"><span class="pre">ol.Map</span></code> instancia cuyo <code class="docutils literal notranslate"><span class="pre">target</span></code> es el elemento DOM <code class="docutils literal notranslate"><span class="pre">map</span></code> en la página HTML. El mapa se configura con una <em>capa de teselas</em>, configurada con una <em>fuente</em> OpenStreetMap . El mapa también se configura con una instancia de <em>vista</em> (de la clase <code class="docutils literal notranslate"><span class="pre">ol.View</span></code> ) con valores predefinidos para el <em>centro</em> y el nivel de  <em>zoom</em>.</p>
+<p>Este código crea un <code class="docutils literal notranslate"><span class="pre">ol.Map</span></code> instancia cuyo <code class="docutils literal notranslate"><span class="pre">target</span></code> es el elemento DOM <code class="docutils literal notranslate"><span class="pre">map</span></code> en la página HTML. El mapa se configura con una <em>capa de teselas</em>, configurada con una <em>fuente</em> OpenStreetMap . El mapa también se configura con una instancia de <em>vista</em> (de la clase <code class="docutils literal notranslate"><span class="pre">ol.View</span></code> ) con valores predefinidos para el <em>centro</em> y el nivel de <em>zoom</em>.</p>
 </section>
 <section id="wms-get-parameters">
-<h2><span class="section-number">3.3. </span>Parámetros WMS GET<a class="headerlink" href="#wms-get-parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.3. </span>Parámetros WMS GET<a class="headerlink" href="#wms-get-parameters" title="Link to this heading">¶</a></h2>
 <p>Agregue este código después de la creación del mapa:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">LAYERS</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;pgrouting:pgrouting&#39;</span><span class="p">,</span>
@@ -371,7 +382,7 @@ map; one advantage is to allow multiple maps to share the same view.</p>
 <p>El objeto <code class="docutils literal notranslate"><span class="pre">params</span></code> contiene los parámetros WMS GET que se enviarán a GeoServer. Aquí establecemos los valores que nunca cambiarán: el nombre de la capa y el formato de salida.</p>
 </section>
 <section id="select-start-and-destination">
-<h2><span class="section-number">3.4. </span>Seleccione «inicio» y «destino»<a class="headerlink" href="#select-start-and-destination" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.4. </span>Seleccione «inicio» y «destino»<a class="headerlink" href="#select-start-and-destination" title="Link to this heading">¶</a></h2>
 <p>Ahora queremos permitir que el usuario agregue las posiciones de inicio y destino haciendo clic en el mapa. Agregue el código siguiente para ello:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// The &quot;start&quot; and &quot;destination&quot; features.</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">startPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">Feature</span><span class="p">();</span>
@@ -435,7 +446,7 @@ map; one advantage is to allow multiple maps to share the same view.</p>
 <p>Por último, se crea una nueva capa WMS OpenLayers y se agrega al mapa, se le pasa el objeto param.</p>
 </section>
 <section id="clear-the-results">
-<h2><span class="section-number">3.5. </span>Borrar los resultados<a class="headerlink" href="#clear-the-results" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.5. </span>Borrar los resultados<a class="headerlink" href="#clear-the-results" title="Link to this heading">¶</a></h2>
 <p>Añádalo después del mapa <code class="docutils literal notranslate"><span class="pre">div</span></code> en la página HTML:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;clear&quot;</span><span class="p">&gt;</span>clear<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </pre></div>
@@ -455,7 +466,7 @@ map; one advantage is to allow multiple maps to share the same view.</p>
 <p>Cuando se hace clic en el botón, se ejecuta esta función pasada a <code class="docutils literal notranslate"><span class="pre">addEventListener'</span></code>. Esa función restablece las entidades «inicio» y «destino» y elimina la capa de resultados de ruteo del mapa.</p>
 </section>
 <section id="summary-full-example">
-<h2><span class="section-number">3.6. </span>Resumen (ejemplo completo)<a class="headerlink" href="#summary-full-example" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.6. </span>Resumen (ejemplo completo)<a class="headerlink" href="#summary-full-example" title="Link to this heading">¶</a></h2>
 <p>Ahora copie el siguiente código de aplicación final en un archivo, al que puede acceder un servidor web, como Apache o Nginx, por ejemplo:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -569,8 +580,8 @@ map; one advantage is to allow multiple maps to share the same view.</p>
       
     </p>
     <p>
-        &copy; Copyright 2010-2022 Daniel Kastl, Vicky Vergara, Rajat Shinde.<br/>
-      Actualizado por última vez en mar 13, 2023.<br/>
+        &copy; Copyright 2010-2023 pgRouting Developers.<br/>
+      Actualizado por última vez en mar 30, 2024.<br/>
     </p>
   </div>
 </footer>
