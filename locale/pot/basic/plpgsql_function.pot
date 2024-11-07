@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Belém 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-07 03:04+0000\n"
+"POT-Creation-Date: 2024-11-07 12:17-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -464,15 +464,15 @@ msgstr ""
 msgid "Exercise 5: Test nearest vertex function"
 msgstr ""
 
-#: ../../build/docs/basic/plpgsql_function.rst:242
+#: ../../build/docs/basic/plpgsql_function.rst:-1
 msgid "Nearest Vertex in vehicle network"
 msgstr ""
 
-#: ../../build/docs/basic/plpgsql_function.rst:246
+#: ../../build/docs/basic/plpgsql_function.rst:-1
 msgid "Nearest Vertex in taxi network"
 msgstr ""
 
-#: ../../build/docs/basic/plpgsql_function.rst:250
+#: ../../build/docs/basic/plpgsql_function.rst:-1
 msgid "Nearest Vertex in walk network"
 msgstr ""
 
@@ -636,7 +636,7 @@ msgstr ""
 msgid "Exercise 7: Using the main function"
 msgstr ""
 
-#: ../../build/docs/basic/plpgsql_function.rst:399
+#: ../../build/docs/basic/plpgsql_function.rst:-1
 msgid "View of roads for taxis along with source and destination"
 msgstr ""
 

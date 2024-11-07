@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Belém 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-07 03:04+0000\n"
+"POT-Creation-Date: 2024-11-07 12:17-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -301,8 +301,7 @@ msgstr ""
 msgid "Exercise 2: Route geometry (human readable)"
 msgstr ""
 
-#: ../../build/docs/basic/sql_function.rst:132
-#: ../../build/docs/basic/sql_function.rst:218
+#: ../../build/docs/basic/sql_function.rst:-1
 msgid "From |ch7_place_1| to |ch7_place_2|"
 msgstr ""
 
@@ -353,7 +352,7 @@ msgstr ""
 msgid "Exercise 3: Route geometry (binary format)"
 msgstr ""
 
-#: ../../build/docs/basic/sql_function.rst:183
+#: ../../build/docs/basic/sql_function.rst:-1
 msgid "From |ch7_place_1| to |ch7_place_2| showing arrows."
 msgstr ""
 
@@ -446,7 +445,7 @@ msgstr ""
 msgid "Exercise 5: Using the geometry"
 msgstr ""
 
-#: ../../build/docs/basic/sql_function.rst:297
+#: ../../build/docs/basic/sql_function.rst:-1
 msgid "From |ch7_place_1| to the |ch7_place_2| show azimuth"
 msgstr ""
 
