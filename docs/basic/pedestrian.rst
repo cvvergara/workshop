@@ -96,7 +96,7 @@ Get the vertex identifiers
 
 
 The corresponding :code:`id` are shown in the following image, and a sample route from
-"|place_3|" to "|place_5|".
+"|place_3|" to "|place_1|".
 
 .. image:: images/chapter5/route.png
   :scale: 25%
@@ -113,9 +113,8 @@ Exercise 1: Single pedestrian routing
 
 * Calculate routes with costs in *osm2pgRouting* ``length`` default units.
 
-.. image:: images/chapter5/pedestrian_route1.png
+.. image:: images/chapter5/route.png
   :scale: 25%
-  :alt: From the |place_1| to the |place_3|
 
 .. rubric:: Solution:
 
@@ -157,7 +156,6 @@ Exercise 2: Many Pedestrians going to the same destination
 
 .. image:: images/chapter5/pedestrian_route2.png
   :scale: 25%
-  :alt: From |place_1| and |place_2| to |place_3|
 
 .. rubric:: Solution:
 
@@ -309,7 +307,6 @@ Exercise 6: Time for many Pedestrians going to different destinations
 
 .. image:: images/chapter5/pedestrian_route5.png
   :scale: 25%
-  :alt: From the hotels to the |place_4| and |place_5|
 
 .. rubric:: Solution:
 
