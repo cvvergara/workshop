@@ -6,7 +6,7 @@ add_custom_target(basic_scripts ALL)
 SET(PGR_WORKSHOP_DIR
   chapter_4
   graphs
-  chapter_5
+  pedestrian
   chapter_7
   chapter_6
   chapter_8
@@ -21,8 +21,8 @@ foreach (d ${PGR_WORKSHOP_DIR})
 endforeach()
 
 add_dependencies(basic_graphs_scripts basic_chapter_4_scripts)
-add_dependencies(basic_chapter_5_scripts basic_graphs_scripts)
-add_dependencies(basic_chapter_6_scripts basic_chapter_5_scripts)
+add_dependencies(basic_pedestrian_scripts basic_graphs_scripts)
+add_dependencies(basic_chapter_6_scripts basic_pedestrian_scripts)
 add_dependencies(basic_chapter_7_scripts basic_graphs_scripts)
 add_dependencies(basic_chapter_7_scripts basic_chapter_6_scripts)
 add_dependencies(basic_chapter_8_scripts basic_chapter_7_scripts)

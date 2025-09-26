@@ -5,7 +5,7 @@ DROP MATERIALIZED VIEW IF EXISTS walk_net CASCADE;
 
 \o create_vertices.txt
 
-SELECT id, in_edges, out_edges, x, y, NULL::BIGINT component, geom
+SELECT id, in_edges, out_edges, x, y, NULL::BIGINT osm_id, NULL::BIGINT component, geom
 INTO ways_vertices
 FROM pgr_extractVertices(
   'SELECT gid AS id, source, target
@@ -19,11 +19,13 @@ SELECT * FROM ways_vertices Limit 10;
 \o fill_columns_1.txt
 SELECT count(*) FROM ways_vertices WHERE geom IS NULL;
 \o fill_columns_2.txt
-UPDATE ways_vertices SET geom = ST_startPoint(the_geom) FROM ways WHERE source = id;
+UPDATE ways_vertices SET (geom, osm_id) = (ST_startPoint(the_geom), source_osm)
+FROM ways WHERE source = id;
 \o fill_columns_3.txt
 SELECT count(*) FROM ways_vertices WHERE geom IS NULL;
 \o fill_columns_4.txt
-UPDATE ways_vertices SET geom = ST_endPoint(the_geom) FROM ways WHERE geom IS NULL AND target = id;
+UPDATE ways_vertices SET (geom, osm_id) = (ST_endPoint(the_geom), target_osm)
+FROM ways WHERE geom IS NULL AND target = id;
 \o fill_columns_5.txt
 SELECT count(*) FROM ways_vertices WHERE geom IS NULL;
 \o fill_columns_6.txt

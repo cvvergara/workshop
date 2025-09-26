@@ -18,6 +18,10 @@ Pedestrian Routing
 path search with *Dijkstra* algorithm. Later other functions were added and the
 library was renamed to pgRouting.
 
+pgRouting functions in this chapter
+
+- `pgr_dijkstra`_
+- `pgr_dijkstraCost`_
 
 .. contents:: Chapter Contents
 
@@ -79,14 +83,14 @@ Connect to the database, if not connected:
 
 Get the vertex identifiers
 
-.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/pedestrian/pedestrian.sql
   :language: sql
-  :start-after: exercise_5_0.txt
-  :end-before: exercise_5_1.txt
+  :start-after: get_id.txt
+  :end-before: one_to_one.txt
 
 |
 
-.. literalinclude:: ../scripts/basic/chapter_5/exercise_5_0.txt
+.. literalinclude:: ../scripts/basic/pedestrian/get_id.txt
 
 * |osmid_1| |place_1| (|id_1|)
 * |osmid_2| |place_2| (|id_2|)
@@ -111,7 +115,7 @@ Exercise 1: Single pedestrian routing
   * from "|place_1|"
   * to "|place_3|".
 
-* Calculate routes with costs in *osm2pgRouting* ``length`` default units.
+* Calculate routes with costs in ``length`` in meters.
 
 .. image:: images/chapter5/route.png
   :scale: 25%
@@ -119,20 +123,19 @@ Exercise 1: Single pedestrian routing
 .. rubric:: Solution:
 
 * The pedestrian wants to go from vertex |id_1| to vertex |id_3| (lines **9** and **10**).
-* The pedestrian's cost is in terms of length. In this case ``length`` (line **6**), which
-  was calculated by osm2pgrouting, is in unit ``degrees``.
+* The pedestrian's cost is in terms of length. In this case ``length`` (line **6**).
 * From a pedestrian perspective the graph is ``undirected`` (line **11**), that is, the
   pedestrian can move in both directions on all segments.
 
-.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/pedestrian/pedestrian.sql
   :language: sql
-  :start-after: exercise_5_1.txt
-  :end-before: exercise_5_2.txt
+  :start-after: one_to_one.txt
+  :end-before: many_to_one.txt
   :emphasize-lines: 3-7
 
 .. collapse:: Query results
 
-  .. literalinclude:: ../scripts/basic/chapter_5/exercise_5_1.txt
+  .. literalinclude:: ../scripts/basic/pedestrian/one_to_one.txt
 
 .. note::
   * The returned cost attribute represents the cost specified in the
@@ -152,7 +155,7 @@ Exercise 2: Many Pedestrians going to the same destination
   * from "|place_1|" and "|place_2|"
   * to the "|place_3|".
 
-* Calculate routes with costs in *osm2pgRouting* ``length_m`` which is in meters.
+* Calculate routes with costs in ``length`` in kilometers.
 
 .. image:: images/chapter5/pedestrian_route2.png
   :scale: 25%
@@ -163,15 +166,15 @@ Exercise 2: Many Pedestrians going to the same destination
 * All pedestrians want to go to vertex |id_3| (line **10**).
 * The cost to be in meters using attribute ``length_m`` (line **6**).
 
-.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/pedestrian/pedestrian.sql
   :language: sql
-  :start-after: exercise_5_2.txt
-  :end-before: exercise_5_3.txt
+  :start-after: many_to_one.txt
+  :end-before: one_to_many.txt
   :emphasize-lines: 6, 9
 
 .. collapse:: Query results
 
-  .. literalinclude:: ../scripts/basic/chapter_5/exercise_5_2.txt
+   .. literalinclude:: ../scripts/basic/pedestrian/many_to_one.txt
 
 Exercise 3: Many Pedestrians departing from the same location
 ...............................................................................
@@ -184,6 +187,9 @@ Exercise 3: Many Pedestrians departing from the same location
   * to "|place_1|" and "|place_2|"
 
 * Calculate routes with costs in seconds.
+* With walking speed of ``2 mts/sec``
+
+  * See :doc:`graphs` for the costs setup.
 
 .. image:: images/chapter5/pedestrian_route2.png
   :scale: 25%
@@ -194,15 +200,15 @@ Exercise 3: Many Pedestrians departing from the same location
 * Pedestrians want to go to locations |id_1| and |id_2| (line **10**).
 * The cost to be in seconds, with a walking speed ``s = 1.3 m/s`` and ``t = d/s`` (line **6**).
 
-.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/pedestrian/pedestrian.sql
   :language: sql
-  :start-after: exercise_5_3.txt
-  :end-before: exercise_5_4.txt
+  :start-after: one_to_many.txt
+  :end-before: many_to_many.txt
   :emphasize-lines: 6, 9, 10
 
 .. collapse:: Query results
 
-  .. literalinclude:: ../scripts/basic/chapter_5/exercise_5_3.txt
+  .. literalinclude:: ../scripts/basic/pedestrian/one_to_many.txt
 
 
 Exercise 4: Many Pedestrians going to different destinations
@@ -215,7 +221,7 @@ Exercise 4: Many Pedestrians going to different destinations
   * from "|place_1|" and "|place_2|"
   * to "|place_4|" and "|place_5|"
 
-* Calculate routes with costs in minutes.
+* Calculate routes with costs in minutes at walking speed ``s = 1.3 m/s``.
 
 .. image:: images/chapter5/pedestrian_route4.png
   :scale: 25%
@@ -227,17 +233,17 @@ Exercise 4: Many Pedestrians going to different destinations
 * The cost to be in minutes, with a walking speed ``s = 1.3 m/s`` and ``t = d/s`` (line **6**).
 * Result adds the costs per destination.
 
-.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/pedestrian/pedestrian.sql
   :language: sql
-  :start-after: exercise_5_4.txt
-  :end-before: exercise_5_5.txt
+  :start-after: many_to_many.txt
+  :end-before: combinations.txt
   :emphasize-lines: 6, 9-10
 
 .. collapse:: Query results
 
-  .. literalinclude:: ../scripts/basic/chapter_5/exercise_5_4.txt
+  .. literalinclude:: ../scripts/basic/pedestrian/many_to_many.txt
 
-.. note:: .. include:: ../scripts/basic/chapter_5/note_1.txt
+.. note:: .. include:: ../scripts/basic/pedestrian/note_1.txt
 
 Exercise 5: Combination of routes
 ...............................................................................
@@ -260,15 +266,15 @@ Exercise 5: Combination of routes
 * Second pedestrian departs from |id_2| and the destination is |id_5| (line **12**).
 * The cost to be in minutes, with a walking speed ``s = 1.3 m/s`` and ``t = d/s``
 
-.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/pedestrian/pedestrian.sql
   :language: sql
-  :start-after: exercise_5_5.txt
-  :end-before: exercise_5_6.txt
+  :start-after: combinations.txt
+  :end-before: cost_many_to_many.txt
   :emphasize-lines: 11-12
 
 .. collapse:: Query results
 
-  .. literalinclude:: ../scripts/basic/chapter_5/exercise_5_5.txt
+  .. literalinclude:: ../scripts/basic/pedestrian/combinations.txt
 
 pgr_dijkstraCost
 -------------------------------------------------------------------------------
@@ -315,46 +321,14 @@ Exercise 6: Time for many Pedestrians going to different destinations
 * The cost to be in minutes, with a walking speed ``s = 1.3 m/s`` and ``t = d/s`` (line **6**).
 * Result as aggregated costs.
 
-.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
+.. literalinclude:: ../scripts/basic/pedestrian/pedestrian.sql
   :language: sql
-  :start-after: exercise_5_6.txt
-  :end-before: exercise_5_7.txt
+  :start-after: cost_many_to_many.txt
+  :end-before: note_1.txt
   :emphasize-lines: 2
 
 .. collapse:: Query results
 
-  .. literalinclude:: ../scripts/basic/chapter_5/exercise_5_6.txt
+  .. literalinclude:: ../scripts/basic/pedestrian/cost_many_to_many.txt
 
 Compare with `Exercise 4: Many Pedestrians going to different destinations`_ 's note.
-
-
-Exercise 7: Many Pedestrians going to different destinations summarizing the total costs per departure
-...........................................................................................................
-
-.. rubric:: Problem:
-
-* Walking
-
-  * from "|place_1|" or "|place_2|"
-  * to "|place_4|" or "|place_5|"
-
-* Summarize cost in minutes.
-
-.. rubric:: Solution:
-
-* The pedestrians depart from |id_1| and |id_2| (line **9**).
-* The pedestrians want to go to destinations |id_4| and |id_5| (line **10**).
-* The cost to be in minutes, with a walking speed s = 1.3 m/s and t = d/s (line **6**).
-* Result adds the costs per destination.
-
-.. literalinclude:: ../scripts/basic/chapter_5/all_exercises_5.sql
-  :language: sql
-  :start-after: exercise_5_7.txt
-  :end-before: note_1.txt
-  :emphasize-lines: 13-14
-
-.. collapse:: Query results
-
-  .. literalinclude:: ../scripts/basic/chapter_5/exercise_5_7.txt
-
-.. note:: .. include:: ../scripts/basic/chapter_5/note_2.txt
