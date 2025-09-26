@@ -32,8 +32,8 @@ Basic
 
    basic/data.rst
    basic/pedestrian.rst
-   basic/vehicle.rst
    basic/graph_views.rst
+   basic/vehicle.rst
    basic/sql_function.rst
    basic/plpgsql_function.rst
 

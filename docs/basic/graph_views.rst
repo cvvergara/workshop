@@ -26,7 +26,7 @@ The graph requirements
 In this chapter there are three graph requirements. It consists on three graphs
 based on a **fully connected** graph derived from ``ways``: two for different types
 of vehicles and one for pedestrian, the source and the target in all of them are
-based on the ``source_osm`` and ``target_osm``.
+based on the ``source`` and ``target``.
 
 The description of the graphs:
 
@@ -247,11 +247,10 @@ Create additional columns on the edges and vertices tables.
 
   - Use the results to store the component numbers on the vertices table.
     (**line 1**)
-  - Use the OSM identifiers of the vertices. (**lines 4-5**)
 
 .. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
   :language: sql
-  :emphasize-lines: 1, 4-5
+  :emphasize-lines: 1
   :start-after: set_components2.txt
   :end-before: set_components3.txt
 
@@ -487,7 +486,7 @@ Exercise 7: Creating a materialized view for routing pedestrians
 
   - The speed is ``2 mts/sec``.
 
-- Exclude `motorway` , `primary` and `secondary` segments.
+- Only include the pedestrian only roads: 114, 118, 119, 122
 - Data needed in the view for further processing.
 
   - `length_m` The length in meters.
@@ -536,13 +535,30 @@ Get the description.
 
    .. literalinclude:: ../scripts/basic/chapter_7/create_walk_net3.txt
 
+pgr_dijstraCostMatrix
+================================================================================
+
+``pgr_dijstraCostMatrix`` compute the connected components of an undirected
+graph using a Depth First Search approach. A connected component of an
+undirected graph is a set of vertices that are all reachable from each other.
+
+.. rubric:: Signature summary
+
+.. code-block:: sql
+
+   pgr_dijkstraCostMatrix(Edges SQL, start vids, [directed])
+
+   RETURNS SETOF (start_vid, end_vid, agg_cost)
+   OR EMTPY SET
+
+Description of the function can be found in `pgr_extractVertices
+<https://docs.pgrouting.org/latest/en/pgr_dijstraCostMatrix.html>`__
 
 Exercise 8: Testing the views for routing
 -------------------------------------------------------------------------------
 
 .. image:: images/chapter7/ch7-e3.png
   :scale: 25%
-  :alt: From the |ch7_place_1| to the |ch7_place_2|
 
 .. rubric:: Problem
 
@@ -550,7 +566,7 @@ Exercise 8: Testing the views for routing
 
 In particular:
 
-* From the |ch7_place_1| to the "|ch7_place_2| using the OSM identifier
+* From the "|ch7_place_1|" to the "|ch7_place_2|" using the OSM identifier
 * the views to be tested are:
 
   * ``vehicle_net``
@@ -587,7 +603,7 @@ For ``vehicle_net``:
   :start-after: test_view1.txt
   :end-before: test_view2.txt
 
-.. collapse:: Query resultes
+.. collapse:: Query results
 
    .. literalinclude:: ../scripts/basic/chapter_7/test_view1.txt
 
@@ -603,7 +619,7 @@ For ``taxi_net``:
   :start-after: test_view2.txt
   :end-before: test_view3.txt
 
-.. collapse:: Query resultes
+.. collapse:: Query results
 
    .. literalinclude:: ../scripts/basic/chapter_7/test_view2.txt
 
@@ -618,6 +634,6 @@ For ``walk_net``:
     :start-after: test_view3.txt
     :end-before: exercise_7_5.txt
 
-.. collapse:: Query resultes
+.. collapse:: Query results
 
    .. literalinclude:: ../scripts/basic/chapter_7/test_view3.txt

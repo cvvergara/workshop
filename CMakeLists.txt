@@ -52,7 +52,7 @@ set(PGR_WORKSHOP_CITY_FILE "auckland_NZ")
 set(PGR_WORKSHOP_CITY_BBOX "-36.8798,174.8,-36.8344,174.72")
 
 # Make it smaller
-set(PGR_WORKSHOP_LITTLE_NET_BBOX "-36.8798,174.8,-36.8344,174.72")
+set(PGR_WORKSHOP_LITTLE_NET_BBOX "174.775,-36.855,174.76,-36.84")
 
 # Use git blame to get the date when the line was changed
 set(PGR_WORKSHOP_DOWNLOAD_DIR "workshop-2025")
@@ -64,7 +64,7 @@ endif()
 
 set(OSMID_1 "9451619540")
 set(OSMID_2 "60662678")
-set(OSMID_3 "4299281265")
+set(OSMID_3 "11045827672")
 set(OSMID_4 "9452115611")
 set(OSMID_5 "11045833969")
 

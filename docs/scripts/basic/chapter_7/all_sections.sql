@@ -8,7 +8,7 @@ DROP FUNCTION IF EXISTS wrk_dijkstra(regclass, bigint, bigint);
 
 SELECT * INTO ways_vertices
 FROM pgr_extractVertices(
-  'SELECT gid AS id, source_osm AS source, target_osm AS target
+  'SELECT gid AS id, source, target
   FROM ways ORDER BY id');
 
 \o vertices_description.txt
@@ -19,11 +19,11 @@ SELECT * FROM ways_vertices Limit 10;
 \o fill_columns_1.txt
 SELECT count(*) FROM ways_vertices WHERE geom IS NULL;
 \o fill_columns_2.txt
-UPDATE ways_vertices SET geom = ST_startPoint(the_geom) FROM ways WHERE source_osm = id;
+UPDATE ways_vertices SET geom = ST_startPoint(the_geom) FROM ways WHERE source = id;
 \o fill_columns_3.txt
 SELECT count(*) FROM ways_vertices WHERE geom IS NULL;
 \o fill_columns_4.txt
-UPDATE ways_vertices SET geom = ST_endPoint(the_geom) FROM ways WHERE geom IS NULL AND target_osm = id;
+UPDATE ways_vertices SET geom = ST_endPoint(the_geom) FROM ways WHERE geom IS NULL AND target = id;
 \o fill_columns_5.txt
 SELECT count(*) FROM ways_vertices WHERE geom IS NULL;
 \o fill_columns_6.txt
@@ -37,17 +37,15 @@ ALTER TABLE ways_vertices ADD COLUMN component BIGINT;
 \o set_components2.txt
 UPDATE ways_vertices SET component = c.component
 FROM (SELECT * FROM pgr_connectedComponents(
-  'SELECT gid as id,
-    source_osm AS source,
-    target_osm AS target,
-    cost, reverse_cost FROM ways'
+  'SELECT gid as id, source, target, cost, reverse_cost
+  FROM ways'
 )) AS c
 WHERE id = node;
 \o set_components3.txt
 
 UPDATE ways SET component = v.component
 FROM (SELECT id, component FROM ways_vertices) AS v
-WHERE source_osm = v.id;
+WHERE source = v.id;
 
 \o see_components1.txt
 SELECT count(DISTINCT component) FROM ways_vertices;
@@ -76,7 +74,7 @@ the_component AS (
 
 SELECT
   gid AS id,
-  source_osm AS source, target_osm AS target, -- line 14
+  source, target,
   cost_s AS cost, reverse_cost_s AS reverse_cost,
   name, length_m AS length, the_geom AS geom
 FROM ways JOIN the_component USING (component) JOIN configuration USING (tag_id)
@@ -117,11 +115,11 @@ the_component AS (SELECT component FROM allc WHERE count = (SELECT max FROM maxc
 
 SELECT
   gid AS id,
-  source_osm AS source, target_osm AS target,
-  cost_s AS cost, reverse_cost_s AS reverse_cost,
+  source, target,
+  length_m AS cost, length_m AS reverse_cost,
   name, length_m AS length, the_geom AS geom
 FROM ways JOIN the_component USING (component) JOIN configuration USING (tag_id)
-WHERE  tag_value NOT IN ('motorway','primary','secondary');
+WHERE  tag_id IN (114, 118, 119, 122);
 
 \o create_walk_net2.txt
 
@@ -129,26 +127,43 @@ SELECT count(*) FROM walk_net;
 
 \o create_walk_net3.txt
 \dS+ walk_net
+\o create_vertices.txt
+
+SELECT * INTO vehicle_vertices
+FROM pgr_extractVertices(
+  'SELECT id, source, target
+  FROM vehicle_net ORDER BY id');
+
+SELECT * INTO taxi_vertices
+FROM pgr_extractVertices(
+  'SELECT id, source, target
+  FROM taxi_net ORDER BY id');
+
+SELECT * INTO walk_vertices
+FROM pgr_extractVertices(
+  'SELECT id, source, target
+  FROM walk_net ORDER BY id');
+
 \o test_view1.txt
 
-SELECT start_vid, end_vid, agg_cost AS seconds
-FROM pgr_dijkstraCost(
+SELECT *
+FROM pgr_dijkstraCostMatrix(
   'SELECT * FROM vehicle_net',
-  @CH7_OSMID_1@, @CH7_OSMID_2@);
+  ARRAY[@ID_1@, @ID_2@, @ID_3@, @ID_4@, @ID_5@]);
 
 \o test_view2.txt
 
-SELECT start_vid, end_vid, agg_cost AS seconds
-FROM pgr_dijkstraCost(
+SELECT *
+FROM pgr_dijkstraCostMatrix(
   'SELECT * FROM taxi_net',
-  @CH7_OSMID_1@, @CH7_OSMID_2@);
+  ARRAY[@ID_1@, @ID_2@, @ID_3@, @ID_4@, @ID_5@]);
 
 \o test_view3.txt
 
-SELECT start_vid, end_vid, agg_cost AS seconds
-FROM pgr_dijkstraCost(
+SELECT *
+FROM pgr_dijkstraCostMatrix(
   'SELECT * FROM walk_net',
-  @CH7_OSMID_1@, @CH7_OSMID_2@);
+  ARRAY[@ID_1@, @ID_2@, @ID_3@, @ID_4@, @ID_5@]);
 
 \o exercise_7_5.txt
 
@@ -158,7 +173,7 @@ FROM (
   SELECT seq, edge AS id, node, cost AS seconds
   FROM pgr_dijkstra(
       'SELECT * FROM vehicle_net',
-      @CH7_OSMID_1@, @CH7_OSMID_2@)
+      @ID_1@, @ID_2@)
   ) AS results
 LEFT JOIN vehicle_net USING (id)
 ORDER BY seq;
@@ -168,7 +183,7 @@ ORDER BY seq;
 WITH
 results AS (  -- line 2
   SELECT seq, edge AS id, node, cost AS seconds
-  FROM pgr_dijkstra('SELECT * FROM vehicle_net', @CH7_OSMID_1@, @CH7_OSMID_2@)
+  FROM pgr_dijkstra('SELECT * FROM vehicle_net', @ID_1@, @ID_2@)
 )
 SELECT
   -- from previous excercise
@@ -185,7 +200,7 @@ ORDER BY seq;
 
 WITH results AS (
   SELECT seq, edge AS id, node, cost AS seconds
-  FROM pgr_dijkstra('SELECT * FROM vehicle_net', @CH7_OSMID_1@, @CH7_OSMID_2@)
+  FROM pgr_dijkstra('SELECT * FROM vehicle_net', @ID_1@, @ID_2@)
   )
 SELECT
   -- from previous excercise
@@ -204,7 +219,7 @@ ORDER BY seq;
 WITH
 results AS (
   SELECT seq, edge AS id, node, cost AS seconds
-  FROM pgr_dijkstra('SELECT * FROM vehicle_net', @CH7_OSMID_1@, @CH7_OSMID_2@)
+  FROM pgr_dijkstra('SELECT * FROM vehicle_net', @ID_1@, @ID_2@)
 ),
 compare AS (
   SELECT seq, id, lead(seq) over(ORDER BY seq) AS next_seq,
@@ -219,7 +234,7 @@ SELECT * FROM compare WHERE id_end != next_id_start;
 
 WITH results AS (
   SELECT seq, edge AS id, node, cost AS seconds
-  FROM pgr_dijkstra('SELECT * FROM vehicle_net', @CH7_OSMID_1@, @CH7_OSMID_2@)
+  FROM pgr_dijkstra('SELECT * FROM vehicle_net', @ID_1@, @ID_2@)
   )
 SELECT
   -- from previous excercise
@@ -269,7 +284,7 @@ SELECT * FROM compare WHERE id_end != next_id_start;
 WITH
 results AS (
   SELECT seq, edge AS id, node, cost AS seconds
-  FROM pgr_dijkstra('SELECT * FROM vehicle_net', @CH7_OSMID_1@, @CH7_OSMID_2@)
+  FROM pgr_dijkstra('SELECT * FROM vehicle_net', @ID_1@, @ID_2@)
   ),
 additional AS (
   SELECT
@@ -301,8 +316,8 @@ ORDER BY seq;
 
 CREATE OR REPLACE FUNCTION wrk_dijkstra(
         IN edges_subset REGCLASS,
-        IN source BIGINT,  -- in terms of osm_id
-        IN target BIGINT,  -- in terms of osm_id
+        IN source BIGINT,
+        IN target BIGINT,
         OUT seq INTEGER,
         OUT id BIGINT,
         OUT seconds FLOAT,
@@ -332,7 +347,7 @@ $BODY$
       END AS route_readable,
 
       CASE
-          WHEN node = source_osm THEN the_geom
+          WHEN node = source THEN the_geom
           ELSE ST_Reverse(the_geom)
       END AS route_geom
 
@@ -347,15 +362,13 @@ $BODY$
 LANGUAGE 'sql';
 \o using_fn1.txt
 SELECT DISTINCT name
-FROM wrk_dijkstra('vehicle_net',  @CH7_OSMID_1@, @CH7_OSMID_2@);
+FROM wrk_dijkstra('vehicle_net',  @ID_1@, @ID_2@);
 
 \o using_fn2.txt
 SELECT name, sum(seconds)
-FROM wrk_dijkstra('taxi_net',  @CH7_OSMID_1@, @CH7_OSMID_2@)
+FROM wrk_dijkstra('taxi_net',  @ID_1@, @ID_2@)
 GROUP BY name;
 
 \o using_fn3.txt
 SELECT *
-FROM wrk_dijkstra('walk_net',  @CH7_OSMID_1@, @CH7_OSMID_2@);
-
-
+FROM wrk_dijkstra('walk_net',  @ID_1@, @ID_2@);

@@ -3,11 +3,11 @@ add_custom_target(basic_scripts ALL)
 #---------------------
 # Directories
 #---------------------
-SET(PGR_WORKSHOP_DIR 
+SET(PGR_WORKSHOP_DIR
   chapter_4
   chapter_5
-  chapter_6
   chapter_7
+  chapter_6
   chapter_8
 )
 
