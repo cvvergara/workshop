@@ -8,7 +8,7 @@
   ****************************************************************************
 
 
-Graph views
+Graphs
 ###############################################################################
 
 .. image:: images/chapter5/route.png
@@ -19,6 +19,12 @@ Graph views
 
 Different application require different graphs. This chapter covers how to
 discard disconnected segments and different approaches to create graphs.
+
+pgRouting functions in this chapter
+
+- `pgr_extractVertices`_
+- `pgr_connectedComponents`_
+- `pgr_dijkstraCostMatrix`_
 
 The graph requirements
 ===============================================================================
@@ -34,7 +40,7 @@ The description of the graphs:
 
   - Circulate on the whole @PGR_WORKSHOP_CITY@ area.
 
-    - Do not use `steps`, `footway`, `path`, `cycleway`.
+    - Do not use `pedestrian`, `steps`, `footway`, `path`, `cycleway`
 
   - Speed is the default speed from OSM information.
 
@@ -43,18 +49,78 @@ The description of the graphs:
   - Circulate on a smaller area:
 
     - Bounding box: ``(@PGR_WORKSHOP_LITTLE_NET_BBOX@)``
-    - Do not use `steps`, `footway`, `path`, `cycleway`.
+    - Do not use `pedestrian`, `steps`, `footway`, `path`, `cycleway`
 
   - Speed is 10% slower than that of the particular vehicles.
 
 - Pedestrians:
 
   - Walk on the whole @PGR_WORKSHOP_CITY@ area.
-  - Can not walk on exclusive vehicle ways
+  - Can only use pedestrian only ways:
 
-    - `motorways` and on `primary` segments.
+    - `pedestrian`, `steps`, `footway`, `path`, `cycleway`
 
-  - The speed is ``2 mts/sec``.
+  - The walking speed is ``2 mts/sec``.
+
+Configuration from osm2pgrouting
+================================================================================
+
+When dealing with data, being aware of what kind of data is being used can
+improve results.
+
+* Vehicles can not circulate on pedestrian ways
+
+.. image:: images/chapter6/pedestrian_only_roads.png
+  :scale: 25%
+
+|
+
+Penalizing or removal of pedestrian ways will make the results closer to reality.
+
+When converting data from OSM format using the `osm2pgrouting` tool, there is an
+additional table: ``configuration``.
+
+.. rubric:: The ``configuration`` table structure can be obtained with the following command.
+
+.. literalinclude:: ../scripts/basic/graphs/configuration.sql
+  :start-after: configuration_structure
+  :end-before: configuration_contents
+
+.. collapse:: The table description
+
+   .. literalinclude:: ../scripts/basic/graphs/configuration_structure.txt
+
+.. image:: images/chapter6/route_using_pedestrian.png
+  :scale: 25%
+  :alt: tag_id values
+
+|
+
+In the image above there is a detail of the ``tag_id`` of the roads.
+
+.. rubric:: The `OSM highway <https://wiki.openstreetmap.org/wiki/Key:highway>`__
+   types:
+
+.. literalinclude:: ../scripts/basic/graphs/configuration.sql
+  :start-after: configuration_contents
+  :end-before: configuration_used
+  :language: sql
+
+.. collapse:: Query results
+
+   .. literalinclude:: ../scripts/basic/graphs/configuration_contents.txt
+
+Also, on the ``ways`` table there is a column that can be used to ``JOIN`` with the ``configuration`` table.
+
+.. rubric:: The configuration types in the @PGR_WORKSHOP_CITY@ data
+
+.. literalinclude:: ../scripts/basic/graphs/configuration.sql
+  :start-after: configuration_used
+  :end-before: configuration_end
+
+.. collapse:: Query results
+
+  .. literalinclude:: ../scripts/basic/graphs/configuration_used.txt
 
 pgr_extractVertices
 ================================================================================
@@ -88,10 +154,11 @@ Create the vertices table corresponding to the edges in ``ways``.
 - In this case, the ``ways`` table is a set of edges.
 - In order to make use of all the graph functions from pgRouting, it is required
   have the set of vertices defined.
-- From the requirements, the graph is going to be based on OSM identifiers.
+- From the requirements, a fully connected graph is needed, therefore adding a
+  ``component`` column.
 
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :emphasize-lines: 3
   :start-after: create_vertices.txt
@@ -99,28 +166,28 @@ Create the vertices table corresponding to the edges in ``ways``.
 
 .. collapse:: Number of inserted records
 
-  .. literalinclude:: ../scripts/basic/chapter_7/create_vertices.txt
+  .. literalinclude:: ../scripts/basic/graphs/create_vertices.txt
 
 Reviewing the description of the vertices table
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :start-after: vertices_description.txt
   :end-before: selected_rows.txt
 
-.. collapse:: Description
+.. collapse:: The table description
 
-  .. literalinclude:: ../scripts/basic/chapter_7/vertices_description.txt
+  .. literalinclude:: ../scripts/basic/graphs/vertices_description.txt
 
 Inspecting the information on the vertices table
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: selected_rows.txt
   :end-before: fill_columns_1.txt
 
-.. collapse:: Data on table
+.. collapse:: Query results
 
-  .. literalinclude:: ../scripts/basic/chapter_7/selected_rows.txt
+  .. literalinclude:: ../scripts/basic/graphs/selected_rows.txt
 
 
 Exercise 2: Fill up other columns in the vertices table
@@ -134,73 +201,73 @@ Fill up geometry information on the vertices table.
 
 Count the number of rows that need to be filled up.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :start-after: fill_columns_1.txt
   :end-before: fill_columns_2.txt
 
 .. collapse:: Number of rows with empty geometry
 
-  .. literalinclude:: ../scripts/basic/chapter_7/fill_columns_1.txt
+  .. literalinclude:: ../scripts/basic/graphs/fill_columns_1.txt
 
-* Update the ``geom`` columns based on the ``source_osm`` column
+* Update the ``geom`` columns based on the ``source`` column
   from ``ways`` table.
 * Use the start point of the geometry.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: fill_columns_2.txt
   :end-before: fill_columns_3.txt
 
 .. collapse:: Number of updated records
 
-  .. literalinclude:: ../scripts/basic/chapter_7/fill_columns_2.txt
+  .. literalinclude:: ../scripts/basic/graphs/fill_columns_2.txt
 
 Not expecting to be done due to the fact that some vertices are only dead ends.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: fill_columns_3.txt
   :end-before: fill_columns_4.txt
 
 .. collapse:: Numbers of records that need update
 
-  .. literalinclude:: ../scripts/basic/chapter_7/fill_columns_3.txt
+  .. literalinclude:: ../scripts/basic/graphs/fill_columns_3.txt
 
-* Update the ``geom`` columns based on the ``target_osm`` column
+* Update the ``geom`` columns based on the ``target`` column
   from ``ways`` table.
 * Use the end point of the geometry.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: fill_columns_4.txt
   :end-before: fill_columns_5.txt
 
 .. collapse:: Number of updated records
 
-  .. literalinclude:: ../scripts/basic/chapter_7/fill_columns_4.txt
+  .. literalinclude:: ../scripts/basic/graphs/fill_columns_4.txt
 
 Expecting to be done, that is the geometry column should not have a ``NULL``
 value.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: fill_columns_5.txt
   :end-before: fill_columns_6.txt
 
 .. collapse:: Count should be 0
 
-  .. literalinclude:: ../scripts/basic/chapter_7/fill_columns_5.txt
+  .. literalinclude:: ../scripts/basic/graphs/fill_columns_5.txt
 
 Update the ``x`` and ``y`` columns based on the ``geom`` column.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: fill_columns_6.txt
   :end-before: set_components1.txt
 
 .. collapse:: Number of updated records
 
-  .. literalinclude:: ../scripts/basic/chapter_7/fill_columns_6.txt
+  .. literalinclude:: ../scripts/basic/graphs/fill_columns_6.txt
 
 
 pgr_connectedComponents
@@ -234,21 +301,21 @@ Get the information about the graph components.
 
 Create additional columns on the edges and vertices tables.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: set_components1.txt
   :end-before: set_components2.txt
 
 .. collapse:: Message about creation of columns
 
-  .. literalinclude:: ../scripts/basic/chapter_7/set_components1.txt
+  .. literalinclude:: ../scripts/basic/graphs/set_components1.txt
 
 - Use the ``pgr_connectedComponents`` to fill up the vertices table.
 
   - Use the results to store the component numbers on the vertices table.
     (**line 1**)
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :emphasize-lines: 1
   :start-after: set_components2.txt
@@ -256,18 +323,18 @@ Create additional columns on the edges and vertices tables.
 
 .. collapse:: Number of updated records
 
-  .. literalinclude:: ../scripts/basic/chapter_7/set_components2.txt
+  .. literalinclude:: ../scripts/basic/graphs/set_components2.txt
 
 - Update the edges table with based on the component number of the vertex
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: set_components3.txt
   :end-before: see_components1.txt
 
 .. collapse:: Number of updated records
 
-  .. literalinclude:: ../scripts/basic/chapter_7/set_components3.txt
+  .. literalinclude:: ../scripts/basic/graphs/set_components3.txt
 
 
 Exercise 4: Inspect the components
@@ -288,55 +355,55 @@ Answer the following questions:
 
 Count the distinct components.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: see_components1.txt
   :end-before: see_components2.txt
 
 .. collapse:: Number of components on vertex table
 
-  .. literalinclude:: ../scripts/basic/chapter_7/see_components1.txt
+  .. literalinclude:: ../scripts/basic/graphs/see_components1.txt
 
 2. How many components are in the edges table?
 
 Count the distinct components.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: see_components2.txt
   :end-before: see_components3.txt
 
 .. collapse:: Number of components on edge table
 
-  .. literalinclude:: ../scripts/basic/chapter_7/see_components2.txt
+  .. literalinclude:: ../scripts/basic/graphs/see_components2.txt
 
 3. List the 10 components with more edges.
 
 * Count number of rows grouped by component. (**line 1**)
 * Inverse order to display the top 10. (**line 2**)
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: see_components3.txt
   :end-before: see_components4.txt
 
 .. collapse:: Top 10 components
 
-  .. literalinclude:: ../scripts/basic/chapter_7/see_components3.txt
+  .. literalinclude:: ../scripts/basic/graphs/see_components3.txt
 
 4. Get the component with the maximum number of edges.
 
 * Use the query from last question to get the maximum count
 * Get the component that matches the maximum value.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: see_components4.txt
   :end-before: create_vehicle_net1.txt
 
 .. collapse:: Component with maxmum edge count
 
-  .. literalinclude:: ../scripts/basic/chapter_7/see_components4.txt
+  .. literalinclude:: ../scripts/basic/graphs/see_components4.txt
 
 
 
@@ -381,7 +448,7 @@ Creating the view:
   - Exclude `steps`, `footway`, `path`, `cycleway`. (line **18**)
 
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
     :language: sql
     :emphasize-lines: 6-10,14-16,18
     :start-after: create_vehicle_net1.txt
@@ -389,29 +456,29 @@ Creating the view:
 
 .. collapse:: Response of command
 
-   .. literalinclude:: ../scripts/basic/chapter_7/create_vehicle_net1.txt
+   .. literalinclude:: ../scripts/basic/graphs/create_vehicle_net1.txt
 
 Verification:
 
 Count the rows on the original ``ways`` and on ``vehicle_net``.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :start-after: create_vehicle_net2.txt
   :end-before: create_vehicle_net3.txt
 
 .. collapse:: Row count results
 
-   .. literalinclude:: ../scripts/basic/chapter_7/create_vehicle_net2.txt
+   .. literalinclude:: ../scripts/basic/graphs/create_vehicle_net2.txt
 
 Get the description of the view
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :start-after: create_vehicle_net3.txt
   :end-before: create_taxi_net1.txt
 
 .. collapse:: The view description
 
-   .. literalinclude:: ../scripts/basic/chapter_7/create_vehicle_net3.txt
+   .. literalinclude:: ../scripts/basic/graphs/create_vehicle_net3.txt
 
 
 Exercise 6: Limiting the road network within an area
@@ -440,7 +507,7 @@ Creating the view:
 * Can only circulate inside the bounding box:
   ``(@PGR_WORKSHOP_LITTLE_NET_BBOX@)``. (line **10**)
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :emphasize-lines: 7,9,10
   :start-after: create_taxi_net1.txt
@@ -448,29 +515,29 @@ Creating the view:
 
 .. collapse:: Response of command
 
-   .. literalinclude:: ../scripts/basic/chapter_7/create_taxi_net1.txt
+   .. literalinclude:: ../scripts/basic/graphs/create_taxi_net1.txt
 
 
 Count the rows on ``taxi_net``.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: create_taxi_net2.txt
   :end-before: create_taxi_net3.txt
 
 .. collapse:: Row count results
 
-   .. literalinclude:: ../scripts/basic/chapter_7/create_taxi_net2.txt
+   .. literalinclude:: ../scripts/basic/graphs/create_taxi_net2.txt
 
 Get the description.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :start-after: create_taxi_net3.txt
   :end-before: create_walk_net1.txt
 
 .. collapse:: The view description
 
-   .. literalinclude:: ../scripts/basic/chapter_7/create_taxi_net3.txt
+   .. literalinclude:: ../scripts/basic/graphs/create_taxi_net3.txt
 
 Exercise 7: Creating a materialized view for routing pedestrians
 -------------------------------------------------------------------------------
@@ -481,16 +548,18 @@ Exercise 7: Creating a materialized view for routing pedestrians
 
 .. rubric:: Problem
 
-- Create a materialized view with minimal amount of information for processing pedestrians.
+- Create a materialized view with minimal amount of information for processing
+  pedestrians.
 - Routing `cost` and `reverse_cost` will be on seconds for routing calculations.
 
   - The speed is ``2 mts/sec``.
 
-- Only include the pedestrian only roads: 114, 118, 119, 122
+- Only include the pedestrian only roads: ``pedestrian``, ``steps``, ``footway``,
+  ``path``, ``cycleway``
 - Data needed in the view for further processing.
 
-  - `length_m` The length in meters.
-  - `the_geom` The geometry.
+  - ``length_m`` The length in meters.
+  - ``the_geom`` The geometry.
 
 - Verify the number of edges was reduced.
 
@@ -500,10 +569,11 @@ Exercise 7: Creating a materialized view for routing pedestrians
 
   - Similar to `Exercise 5: Creating a view for routing`_:
 
-    - The ``cost`` and ``reverse_cost`` are in terms of seconds with speed of ``2 mts/sec``. (line **7**)
-    - Exclude `motorway`, `primary` and `secondary` . (line **11**)
+    - The ``cost`` and ``reverse_cost`` are in terms of seconds with speed of
+      ``2 mts/sec``. (line **7**)
+    - Exclude ``motorway``, ``primary`` and ``secondary`` . (line **11**)
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :emphasize-lines: 7, 11
   :start-after: create_walk_net1.txt
@@ -511,34 +581,34 @@ Exercise 7: Creating a materialized view for routing pedestrians
 
 .. collapse:: Response of command
 
-   .. literalinclude:: ../scripts/basic/chapter_7/create_walk_net1.txt
+   .. literalinclude:: ../scripts/basic/graphs/create_walk_net1.txt
 
 
 Count the rows on the view ``walk_net``.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :start-after: create_walk_net2.txt
   :end-before: create_walk_net3.txt
 
 .. collapse:: Row count results
 
-   .. literalinclude:: ../scripts/basic/chapter_7/create_walk_net2.txt
+   .. literalinclude:: ../scripts/basic/graphs/create_walk_net2.txt
 
 Get the description.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :start-after: create_walk_net3.txt
-  :end-before: test_view1.txt
+  :end-before: create_vertices.txt
 
 .. collapse:: The view description
 
-   .. literalinclude:: ../scripts/basic/chapter_7/create_walk_net3.txt
+   .. literalinclude:: ../scripts/basic/graphs/create_walk_net3.txt
 
-pgr_dijstraCostMatrix
+pgr_dijkstraCostMatrix
 ================================================================================
 
-``pgr_dijstraCostMatrix`` compute the connected components of an undirected
+``pgr_dij.straCostMatrix`` compute the connected components of an undirected
 graph using a Depth First Search approach. A connected component of an
 undirected graph is a set of vertices that are all reachable from each other.
 
@@ -551,8 +621,8 @@ undirected graph is a set of vertices that are all reachable from each other.
    RETURNS SETOF (start_vid, end_vid, agg_cost)
    OR EMTPY SET
 
-Description of the function can be found in `pgr_extractVertices
-<https://docs.pgrouting.org/latest/en/pgr_dijstraCostMatrix.html>`__
+Description of the function can be found in `pgr_dijkstraCostMatrix
+<https://docs.pgrouting.org/latest/en/pgr_dijkstraCostMatrix.html>`__
 
 Exercise 8: Testing the views for routing
 -------------------------------------------------------------------------------
@@ -566,25 +636,19 @@ Exercise 8: Testing the views for routing
 
 In particular:
 
-* From the "|ch7_place_1|" to the "|ch7_place_2|" using the OSM identifier
+* Get a traveling cost matrix in seconds from all locations to all locations.
 * the views to be tested are:
 
   * ``vehicle_net``
   * ``taxi_net``
   * ``walk_net``
 
-* Only show the following results, as the other columns are to be ignored on the function.
-
-  * ``seq``
-  * ``edge`` with the name ``id``
-  * ``cost`` with the name: ``seconds``
-
 .. rubric:: Solution
 
-* In general
+* The locations are:
 
-  * The departure is |ch7_place_1| with OSM identifier |ch7_osmid_1|.
-  * The destination is |ch7_place_2| with OSM identifier |ch7_osmid_2|.
+  * |ID_1|, |ID_2|, |ID_3|, |ID_4| and |ID_5|.
+  * Passed as an array to the function.
 
 For ``vehicle_net``:
 
@@ -596,7 +660,7 @@ For ``vehicle_net``:
 
 * The OSM identifiers of the departure and destination are used. (line **4**)
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :linenos:
   :emphasize-lines: 1,3,4
@@ -605,7 +669,7 @@ For ``vehicle_net``:
 
 .. collapse:: Query results
 
-   .. literalinclude:: ../scripts/basic/chapter_7/test_view1.txt
+   .. literalinclude:: ../scripts/basic/graphs/test_view1.txt
 
 For ``taxi_net``:
 
@@ -613,7 +677,7 @@ For ``taxi_net``:
 * The results give the same route as with ``vehicle_net`` but ``cost`` is
   higher.
 
-.. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+.. literalinclude:: ../scripts/basic/graphs/graphs.sql
   :language: sql
   :emphasize-lines: 3
   :start-after: test_view2.txt
@@ -621,19 +685,19 @@ For ``taxi_net``:
 
 .. collapse:: Query results
 
-   .. literalinclude:: ../scripts/basic/chapter_7/test_view2.txt
+   .. literalinclude:: ../scripts/basic/graphs/test_view2.txt
 
 For ``walk_net``:
 
 * Similar as the previous one but with ``walk_net``. (line **3**)
 * The results give a different route than of the vehicles.
 
-  .. literalinclude:: ../scripts/basic/chapter_7/all_sections.sql
+  .. literalinclude:: ../scripts/basic/graphs/graphs.sql
     :language: sql
     :emphasize-lines: 3
     :start-after: test_view3.txt
-    :end-before: exercise_7_5.txt
+    :end-before: graphs_end.txt
 
 .. collapse:: Query results
 
-   .. literalinclude:: ../scripts/basic/chapter_7/test_view3.txt
+   .. literalinclude:: ../scripts/basic/graphs/test_view3.txt

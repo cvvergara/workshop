@@ -182,62 +182,7 @@ Exercise 3: Vehicle routing when time is money
 Cost manipulations
 -------------------------------------------------------------------------------
 
-When dealing with data, being aware of what kind of data is being used can improve results.
-
-* Vehicles can not circulate on pedestrian ways
-
-.. image:: images/chapter6/pedestrian_only_roads.png
-  :scale: 25%
-  :alt:
-
-|
-
-Penalizing or removal of pedestrian ways will make the results closer to reality.
-
-When converting data from OSM format using the `osm2pgrouting` tool, there is an
-additional table: ``configuration``.
-
-.. rubric:: The ``configuration`` table structure can be obtained with the following command.
-
-.. literalinclude:: ../scripts/basic/chapter_6/all_exercises.sql
-  :start-after: section-6.2-1
-  :end-before: section-6.2-2
-
-
-.. literalinclude:: ../scripts/basic/chapter_6/section-6.2-1.txt
-
-
-.. image:: images/chapter6/route_using_pedestrian.png
-  :scale: 25%
-  :alt: tag_id values
-
-|
-
-In the image above there is a detail of the ``tag_id`` of the roads.
-
-.. rubric:: The ``OSM way`` types:
-
-.. literalinclude:: ../scripts/basic/chapter_6/all_exercises.sql
-  :start-after: section-6.2-2
-  :end-before: section-6.2-3
-  :language: sql
-
-.. literalinclude:: ../scripts/basic/chapter_6/section-6.2-2.txt
-
-Also, on the ``ways`` table there is a column that can be used to ``JOIN`` with the ``configuration`` table.
-
-.. rubric:: The ``ways`` types:
-
-.. literalinclude:: ../scripts/basic/chapter_6/all_exercises.sql
-  :start-after: section-6.2-3
-  :end-before: section-6.2.1
-  :language: sql
-
-.. literalinclude:: ../scripts/basic/chapter_6/section-6.2-3.txt
-
-
 In this workshop, costs are going to be manipulated using the ``configuration`` table.
-
 
 Exercise 4: Vehicle routing without penalization
 ...............................................................................

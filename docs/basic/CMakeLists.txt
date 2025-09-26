@@ -7,8 +7,8 @@ add_dependencies(basic scripts)
 #---------------------
 set(PGR_WORKSHOP_FILES
   data.rst
+  graphs.rst
   pedestrian.rst
-  graph_views.rst
   vehicle.rst
   sql_function.rst
   plpgsql_function.rst
