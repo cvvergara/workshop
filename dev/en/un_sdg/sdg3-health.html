@@ -5,14 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Good Health and Well Being &#8212; Workshop - FOSS4G Belém - Routing with pgRouting</title>
+    <title>3. Good Health and Well Being &#8212; Workshop - FOSS4G Auckland - Routing with pgRouting</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=fa3951f0" />
-    <script src="../_static/documentation_options.js?v=44da1a42"></script>
+    <script src="../_static/documentation_options.js?v=fd79a9fb"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. Affordable and Clean Energy" href="sdg7-energy.html" />
@@ -39,8 +42,8 @@
         </button>
 
         <a class="brand" href="../index.html">
-          Workshop FOSS4G Belém</a>
-        <span class="navbar-text pull-left"><b>3.0</b></span>
+          Workshop FOSS4G Auckland</a>
+        <span class="navbar-text pull-left"><b>3.1</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -64,11 +67,11 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../basic/data.html">1. Prepare Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basic/pedestrian.html">2. Pedestrian Routing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basic/vehicle.html">3. Vehicle Routing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basic/graph_views.html">4. Graph views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/graphs.html">2. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/pedestrian.html">3. Pedestrian Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/vehicle.html">4. Vehicle Routing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basic/sql_function.html">5. SQL function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basic/plpgsql_function.html">6. pl/pgsql function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/withPoints.html">6. Routing using points</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">1. Data for Sustainable Development Goals</a></li>
@@ -304,7 +307,7 @@ command</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="d9e402e9-c005-4b4b-bfe1-a3435da7a8a0" name="d9e402e9-c005-4b4b-bfe1-a3435da7a8a0" type="checkbox"><label class="sphinx_collapse__label" for="d9e402e9-c005-4b4b-bfe1-a3435da7a8a0"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="ef099341-7619-4f71-bd7c-5f28a3bd34cc" name="ef099341-7619-4f71-bd7c-5f28a3bd34cc" type="checkbox"><label class="sphinx_collapse__label" for="ef099341-7619-4f71-bd7c-5f28a3bd34cc"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">List</span> <span class="n">of</span> <span class="n">schemas</span>
    <span class="n">Name</span>    <span class="o">|</span>       <span class="n">Owner</span>       
 <span class="o">-----------+-------------------</span>
@@ -327,7 +330,7 @@ on who has the rights to the database.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="03c345ca-9bb9-43f7-b1ba-2137ff9a6515" name="03c345ca-9bb9-43f7-b1ba-2137ff9a6515" type="checkbox"><label class="sphinx_collapse__label" for="03c345ca-9bb9-43f7-b1ba-2137ff9a6515"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="0da8eda1-823e-49e8-87ee-50d0dc61bff8" name="0da8eda1-823e-49e8-87ee-50d0dc61bff8" type="checkbox"><label class="sphinx_collapse__label" for="0da8eda1-823e-49e8-87ee-50d0dc61bff8"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">search_path</span>   
 <span class="o">-----------------</span>
  <span class="s2">&quot;$user&quot;</span><span class="p">,</span> <span class="n">public</span>
@@ -348,7 +351,7 @@ this path.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="82681981-062e-4d59-a0c1-f9abf68156ff" name="82681981-062e-4d59-a0c1-f9abf68156ff" type="checkbox"><label class="sphinx_collapse__label" for="82681981-062e-4d59-a0c1-f9abf68156ff"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="55d66cec-881e-431c-97c8-8ec756386f1b" name="55d66cec-881e-431c-97c8-8ec756386f1b" type="checkbox"><label class="sphinx_collapse__label" for="55d66cec-881e-431c-97c8-8ec756386f1b"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SET</span>
 </pre></div>
 </div>
@@ -359,7 +362,7 @@ this path.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="3613a36a-928a-4268-b1ad-f72ef6be256e" name="3613a36a-928a-4268-b1ad-f72ef6be256e" type="checkbox"><label class="sphinx_collapse__label" for="3613a36a-928a-4268-b1ad-f72ef6be256e"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="c8ead5db-0b09-41e6-a862-d11e427d49e4" name="c8ead5db-0b09-41e6-a862-d11e427d49e4" type="checkbox"><label class="sphinx_collapse__label" for="c8ead5db-0b09-41e6-a862-d11e427d49e4"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                <span class="n">search_path</span>                 
 <span class="o">--------------------------------------------</span>
  <span class="n">roads</span><span class="p">,</span> <span class="n">buildings</span><span class="p">,</span> <span class="n">public</span><span class="p">,</span> <span class="n">contrib</span><span class="p">,</span> <span class="n">postgis</span>
@@ -377,7 +380,7 @@ this path.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="5a900c8c-99f7-4b0e-b64d-80c5e7f4534a" name="5a900c8c-99f7-4b0e-b64d-80c5e7f4534a" type="checkbox"><label class="sphinx_collapse__label" for="5a900c8c-99f7-4b0e-b64d-80c5e7f4534a"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="d9050d18-738a-4aa0-b0d3-89f1b0f6a38a" name="d9050d18-738a-4aa0-b0d3-89f1b0f6a38a" type="checkbox"><label class="sphinx_collapse__label" for="d9050d18-738a-4aa0-b0d3-89f1b0f6a38a"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                    <span class="n">List</span> <span class="n">of</span> <span class="n">relations</span>
   <span class="n">Schema</span>   <span class="o">|</span>            <span class="n">Name</span>             <span class="o">|</span> <span class="n">Type</span>  <span class="o">|</span> <span class="n">Owner</span>  
 <span class="o">-----------+-----------------------------+-------+--------</span>
@@ -417,7 +420,7 @@ how the data is stored in it.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="858ff172-0504-41a1-97b3-dcd0d62bc260" name="858ff172-0504-41a1-97b3-dcd0d62bc260" type="checkbox"><label class="sphinx_collapse__label" for="858ff172-0504-41a1-97b3-dcd0d62bc260"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="750bd9f7-fb1e-4c54-8243-868f563f20e2" name="750bd9f7-fb1e-4c54-8243-868f563f20e2" type="checkbox"><label class="sphinx_collapse__label" for="750bd9f7-fb1e-4c54-8243-868f563f20e2"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">count</span> 
 <span class="o">-------</span>
    <span class="mi">558</span>
@@ -431,7 +434,7 @@ how the data is stored in it.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="53a4698f-08ed-491e-86a9-a88a32e622fe" name="53a4698f-08ed-491e-86a9-a88a32e622fe" type="checkbox"><label class="sphinx_collapse__label" for="53a4698f-08ed-491e-86a9-a88a32e622fe"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="6b1fbba7-f833-49aa-ac14-6df8daabc452" name="6b1fbba7-f833-49aa-ac14-6df8daabc452" type="checkbox"><label class="sphinx_collapse__label" for="6b1fbba7-f833-49aa-ac14-6df8daabc452"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">count</span> 
 <span class="o">-------</span>
   <span class="mi">1066</span>
@@ -470,7 +473,7 @@ columns that are not related to a <strong>buidling</strong> concept are dropped 
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="140ed24b-57e0-4611-af3e-babf0f677767" name="140ed24b-57e0-4611-af3e-babf0f677767" type="checkbox"><label class="sphinx_collapse__label" for="140ed24b-57e0-4611-af3e-babf0f677767"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="287cb339-b581-4ac1-a96c-2606a091cca4" name="287cb339-b581-4ac1-a96c-2606a091cca4" type="checkbox"><label class="sphinx_collapse__label" for="287cb339-b581-4ac1-a96c-2606a091cca4"><i class="sphinx_collapse__icon"></i>Command output</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
@@ -485,7 +488,7 @@ the Polygon Geometry</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="5fe535c7-0355-482b-906f-ab501ad1a25f" name="5fe535c7-0355-482b-906f-ab501ad1a25f" type="checkbox"><label class="sphinx_collapse__label" for="5fe535c7-0355-482b-906f-ab501ad1a25f"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="af10e445-5020-4a2a-8424-4b1d3f236182" name="af10e445-5020-4a2a-8424-4b1d3f236182" type="checkbox"><label class="sphinx_collapse__label" for="af10e445-5020-4a2a-8424-4b1d3f236182"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                         <span class="n">addgeometrycolumn</span>                         
 <span class="o">-------------------------------------------------------------------</span>
  <span class="n">buildings</span><span class="o">.</span><span class="n">buildings_ways</span><span class="o">.</span><span class="n">poly_geom</span> <span class="n">SRID</span><span class="p">:</span><span class="mi">4326</span> <span class="n">TYPE</span><span class="p">:</span><span class="n">POLYGON</span> <span class="n">DIMS</span><span class="p">:</span><span class="mi">2</span> 
@@ -500,7 +503,7 @@ the Polygon Geometry</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="c17bf222-eca4-4e07-bf1c-16169ccae4bc" name="c17bf222-eca4-4e07-bf1c-16169ccae4bc" type="checkbox"><label class="sphinx_collapse__label" for="c17bf222-eca4-4e07-bf1c-16169ccae4bc"><i class="sphinx_collapse__icon"></i>Table structure</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="8228d879-466f-4314-bf88-2419ebe7344c" name="8228d879-466f-4314-bf88-2419ebe7344c" type="checkbox"><label class="sphinx_collapse__label" for="8228d879-466f-4314-bf88-2419ebe7344c"><i class="sphinx_collapse__icon"></i>Table structure</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                                                 <span class="n">Table</span> <span class="s2">&quot;buildings.buildings_ways&quot;</span>
   <span class="n">Column</span>   <span class="o">|</span>           <span class="n">Type</span>            <span class="o">|</span> <span class="n">Collation</span> <span class="o">|</span> <span class="n">Nullable</span> <span class="o">|</span>                   <span class="n">Default</span>                   <span class="o">|</span> <span class="n">Storage</span>  <span class="o">|</span> <span class="n">Compression</span> <span class="o">|</span> <span class="n">Stats</span> <span class="n">target</span> <span class="o">|</span> <span class="n">Description</span> 
 <span class="o">-----------+---------------------------+-----------+----------+---------------------------------------------+----------+-------------+--------------+-------------</span>
@@ -534,7 +537,7 @@ the steps given below to complete this task.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="bf21e8bf-9d50-4260-ab11-0aeed5f01021" name="bf21e8bf-9d50-4260-ab11-0aeed5f01021" type="checkbox"><label class="sphinx_collapse__label" for="bf21e8bf-9d50-4260-ab11-0aeed5f01021"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="720201da-5b19-4ff2-86d0-953a970fd608" name="720201da-5b19-4ff2-86d0-953a970fd608" type="checkbox"><label class="sphinx_collapse__label" for="720201da-5b19-4ff2-86d0-953a970fd608"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="mi">17</span>
 </pre></div>
 </div>
@@ -550,7 +553,7 @@ polygons in the <code class="docutils literal notranslate"><span class="pre">pol
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="6c9305c7-f155-4636-9b44-56c0ce967c16" name="6c9305c7-f155-4636-9b44-56c0ce967c16" type="checkbox"><label class="sphinx_collapse__label" for="6c9305c7-f155-4636-9b44-56c0ce967c16"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="49cd7221-c467-4241-9f30-e7ddb18c165b" name="49cd7221-c467-4241-9f30-e7ddb18c165b" type="checkbox"><label class="sphinx_collapse__label" for="49cd7221-c467-4241-9f30-e7ddb18c165b"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">1049</span>
 </pre></div>
 </div>
@@ -577,7 +580,7 @@ new column</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="a76a8a18-91f6-43bd-8e39-4d3fc0f7f833" name="a76a8a18-91f6-43bd-8e39-4d3fc0f7f833" type="checkbox"><label class="sphinx_collapse__label" for="a76a8a18-91f6-43bd-8e39-4d3fc0f7f833"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="3c6a9392-e220-4c92-b5cf-0639c5b30dba" name="3c6a9392-e220-4c92-b5cf-0639c5b30dba" type="checkbox"><label class="sphinx_collapse__label" for="3c6a9392-e220-4c92-b5cf-0639c5b30dba"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">1049</span>
 </pre></div>
 </div>
@@ -596,7 +599,7 @@ kind of use the building gets.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="78ebbba4-4386-43ea-b8b9-7d88a5988277" name="78ebbba4-4386-43ea-b8b9-7d88a5988277" type="checkbox"><label class="sphinx_collapse__label" for="78ebbba4-4386-43ea-b8b9-7d88a5988277"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="3c9372a1-4fc1-4dda-a76a-9465e42279e2" name="3c9372a1-4fc1-4dda-a76a-9465e42279e2" type="checkbox"><label class="sphinx_collapse__label" for="3c9372a1-4fc1-4dda-a76a-9465e42279e2"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">tag_id</span> <span class="o">|</span>  <span class="n">tag_value</span>  
 <span class="o">--------+-------------</span>
     <span class="mi">119</span> <span class="o">|</span> <span class="n">retail</span>
@@ -695,7 +698,7 @@ the population. Follow the steps given below to complete this task.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="deec6493-2ea1-4615-a38d-808b0b983084" name="deec6493-2ea1-4615-a38d-808b0b983084" type="checkbox"><label class="sphinx_collapse__label" for="deec6493-2ea1-4615-a38d-808b0b983084"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="35da7c59-2000-4af3-9142-7da32f72dad2" name="35da7c59-2000-4af3-9142-7da32f72dad2" type="checkbox"><label class="sphinx_collapse__label" for="35da7c59-2000-4af3-9142-7da32f72dad2"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">FUNCTION</span>
 </pre></div>
 </div>
@@ -715,7 +718,7 @@ For example, using census data can achieve more accurate estimation.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="a340f53a-61c5-4010-b162-8dcec61c08a7" name="a340f53a-61c5-4010-b162-8dcec61c08a7" type="checkbox"><label class="sphinx_collapse__label" for="a340f53a-61c5-4010-b162-8dcec61c08a7"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="b135c8b9-b206-4a70-bbd3-d001d9ebff31" name="b135c8b9-b206-4a70-bbd3-d001d9ebff31" type="checkbox"><label class="sphinx_collapse__label" for="b135c8b9-b206-4a70-bbd3-d001d9ebff31"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
@@ -728,7 +731,7 @@ in the <code class="docutils literal notranslate"><span class="pre">building_way
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="c9a56ca4-3847-4b23-ab4e-a4546ee7be96" name="c9a56ca4-3847-4b23-ab4e-a4546ee7be96" type="checkbox"><label class="sphinx_collapse__label" for="c9a56ca4-3847-4b23-ab4e-a4546ee7be96"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="a380782f-040a-41c3-9a16-07ff87c250e4" name="a380782f-040a-41c3-9a16-07ff87c250e4" type="checkbox"><label class="sphinx_collapse__label" for="a380782f-040a-41c3-9a16-07ff87c250e4"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">1049</span>
 </pre></div>
 </div>
@@ -752,7 +755,7 @@ with the component number with count less than maximum count will be removed</p>
 <section id="exercise-12-remove-disconnected-components">
 <h4><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">3.3.3.1. </span>Exercise 12: Remove disconnected components</a><a class="headerlink" href="#exercise-12-remove-disconnected-components" title="Link to this heading">¶</a></h4>
 <p>To remove the disconnected components on the road network, the following
-pgRouting functions, discussed on <a class="reference internal" href="../basic/graph_views.html"><span class="doc">Graph views</span></a>, will be used:</p>
+pgRouting functions, discussed on <a class="reference internal" href="../basic/graphs.html"><span class="doc">Graphs</span></a>, will be used:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code></p></li>
@@ -765,8 +768,8 @@ pgRouting functions, discussed on <a class="reference internal" href="../basic/g
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="4c760af7-0b19-46bd-bfb8-a149d8c6e86e" name="4c760af7-0b19-46bd-bfb8-a149d8c6e86e" type="checkbox"><label class="sphinx_collapse__label" for="4c760af7-0b19-46bd-bfb8-a149d8c6e86e"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<input class="sphinx_collapse__input" id="9fb6365e-22f5-40ec-b52a-4f34340c7566" name="9fb6365e-22f5-40ec-b52a-4f34340c7566" type="checkbox"><label class="sphinx_collapse__label" for="9fb6365e-22f5-40ec-b52a-4f34340c7566"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="mi">378</span>
 </pre></div>
 </div>
 </div>
@@ -782,10 +785,10 @@ pgRouting functions, discussed on <a class="reference internal" href="../basic/g
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="d03389cb-7422-48d7-876c-83cf3cb8bc45" name="d03389cb-7422-48d7-876c-83cf3cb8bc45" type="checkbox"><label class="sphinx_collapse__label" for="d03389cb-7422-48d7-876c-83cf3cb8bc45"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">327</span>
-<span class="n">UPDATE</span> <span class="mi">0</span>
-<span class="n">UPDATE</span> <span class="mi">353</span>
+<input class="sphinx_collapse__input" id="3125139b-8f08-4ccf-a3de-d3e5725e62ad" name="3125139b-8f08-4ccf-a3de-d3e5725e62ad" type="checkbox"><label class="sphinx_collapse__label" for="3125139b-8f08-4ccf-a3de-d3e5725e62ad"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">349</span>
+<span class="n">UPDATE</span> <span class="mi">29</span>
+<span class="n">UPDATE</span> <span class="mi">378</span>
 </pre></div>
 </div>
 </div>
@@ -796,8 +799,9 @@ pgRouting functions, discussed on <a class="reference internal" href="../basic/g
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="081160da-95bd-4956-a255-4acdb035fc48" name="081160da-95bd-4956-a255-4acdb035fc48" type="checkbox"><label class="sphinx_collapse__label" for="081160da-95bd-4956-a255-4acdb035fc48"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<input class="sphinx_collapse__input" id="30c19811-b9a3-4a1a-8065-49e077d0f409" name="30c19811-b9a3-4a1a-8065-49e077d0f409" type="checkbox"><label class="sphinx_collapse__label" for="30c19811-b9a3-4a1a-8065-49e077d0f409"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
 </div>
@@ -812,8 +816,8 @@ pgRouting functions, discussed on <a class="reference internal" href="../basic/g
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="40b2c35b-cbab-49d0-b6d8-ae67b4fac30d" name="40b2c35b-cbab-49d0-b6d8-ae67b4fac30d" type="checkbox"><label class="sphinx_collapse__label" for="40b2c35b-cbab-49d0-b6d8-ae67b4fac30d"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">353</span>
+<input class="sphinx_collapse__input" id="e3362086-c54a-477b-94b2-f58dbfedf812" name="e3362086-c54a-477b-94b2-f58dbfedf812" type="checkbox"><label class="sphinx_collapse__label" for="e3362086-c54a-477b-94b2-f58dbfedf812"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">378</span>
 </pre></div>
 </div>
 </div>
@@ -825,8 +829,8 @@ pgRouting functions, discussed on <a class="reference internal" href="../basic/g
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="d079af67-acf5-4ab1-8cd5-1460e6706675" name="d079af67-acf5-4ab1-8cd5-1460e6706675" type="checkbox"><label class="sphinx_collapse__label" for="d079af67-acf5-4ab1-8cd5-1460e6706675"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">529</span>
+<input class="sphinx_collapse__input" id="be5366ab-d8ff-4f51-93e5-c9b617242641" name="be5366ab-d8ff-4f51-93e5-c9b617242641" type="checkbox"><label class="sphinx_collapse__label" for="be5366ab-d8ff-4f51-93e5-c9b617242641"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">558</span>
 </pre></div>
 </div>
 </div>
@@ -839,7 +843,7 @@ pgRouting functions, discussed on <a class="reference internal" href="../basic/g
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="66660442-3204-49f6-b158-b7d37d723d50" name="66660442-3204-49f6-b158-b7d37d723d50" type="checkbox"><label class="sphinx_collapse__label" for="66660442-3204-49f6-b158-b7d37d723d50"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="89ecc727-463f-4cdf-ae61-fb2bb5fbd6b9" name="89ecc727-463f-4cdf-ae61-fb2bb5fbd6b9" type="checkbox"><label class="sphinx_collapse__label" for="89ecc727-463f-4cdf-ae61-fb2bb5fbd6b9"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">component</span> 
 <span class="o">-----------</span>
          <span class="mi">1</span>
@@ -858,8 +862,8 @@ pgRouting functions, discussed on <a class="reference internal" href="../basic/g
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="53c4ab37-a046-41f5-bafe-c753a10c33a7" name="53c4ab37-a046-41f5-bafe-c753a10c33a7" type="checkbox"><label class="sphinx_collapse__label" for="53c4ab37-a046-41f5-bafe-c753a10c33a7"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="mi">0</span>
+<input class="sphinx_collapse__input" id="3df3b4a3-646a-4e53-a634-783293d1f16f" name="3df3b4a3-646a-4e53-a634-783293d1f16f" type="checkbox"><label class="sphinx_collapse__label" for="3df3b4a3-646a-4e53-a634-783293d1f16f"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="mi">29</span>
 </pre></div>
 </div>
 </div>
@@ -873,8 +877,8 @@ pgRouting functions, discussed on <a class="reference internal" href="../basic/g
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="48ef0b17-abda-4399-a671-e169821952d6" name="48ef0b17-abda-4399-a671-e169821952d6" type="checkbox"><label class="sphinx_collapse__label" for="48ef0b17-abda-4399-a671-e169821952d6"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="mi">0</span>
+<input class="sphinx_collapse__input" id="7d520c55-5b30-4914-bdba-12f2ea1748f6" name="7d520c55-5b30-4914-bdba-12f2ea1748f6" type="checkbox"><label class="sphinx_collapse__label" for="7d520c55-5b30-4914-bdba-12f2ea1748f6"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="mi">25</span>
 </pre></div>
 </div>
 </div>
@@ -927,7 +931,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="9e65a45f-9d77-445d-b94a-e8aa4171848b" name="9e65a45f-9d77-445d-b94a-e8aa4171848b" type="checkbox"><label class="sphinx_collapse__label" for="9e65a45f-9d77-445d-b94a-e8aa4171848b"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="633031ca-b8ad-4f17-a26e-3845b7176b3f" name="633031ca-b8ad-4f17-a26e-3845b7176b3f" type="checkbox"><label class="sphinx_collapse__label" for="633031ca-b8ad-4f17-a26e-3845b7176b3f"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">FUNCTION</span>
 </pre></div>
 </div>
@@ -938,26 +942,35 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="94aac802-3480-4d6e-9d91-2bb15c7e3540" name="94aac802-3480-4d6e-9d91-2bb15c7e3540" type="checkbox"><label class="sphinx_collapse__label" for="94aac802-3480-4d6e-9d91-2bb15c7e3540"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="788a4ebf-f917-4b6b-a055-a23a406ac829" name="788a4ebf-f917-4b6b-a055-a23a406ac829" type="checkbox"><label class="sphinx_collapse__label" for="788a4ebf-f917-4b6b-a055-a23a406ac829"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">closest_vertex</span> 
 <span class="o">----------------</span>
-            <span class="mi">293</span>
-            <span class="mi">120</span>
-            <span class="mi">120</span>
             <span class="mi">234</span>
+            <span class="mi">293</span>
             <span class="mi">112</span>
              <span class="mi">99</span>
             <span class="mi">241</span>
+            <span class="mi">235</span>
+            <span class="mi">311</span>
+            <span class="mi">103</span>
+              <span class="mi">3</span>
+            <span class="mi">141</span>
+             <span class="mi">64</span>
+            <span class="mi">270</span>
+            <span class="mi">267</span>
+            <span class="mi">270</span>
+             <span class="mi">16</span>
             <span class="mi">153</span>
             <span class="mi">360</span>
              <span class="mi">41</span>
             <span class="mi">257</span>
-            <span class="mi">374</span>
             <span class="mi">206</span>
+             <span class="mi">23</span>
+            <span class="mi">374</span>
             <span class="mi">174</span>
             <span class="mi">287</span>
             <span class="mi">235</span>
-            <span class="mi">235</span>
+            <span class="mi">183</span>
             <span class="mi">100</span>
             <span class="mi">328</span>
             <span class="mi">185</span>
@@ -979,20 +992,17 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">311</span>
             <span class="mi">311</span>
             <span class="mi">311</span>
-            <span class="mi">311</span>
-            <span class="mi">103</span>
-            <span class="mi">183</span>
+            <span class="mi">120</span>
             <span class="mi">120</span>
             <span class="mi">183</span>
             <span class="mi">120</span>
             <span class="mi">183</span>
+            <span class="mi">120</span>
             <span class="mi">183</span>
             <span class="mi">270</span>
             <span class="mi">267</span>
             <span class="mi">120</span>
             <span class="mi">183</span>
-            <span class="mi">267</span>
-            <span class="mi">270</span>
             <span class="mi">267</span>
             <span class="mi">270</span>
               <span class="mi">3</span>
@@ -1000,9 +1010,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">175</span>
             <span class="mi">121</span>
             <span class="mi">121</span>
-              <span class="mi">3</span>
-            <span class="mi">141</span>
-             <span class="mi">64</span>
             <span class="mi">141</span>
              <span class="mi">53</span>
             <span class="mi">276</span>
@@ -1014,7 +1021,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">32</span>
              <span class="mi">31</span>
              <span class="mi">49</span>
-             <span class="mi">26</span>
               <span class="mi">5</span>
              <span class="mi">49</span>
              <span class="mi">31</span>
@@ -1038,6 +1044,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">75</span>
              <span class="mi">27</span>
              <span class="mi">28</span>
+             <span class="mi">26</span>
              <span class="mi">26</span>
              <span class="mi">15</span>
              <span class="mi">47</span>
@@ -1128,13 +1135,13 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">144</span>
             <span class="mi">144</span>
             <span class="mi">142</span>
+            <span class="mi">146</span>
             <span class="mi">144</span>
             <span class="mi">142</span>
             <span class="mi">143</span>
             <span class="mi">159</span>
             <span class="mi">159</span>
             <span class="mi">159</span>
-            <span class="mi">342</span>
             <span class="mi">162</span>
             <span class="mi">179</span>
             <span class="mi">159</span>
@@ -1156,12 +1163,12 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">159</span>
             <span class="mi">143</span>
             <span class="mi">143</span>
-            <span class="mi">146</span>
             <span class="mi">104</span>
             <span class="mi">342</span>
             <span class="mi">115</span>
             <span class="mi">102</span>
             <span class="mi">142</span>
+            <span class="mi">342</span>
             <span class="mi">142</span>
             <span class="mi">115</span>
             <span class="mi">110</span>
@@ -1189,12 +1196,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">144</span>
             <span class="mi">342</span>
             <span class="mi">142</span>
-             <span class="mi">99</span>
-            <span class="mi">133</span>
-            <span class="mi">143</span>
-            <span class="mi">331</span>
-            <span class="mi">133</span>
-            <span class="mi">105</span>
             <span class="mi">130</span>
             <span class="mi">144</span>
             <span class="mi">342</span>
@@ -1213,7 +1214,13 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">99</span>
             <span class="mi">311</span>
             <span class="mi">146</span>
+            <span class="mi">143</span>
+             <span class="mi">99</span>
+            <span class="mi">133</span>
+            <span class="mi">331</span>
             <span class="mi">145</span>
+            <span class="mi">133</span>
+            <span class="mi">105</span>
             <span class="mi">311</span>
             <span class="mi">105</span>
             <span class="mi">116</span>
@@ -1225,6 +1232,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">130</span>
             <span class="mi">311</span>
             <span class="mi">331</span>
+            <span class="mi">101</span>
              <span class="mi">99</span>
             <span class="mi">331</span>
             <span class="mi">133</span>
@@ -1252,7 +1260,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">238</span>
             <span class="mi">238</span>
              <span class="mi">99</span>
-            <span class="mi">101</span>
             <span class="mi">130</span>
             <span class="mi">109</span>
              <span class="mi">98</span>
@@ -1290,7 +1297,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">149</span>
             <span class="mi">339</span>
              <span class="mi">99</span>
-            <span class="mi">152</span>
             <span class="mi">339</span>
             <span class="mi">125</span>
             <span class="mi">109</span>
@@ -1317,6 +1323,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">109</span>
             <span class="mi">132</span>
             <span class="mi">129</span>
+            <span class="mi">152</span>
             <span class="mi">337</span>
             <span class="mi">151</span>
             <span class="mi">149</span>
@@ -1471,7 +1478,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">302</span>
             <span class="mi">302</span>
              <span class="mi">70</span>
-             <span class="mi">23</span>
             <span class="mi">332</span>
              <span class="mi">34</span>
              <span class="mi">58</span>
@@ -1506,6 +1512,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">68</span>
              <span class="mi">58</span>
              <span class="mi">33</span>
+            <span class="mi">274</span>
              <span class="mi">39</span>
              <span class="mi">39</span>
              <span class="mi">40</span>
@@ -1533,7 +1540,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">41</span>
             <span class="mi">274</span>
             <span class="mi">274</span>
-            <span class="mi">274</span>
              <span class="mi">41</span>
             <span class="mi">274</span>
             <span class="mi">313</span>
@@ -1551,6 +1557,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">274</span>
              <span class="mi">42</span>
              <span class="mi">42</span>
+             <span class="mi">78</span>
             <span class="mi">272</span>
             <span class="mi">354</span>
             <span class="mi">354</span>
@@ -1574,7 +1581,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">316</span>
             <span class="mi">285</span>
              <span class="mi">78</span>
-             <span class="mi">78</span>
             <span class="mi">114</span>
             <span class="mi">362</span>
             <span class="mi">260</span>
@@ -1585,13 +1591,13 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">327</span>
             <span class="mi">308</span>
             <span class="mi">326</span>
-            <span class="mi">162</span>
             <span class="mi">326</span>
             <span class="mi">336</span>
             <span class="mi">329</span>
             <span class="mi">239</span>
             <span class="mi">239</span>
             <span class="mi">239</span>
+            <span class="mi">356</span>
             <span class="mi">240</span>
             <span class="mi">240</span>
             <span class="mi">240</span>
@@ -1607,13 +1613,13 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">10</span>
             <span class="mi">162</span>
             <span class="mi">162</span>
+            <span class="mi">162</span>
             <span class="mi">108</span>
             <span class="mi">336</span>
             <span class="mi">147</span>
             <span class="mi">329</span>
             <span class="mi">329</span>
              <span class="mi">90</span>
-            <span class="mi">356</span>
             <span class="mi">356</span>
             <span class="mi">197</span>
             <span class="mi">354</span>
@@ -1626,7 +1632,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">300</span>
             <span class="mi">112</span>
             <span class="mi">148</span>
-            <span class="mi">290</span>
             <span class="mi">112</span>
             <span class="mi">112</span>
             <span class="mi">336</span>
@@ -1656,6 +1661,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">34</span>
             <span class="mi">290</span>
             <span class="mi">290</span>
+            <span class="mi">290</span>
             <span class="mi">287</span>
             <span class="mi">287</span>
             <span class="mi">291</span>
@@ -1680,7 +1686,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">64</span>
              <span class="mi">14</span>
              <span class="mi">10</span>
-             <span class="mi">65</span>
              <span class="mi">10</span>
             <span class="mi">375</span>
             <span class="mi">169</span>
@@ -1696,6 +1701,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">177</span>
             <span class="mi">177</span>
             <span class="mi">274</span>
+             <span class="mi">39</span>
              <span class="mi">52</span>
              <span class="mi">52</span>
              <span class="mi">53</span>
@@ -1706,6 +1712,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">333</span>
             <span class="mi">140</span>
             <span class="mi">122</span>
+             <span class="mi">65</span>
             <span class="mi">207</span>
             <span class="mi">295</span>
             <span class="mi">295</span>
@@ -1735,11 +1742,12 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">94</span>
              <span class="mi">94</span>
              <span class="mi">62</span>
+            <span class="mi">103</span>
             <span class="mi">206</span>
              <span class="mi">62</span>
-            <span class="mi">131</span>
              <span class="mi">62</span>
              <span class="mi">62</span>
+             <span class="mi">99</span>
             <span class="mi">366</span>
             <span class="mi">317</span>
              <span class="mi">10</span>
@@ -1753,16 +1761,15 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">103</span>
             <span class="mi">103</span>
             <span class="mi">103</span>
-            <span class="mi">103</span>
             <span class="mi">124</span>
             <span class="mi">103</span>
             <span class="mi">131</span>
             <span class="mi">128</span>
+            <span class="mi">131</span>
             <span class="mi">119</span>
             <span class="mi">289</span>
             <span class="mi">138</span>
              <span class="mi">23</span>
-             <span class="mi">39</span>
               <span class="mi">6</span>
              <span class="mi">48</span>
              <span class="mi">15</span>
@@ -1788,7 +1795,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">145</span>
             <span class="mi">145</span>
             <span class="mi">118</span>
-             <span class="mi">99</span>
             <span class="mi">125</span>
             <span class="mi">129</span>
             <span class="mi">145</span>
@@ -1816,9 +1822,9 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">270</span>
             <span class="mi">123</span>
             <span class="mi">270</span>
-            <span class="mi">270</span>
+            <span class="mi">103</span>
+            <span class="mi">282</span>
             <span class="mi">138</span>
-             <span class="mi">16</span>
              <span class="mi">22</span>
             <span class="mi">222</span>
             <span class="mi">371</span>
@@ -1832,14 +1838,13 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">63</span>
             <span class="mi">359</span>
              <span class="mi">74</span>
-            <span class="mi">120</span>
              <span class="mi">19</span>
              <span class="mi">69</span>
              <span class="mi">73</span>
             <span class="mi">276</span>
             <span class="mi">282</span>
             <span class="mi">282</span>
-            <span class="mi">282</span>
+            <span class="mi">142</span>
             <span class="mi">282</span>
             <span class="mi">282</span>
              <span class="mi">15</span>
@@ -1847,6 +1852,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">44</span>
              <span class="mi">64</span>
              <span class="mi">67</span>
+            <span class="mi">120</span>
             <span class="mi">267</span>
             <span class="mi">120</span>
             <span class="mi">120</span>
@@ -1854,7 +1860,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">120</span>
             <span class="mi">106</span>
             <span class="mi">103</span>
-            <span class="mi">103</span>
             <span class="mi">106</span>
             <span class="mi">106</span>
             <span class="mi">106</span>
@@ -1870,10 +1875,8 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">109</span>
              <span class="mi">99</span>
             <span class="mi">145</span>
-            <span class="mi">142</span>
             <span class="mi">145</span>
             <span class="mi">145</span>
-            <span class="mi">132</span>
             <span class="mi">145</span>
              <span class="mi">99</span>
              <span class="mi">99</span>
@@ -1881,7 +1884,6 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">99</span>
              <span class="mi">98</span>
              <span class="mi">98</span>
-            <span class="mi">142</span>
              <span class="mi">98</span>
             <span class="mi">311</span>
             <span class="mi">312</span>
@@ -1889,11 +1891,11 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
              <span class="mi">35</span>
             <span class="mi">142</span>
             <span class="mi">142</span>
-            <span class="mi">101</span>
              <span class="mi">35</span>
              <span class="mi">35</span>
              <span class="mi">35</span>
             <span class="mi">159</span>
+            <span class="mi">142</span>
             <span class="mi">155</span>
             <span class="mi">153</span>
             <span class="mi">168</span>
@@ -1912,14 +1914,15 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">101</span>
             <span class="mi">101</span>
             <span class="mi">101</span>
+            <span class="mi">101</span>
+            <span class="mi">128</span>
              <span class="mi">26</span>
              <span class="mi">26</span>
-            <span class="mi">148</span>
              <span class="mi">64</span>
-            <span class="mi">125</span>
              <span class="mi">65</span>
              <span class="mi">64</span>
              <span class="mi">65</span>
+            <span class="mi">144</span>
              <span class="mi">75</span>
              <span class="mi">52</span>
             <span class="mi">207</span>
@@ -1930,8 +1933,10 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
               <span class="mi">3</span>
             <span class="mi">270</span>
             <span class="mi">270</span>
+            <span class="mi">132</span>
             <span class="mi">183</span>
             <span class="mi">182</span>
+            <span class="mi">148</span>
             <span class="mi">182</span>
             <span class="mi">115</span>
             <span class="mi">115</span>
@@ -1949,17 +1954,15 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">131</span>
             <span class="mi">131</span>
             <span class="mi">128</span>
-            <span class="mi">128</span>
-            <span class="mi">132</span>
             <span class="mi">132</span>
             <span class="mi">129</span>
             <span class="mi">132</span>
             <span class="mi">129</span>
             <span class="mi">132</span>
+            <span class="mi">132</span>
             <span class="mi">133</span>
             <span class="mi">133</span>
             <span class="mi">133</span>
-            <span class="mi">144</span>
             <span class="mi">143</span>
              <span class="mi">97</span>
             <span class="mi">106</span>
@@ -1975,6 +1978,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
             <span class="mi">129</span>
             <span class="mi">129</span>
             <span class="mi">129</span>
+            <span class="mi">125</span>
             <span class="mi">125</span>
             <span class="mi">132</span>
             <span class="mi">109</span>
@@ -2031,7 +2035,7 @@ comparing <code class="docutils literal notranslate"><span class="pre">geom</spa
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="aa4f0d10-0757-42da-989b-a7e52d56f878" name="aa4f0d10-0757-42da-989b-a7e52d56f878" type="checkbox"><label class="sphinx_collapse__label" for="aa4f0d10-0757-42da-989b-a7e52d56f878"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="ebacc38a-cc49-4625-8f85-60d618e42094" name="ebacc38a-cc49-4625-8f85-60d618e42094" type="checkbox"><label class="sphinx_collapse__label" for="ebacc38a-cc49-4625-8f85-60d618e42094"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PREPARE</span>
 </pre></div>
 </div>
@@ -2065,7 +2069,7 @@ table of the buildings.</p></li>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="93258c1a-f43b-473f-a2db-cf5165560e16" name="93258c1a-f43b-473f-a2db-cf5165560e16" type="checkbox"><label class="sphinx_collapse__label" for="93258c1a-f43b-473f-a2db-cf5165560e16"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="1ef67c1a-307e-41ef-8dda-3e435500ff4c" name="1ef67c1a-307e-41ef-8dda-3e435500ff4c" type="checkbox"><label class="sphinx_collapse__label" for="1ef67c1a-307e-41ef-8dda-3e435500ff4c"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">gid</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span>      <span class="n">minutes</span>       <span class="o">|</span>                                                                                                          <span class="n">the_geom</span>                                                                                                          
 <span class="o">-----+--------+--------+--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
  <span class="mi">164</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span> <span class="mf">1.2794927512370855</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000064</span><span class="n">A82FF0813552409540EF32681B334047FF70FC7535524030EB0FDE681B3340</span>
@@ -2172,7 +2176,7 @@ that have the same <code class="docutils literal notranslate"><span class="pre">
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="cc8e78ea-c63c-4473-8b5b-c7bc8571ee4a" name="cc8e78ea-c63c-4473-8b5b-c7bc8571ee4a" type="checkbox"><label class="sphinx_collapse__label" for="cc8e78ea-c63c-4473-8b5b-c7bc8571ee4a"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="82f45c79-e5ff-4522-a4f8-d32025463ae2" name="82f45c79-e5ff-4522-a4f8-d32025463ae2" type="checkbox"><label class="sphinx_collapse__label" for="82f45c79-e5ff-4522-a4f8-d32025463ae2"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">edge</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span>       <span class="n">minutes</span>        <span class="o">|</span>                                                                                                          <span class="n">the_geom</span>                                                                                                          
 <span class="o">------+--------+--------+----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
   <span class="mi">164</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>   <span class="mf">1.2794927512370855</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000064</span><span class="n">A82FF0813552409540EF32681B334047FF70FC7535524030EB0FDE681B3340</span>
@@ -2234,21 +2238,21 @@ that have the same <code class="docutils literal notranslate"><span class="pre">
   <span class="mi">277</span> <span class="o">|</span>    <span class="mi">144</span> <span class="o">|</span>    <span class="mi">167</span> <span class="o">|</span>    <span class="mf">9.741611163118138</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000002</span><span class="n">EF944436B3552409389004CBE1A334016139B8F6B35524055E70764651A3340</span>
   <span class="mi">210</span> <span class="o">|</span>    <span class="mi">128</span> <span class="o">|</span>    <span class="mi">129</span> <span class="o">|</span>    <span class="mf">9.892410474579446</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000006</span><span class="n">CB2463D4435524075E1AC2DE11B33403CCFE9C3443552404727A6666A1B3340</span>
   <span class="mi">163</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>   <span class="mf">1.3290329100878828</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000004636</span><span class="n">A15A8E355240838D4699681B334064A82FF0813552409540EF32681B3340</span>
-  <span class="mi">164</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>   <span class="mf">1.2794927512370855</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000064</span><span class="n">A82FF0813552409540EF32681B334047FF70FC7535524030EB0FDE681B3340</span>
   <span class="mi">231</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>    <span class="mi">142</span> <span class="o">|</span>    <span class="mf">4.748852358591146</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000064</span><span class="n">A82FF0813552409540EF32681B3340C9C9C4AD823552402DEC6987BF1A3340</span>
+  <span class="mi">164</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>   <span class="mf">1.2794927512370855</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000064</span><span class="n">A82FF0813552409540EF32681B334047FF70FC7535524030EB0FDE681B3340</span>
    <span class="mi">61</span> <span class="o">|</span>     <span class="mi">35</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>      <span class="mf">4.7311518302823</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000040</span><span class="n">BE840A8E3552403E6BC889C01A33404636A15A8E355240838D4699681B3340</span>
   <span class="mi">163</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>   <span class="mf">1.3290329100878828</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000004636</span><span class="n">A15A8E355240838D4699681B334064A82FF0813552409540EF32681B3340</span>
    <span class="mi">20</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mf">2.5756870174568083</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000004636</span><span class="n">A15A8E355240838D4699681B3340E63B9DD0903552402B22799DC31B3340</span>
    <span class="mi">60</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>   <span class="mf">0.1203080478563094</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000051</span><span class="n">C719798F3552409540EF32681B33404636A15A8E355240838D4699681B3340</span>
   <span class="mi">260</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>   <span class="mf">2.5730507679123296</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">F716201B923552402B6A300DC31B334051C719798F3552409540EF32681B3340</span>
-   <span class="mi">60</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>   <span class="mf">0.1203080478563094</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000051</span><span class="n">C719798F3552409540EF32681B33404636A15A8E355240838D4699681B3340</span>
   <span class="mi">473</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>    <span class="mi">312</span> <span class="o">|</span>    <span class="mf">0.786113614821774</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000051</span><span class="n">C719798F3552409540EF32681B33408D83A6808F355240FDAF29464C1B3340</span>
+   <span class="mi">60</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>   <span class="mf">0.1203080478563094</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000051</span><span class="n">C719798F3552409540EF32681B33404636A15A8E355240838D4699681B3340</span>
   <span class="mi">260</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>   <span class="mf">2.5730507679123296</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">F716201B923552402B6A300DC31B334051C719798F3552409540EF32681B3340</span>
-   <span class="mi">60</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>   <span class="mf">0.1203080478563094</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000051</span><span class="n">C719798F3552409540EF32681B33404636A15A8E355240838D4699681B3340</span>
   <span class="mi">473</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>    <span class="mi">312</span> <span class="o">|</span>    <span class="mf">0.786113614821774</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000051</span><span class="n">C719798F3552409540EF32681B33408D83A6808F355240FDAF29464C1B3340</span>
+   <span class="mi">60</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>   <span class="mf">0.1203080478563094</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000051</span><span class="n">C719798F3552409540EF32681B33404636A15A8E355240838D4699681B3340</span>
   <span class="mi">164</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>   <span class="mf">1.2794927512370855</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000064</span><span class="n">A82FF0813552409540EF32681B334047FF70FC7535524030EB0FDE681B3340</span>
-  <span class="mi">234</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>    <span class="mi">143</span> <span class="o">|</span>    <span class="mf">4.800252749039815</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000047</span><span class="n">FF70FC7535524030EB0FDE681B33407C8560B0763552405D00755EBE1A3340</span>
   <span class="mi">238</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>   <span class="mf">1.1480376358182636</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000047</span><span class="n">FF70FC7535524030EB0FDE681B33406499D9426B3552407D40A033691B3340</span>
+  <span class="mi">234</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>    <span class="mi">143</span> <span class="o">|</span>    <span class="mf">4.800252749039815</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000047</span><span class="n">FF70FC7535524030EB0FDE681B33407C8560B0763552405D00755EBE1A3340</span>
   <span class="mi">473</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>    <span class="mi">312</span> <span class="o">|</span>    <span class="mf">0.786113614821774</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000051</span><span class="n">C719798F3552409540EF32681B33408D83A6808F355240FDAF29464C1B3340</span>
   <span class="mi">472</span> <span class="o">|</span>    <span class="mi">312</span> <span class="o">|</span>    <span class="mi">311</span> <span class="o">|</span>   <span class="mf">2.7411680621005954</span> <span class="o">|</span> <span class="mf">0102000020E6100000060000008</span><span class="n">D83A6808F355240FDAF29464C1B33400A80F10C9A3552401A25F95B4C1B334022ABB6F699355240407AD4A93C1B334022ABB6F69935524076EFF2BE3B1B33408E1C8E5399355240AD985B6B391B33400A01AF858F3552400D8D2782381B3340</span>
   <span class="mi">471</span> <span class="o">|</span>    <span class="mi">312</span> <span class="o">|</span>    <span class="mi">311</span> <span class="o">|</span>   <span class="mf">0.5564225324543212</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000008</span><span class="n">D83A6808F355240FDAF29464C1B33400A01AF858F3552400D8D2782381B3340</span>
@@ -2256,20 +2260,20 @@ that have the same <code class="docutils literal notranslate"><span class="pre">
   <span class="mi">163</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>   <span class="mf">1.3290329100878828</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000004636</span><span class="n">A15A8E355240838D4699681B334064A82FF0813552409540EF32681B3340</span>
    <span class="mi">20</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mf">2.5756870174568083</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000004636</span><span class="n">A15A8E355240838D4699681B3340E63B9DD0903552402B22799DC31B3340</span>
    <span class="mi">60</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>   <span class="mf">0.1203080478563094</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000051</span><span class="n">C719798F3552409540EF32681B33404636A15A8E355240838D4699681B3340</span>
+  <span class="mi">237</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>   <span class="mf">2.3144715951044286</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000005</span><span class="n">E21BDF26A3552405F3AF768BB1B33406499D9426B3552407D40A033691B3340</span>
   <span class="mi">238</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>   <span class="mf">1.1480376358182636</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000047</span><span class="n">FF70FC7535524030EB0FDE681B33406499D9426B3552407D40A033691B3340</span>
   <span class="mi">235</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>    <span class="mi">144</span> <span class="o">|</span>    <span class="mf">4.811101427385413</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000006499</span><span class="n">D9426B3552407D40A033691B33402EF944436B3552409389004CBE1A3340</span>
   <span class="mi">181</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>    <span class="mi">109</span> <span class="o">|</span>   <span class="mf">1.5428172045811037</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000006499</span><span class="n">D9426B3552407D40A033691B3340A7EA1ED95C3552408E07B6A5691B3340</span>
-  <span class="mi">237</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>   <span class="mf">2.3144715951044286</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000005</span><span class="n">E21BDF26A3552405F3AF768BB1B33406499D9426B3552407D40A033691B3340</span>
   <span class="mi">259</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>  <span class="mf">0.13910148366610456</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">E63B9DD0903552402B22799DC31B3340F716201B923552402B6A300DC31B3340</span>
   <span class="mi">342</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>    <span class="mi">213</span> <span class="o">|</span>    <span class="mf">1.723381117327439</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">F716201B923552402B6A300DC31B33406CE22E0CA235524018320D79BA1B3340</span>
   <span class="mi">260</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>    <span class="mi">158</span> <span class="o">|</span>   <span class="mf">2.5730507679123296</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">F716201B923552402B6A300DC31B334051C719798F3552409540EF32681B3340</span>
   <span class="mi">258</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>   <span class="mf">1.8255905409160154</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C3340F716201B923552402B6A300DC31B3340</span>
-  <span class="mi">444</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>   <span class="mf">1.5666616135496316</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000947</span><span class="n">C36BC6A35524084F57F0EF31B33405E21BDF26A3552405F3AF768BB1B3340</span>
-   <span class="mi">19</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mf">4.065869900604024</span> <span class="o">|</span> <span class="mf">0102000020E6100000040000005</span><span class="n">E21BDF26A3552405F3AF768BB1B3340F3CF679B76355240B3C8C04BBA1B33406AAD1EE681355240C2DF8A1FBE1B3340E63B9DD0903552402B22799DC31B3340</span>
   <span class="mi">237</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>   <span class="mf">2.3144715951044286</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000005</span><span class="n">E21BDF26A3552405F3AF768BB1B33406499D9426B3552407D40A033691B3340</span>
+   <span class="mi">19</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mf">4.065869900604024</span> <span class="o">|</span> <span class="mf">0102000020E6100000040000005</span><span class="n">E21BDF26A3552405F3AF768BB1B3340F3CF679B76355240B3C8C04BBA1B33406AAD1EE681355240C2DF8A1FBE1B3340E63B9DD0903552402B22799DC31B3340</span>
+  <span class="mi">444</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>   <span class="mf">1.5666616135496316</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000947</span><span class="n">C36BC6A35524084F57F0EF31B33405E21BDF26A3552405F3AF768BB1B3340</span>
   <span class="mi">163</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>   <span class="mf">1.3290329100878828</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000004636</span><span class="n">A15A8E355240838D4699681B334064A82FF0813552409540EF32681B3340</span>
-  <span class="mi">164</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>   <span class="mf">1.2794927512370855</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000064</span><span class="n">A82FF0813552409540EF32681B334047FF70FC7535524030EB0FDE681B3340</span>
   <span class="mi">231</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>    <span class="mi">142</span> <span class="o">|</span>    <span class="mf">4.748852358591146</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000064</span><span class="n">A82FF0813552409540EF32681B3340C9C9C4AD823552402DEC6987BF1A3340</span>
+  <span class="mi">164</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>   <span class="mf">1.2794927512370855</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000064</span><span class="n">A82FF0813552409540EF32681B334047FF70FC7535524030EB0FDE681B3340</span>
   <span class="mi">464</span> <span class="o">|</span>    <span class="mi">109</span> <span class="o">|</span>    <span class="mi">306</span> <span class="o">|</span>    <span class="mf">4.740167131311484</span> <span class="o">|</span> <span class="mf">0102000020E610000003000000</span><span class="n">A7EA1ED95C3552408E07B6A5691B33403649E29B5C3552409558631A971B334036D6B4415C3552407A820E04121C3340</span>
   <span class="mi">214</span> <span class="o">|</span>    <span class="mi">109</span> <span class="o">|</span>    <span class="mi">132</span> <span class="o">|</span>   <span class="mf">1.4489906050867754</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">A7EA1ED95C3552408E07B6A5691B3340EF6BC94F4F3552402351C3126A1B3340</span>
   <span class="mi">182</span> <span class="o">|</span>    <span class="mi">110</span> <span class="o">|</span>    <span class="mi">109</span> <span class="o">|</span>    <span class="mf">4.826266681040104</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000000</span><span class="n">C546B065D3552404B958334BE1A3340A7EA1ED95C3552408E07B6A5691B3340</span>
@@ -2280,12 +2284,12 @@ that have the same <code class="docutils literal notranslate"><span class="pre">
   <span class="mi">258</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>   <span class="mf">1.8255905409160154</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C3340F716201B923552402B6A300DC31B3340</span>
   <span class="mi">551</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>  <span class="mf">0.49530085030973936</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000003</span><span class="n">D0565BF933552400D648742151C334008F2A265933552404BA544B7031C3340</span>
   <span class="mi">550</span> <span class="o">|</span>    <span class="mi">371</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span> <span class="mf">0.035700708884960096</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000505</span><span class="n">CE9109335524063B9008F031C334008F2A265933552404BA544B7031C3340</span>
-  <span class="mi">258</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>   <span class="mf">1.8255905409160154</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C3340F716201B923552402B6A300DC31B3340</span>
   <span class="mi">552</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>   <span class="mf">0.9964875791326322</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C334062D68BA19C35524020E6DC37081C3340</span>
+  <span class="mi">258</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>   <span class="mf">1.8255905409160154</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C3340F716201B923552402B6A300DC31B3340</span>
   <span class="mi">550</span> <span class="o">|</span>    <span class="mi">371</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span> <span class="mf">0.035700708884960096</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000505</span><span class="n">CE9109335524063B9008F031C334008F2A265933552404BA544B7031C3340</span>
   <span class="mi">342</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>    <span class="mi">213</span> <span class="o">|</span>    <span class="mf">1.723381117327439</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">F716201B923552402B6A300DC31B33406CE22E0CA235524018320D79BA1B3340</span>
-  <span class="mi">340</span> <span class="o">|</span>    <span class="mi">213</span> <span class="o">|</span>    <span class="mi">212</span> <span class="o">|</span>   <span class="mf">11.632818723864188</span> <span class="o">|</span> <span class="mf">0102000020E6100000060000006</span><span class="n">CE22E0CA235524018320D79BA1B3340F89B9A159B355240853474FDCC1A33408DFF4CCE9A35524034B511F4BC1A33404A35FD239D3552402301593E811A3340CC69053C9F3552401CA732D6481A33408A181B5FA035524090EFF730201A3340</span>
   <span class="mi">541</span> <span class="o">|</span>    <span class="mi">213</span> <span class="o">|</span>    <span class="mi">364</span> <span class="o">|</span>   <span class="mf">0.1751197279697037</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000006</span><span class="n">CE22E0CA235524018320D79BA1B33409472ADACA3355240D18547D1B91B3340</span>
+  <span class="mi">340</span> <span class="o">|</span>    <span class="mi">213</span> <span class="o">|</span>    <span class="mi">212</span> <span class="o">|</span>   <span class="mf">11.632818723864188</span> <span class="o">|</span> <span class="mf">0102000020E6100000060000006</span><span class="n">CE22E0CA235524018320D79BA1B3340F89B9A159B355240853474FDCC1A33408DFF4CCE9A35524034B511F4BC1A33404A35FD239D3552402301593E811A3340CC69053C9F3552401CA732D6481A33408A181B5FA035524090EFF730201A3340</span>
   <span class="mi">232</span> <span class="o">|</span>     <span class="mi">35</span> <span class="o">|</span>    <span class="mi">142</span> <span class="o">|</span>   <span class="mf">1.2165702630128858</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000040</span><span class="n">BE840A8E3552403E6BC889C01A3340C9C9C4AD823552402DEC6987BF1A3340</span>
    <span class="mi">61</span> <span class="o">|</span>     <span class="mi">35</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>      <span class="mf">4.7311518302823</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000040</span><span class="n">BE840A8E3552403E6BC889C01A33404636A15A8E355240838D4699681B3340</span>
    <span class="mi">59</span> <span class="o">|</span>    <span class="mi">155</span> <span class="o">|</span>     <span class="mi">35</span> <span class="o">|</span>   <span class="mf">2.7991838631099433</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">E13F82878E355240E807BF1E5D1A334040BE840A8E3552403E6BC889C01A3340</span>
@@ -2294,41 +2298,41 @@ that have the same <code class="docutils literal notranslate"><span class="pre">
   <span class="mi">231</span> <span class="o">|</span>     <span class="mi">98</span> <span class="o">|</span>    <span class="mi">142</span> <span class="o">|</span>    <span class="mf">4.748852358591146</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000064</span><span class="n">A82FF0813552409540EF32681B3340C9C9C4AD823552402DEC6987BF1A3340</span>
   <span class="mi">281</span> <span class="o">|</span>    <span class="mi">142</span> <span class="o">|</span>    <span class="mi">169</span> <span class="o">|</span>   <span class="mf">3.1864848951305538</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">C9C9C4AD823552402DEC6987BF1A334099A14CFE82355240D8E77B574E1A3340</span>
   <span class="mi">233</span> <span class="o">|</span>    <span class="mi">142</span> <span class="o">|</span>    <span class="mi">143</span> <span class="o">|</span>   <span class="mf">1.2838232840554622</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">C9C9C4AD823552402DEC6987BF1A33407C8560B0763552405D00755EBE1A3340</span>
-   <span class="mi">63</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>     <span class="mf">2.19566232300529</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">E63B9DD0903552402B22799DC31B334074942820923552407ACAC573111C3340</span>
-  <span class="mi">259</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>  <span class="mf">0.13910148366610456</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">E63B9DD0903552402B22799DC31B3340F716201B923552402B6A300DC31B3340</span>
-   <span class="mi">20</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mf">2.5756870174568083</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000004636</span><span class="n">A15A8E355240838D4699681B3340E63B9DD0903552402B22799DC31B3340</span>
    <span class="mi">19</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mf">4.065869900604024</span> <span class="o">|</span> <span class="mf">0102000020E6100000040000005</span><span class="n">E21BDF26A3552405F3AF768BB1B3340F3CF679B76355240B3C8C04BBA1B33406AAD1EE681355240C2DF8A1FBE1B3340E63B9DD0903552402B22799DC31B3340</span>
-   <span class="mi">58</span> <span class="o">|</span>    <span class="mi">159</span> <span class="o">|</span>     <span class="mi">35</span> <span class="o">|</span>  <span class="mf">0.17917691218928386</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">B73066A68F3552409E4B27C8BE1A334040BE840A8E3552403E6BC889C01A3340</span>
+  <span class="mi">259</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>  <span class="mf">0.13910148366610456</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">E63B9DD0903552402B22799DC31B3340F716201B923552402B6A300DC31B3340</span>
+   <span class="mi">63</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>     <span class="mf">2.19566232300529</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">E63B9DD0903552402B22799DC31B334074942820923552407ACAC573111C3340</span>
+   <span class="mi">20</span> <span class="o">|</span>     <span class="mi">36</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>   <span class="mf">2.5756870174568083</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000004636</span><span class="n">A15A8E355240838D4699681B3340E63B9DD0903552402B22799DC31B3340</span>
   <span class="mi">252</span> <span class="o">|</span>    <span class="mi">159</span> <span class="o">|</span>    <span class="mi">153</span> <span class="o">|</span>   <span class="mf">2.8249210409685466</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">B73066A68F3552409E4B27C8BE1A33403982AF4390355240D25B97755A1A3340</span>
+   <span class="mi">58</span> <span class="o">|</span>    <span class="mi">159</span> <span class="o">|</span>     <span class="mi">35</span> <span class="o">|</span>  <span class="mf">0.17917691218928386</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">B73066A68F3552409E4B27C8BE1A334040BE840A8E3552403E6BC889C01A3340</span>
   <span class="mi">261</span> <span class="o">|</span>    <span class="mi">311</span> <span class="o">|</span>    <span class="mi">159</span> <span class="o">|</span>   <span class="mf">3.4267239172165445</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000000</span><span class="n">A01AF858F3552400D8D2782381B3340B73066A68F3552409E4B27C8BE1A3340</span>
-   <span class="mi">62</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>   <span class="mf">0.2040401587256805</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000003</span><span class="n">D0565BF933552400D648742151C334074942820923552407ACAC573111C3340</span>
-  <span class="mi">551</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>  <span class="mf">0.49530085030973936</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000003</span><span class="n">D0565BF933552400D648742151C334008F2A265933552404BA544B7031C3340</span>
   <span class="mi">155</span> <span class="o">|</span>    <span class="mi">111</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>    <span class="mf">1.142872429095983</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000004489963</span><span class="n">C9E3552408C9A54D91C1C33403D0565BF933552400D648742151C3340</span>
+  <span class="mi">551</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>  <span class="mf">0.49530085030973936</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000003</span><span class="n">D0565BF933552400D648742151C334008F2A265933552404BA544B7031C3340</span>
+   <span class="mi">62</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>   <span class="mf">0.2040401587256805</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000003</span><span class="n">D0565BF933552400D648742151C334074942820923552407ACAC573111C3340</span>
   <span class="mi">154</span> <span class="o">|</span>    <span class="mi">227</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>   <span class="mf">0.8307103430560616</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000000</span><span class="n">DAC3EB2943552408146448C321C33403D0565BF933552400D648742151C3340</span>
   <span class="mi">185</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mf">4.302234144936451</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000074942820923552407</span><span class="n">ACAC573111C3340947C36BC6A35524084F57F0EF31B3340</span>
-  <span class="mi">444</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>   <span class="mf">1.5666616135496316</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000947</span><span class="n">C36BC6A35524084F57F0EF31B33405E21BDF26A3552405F3AF768BB1B3340</span>
   <span class="mi">463</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mi">306</span> <span class="o">|</span>   <span class="mf">1.7780077550260047</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000947</span><span class="n">C36BC6A35524084F57F0EF31B334036D6B4415C3552407A820E04121C3340</span>
+  <span class="mi">444</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>   <span class="mf">1.5666616135496316</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000947</span><span class="n">C36BC6A35524084F57F0EF31B33405E21BDF26A3552405F3AF768BB1B3340</span>
   <span class="mi">215</span> <span class="o">|</span>    <span class="mi">107</span> <span class="o">|</span>    <span class="mi">132</span> <span class="o">|</span>    <span class="mf">3.370345163726236</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000001</span><span class="n">F4F26C94E3552406F9406C8E11B3340EF6BC94F4F3552402351C3126A1B3340</span>
   <span class="mi">214</span> <span class="o">|</span>    <span class="mi">109</span> <span class="o">|</span>    <span class="mi">132</span> <span class="o">|</span>   <span class="mf">1.4489906050867754</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">A7EA1ED95C3552408E07B6A5691B3340EF6BC94F4F3552402351C3126A1B3340</span>
   <span class="mi">216</span> <span class="o">|</span>    <span class="mi">132</span> <span class="o">|</span>    <span class="mi">133</span> <span class="o">|</span>    <span class="mf">2.446762529952932</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">EF6BC94F4F3552402351C3126A1B33401FC253234F35524061B0D128131B3340</span>
   <span class="mi">209</span> <span class="o">|</span>    <span class="mi">132</span> <span class="o">|</span>    <span class="mi">129</span> <span class="o">|</span>   <span class="mf">1.1289208611319963</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">EF6BC94F4F3552402351C3126A1B33403CCFE9C3443552404727A6666A1B3340</span>
   <span class="mi">551</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>  <span class="mf">0.49530085030973936</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000003</span><span class="n">D0565BF933552400D648742151C334008F2A265933552404BA544B7031C3340</span>
   <span class="mi">550</span> <span class="o">|</span>    <span class="mi">371</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span> <span class="mf">0.035700708884960096</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000505</span><span class="n">CE9109335524063B9008F031C334008F2A265933552404BA544B7031C3340</span>
-  <span class="mi">258</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>   <span class="mf">1.8255905409160154</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C3340F716201B923552402B6A300DC31B3340</span>
   <span class="mi">552</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>   <span class="mf">0.9964875791326322</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C334062D68BA19C35524020E6DC37081C3340</span>
+  <span class="mi">258</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">157</span> <span class="o">|</span>   <span class="mf">1.8255905409160154</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C3340F716201B923552402B6A300DC31B3340</span>
    <span class="mi">63</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>     <span class="mf">2.19566232300529</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">E63B9DD0903552402B22799DC31B334074942820923552407ACAC573111C3340</span>
-  <span class="mi">185</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mf">4.302234144936451</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000074942820923552407</span><span class="n">ACAC573111C3340947C36BC6A35524084F57F0EF31B3340</span>
   <span class="mi">352</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>    <span class="mi">223</span> <span class="o">|</span>   <span class="mf">0.9455073687469304</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000074942820923552407</span><span class="n">ACAC573111C33409162804493355240B62BF4C1321C3340</span>
+  <span class="mi">185</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mf">4.302234144936451</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000074942820923552407</span><span class="n">ACAC573111C3340947C36BC6A35524084F57F0EF31B3340</span>
    <span class="mi">62</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>   <span class="mf">0.2040401587256805</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000003</span><span class="n">D0565BF933552400D648742151C334074942820923552407ACAC573111C3340</span>
   <span class="mi">154</span> <span class="o">|</span>    <span class="mi">227</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>   <span class="mf">0.8307103430560616</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000000</span><span class="n">DAC3EB2943552408146448C321C33403D0565BF933552400D648742151C3340</span>
   <span class="mi">356</span> <span class="o">|</span>    <span class="mi">228</span> <span class="o">|</span>    <span class="mi">227</span> <span class="o">|</span>   <span class="mf">0.5403479119085514</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000005</span><span class="n">A5DF34F95355240B3446799451C33400DAC3EB2943552408146448C321C3340</span>
+  <span class="mi">237</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>   <span class="mf">2.3144715951044286</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000005</span><span class="n">E21BDF26A3552405F3AF768BB1B33406499D9426B3552407D40A033691B3340</span>
   <span class="mi">238</span> <span class="o">|</span>     <span class="mi">99</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>   <span class="mf">1.1480376358182636</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000047</span><span class="n">FF70FC7535524030EB0FDE681B33406499D9426B3552407D40A033691B3340</span>
   <span class="mi">235</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>    <span class="mi">144</span> <span class="o">|</span>    <span class="mf">4.811101427385413</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000006499</span><span class="n">D9426B3552407D40A033691B33402EF944436B3552409389004CBE1A3340</span>
   <span class="mi">181</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>    <span class="mi">109</span> <span class="o">|</span>   <span class="mf">1.5428172045811037</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000006499</span><span class="n">D9426B3552407D40A033691B3340A7EA1ED95C3552408E07B6A5691B3340</span>
-  <span class="mi">237</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>    <span class="mi">145</span> <span class="o">|</span>   <span class="mf">2.3144715951044286</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000005</span><span class="n">E21BDF26A3552405F3AF768BB1B33406499D9426B3552407D40A033691B3340</span>
-  <span class="mi">552</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>   <span class="mf">0.9964875791326322</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C334062D68BA19C35524020E6DC37081C3340</span>
-    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>    <span class="mi">375</span> <span class="o">|</span>   <span class="mf">1.9504853345167399</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000062</span><span class="n">D68BA19C35524020E6DC37081C33409F81470A9B355240C0571932C31B3340</span>
   <span class="mi">549</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>    <span class="mi">372</span> <span class="o">|</span>  <span class="mf">0.45898206676688796</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000062</span><span class="n">D68BA19C35524020E6DC37081C3340073763E2A035524090DD054A0A1C3340</span>
+    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>    <span class="mi">375</span> <span class="o">|</span>   <span class="mf">1.9504853345167399</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000062</span><span class="n">D68BA19C35524020E6DC37081C33409F81470A9B355240C0571932C31B3340</span>
+  <span class="mi">552</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>   <span class="mf">0.9964875791326322</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C334062D68BA19C35524020E6DC37081C3340</span>
   <span class="mi">155</span> <span class="o">|</span>    <span class="mi">111</span> <span class="o">|</span>     <span class="mi">93</span> <span class="o">|</span>    <span class="mf">1.142872429095983</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000004489963</span><span class="n">C9E3552408C9A54D91C1C33403D0565BF933552400D648742151C3340</span>
   <span class="mi">352</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>    <span class="mi">223</span> <span class="o">|</span>   <span class="mf">0.9455073687469304</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000074942820923552407</span><span class="n">ACAC573111C33409162804493355240B62BF4C1321C3340</span>
   <span class="mi">353</span> <span class="o">|</span>    <span class="mi">223</span> <span class="o">|</span>    <span class="mi">224</span> <span class="o">|</span>    <span class="mf">0.518539315258155</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000009162804493355240</span><span class="n">B62BF4C1321C334067B224E593355240608EC305451C3340</span>
@@ -2347,8 +2351,8 @@ that have the same <code class="docutils literal notranslate"><span class="pre">
   <span class="mi">281</span> <span class="o">|</span>    <span class="mi">142</span> <span class="o">|</span>    <span class="mi">169</span> <span class="o">|</span>   <span class="mf">3.1864848951305538</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">C9C9C4AD823552402DEC6987BF1A334099A14CFE82355240D8E77B574E1A3340</span>
   <span class="mi">233</span> <span class="o">|</span>    <span class="mi">142</span> <span class="o">|</span>    <span class="mi">143</span> <span class="o">|</span>   <span class="mf">1.2838232840554622</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">C9C9C4AD823552402DEC6987BF1A33407C8560B0763552405D00755EBE1A3340</span>
   <span class="mi">185</span> <span class="o">|</span>     <span class="mi">37</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mf">4.302234144936451</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000074942820923552407</span><span class="n">ACAC573111C3340947C36BC6A35524084F57F0EF31B3340</span>
-  <span class="mi">444</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>   <span class="mf">1.5666616135496316</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000947</span><span class="n">C36BC6A35524084F57F0EF31B33405E21BDF26A3552405F3AF768BB1B3340</span>
   <span class="mi">463</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mi">306</span> <span class="o">|</span>   <span class="mf">1.7780077550260047</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000947</span><span class="n">C36BC6A35524084F57F0EF31B334036D6B4415C3552407A820E04121C3340</span>
+  <span class="mi">444</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mi">293</span> <span class="o">|</span>   <span class="mf">1.5666616135496316</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000947</span><span class="n">C36BC6A35524084F57F0EF31B33405E21BDF26A3552405F3AF768BB1B3340</span>
    <span class="mi">64</span> <span class="o">|</span>    <span class="mi">224</span> <span class="o">|</span>     <span class="mi">38</span> <span class="o">|</span>    <span class="mf">0.573025157917078</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000067</span><span class="n">B224E593355240608EC305451C3340139A249694355240BB7B2535591C3340</span>
   <span class="mi">353</span> <span class="o">|</span>    <span class="mi">223</span> <span class="o">|</span>    <span class="mi">224</span> <span class="o">|</span>    <span class="mf">0.518539315258155</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000009162804493355240</span><span class="n">B62BF4C1321C334067B224E593355240608EC305451C3340</span>
   <span class="mi">397</span> <span class="o">|</span>     <span class="mi">82</span> <span class="o">|</span>    <span class="mi">260</span> <span class="o">|</span>   <span class="mf">1.2953298942217164</span> <span class="o">|</span> <span class="mf">0102000020E610000006000000420180089635524054</span><span class="n">AA44D95B1C334059E1F148973552408E88731E5F1C3340B7F75F9D99355240ABC9F89C601C334027005A4E9D355240742090F0621C33401F20A9CF9F35524056777643641C3340CB8E43B3A1355240C00D8C17661C3340</span>
@@ -2365,12 +2369,12 @@ that have the same <code class="docutils literal notranslate"><span class="pre">
   <span class="mi">257</span> <span class="o">|</span>    <span class="mi">155</span> <span class="o">|</span>    <span class="mi">156</span> <span class="o">|</span>   <span class="mf">0.9381669123114619</span> <span class="o">|</span> <span class="mf">0102000020E610000005000000</span><span class="n">E13F82878E355240E807BF1E5D1A33404C3E2C8A8D3552401E2CADD0511A33407D3B2E4F8C3552401A530B804C1A334012BC218D8A355240937B702D491A3340BA79F4D0883552405F6EE646471A3340</span>
    <span class="mi">59</span> <span class="o">|</span>    <span class="mi">155</span> <span class="o">|</span>     <span class="mi">35</span> <span class="o">|</span>   <span class="mf">2.7991838631099433</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">E13F82878E355240E807BF1E5D1A334040BE840A8E3552403E6BC889C01A3340</span>
   <span class="mi">255</span> <span class="o">|</span>    <span class="mi">170</span> <span class="o">|</span>    <span class="mi">155</span> <span class="o">|</span>   <span class="mf">0.8047246919827096</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000346</span><span class="n">CEFAE8E35524009CB338A401A3340E13F82878E355240E807BF1E5D1A3340</span>
-  <span class="mi">208</span> <span class="o">|</span>    <span class="mi">107</span> <span class="o">|</span>    <span class="mi">128</span> <span class="o">|</span>   <span class="mf">1.1289984189827782</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000001</span><span class="n">F4F26C94E3552406F9406C8E11B33406CB2463D4435524075E1AC2DE11B3340</span>
   <span class="mi">215</span> <span class="o">|</span>    <span class="mi">107</span> <span class="o">|</span>    <span class="mi">132</span> <span class="o">|</span>    <span class="mf">3.370345163726236</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000001</span><span class="n">F4F26C94E3552406F9406C8E11B3340EF6BC94F4F3552402351C3126A1B3340</span>
+  <span class="mi">208</span> <span class="o">|</span>    <span class="mi">107</span> <span class="o">|</span>    <span class="mi">128</span> <span class="o">|</span>   <span class="mf">1.1289984189827782</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000001</span><span class="n">F4F26C94E3552406F9406C8E11B33406CB2463D4435524075E1AC2DE11B3340</span>
   <span class="mi">178</span> <span class="o">|</span>    <span class="mi">131</span> <span class="o">|</span>    <span class="mi">107</span> <span class="o">|</span>   <span class="mf">2.0937735887027458</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000037</span><span class="n">ED180D4F355240A277CF262C1C33401F4F26C94E3552406F9406C8E11B3340</span>
-  <span class="mi">552</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>   <span class="mf">0.9964875791326322</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C334062D68BA19C35524020E6DC37081C3340</span>
-    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>    <span class="mi">375</span> <span class="o">|</span>   <span class="mf">1.9504853345167399</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000062</span><span class="n">D68BA19C35524020E6DC37081C33409F81470A9B355240C0571932C31B3340</span>
   <span class="mi">549</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>    <span class="mi">372</span> <span class="o">|</span>  <span class="mf">0.45898206676688796</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000062</span><span class="n">D68BA19C35524020E6DC37081C3340073763E2A035524090DD054A0A1C3340</span>
+    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>    <span class="mi">375</span> <span class="o">|</span>   <span class="mf">1.9504853345167399</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000062</span><span class="n">D68BA19C35524020E6DC37081C33409F81470A9B355240C0571932C31B3340</span>
+  <span class="mi">552</span> <span class="o">|</span>    <span class="mi">373</span> <span class="o">|</span>    <span class="mi">374</span> <span class="o">|</span>   <span class="mf">0.9964875791326322</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000008</span><span class="n">F2A265933552404BA544B7031C334062D68BA19C35524020E6DC37081C3340</span>
   <span class="mi">464</span> <span class="o">|</span>    <span class="mi">109</span> <span class="o">|</span>    <span class="mi">306</span> <span class="o">|</span>    <span class="mf">4.740167131311484</span> <span class="o">|</span> <span class="mf">0102000020E610000003000000</span><span class="n">A7EA1ED95C3552408E07B6A5691B33403649E29B5C3552409558631A971B334036D6B4415C3552407A820E04121C3340</span>
   <span class="mi">463</span> <span class="o">|</span>    <span class="mi">112</span> <span class="o">|</span>    <span class="mi">306</span> <span class="o">|</span>   <span class="mf">1.7780077550260047</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000947</span><span class="n">C36BC6A35524084F57F0EF31B334036D6B4415C3552407A820E04121C3340</span>
   <span class="mi">213</span> <span class="o">|</span>    <span class="mi">306</span> <span class="o">|</span>    <span class="mi">131</span> <span class="o">|</span>   <span class="mf">1.5935105121162316</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000036</span><span class="n">D6B4415C3552407A820E04121C334037ED180D4F355240A277CF262C1C3340</span>
@@ -2379,8 +2383,8 @@ that have the same <code class="docutils literal notranslate"><span class="pre">
   <span class="mi">233</span> <span class="o">|</span>    <span class="mi">142</span> <span class="o">|</span>    <span class="mi">143</span> <span class="o">|</span>   <span class="mf">1.2838232840554622</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">C9C9C4AD823552402DEC6987BF1A33407C8560B0763552405D00755EBE1A3340</span>
   <span class="mi">279</span> <span class="o">|</span>    <span class="mi">143</span> <span class="o">|</span>    <span class="mi">168</span> <span class="o">|</span>    <span class="mf">2.810686789526953</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000007</span><span class="n">C8560B0763552405D00755EBE1A3340ABD84E4A773552401950148D5A1A3340</span>
   <span class="mi">236</span> <span class="o">|</span>    <span class="mi">143</span> <span class="o">|</span>    <span class="mi">144</span> <span class="o">|</span>   <span class="mf">1.2230800365242556</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000007</span><span class="n">C8560B0763552405D00755EBE1A33402EF944436B3552409389004CBE1A3340</span>
-   <span class="mi">58</span> <span class="o">|</span>    <span class="mi">159</span> <span class="o">|</span>     <span class="mi">35</span> <span class="o">|</span>  <span class="mf">0.17917691218928386</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">B73066A68F3552409E4B27C8BE1A334040BE840A8E3552403E6BC889C01A3340</span>
   <span class="mi">252</span> <span class="o">|</span>    <span class="mi">159</span> <span class="o">|</span>    <span class="mi">153</span> <span class="o">|</span>   <span class="mf">2.8249210409685466</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">B73066A68F3552409E4B27C8BE1A33403982AF4390355240D25B97755A1A3340</span>
+   <span class="mi">58</span> <span class="o">|</span>    <span class="mi">159</span> <span class="o">|</span>     <span class="mi">35</span> <span class="o">|</span>  <span class="mf">0.17917691218928386</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">B73066A68F3552409E4B27C8BE1A334040BE840A8E3552403E6BC889C01A3340</span>
   <span class="mi">261</span> <span class="o">|</span>    <span class="mi">311</span> <span class="o">|</span>    <span class="mi">159</span> <span class="o">|</span>   <span class="mf">3.4267239172165445</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000000</span><span class="n">A01AF858F3552400D8D2782381B3340B73066A68F3552409E4B27C8BE1A3340</span>
   <span class="mi">210</span> <span class="o">|</span>    <span class="mi">128</span> <span class="o">|</span>    <span class="mi">129</span> <span class="o">|</span>   <span class="mf">3.3441514167242206</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000006</span><span class="n">CB2463D4435524075E1AC2DE11B33403CCFE9C3443552404727A6666A1B3340</span>
   <span class="mi">211</span> <span class="o">|</span>    <span class="mi">129</span> <span class="o">|</span>    <span class="mi">130</span> <span class="o">|</span>   <span class="mf">2.4371693866847517</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000003</span><span class="n">CCFE9C3443552404727A6666A1B33406C25749744355240FC5AF2D3131B3340</span>
@@ -2391,8 +2395,8 @@ that have the same <code class="docutils literal notranslate"><span class="pre">
   <span class="mi">167</span> <span class="o">|</span>    <span class="mi">125</span> <span class="o">|</span>    <span class="mi">101</span> <span class="o">|</span>    <span class="mf">1.429872300730441</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000024</span><span class="n">C9BD0A3A355240947C36BC6A1B33409C1320AF2C355240D5C7E8256B1B3340</span>
   <span class="mi">203</span> <span class="o">|</span>    <span class="mi">129</span> <span class="o">|</span>    <span class="mi">125</span> <span class="o">|</span>   <span class="mf">1.1478621061192884</span> <span class="o">|</span> <span class="mf">0102000020E6100000020000003</span><span class="n">CCFE9C3443552404727A6666A1B334024C9BD0A3A355240947C36BC6A1B3340</span>
    <span class="mi">64</span> <span class="o">|</span>    <span class="mi">224</span> <span class="o">|</span>     <span class="mi">38</span> <span class="o">|</span>    <span class="mf">0.573025157917078</span> <span class="o">|</span> <span class="mf">0102000020E61000000200000067</span><span class="n">B224E593355240608EC305451C3340139A249694355240BB7B2535591C3340</span>
-   <span class="mi">39</span> <span class="o">|</span>     <span class="mi">38</span> <span class="o">|</span>     <span class="mi">24</span> <span class="o">|</span>   <span class="mf">1.1074401160794767</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000139</span><span class="n">A249694355240BB7B2535591C3340AE896077953552404D6C9967801C3340</span>
   <span class="mi">131</span> <span class="o">|</span>     <span class="mi">38</span> <span class="o">|</span>     <span class="mi">81</span> <span class="o">|</span>    <span class="mf">3.219256987972808</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000139</span><span class="n">A249694355240BB7B2535591C3340DB00C7F9763552401EFB592C451C3340</span>
+   <span class="mi">39</span> <span class="o">|</span>     <span class="mi">38</span> <span class="o">|</span>     <span class="mi">24</span> <span class="o">|</span>   <span class="mf">1.1074401160794767</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000139</span><span class="n">A249694355240BB7B2535591C3340AE896077953552404D6C9967801C3340</span>
    <span class="mi">65</span> <span class="o">|</span>     <span class="mi">82</span> <span class="o">|</span>     <span class="mi">38</span> <span class="o">|</span>  <span class="mf">0.17177573693744302</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000420180089635524054</span><span class="n">AA44D95B1C3340139A249694355240BB7B2535591C3340</span>
   <span class="mi">257</span> <span class="o">|</span>    <span class="mi">155</span> <span class="o">|</span>    <span class="mi">156</span> <span class="o">|</span>   <span class="mf">0.9381669123114619</span> <span class="o">|</span> <span class="mf">0102000020E610000005000000</span><span class="n">E13F82878E355240E807BF1E5D1A33404C3E2C8A8D3552401E2CADD0511A33407D3B2E4F8C3552401A530B804C1A334012BC218D8A355240937B702D491A3340BA79F4D0883552405F6EE646471A3340</span>
   <span class="mi">282</span> <span class="o">|</span>    <span class="mi">156</span> <span class="o">|</span>    <span class="mi">170</span> <span class="o">|</span>   <span class="mf">0.6560431337672807</span> <span class="o">|</span> <span class="mf">0102000020E610000002000000</span><span class="n">BA79F4D0883552405F6EE646471A3340346CEFAE8E35524009CB338A401A3340</span>
@@ -2468,7 +2472,7 @@ is to be found. Follow the steps given below to complete this task.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="26165a6b-ac53-4bb0-b9c9-c8130fa13e7a" name="26165a6b-ac53-4bb0-b9c9-c8130fa13e7a" type="checkbox"><label class="sphinx_collapse__label" for="26165a6b-ac53-4bb0-b9c9-c8130fa13e7a"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="98fd41e3-e908-42d1-9765-d1b5e775bda0" name="98fd41e3-e908-42d1-9765-d1b5e775bda0" type="checkbox"><label class="sphinx_collapse__label" for="98fd41e3-e908-42d1-9765-d1b5e775bda0"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">FUNCTION</span>
 </pre></div>
 </div>
@@ -2482,7 +2486,7 @@ is to be found. Follow the steps given below to complete this task.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="0225ec03-de7e-440d-821e-5eaeff73eeaf" name="0225ec03-de7e-440d-821e-5eaeff73eeaf" type="checkbox"><label class="sphinx_collapse__label" for="0225ec03-de7e-440d-821e-5eaeff73eeaf"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="a4969b3d-5f90-49a4-b851-c2a3f67f91cd" name="a4969b3d-5f90-49a4-b851-c2a3f67f91cd" type="checkbox"><label class="sphinx_collapse__label" for="a4969b3d-5f90-49a4-b851-c2a3f67f91cd"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
@@ -2495,7 +2499,7 @@ is to be found. Follow the steps given below to complete this task.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="1c4797a8-bcf4-444e-a010-914c92af1e3f" name="1c4797a8-bcf4-444e-a010-914c92af1e3f" type="checkbox"><label class="sphinx_collapse__label" for="1c4797a8-bcf4-444e-a010-914c92af1e3f"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="4f162222-cd4e-45be-9658-17390d228b05" name="4f162222-cd4e-45be-9658-17390d228b05" type="checkbox"><label class="sphinx_collapse__label" for="4f162222-cd4e-45be-9658-17390d228b05"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">1049</span>
 </pre></div>
 </div>
@@ -2518,7 +2522,7 @@ stored in roads.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="68e70d72-3bde-4596-b722-b7d122405cb2" name="68e70d72-3bde-4596-b722-b7d122405cb2" type="checkbox"><label class="sphinx_collapse__label" for="68e70d72-3bde-4596-b722-b7d122405cb2"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="db2354a9-d045-4d9e-b057-7cbb10d3175f" name="db2354a9-d045-4d9e-b057-7cbb10d3175f" type="checkbox"><label class="sphinx_collapse__label" for="db2354a9-d045-4d9e-b057-7cbb10d3175f"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
@@ -2537,8 +2541,8 @@ stored in roads.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="627e7867-25fe-4b7b-b85c-eeb2e6d92886" name="627e7867-25fe-4b7b-b85c-eeb2e6d92886" type="checkbox"><label class="sphinx_collapse__label" for="627e7867-25fe-4b7b-b85c-eeb2e6d92886"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">265</span>
+<input class="sphinx_collapse__input" id="04819953-ccc4-4a26-95eb-af21d6ce19fc" name="04819953-ccc4-4a26-95eb-af21d6ce19fc" type="checkbox"><label class="sphinx_collapse__label" for="04819953-ccc4-4a26-95eb-af21d6ce19fc"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">264</span>
 </pre></div>
 </div>
 </div>
@@ -2550,7 +2554,7 @@ stored in roads.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="4b37275b-6361-49ce-bc81-b309cb9b752b" name="4b37275b-6361-49ce-bc81-b309cb9b752b" type="checkbox"><label class="sphinx_collapse__label" for="4b37275b-6361-49ce-bc81-b309cb9b752b"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="06127165-076b-4f56-8a2b-2ca07ea45d55" name="06127165-076b-4f56-8a2b-2ca07ea45d55" type="checkbox"><label class="sphinx_collapse__label" for="06127165-076b-4f56-8a2b-2ca07ea45d55"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">population</span> 
 <span class="o">------------</span>
            
@@ -2591,7 +2595,7 @@ travel time.</p>
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="e1c965d5-a904-4e39-bafd-c40aadd71303" name="e1c965d5-a904-4e39-bafd-c40aadd71303" type="checkbox"><label class="sphinx_collapse__label" for="e1c965d5-a904-4e39-bafd-c40aadd71303"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="add5fc2a-bab0-48f0-9720-ee1a0194a21a" name="add5fc2a-bab0-48f0-9720-ee1a0194a21a" type="checkbox"><label class="sphinx_collapse__label" for="add5fc2a-bab0-48f0-9720-ee1a0194a21a"><i class="sphinx_collapse__icon"></i>Query Results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="nb">sum</span>   
 <span class="o">--------</span>
  <span class="mi">109194</span>
@@ -2617,8 +2621,8 @@ travel time.</p>
       
     </p>
     <p>
-        &copy; Copyright 2010-2024 pgRouting Developers.<br/>
-      Last updated on Sep 24, 2025.<br/>
+        &copy; Copyright 2010-2025 pgRouting Developers.<br/>
+      Last updated on Oct 07, 2025.<br/>
     </p>
   </div>
 </footer>

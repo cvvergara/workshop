@@ -5,14 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. Hållbara städer och samhällen &#8212; Workshop - FOSS4G Belém - Routing with pgRouting</title>
+    <title>5. Hållbara städer och samhällen &#8212; Workshop - FOSS4G Auckland - Routing with pgRouting</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=fa3951f0" />
-    <script src="../_static/documentation_options.js?v=0fb5d3f4"></script>
+    <script src="../_static/documentation_options.js?v=b616604d"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/translations.js?v=55d7b627"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="search" title="Sök" href="../search.html" />
@@ -40,8 +43,8 @@
         </button>
 
         <a class="brand" href="../index.html">
-          Workshop FOSS4G Belém</a>
-        <span class="navbar-text pull-left"><b>3.0</b></span>
+          Workshop FOSS4G Auckland</a>
+        <span class="navbar-text pull-left"><b>3.1</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -65,11 +68,11 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../basic/data.html">1. Förbereda data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basic/pedestrian.html">2. Routning av fotgängare</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basic/vehicle.html">3. Routning av fordon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basic/graph_views.html">4. Diagramvyer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/graphs.html">2. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/pedestrian.html">3. Routning av fotgängare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/vehicle.html">4. Routning av fordon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basic/sql_function.html">5. SQL-funktion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basic/plpgsql_function.html">6. pl/pgsql-funktion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/withPoints.html">6. Routing using points</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">1. Data för målen för hållbar utveckling</a></li>
@@ -253,7 +256,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="337ad326-69cc-4666-af6d-89fef1b5d1c7" name="337ad326-69cc-4666-af6d-89fef1b5d1c7" type="checkbox"><label class="sphinx_collapse__label" for="337ad326-69cc-4666-af6d-89fef1b5d1c7"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="35fe52e4-dd71-4d54-8be9-017d3d948b6c" name="35fe52e4-dd71-4d54-8be9-017d3d948b6c" type="checkbox"><label class="sphinx_collapse__label" for="35fe52e4-dd71-4d54-8be9-017d3d948b6c"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
@@ -265,7 +268,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="f3e21581-825c-4861-ad6a-6dc1d8a86af6" name="f3e21581-825c-4861-ad6a-6dc1d8a86af6" type="checkbox"><label class="sphinx_collapse__label" for="f3e21581-825c-4861-ad6a-6dc1d8a86af6"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="2acd03ca-03a3-4fc0-9709-a0a0acde91eb" name="2acd03ca-03a3-4fc0-9709-a0a0acde91eb" type="checkbox"><label class="sphinx_collapse__label" for="2acd03ca-03a3-4fc0-9709-a0a0acde91eb"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
 </pre></div>
 </div>
@@ -278,7 +281,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="4431d323-d42f-4dbb-99d8-164737c44db3" name="4431d323-d42f-4dbb-99d8-164737c44db3" type="checkbox"><label class="sphinx_collapse__label" for="4431d323-d42f-4dbb-99d8-164737c44db3"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="37a92288-d4a8-438e-8570-358e32038df0" name="37a92288-d4a8-438e-8570-358e32038df0" type="checkbox"><label class="sphinx_collapse__label" for="37a92288-d4a8-438e-8570-358e32038df0"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">1</span>
 </pre></div>
 </div>
@@ -289,7 +292,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="e9e895f1-d69b-4b55-9f50-d8dc70d01b66" name="e9e895f1-d69b-4b55-9f50-d8dc70d01b66" type="checkbox"><label class="sphinx_collapse__label" for="e9e895f1-d69b-4b55-9f50-d8dc70d01b66"><i class="sphinx_collapse__icon"></i>Command results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="a1f9ac65-1dbb-4018-8fa4-d7d24f12c14c" name="a1f9ac65-1dbb-4018-8fa4-d7d24f12c14c" type="checkbox"><label class="sphinx_collapse__label" for="a1f9ac65-1dbb-4018-8fa4-d7d24f12c14c"><i class="sphinx_collapse__icon"></i>Command results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                           <span class="n">Table</span> <span class="s2">&quot;public.bangladesh&quot;</span>
    <span class="n">Column</span>    <span class="o">|</span>   <span class="n">Type</span>   <span class="o">|</span> <span class="n">Collation</span> <span class="o">|</span> <span class="n">Nullable</span> <span class="o">|</span> <span class="n">Default</span> <span class="o">|</span> <span class="n">Storage</span>  <span class="o">|</span> <span class="n">Compression</span> <span class="o">|</span> <span class="n">Stats</span> <span class="n">target</span> <span class="o">|</span> <span class="n">Description</span> 
 <span class="o">-------------+----------+-----------+----------+---------+----------+-------------+--------------+-------------</span>
@@ -318,7 +321,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="79821988-1dff-45a2-b48e-afa3c2fd9bfb" name="79821988-1dff-45a2-b48e-afa3c2fd9bfb" type="checkbox"><label class="sphinx_collapse__label" for="79821988-1dff-45a2-b48e-afa3c2fd9bfb"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="9f6cc1f2-e529-4494-a1e8-455897d31952" name="9f6cc1f2-e529-4494-a1e8-455897d31952" type="checkbox"><label class="sphinx_collapse__label" for="9f6cc1f2-e529-4494-a1e8-455897d31952"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SET</span>
     <span class="n">search_path</span>    
 <span class="o">-------------------</span>
@@ -338,7 +341,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="c57bae8f-8e0f-417b-962b-61f121a4332e" name="c57bae8f-8e0f-417b-962b-61f121a4332e" type="checkbox"><label class="sphinx_collapse__label" for="c57bae8f-8e0f-417b-962b-61f121a4332e"><i class="sphinx_collapse__icon"></i>Command results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="26a58b3e-f7db-442e-96ff-66946efdfdd9" name="26a58b3e-f7db-442e-96ff-66946efdfdd9" type="checkbox"><label class="sphinx_collapse__label" for="26a58b3e-f7db-442e-96ff-66946efdfdd9"><i class="sphinx_collapse__icon"></i>Command results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                 <span class="n">List</span> <span class="n">of</span> <span class="n">installed</span> <span class="n">extensions</span>
    <span class="n">Name</span>    <span class="o">|</span> <span class="n">Version</span> <span class="o">|</span>   <span class="n">Schema</span>   <span class="o">|</span>                        <span class="n">Description</span>                         
 <span class="o">-----------+---------+------------+------------------------------------------------------------</span>
@@ -357,7 +360,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="243df9aa-3548-4413-bf38-5b90d98a9742" name="243df9aa-3548-4413-bf38-5b90d98a9742" type="checkbox"><label class="sphinx_collapse__label" for="243df9aa-3548-4413-bf38-5b90d98a9742"><i class="sphinx_collapse__icon"></i>Command results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="ec145531-c0d1-41b4-ad0a-11e5ab628d01" name="ec145531-c0d1-41b4-ad0a-11e5ab628d01" type="checkbox"><label class="sphinx_collapse__label" for="ec145531-c0d1-41b4-ad0a-11e5ab628d01"><i class="sphinx_collapse__icon"></i>Command results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                    <span class="n">List</span> <span class="n">of</span> <span class="n">relations</span>
   <span class="n">Schema</span>   <span class="o">|</span>            <span class="n">Name</span>             <span class="o">|</span> <span class="n">Type</span>  <span class="o">|</span> <span class="n">Owner</span>  
 <span class="o">-----------+-----------------------------+-------+--------</span>
@@ -380,7 +383,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="641d609f-2b3c-4a86-af74-65aa53f02f0e" name="641d609f-2b3c-4a86-af74-65aa53f02f0e" type="checkbox"><label class="sphinx_collapse__label" for="641d609f-2b3c-4a86-af74-65aa53f02f0e"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="4a2106bc-f846-470d-9a8b-e8cc7231b7ac" name="4a2106bc-f846-470d-9a8b-e8cc7231b7ac" type="checkbox"><label class="sphinx_collapse__label" for="4a2106bc-f846-470d-9a8b-e8cc7231b7ac"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">count</span> 
 <span class="o">-------</span>
    <span class="mi">815</span>
@@ -407,7 +410,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="6ecf9f0b-295d-4f6c-99ee-63e4293e27d9" name="6ecf9f0b-295d-4f6c-99ee-63e4293e27d9" type="checkbox"><label class="sphinx_collapse__label" for="6ecf9f0b-295d-4f6c-99ee-63e4293e27d9"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="b57308ab-b138-48fc-86ca-0195912340b1" name="b57308ab-b138-48fc-86ca-0195912340b1" type="checkbox"><label class="sphinx_collapse__label" for="b57308ab-b138-48fc-86ca-0195912340b1"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="mi">31</span>
 </pre></div>
 </div>
@@ -422,7 +425,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="be3c0528-4470-48bc-b2ed-f29ffd405724" name="be3c0528-4470-48bc-b2ed-f29ffd405724" type="checkbox"><label class="sphinx_collapse__label" for="be3c0528-4470-48bc-b2ed-f29ffd405724"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="ab76f643-634e-478f-a2eb-c7f0d685e09e" name="ab76f643-634e-478f-a2eb-c7f0d685e09e" type="checkbox"><label class="sphinx_collapse__label" for="ab76f643-634e-478f-a2eb-c7f0d685e09e"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="mi">1</span>
 </pre></div>
 </div>
@@ -437,7 +440,7 @@
 <section id="exercise-6-get-the-connected-components-of-waterways">
 <h2><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">5.5. </span>Övning 6: Få fram de anslutna komponenterna i vattenvägar</a><a class="headerlink" href="#exercise-6-get-the-connected-components-of-waterways" title="Link to this heading">¶</a></h2>
 <p>Eftersom floderna i data inte har en enda kant, dvs. flera kanter utgör en flod, är det viktigt att ta reda på de anslutna kanterna och lagra informationen i tabellen <code class="docutils literal notranslate"><span class="pre">waterways_ways</span></code>. Detta kommer att hjälpa oss att identifiera vilka kanter som tillhör en flod. Först hittas de anslutna komponenterna och lagras sedan i en ny kolumn med namnet <code class="docutils literal notranslate"><span class="pre">component</span></code>.</p>
-<p>PgRouting-funktionen <code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code> används för att slutföra denna uppgift och förklaras mer detaljerat i <a class="reference internal" href="../basic/graph_views.html"><span class="doc">Diagramvyer</span></a>.</p>
+<p>PgRouting-funktionen <code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code> används för att slutföra denna uppgift och förklaras mer detaljerat i <a class="reference internal" href="../basic/graphs.html"><span class="doc">Graphs</span></a>.</p>
 <p>En underfråga skapas för att ta reda på alla anslutna komponenter. Därefter uppdateras kolumnen <code class="docutils literal notranslate"><span class="pre">component</span></code> med hjälp av de resultat som erhållits från underfrågan. Detta hjälper till att lagra komponent-ID i tabellen <code class="docutils literal notranslate"><span class="pre">waterways_ways_vertices_pgr</span></code>. Nästa fråga använder detta resultat och lagrar komponentens ID i tabellen waterways_ways (edges). Följ stegen nedan för att slutföra den här uppgiften.</p>
 <p class="rubric">Skapa en vertices-tabell.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">waterways</span><span class="p">.</span><span class="n">waterways_vertices</span>
@@ -447,7 +450,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="fe0ca547-c68e-4066-8f23-2aa6ed9312c3" name="fe0ca547-c68e-4066-8f23-2aa6ed9312c3" type="checkbox"><label class="sphinx_collapse__label" for="fe0ca547-c68e-4066-8f23-2aa6ed9312c3"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="39b1de5c-fd93-4aa3-9187-ded7dd87143d" name="39b1de5c-fd93-4aa3-9187-ded7dd87143d" type="checkbox"><label class="sphinx_collapse__label" for="39b1de5c-fd93-4aa3-9187-ded7dd87143d"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="mi">777</span>
 </pre></div>
 </div>
@@ -464,7 +467,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="11faf359-e401-4fdc-93b8-ccdb67d9a366" name="11faf359-e401-4fdc-93b8-ccdb67d9a366" type="checkbox"><label class="sphinx_collapse__label" for="11faf359-e401-4fdc-93b8-ccdb67d9a366"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="a3b0b1d8-ed44-4a6b-b4b4-c662313e9583" name="a3b0b1d8-ed44-4a6b-b4b4-c662313e9583" type="checkbox"><label class="sphinx_collapse__label" for="a3b0b1d8-ed44-4a6b-b4b4-c662313e9583"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">656</span>
 <span class="n">UPDATE</span> <span class="mi">121</span>
 <span class="n">UPDATE</span> <span class="mi">777</span>
@@ -478,7 +481,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="0747cba5-3163-4979-bfa9-e877fdcec564" name="0747cba5-3163-4979-bfa9-e877fdcec564" type="checkbox"><label class="sphinx_collapse__label" for="0747cba5-3163-4979-bfa9-e877fdcec564"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="165ac149-84e5-459b-89e0-1589200acbb9" name="165ac149-84e5-459b-89e0-1589200acbb9" type="checkbox"><label class="sphinx_collapse__label" for="165ac149-84e5-459b-89e0-1589200acbb9"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
@@ -495,7 +498,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="b9275579-fb94-4521-8769-65c643e4d814" name="b9275579-fb94-4521-8769-65c643e4d814" type="checkbox"><label class="sphinx_collapse__label" for="b9275579-fb94-4521-8769-65c643e4d814"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="85a344d5-bd70-426e-8b49-1b6f6888975a" name="85a344d5-bd70-426e-8b49-1b6f6888975a" type="checkbox"><label class="sphinx_collapse__label" for="85a344d5-bd70-426e-8b49-1b6f6888975a"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">777</span>
 </pre></div>
 </div>
@@ -519,7 +522,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="8a196454-c1d1-425c-a29f-bec8c0938e5d" name="8a196454-c1d1-425c-a29f-bec8c0938e5d" type="checkbox"><label class="sphinx_collapse__label" for="8a196454-c1d1-425c-a29f-bec8c0938e5d"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="89136d3b-4452-4f04-b2c2-9cb48b3e6844" name="89136d3b-4452-4f04-b2c2-9cb48b3e6844" type="checkbox"><label class="sphinx_collapse__label" for="89136d3b-4452-4f04-b2c2-9cb48b3e6844"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">FUNCTION</span>
 </pre></div>
 </div>
@@ -536,7 +539,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="d1b68882-6424-4f39-910b-e2bd676bfb99" name="d1b68882-6424-4f39-910b-e2bd676bfb99" type="checkbox"><label class="sphinx_collapse__label" for="d1b68882-6424-4f39-910b-e2bd676bfb99"><i class="sphinx_collapse__icon"></i>Command result</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="9ccb7bb1-b6aa-4dff-bdc3-4f6c8b6a45df" name="9ccb7bb1-b6aa-4dff-bdc3-4f6c8b6a45df" type="checkbox"><label class="sphinx_collapse__label" for="9ccb7bb1-b6aa-4dff-bdc3-4f6c8b6a45df"><i class="sphinx_collapse__icon"></i>Command result</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">component</span> 
 <span class="o">-----------</span>
          <span class="mi">8</span>
@@ -569,7 +572,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="d8baa2eb-661c-4ad5-8d9e-4c7fb6a06290" name="d8baa2eb-661c-4ad5-8d9e-4c7fb6a06290" type="checkbox"><label class="sphinx_collapse__label" for="d8baa2eb-661c-4ad5-8d9e-4c7fb6a06290"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="2b8c6f78-2f18-43b9-954e-331ca4ebdbd6" name="2b8c6f78-2f18-43b9-954e-331ca4ebdbd6" type="checkbox"><label class="sphinx_collapse__label" for="2b8c6f78-2f18-43b9-954e-331ca4ebdbd6"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
@@ -582,7 +585,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="cd070fd5-c90d-4ab3-8f58-863283f11d25" name="cd070fd5-c90d-4ab3-8f58-863283f11d25" type="checkbox"><label class="sphinx_collapse__label" for="cd070fd5-c90d-4ab3-8f58-863283f11d25"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="f493473f-e3c9-48a8-a84f-64ef0273136a" name="f493473f-e3c9-48a8-a84f-64ef0273136a" type="checkbox"><label class="sphinx_collapse__label" for="f493473f-e3c9-48a8-a84f-64ef0273136a"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="mi">5</span>
 </pre></div>
 </div>
@@ -602,7 +605,7 @@
 </pre></div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="daafa8d0-98c6-44b2-bec1-ee8fe15c2264" name="daafa8d0-98c6-44b2-bec1-ee8fe15c2264" type="checkbox"><label class="sphinx_collapse__label" for="daafa8d0-98c6-44b2-bec1-ee8fe15c2264"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="6d646144-e347-41d9-953d-c755922ba41f" name="6d646144-e347-41d9-953d-c755922ba41f" type="checkbox"><label class="sphinx_collapse__label" for="6d646144-e347-41d9-953d-c755922ba41f"><i class="sphinx_collapse__icon"></i>Query results</label><div class="sphinx_collapse__content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <span class="n">combined_rain_zone</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 <span class="o">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
  <span class="mf">0103000020E6100000010000007</span><span class="n">C0000005DC25946634C56408ABF87BDBD423640C1A237A6584C5640303DDDE7ED423640249BBB93504C56408102F66F25433640F39C4F5E4B4C56401601813362433640BDC63139494C56409AC7B3DCA1433640FB447C394A4C5640E98843F9E14336400968C5394A4C564015E594FDE14336405F1DD849404C56403A5577EED7433640ACA22AF92F4C564083775044CE433640D1D14BCE164C5640F1C9219DC94336400CF50F290A4C56405E7E1330CB433640F3418FC4F44B5640AC581E80D4433640E509D39DEE4B5640C765B120D8433640CA514196DF4B56404EC10A56E3433640066B34B9D04B5640610AF3DFEA4336402FC1DF4DC54B564085CAD719ED433640C9591B3ABF4B5640F1E5EA48EE43364011DAB3B9AA4B56401E9B1316E9433640BE268DB4A24B564099AAB1BFE4433640AC3A89729B4B564051CAA489DE433640C9676CB4874B5640BA0527F0C74336401D40D2D86E4B5640F5AA9FCDA743364014C5557C604B564048EB3A3E924336401B7C4CF8504B56404624C5AC814336407E94B7F1404B5640EA8B6E887D43364041FE3F06314B56408EACF6F9854336402BE983D2214B564021834CAE9A433640B4F811EC134B564006B3BFD9BA43364084EEA9DB074B5640F666D43FE54336405A56FB17FE4A5640FADC6C3F18443640ABE61501F74A564095F6D0E251443640EB74B8DCF24A5640761AF6F28F443640D4CEA2D3F14A5640EBB8490DD0443640FDD604F0F34A5640DF1128BB0F453640A24C1A1DF94A56403866188A4C4536409B18F727014B56401328E0238445364097457CC10B4B5640D4508065B445364018636281184B56407BB13A74DB4536407E693BEA264B56403670D0CFF7453640343BE10E374B56402A58070C104636405459A9A63A4B56400C80311015463640C281CAA3564B5640BDF1E43E3946364078E51B4B594B564073FD897A3C463640F5CA020C714B5640D1EB67AB57463640B85E8172764B564048DC8A105D463640A6DC2B7D834B56407ECAB339684636407F5FBFA6894B564018D4AA856C463640EFA1E0A8974B5640430C1D19744636402951FB739D4B5640218571657646364062D98771B94B56406B7A6A7E7D4636409400739CC24B5640490E28C37D463640358E8546CD4B5640AF9751AF7B463640752D47DEDB4B564073A90BD7784636405D4B742FE24B5640717C28A0764636403B00E98FF64B5640BE24644A6C463640E5FE8A45FB4B56405FEEBE57694636408B333996094C56408A85C9AA5E46364028093C94154C56408EFB5772594636402DD4F420204C5640FED3A9655B463640F01C7BFF234C564029EF54505F46364060D541A42D4C5640C6ACEE726B46364038A83343404C5640D1063783864636407C91432C444C564062D10EC18B463640F1E3EC4F554C5640B6CDEED2A046364056D33CEC574C564026C237D8A34636406B23E593674C56403BC78CD6B4463640CB6FC0B6784C5640ECFC01D2BF46364068083B0B8A4C5640D239E01DBC4636401329E60B8E4C5640D902888AB9463640EE58623E9D4C5640D0F651A9A9463640D6996367AB4C56403533C3788E463640A35FA501B84C56406FA6C0F868463640B115469BB94C5640CDE9CF2D63463640FEDD7DE9BA4C564001298A6D60463640D2EE2B65BF4C56406C47E19954463640060C5C59C34C56408751C0984B463640FECDFD33CD4C564065D752343146364061FA2B1DD14C56404EEE67002546364042FC43BFDC4C5640A8D0CEB7F8453640379138FFE54C56402FDB0C35C4453640CFED0982EC4C5640AC0CBB7C89453640D205AA07F04C5640366688D04A453640B3F8C816F04C564075054D4641453640ADC20E1FF44C564009C0211D39453640A1783163FA4C564095CBB6B83F453640EE5D946A0A4D5640BF8101AA43453640DEA158541A4D564016D8C7053B45364054CFF083294D5640D3890D21264536401EFEF663374D56408C085FC905453640C097EA6B434D56409B4FEB3CDB4436401B3E6F254D4D5640349F491EA84436407C38D930544D56407C6A63646E443640A5A7DA48584D5640FDB920473044364030552D45594D5640C7249529F0433640C5EA1E1C574D564007158482B0433640F0E231EB554D56409B1855719C4336406FB56626504D56408BED70085B433640B04D9011474D56409DC508F21F4336408DDF41EC434D56409FE8DCA30F4336403A7F09153B4D5640A3D8D3B8E84236404163826B394D564059E12B6DE3423640223BE9713A4D56404CCC6847CE42364076D4BABE3B4D56404370292C794236402F6D104D3B4D5640142EC2A35F4236409B072C9F384D5640DB07B14D20423640453BA8E7324D5640C2BF6A46E441364073FFC25E2A4D5640EB9A7DDCAD413640F33073581F4D564031543B277F413640FF882E41124D564052AC26F259413640D197BE99034D5640B5C64AAB3F4136402DC44DF2F34C5640910C2A55314136408E00DDE4E34C5640E7F9CE7C2F41364000B7580FD44C5640389060343A413640F924870DC54C564091C16F1251413640C4DB0B73B74C5640D7B0043673413640154ABBC5AB4C5640D6EA434F9F4136401D207678A24C5640A98A56ACD341364030D41C0D9C4C56406499C0F30C423640F5D774EB904C564041E0C04F29423640F15AF7E28B4C5640153E3F9C39423640E251EE19814C5640FFDB62A963423640323E840C7D4C5640CECF25AB764236405F7A990B704C56403494CECA964236405DC25946634C56408ABF87BDBD423640</span>
@@ -627,8 +630,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2010-2024 pgRouting Developers.<br/>
-      Senast uppdaterad sep. 24, 2025.<br/>
+        &copy; Copyright 2010-2025 pgRouting Developers.<br/>
+      Senast uppdaterad okt. 07, 2025.<br/>
     </p>
   </div>
 </footer>

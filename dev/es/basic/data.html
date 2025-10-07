@@ -5,18 +5,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Preparar Datos &#8212; Workshop - FOSS4G Belém - Routing with pgRouting</title>
+    <title>1. Preparar Datos &#8212; Workshop - FOSS4G Auckland - Routing with pgRouting</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=fa3951f0" />
-    <script src="../_static/documentation_options.js?v=3b0b8565"></script>
+    <script src="../_static/documentation_options.js?v=82a836dc"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="2. Enrutamiento peatonal" href="pedestrian.html" />
+    <link rel="next" title="2. Graphs" href="graphs.html" />
     <link rel="prev" title="3. Software and Data Overview" href="../general-intro/overview.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -40,8 +43,8 @@
         </button>
 
         <a class="brand" href="../index.html">
-          Workshop FOSS4G Belém</a>
-        <span class="navbar-text pull-left"><b>3.0</b></span>
+          Workshop FOSS4G Auckland</a>
+        <span class="navbar-text pull-left"><b>3.1</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -65,11 +68,11 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Preparar Datos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pedestrian.html">2. Enrutamiento peatonal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vehicle.html">3. Enrutamiento de vehículos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_views.html">4. Vistas de grafos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphs.html">2. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pedestrian.html">3. Enrutamiento peatonal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vehicle.html">4. Enrutamiento de vehículos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sql_function.html">5. Función SQL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plpgsql_function.html">6. Función pl/pgsql</a></li>
+<li class="toctree-l1"><a class="reference internal" href="withPoints.html">6. Routing using points</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../un_sdg/data.html">1. Datos para los Objetivos de Desarrollo Sostenible</a></li>
@@ -141,7 +144,7 @@
     </a>
   </li>
   <li>
-    <a href="pedestrian.html" title="Next Chapter: 2. Enrutamiento peatonal"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">2. Enrutamien... &raquo;</span>
+    <a href="graphs.html" title="Next Chapter: 2. Graphs"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">2. Graphs &raquo;</span>
     </a>
   </li>
               
@@ -256,13 +259,15 @@ psql<span class="w"> </span>city_routing<span class="w"> </span><span class="s">
 </section>
 <section id="get-the-workshop-data">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">1.2. </span>Obtenga los Datos del Taller</a><a class="headerlink" href="#get-the-workshop-data" title="Link to this heading">¶</a></h2>
-<p>El taller pgRouting hará uso de los datos de OpenStreetMap, que ya están disponibles en <a class="reference external" href="https://live.osgeo.org">OSGeoLive</a>. Este taller utilizará los datos de la ciudad de <code class="docutils literal notranslate"><span class="pre">Belém</span></code> y es una instantánea de Sep 2024.</p>
+<p>The pgRouting workshop will make use of OpenStreetMap data, which is already
+available on <a class="reference external" href="https://live.osgeo.org">OSGeoLive</a>. This workshop will use the
+<code class="docutils literal notranslate"><span class="pre">Auckland</span></code> city data and is a snapshot of Jun 2025.</p>
 <section id="getting-the-data">
 <h3><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">1.2.1. </span>Obtención de los datos</a><a class="headerlink" href="#getting-the-data" title="Link to this heading">¶</a></h3>
 <section id="option-1-when-using-osgeolive">
 <h4><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">1.2.1.1. </span>Opción 1) Cuando esté usando OSGeoLive</a><a class="headerlink" href="#option-1-when-using-osgeolive" title="Link to this heading">¶</a></h4>
-<p>OSGeoLive viene con datos de OSM de la ciudad de Belém.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CITY</span><span class="o">=</span><span class="s2">&quot;BELEM_BR&quot;</span>
+<p>OSGeoLive comes with OSM data from the city of Auckland.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CITY</span><span class="o">=</span><span class="s2">&quot;auckland_NZ&quot;</span>
 bzcat<span class="w"> </span>~/data/osm/<span class="nv">$CITY</span>.osm.bz2<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$CITY</span>.osm
 </pre></div>
 </div>
@@ -270,17 +275,19 @@ bzcat<span class="w"> </span>~/data/osm/<span class="nv">$CITY</span>.osm.bz2<sp
 <section id="option-2-download-data-form-osgeolive-website">
 <h4><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">1.2.1.2. </span>Opción 2) Descargar datos de sitio web de OSGeoLive</a><a class="headerlink" href="#option-2-download-data-form-osgeolive-website" title="Link to this heading">¶</a></h4>
 <p>Los mismos datos exactos se pueden encontrar en la página de descarga de OSGeoLive.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CITY</span><span class="o">=</span><span class="s2">&quot;BELEM_BR&quot;</span>
-wget<span class="w"> </span>-N<span class="w"> </span>--progress<span class="o">=</span>dot:mega<span class="w"> </span><span class="s2">&quot;https://download.osgeo.org/livedvd/17/osm/BELEM_BR.osm.bz2&quot;</span>
-bunzip2<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;BELEM_BR.osm.bz2&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CITY</span><span class="o">=</span><span class="s2">&quot;auckland_NZ&quot;</span>
+wget<span class="w"> </span>-N<span class="w"> </span>--progress<span class="o">=</span>dot:mega<span class="w"> </span><span class="s2">&quot;https://download.osgeo.org/livedvd/17/osm/auckland_NZ.osm.bz2&quot;</span>
+bunzip2<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;auckland_NZ.osm.bz2&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="option-3-download-using-overpass-xapi">
 <h4><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">1.2.1.3. </span>Opción 3) Descargar usando Overpass XAPI</a><a class="headerlink" href="#option-3-download-using-overpass-xapi" title="Link to this heading">¶</a></h4>
-<p>A continuación se descargan los datos de OSM más recientes sobre el uso de la misma área. El uso de estos datos en el taller puede generar variaciones en los resultados, debido a los cambios desde Septiembre de 2024.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CITY</span><span class="o">=</span><span class="s2">&quot;BELEM_BR&quot;</span>
-<span class="nv">BBOX</span><span class="o">=</span><span class="s2">&quot;-48.52,-1.49,-48.4,-1.36&quot;</span>
+<p>The following downloads the latest OSM data on using the same area.
+Using this data in the workshop can generate variations in the results,
+due to changes since Jun 2025.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CITY</span><span class="o">=</span><span class="s2">&quot;auckland_NZ&quot;</span>
+<span class="nv">BBOX</span><span class="o">=</span><span class="s2">&quot;-36.8798,174.8,-36.8344,174.72&quot;</span>
 wget<span class="w"> </span>--progress<span class="o">=</span>dot:mega<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CITY</span><span class="s2">.osm&quot;</span><span class="w"> </span><span class="s2">&quot;http://www.overpass-api.de/api/xapi?*[bbox=\$\{BBOX\}][@meta]&quot;</span>
 </pre></div>
 </div>
@@ -291,18 +298,18 @@ wget<span class="w"> </span>--progress<span class="o">=</span>dot:mega<span clas
 </section>
 <section id="upload-data-to-the-database">
 <h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">1.3. </span>Cargar datos en la base de datos</a><a class="headerlink" href="#upload-data-to-the-database" title="Link to this heading">¶</a></h2>
-<p>El siguiente paso es ejecutar el convertidor <a href="#id1"><span class="problematic" id="id2">``</span></a>osm2pgrouting””, que es una herramienta de línea de comandos que inserta los datos en la base de datos, «listo» para ser utilizado con pgRouting. Puede encontrar información adicional sobre <a href="#id3"><span class="problematic" id="id4">``</span></a>osm2pgrouting <a class="reference internal" href="../appendix/appendix-3.html"><span class="doc">Apéndice: Herramienta de Importación osm2pgrouting</span></a></p>
+<p>El siguiente paso es ejecutar el convertidor <code class="docutils literal notranslate"><span class="pre">osm2pgrouting</span></code> que es una herramienta de línea de comandos que inserta los datos en la base de datos, «listo» para ser utilizado con pgRouting. Puede encontrar información adicional sobre <code class="docutils literal notranslate"><span class="pre">osm2pgrouting</span></code> <a class="reference internal" href="../appendix/appendix-3.html"><span class="doc">Apéndice: Herramienta de Importación osm2pgrouting</span></a></p>
 <p>Para este paso:</p>
 <ul class="simple">
 <li><p>se utiliza el archivo de configuración predeterminado de osm2pgrouting <code class="docutils literal notranslate"><span class="pre">mapconfig.xml</span></code></p></li>
-<li><p>y los datos de <code class="docutils literal notranslate"><span class="pre">~/Desktop/workshop/BELEM_BR.osm</span></code></p></li>
+<li><p>and the <code class="docutils literal notranslate"><span class="pre">~/Desktop/workshop/auckland_NZ.osm</span></code> data</p></li>
 <li><p>con la base de datos <code class="docutils literal notranslate"><span class="pre">city_routing</span></code></p></li>
 </ul>
 <p>Desde una ventana de terminal <code class="code docutils literal notranslate"><span class="pre">ctrl-alt-t</span></code>.</p>
 <section id="run-the-osm2pgrouting-converter">
 <h3><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">1.3.1. </span>Ejecute el convertidor osm2pgrouting</a><a class="headerlink" href="#run-the-osm2pgrouting-converter" title="Link to this heading">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/usr/bin/osm2pgrouting<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-f<span class="w"> </span><span class="s2">&quot;BELEM_BR.osm&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-f<span class="w"> </span><span class="s2">&quot;auckland_NZ.osm&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-c<span class="w"> </span><span class="s2">&quot;/usr/share/osm2pgrouting/mapconfig.xml&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span>city_routing<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-U<span class="w"> </span>user<span class="w"> </span><span class="se">\</span>
@@ -315,12 +322,12 @@ wget<span class="w"> </span>--progress<span class="o">=</span>dot:mega<span clas
 <p>Dependiendo de la versión osm2pgrouting <cite>-W password</cite> es necesario</p>
 </div>
 <p class="rubric">Salida:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Execution</span> <span class="n">starts</span> <span class="n">at</span><span class="p">:</span> <span class="n">Wed</span> <span class="n">Sep</span> <span class="mi">24</span> <span class="mi">16</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">13</span> <span class="mi">2025</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Execution</span> <span class="n">starts</span> <span class="n">at</span><span class="p">:</span> <span class="n">Tue</span> <span class="n">Oct</span>  <span class="mi">7</span> <span class="mi">15</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">07</span> <span class="mi">2025</span>
 
 <span class="o">***************************************************</span>
            <span class="n">COMMAND</span> <span class="n">LINE</span> <span class="n">CONFIGURATION</span>             <span class="o">*</span>
 <span class="o">***************************************************</span>
-<span class="n">Filename</span> <span class="o">=</span> <span class="n">BELEM_BR</span><span class="o">.</span><span class="n">osm</span>
+<span class="n">Filename</span> <span class="o">=</span> <span class="n">auckland_NZ</span><span class="o">.</span><span class="n">osm</span>
 <span class="n">Configuration</span> <span class="n">file</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">osm2pgrouting</span><span class="o">/</span><span class="n">mapconfig</span><span class="o">.</span><span class="n">xml</span>
 <span class="n">host</span> <span class="o">=</span> <span class="n">localhost</span>
 <span class="n">port</span> <span class="o">=</span> <span class="mi">5432</span>
@@ -359,7 +366,7 @@ wget<span class="w"> </span>--progress<span class="o">=</span>dot:mega<span clas
   <span class="o">-</span> <span class="n">Done</span> 
 <span class="n">Counting</span> <span class="n">lines</span> <span class="o">...</span>
   <span class="o">-</span> <span class="n">Done</span> 
-<span class="n">Opening</span> <span class="n">data</span> <span class="n">file</span><span class="p">:</span> <span class="n">BELEM_BR</span><span class="o">.</span><span class="n">osm</span>	<span class="n">total</span> <span class="n">lines</span><span class="p">:</span> <span class="mi">1706680</span>
+<span class="n">Opening</span> <span class="n">data</span> <span class="n">file</span><span class="p">:</span> <span class="n">auckland_NZ</span><span class="o">.</span><span class="n">osm</span>	<span class="n">total</span> <span class="n">lines</span><span class="p">:</span> <span class="mi">1020947</span>
     <span class="n">Parsing</span> <span class="n">data</span>
 
 
@@ -371,36 +378,30 @@ wget<span class="w"> </span>--progress<span class="o">=</span>dot:mega<span clas
 <span class="n">Adding</span> <span class="n">auxiliary</span> <span class="n">tables</span> <span class="n">to</span> <span class="n">database</span><span class="o">...</span>
 
 <span class="n">Export</span> <span class="n">Ways</span> <span class="o">...</span>
-    <span class="n">Processing</span> <span class="mi">119686</span> <span class="n">ways</span><span class="p">:</span>
+    <span class="n">Processing</span> <span class="mi">41095</span> <span class="n">ways</span><span class="p">:</span>
 
-<span class="p">[</span><span class="o">********|</span>                                          <span class="p">]</span> <span class="p">(</span><span class="mi">16</span><span class="o">%</span><span class="p">)</span> <span class="n">Total</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">20000</span>	 <span class="n">Vertices</span> <span class="n">inserted</span><span class="p">:</span> <span class="mi">21229</span>	<span class="n">Split</span> <span class="n">ways</span> <span class="n">inserted</span> <span class="mi">27927</span>
+<span class="p">[</span><span class="o">************************|</span>                          <span class="p">]</span> <span class="p">(</span><span class="mi">48</span><span class="o">%</span><span class="p">)</span> <span class="n">Total</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">20000</span>	 <span class="n">Vertices</span> <span class="n">inserted</span><span class="p">:</span> <span class="mi">14868</span>	<span class="n">Split</span> <span class="n">ways</span> <span class="n">inserted</span> <span class="mi">15536</span>
 
-<span class="p">[</span><span class="o">****************|</span>                                  <span class="p">]</span> <span class="p">(</span><span class="mi">33</span><span class="o">%</span><span class="p">)</span> <span class="n">Total</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">40000</span>	 <span class="n">Vertices</span> <span class="n">inserted</span><span class="p">:</span> <span class="mi">1968</span>	<span class="n">Split</span> <span class="n">ways</span> <span class="n">inserted</span> <span class="mi">3014</span>
+<span class="p">[</span><span class="o">************************************************|</span>  <span class="p">]</span> <span class="p">(</span><span class="mi">97</span><span class="o">%</span><span class="p">)</span> <span class="n">Total</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">40000</span>	 <span class="n">Vertices</span> <span class="n">inserted</span><span class="p">:</span> <span class="mi">10228</span>	<span class="n">Split</span> <span class="n">ways</span> <span class="n">inserted</span> <span class="mi">17643</span>
 
-<span class="p">[</span><span class="o">*************************|</span>                         <span class="p">]</span> <span class="p">(</span><span class="mi">50</span><span class="o">%</span><span class="p">)</span> <span class="n">Total</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">60000</span>	 <span class="n">Vertices</span> <span class="n">inserted</span><span class="p">:</span> <span class="mi">390</span>	<span class="n">Split</span> <span class="n">ways</span> <span class="n">inserted</span> <span class="mi">665</span>
-
-<span class="p">[</span><span class="o">*********************************|</span>                 <span class="p">]</span> <span class="p">(</span><span class="mi">66</span><span class="o">%</span><span class="p">)</span> <span class="n">Total</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">80000</span>	 <span class="n">Vertices</span> <span class="n">inserted</span><span class="p">:</span> <span class="mi">145</span>	<span class="n">Split</span> <span class="n">ways</span> <span class="n">inserted</span> <span class="mi">230</span>
-
-<span class="p">[</span><span class="o">*****************************************|</span>         <span class="p">]</span> <span class="p">(</span><span class="mi">83</span><span class="o">%</span><span class="p">)</span> <span class="n">Total</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">100000</span>	 <span class="n">Vertices</span> <span class="n">inserted</span><span class="p">:</span> <span class="mi">437</span>	<span class="n">Split</span> <span class="n">ways</span> <span class="n">inserted</span> <span class="mi">605</span>
-
-<span class="p">[</span><span class="o">**************************************************|</span><span class="p">]</span> <span class="p">(</span><span class="mi">100</span><span class="o">%</span><span class="p">)</span> <span class="n">Total</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">119686</span>	 <span class="n">Vertices</span> <span class="n">inserted</span><span class="p">:</span> <span class="mi">61</span>	<span class="n">Split</span> <span class="n">ways</span> <span class="n">inserted</span> <span class="mi">146</span>
+<span class="p">[</span><span class="o">**************************************************|</span><span class="p">]</span> <span class="p">(</span><span class="mi">100</span><span class="o">%</span><span class="p">)</span> <span class="n">Total</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">41095</span>	 <span class="n">Vertices</span> <span class="n">inserted</span><span class="p">:</span> <span class="mi">596</span>	<span class="n">Split</span> <span class="n">ways</span> <span class="n">inserted</span> <span class="mi">1099</span>
 
 <span class="n">Creating</span> <span class="n">indexes</span> <span class="o">...</span>
 
 <span class="n">Processing</span> <span class="n">Points</span> <span class="n">of</span> <span class="n">Interest</span> <span class="o">...</span>
 <span class="c1">#########################</span>
-<span class="n">size</span> <span class="n">of</span> <span class="n">streets</span><span class="p">:</span> <span class="mi">119686</span>
-<span class="n">Execution</span> <span class="n">started</span> <span class="n">at</span><span class="p">:</span> <span class="n">Wed</span> <span class="n">Sep</span> <span class="mi">24</span> <span class="mi">16</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">13</span> <span class="mi">2025</span>
-<span class="n">Execution</span> <span class="n">ended</span> <span class="n">at</span><span class="p">:</span>   <span class="n">Wed</span> <span class="n">Sep</span> <span class="mi">24</span> <span class="mi">16</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">25</span> <span class="mi">2025</span>
-<span class="n">Elapsed</span> <span class="n">time</span><span class="p">:</span> <span class="mf">11.995</span> <span class="n">Seconds</span><span class="o">.</span>
-<span class="n">User</span> <span class="n">CPU</span> <span class="n">time</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="mf">4.02234</span> <span class="n">seconds</span>
+<span class="n">size</span> <span class="n">of</span> <span class="n">streets</span><span class="p">:</span> <span class="mi">41095</span>
+<span class="n">Execution</span> <span class="n">started</span> <span class="n">at</span><span class="p">:</span> <span class="n">Tue</span> <span class="n">Oct</span>  <span class="mi">7</span> <span class="mi">15</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">07</span> <span class="mi">2025</span>
+<span class="n">Execution</span> <span class="n">ended</span> <span class="n">at</span><span class="p">:</span>   <span class="n">Tue</span> <span class="n">Oct</span>  <span class="mi">7</span> <span class="mi">15</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">22</span> <span class="mi">2025</span>
+<span class="n">Elapsed</span> <span class="n">time</span><span class="p">:</span> <span class="mf">14.494</span> <span class="n">Seconds</span><span class="o">.</span>
+<span class="n">User</span> <span class="n">CPU</span> <span class="n">time</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="mf">1.96202</span> <span class="n">seconds</span>
 <span class="c1">#########################</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;DELETE FROM ways WHERE length_m IS NULL;&#39;</span> <span class="o">-</span><span class="n">d</span> <span class="n">city_routing</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="mi">1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </section>
@@ -464,8 +465,8 @@ CREATE<span class="w"> </span>ROLE<span class="w"> </span><span class="s2">&quot
       
     </p>
     <p>
-        &copy; Copyright 2010-2024 pgRouting Developers.<br/>
-      Actualizado por última vez en sept 24, 2025.<br/>
+        &copy; Copyright 2010-2025 pgRouting Developers.<br/>
+      Actualizado por última vez en oct 07, 2025.<br/>
     </p>
   </div>
 </footer>

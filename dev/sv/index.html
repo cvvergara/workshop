@@ -5,14 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgRouting Workshop &#8212; Workshop - FOSS4G Belém - Routing with pgRouting</title>
+    <title>pgRouting Workshop &#8212; Workshop - FOSS4G Auckland - Routing with pgRouting</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=fa3951f0" />
-    <script src="_static/documentation_options.js?v=0fb5d3f4"></script>
+    <script src="_static/documentation_options.js?v=b616604d"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/translations.js?v=55d7b627"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="search" title="Sök" href="search.html" />
@@ -39,8 +42,8 @@
         </button>
 
         <a class="brand" href="#">
-          Workshop FOSS4G Belém</a>
-        <span class="navbar-text pull-left"><b>3.0</b></span>
+          Workshop FOSS4G Auckland</a>
+        <span class="navbar-text pull-left"><b>3.1</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -64,11 +67,11 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basic/data.html">1. Förbereda data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic/pedestrian.html">2. Routning av fotgängare</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic/vehicle.html">3. Routning av fordon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic/graph_views.html">4. Diagramvyer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic/graphs.html">2. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic/pedestrian.html">3. Routning av fotgängare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic/vehicle.html">4. Routning av fordon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basic/sql_function.html">5. SQL-funktion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic/plpgsql_function.html">6. pl/pgsql-funktion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic/withPoints.html">6. Routing using points</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="un_sdg/data.html">1. Data för målen för hållbar utveckling</a></li>
@@ -194,34 +197,33 @@
 <li class="toctree-l2"><a class="reference internal" href="basic/data.html#chapter-appendix">1.4. Kapitel: Bilaga</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basic/pedestrian.html">2. Routning av fotgängare</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic/pedestrian.html#pgr-dijkstra">2.1. pgr_dijkstra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/pedestrian.html#pgr-dijkstracost">2.2. pgr_dijkstraKostnad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic/graphs.html">2. Graphs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic/graphs.html#the-graph-requirements">2.1. Kraven för grafen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/graphs.html#configuration-from-osm2pgrouting">2.2. Configuration from osm2pgrouting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/graphs.html#pgr-extractvertices">2.3. pgr_extractVertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/graphs.html#pgr-connectedcomponents">2.4. pgr_connectedComponents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/graphs.html#preparing-the-graphs">2.5. Förberedelse av graferna</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/graphs.html#pgr-dijkstracostmatrix">2.6. pgr_dijkstraCostMatrix</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basic/vehicle.html">3. Routning av fordon</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic/vehicle.html#routing-for-vehicles">3.1. Routing för fordon</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/vehicle.html#cost-manipulations">3.2. Kostnadsmanipulationer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic/pedestrian.html">3. Routning av fotgängare</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic/pedestrian.html#pgr-dijkstra">3.1. pgr_dijkstra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/pedestrian.html#pgr-dijkstracost">3.2. pgr_dijkstraKostnad</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basic/graph_views.html">4. Diagramvyer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic/graph_views.html#the-graph-requirements">4.1. Kraven för grafen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/graph_views.html#pgr-extractvertices">4.2. pgr_extractVertices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/graph_views.html#pgr-connectedcomponents">4.3. pgr_connectedComponents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/graph_views.html#preparing-the-graphs">4.4. Förberedelse av graferna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic/vehicle.html">4. Routning av fordon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic/vehicle.html#routing-for-vehicles">4.1. Routing för fordon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/vehicle.html#cost-manipulations">4.2. Kostnadsmanipulationer</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="basic/sql_function.html">5. SQL-funktion</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic/sql_function.html#the-application-requirements">5.1. Kraven för ansökan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/sql_function.html#the-function-requirements">5.1. The function requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic/sql_function.html#additional-information-handling">5.2. Hantering av ytterligare information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basic/sql_function.html#geometry-handling">5.3. Geometrihantering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/sql_function.html#creating-the-function">5.4. Skapa funktionen</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="basic/plpgsql_function.html">6. pl/pgsql-funktion</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic/plpgsql_function.html#requirements-for-routing-from-a-to-b">6.1. Krav för routing från A till B</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/plpgsql_function.html#the-vertices-table">6.2. Tabellen Vertices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/plpgsql_function.html#wrk-fromatob-function">6.3. wrk_fromAtoB funktion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic/withPoints.html">6. Routing using points</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic/withPoints.html#requirements-for-routing-lat-lon-points">6.1. Requirements for routing lat,lon points</a></li>
 </ul>
 </li>
 </ul>
@@ -350,8 +352,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2010-2024 pgRouting Developers.<br/>
-      Senast uppdaterad sep. 24, 2025.<br/>
+        &copy; Copyright 2010-2025 pgRouting Developers.<br/>
+      Senast uppdaterad okt. 07, 2025.<br/>
     </p>
   </div>
 </footer>
