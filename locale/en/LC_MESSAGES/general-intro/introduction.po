@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Belém 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-14 15:20+0000\n"
+"POT-Creation-Date: 2026-06-17 19:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -31,7 +31,7 @@ msgstr ""
 #: ../../build/docs/general-intro/introduction.rst:15
 msgid ""
 "Please see the :doc:`contents <../index>` for full content of FOSS4G "
-"Auckland workshop. This workshop covers two levels for using pgRouting: "
+"Hiroshima workshop. This workshop covers two levels for using pgRouting: "
 "`Basic`_ and `Advanced`_."
 msgstr ""
 
@@ -42,10 +42,10 @@ msgstr ""
 #: ../../build/docs/general-intro/introduction.rst:22
 msgid ""
 "This level will demonstrate the routing functionality by providing examples "
-"using |osm-web| road network data from Auckland. Covering topics from how to "
-"prepare the data, making routing queries, understanding the results, up to "
-"writing a custom 'plpgsql' function that can be integrated with other FOSS "
-"tools."
+"using |osm-web| road network data from Hiroshima. Covering topics from how "
+"to prepare the data, making routing queries, understanding the results, up "
+"to writing a custom 'plpgsql' function that can be integrated with other "
+"FOSS tools."
 msgstr ""
 
 #: ../../build/docs/general-intro/introduction.rst:28
@@ -124,7 +124,7 @@ msgid "Paragon Corporation"
 msgstr ""
 
 #: ../../build/docs/general-intro/introduction.rst:70
-msgid "Developers & presenters of FOSS4G Auckland workshop:"
+msgid "Developers & presenters of FOSS4G Hiroshima workshop:"
 msgstr ""
 
 #: ../../build/docs/general-intro/introduction.rst:71

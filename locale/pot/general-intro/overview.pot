@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2010-2025 pgRouting Developers
-# This file is distributed under the same license as the Workshop FOSS4G Auckland package.
+# This file is distributed under the same license as the Workshop FOSS4G Hiroshima package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Workshop FOSS4G Auckland 3.1\n"
+"Project-Id-Version: Workshop FOSS4G Hiroshima 3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-14 15:20+0000\n"
+"POT-Creation-Date: 2026-06-17 19:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,6 +130,14 @@ msgstr ""
 
 #: ../../build/docs/general-intro/overview.rst:87
 msgid "OpenStreetMap Overview"
+msgstr ""
+
+#: ../../build/docs/general-intro/overview.rst:93
+msgid "OpenStreetMap (OSM) is dedicated to creating and providing geographic data, such as street maps, worldwide, for free. Most maps considered 'free' actually have legal or technical restrictions on their use. These restrictions hold back anyone from using them in creative, productive or unexpected ways, and make every map a silo of data and effort."
+msgstr ""
+
+#: ../../build/docs/general-intro/overview.rst:99
+msgid "-- `Source: OSM Press Wiki <https://wiki.openstreetmap.org/wiki/Press>`_"
 msgstr ""
 
 #: ../../build/docs/general-intro/overview.rst:101

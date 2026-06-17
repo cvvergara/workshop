@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Belém 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-14 15:20+0000\n"
+"POT-Creation-Date: 2026-06-17 19:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -89,7 +89,7 @@ msgstr ""
 msgid ""
 "The pgRouting workshop will make use of OpenStreetMap data, which is already "
 "available on `OSGeoLive <https://live.osgeo.org>`_. This workshop will use "
-"the ``Auckland`` city data and is a snapshot of Jun 2025."
+"the ``Hiroshima`` city data and is a snapshot of Jun 2026."
 msgstr ""
 
 #: ../../build/docs/basic/data.rst:63
@@ -101,7 +101,7 @@ msgid "Option 1) When using OSGeoLive"
 msgstr ""
 
 #: ../../build/docs/basic/data.rst:68
-msgid "OSGeoLive comes with OSM data from the city of Auckland."
+msgid "OSGeoLive comes with OSM data from the city of Hiroshima."
 msgstr ""
 
 #: ../../build/docs/basic/data.rst:76
@@ -120,7 +120,7 @@ msgstr ""
 msgid ""
 "The following downloads the latest OSM data on using the same area. Using "
 "this data in the workshop can generate variations in the results, due to "
-"changes since Jun 2025."
+"changes since Jun 2026."
 msgstr ""
 
 #: ../../build/docs/basic/data.rst:98
@@ -156,7 +156,7 @@ msgid "the osm2pgrouting default ``mapconfig.xml`` configuration file is used"
 msgstr ""
 
 #: ../../build/docs/basic/data.rst:115
-msgid "and the ``~/Desktop/workshop/AUCKLAND_NZ.osm`` data"
+msgid "and the ``~/Desktop/workshop/HIROSHIMA_JP.osm`` data"
 msgstr ""
 
 #: ../../build/docs/basic/data.rst:116

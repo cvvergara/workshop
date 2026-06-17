@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Workshop FOSS4G Belém 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-14 15:26+0000\n"
+"POT-Creation-Date: 2026-06-17 19:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -71,7 +71,7 @@ msgid "Particular vehicle:"
 msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:41
-msgid "Circulate on the whole Auckland area."
+msgid "Circulate on the whole Hiroshima area."
 msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:43 ../../build/docs/basic/graphs.rst:52
@@ -91,7 +91,7 @@ msgid "Circulate on a smaller area:"
 msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:51
-msgid "Bounding box: ``(174.775,-36.855,174.76,-36.84)``"
+msgid "Bounding box: ``(132.439,34.38, 132.46,34.40)``"
 msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:54
@@ -104,7 +104,7 @@ msgid "Pedestrians:"
 msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:58
-msgid "Walk on the whole Auckland area."
+msgid "Walk on the whole Hiroshima area."
 msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:59
@@ -171,7 +171,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:116
-msgid "The configuration types in the Auckland data"
+msgid "The configuration types in the Hiroshima data"
 msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:126
@@ -539,8 +539,8 @@ msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:507
 msgid ""
-"The taxi can only circulate inside this Bounding Box: "
-"``(174.775,-36.855,174.76,-36.84)``"
+"The taxi can only circulate inside this Bounding Box: ``(132.439,34.38, "
+"132.46,34.40)``"
 msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:508
@@ -566,8 +566,8 @@ msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:519
 msgid ""
-"Can only circulate inside the bounding box: "
-"``(174.775,-36.855,174.76,-36.84)``. (line **10**)"
+"Can only circulate inside the bounding box: ``(132.439,34.38, "
+"132.46,34.40)``. (line **10**)"
 msgstr ""
 
 #: ../../build/docs/basic/graphs.rst:533
