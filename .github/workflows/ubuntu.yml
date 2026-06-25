@@ -49,21 +49,21 @@ jobs:
         run: |
           wget -q https://github.com/pgRouting/osm2pgrouting/archive/refs/tags/v3.0.0.tar.gz
           tar xzf v3.0.0.tar.gz
-          python3 -c "
+          python3 << 'EOF'
 import re
 path = 'osm2pgrouting-3.0.0/CMakeLists.txt'
 with open(path) as f:
     c = f.read()
 c = c.replace(
-    'if (PQXX_VERSION VERSION_GREATER_EQUAL \"7.0.0\")',
-    'if (PQXX_VERSION VERSION_GREATER_EQUAL \"8.0.0\")')
+    'if (PQXX_VERSION VERSION_GREATER_EQUAL "7.0.0")',
+    'if (PQXX_VERSION VERSION_GREATER_EQUAL "8.0.0")')
 c = c.replace(
     '  set(CMAKE_CXX_STANDARD 17)',
-    '  set(CMAKE_CXX_STANDARD 20)\nelseif (PQXX_VERSION VERSION_GREATER_EQUAL \"7.0.0\")\n  set(CMAKE_CXX_STANDARD 17)',
+    '  set(CMAKE_CXX_STANDARD 20)\nelseif (PQXX_VERSION VERSION_GREATER_EQUAL "7.0.0")\n  set(CMAKE_CXX_STANDARD 17)',
     1)
 with open(path, 'w') as f:
     f.write(c)
-"
+EOF
           cmake -S osm2pgrouting-3.0.0 -B osm2pgrouting-3.0.0/build \
             -DCMAKE_BUILD_TYPE=Release
           sudo cmake --build osm2pgrouting-3.0.0/build --target install
