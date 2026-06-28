@@ -31,11 +31,15 @@ SELECT * FROM vertices Limit 10;
 \o fill_columns_1.txt
 SELECT count(*) FROM vertices WHERE geom IS NULL;
 \o fill_columns_2.txt
-with get_data as (select source, source_osm, ST_startPoint(geom) as pt from ways
-union all
-select target, target_osm, ST_endPoint(geom) from ways
-) update vertices set
-(geom, osm_id, x, y) = (ST_startPoint(pt), source_osm, st_x(pt), st_y(pt)) FROM get_data WHERE source = id;
+WITH
+get_data as (
+  SELECT source, source_osm, ST_startPoint(geom) as pt from ways
+  UNION ALL
+  SELECT target, target_osm, ST_endPoint(geom) from ways
+)
+UPDATE vertices SET
+(geom, osm_id, x, y) = (ST_startPoint(pt), source_osm, st_x(pt), st_y(pt))
+FROM get_data WHERE source = id;
 \o fill_columns_3.txt
 SELECT count(*) FROM vertices WHERE geom IS NULL;
 

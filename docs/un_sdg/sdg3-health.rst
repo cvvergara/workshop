@@ -51,8 +51,8 @@ time is dependant on that hospital.
 * Store the sum of population of nearest buildings in roads table
 * Find the sum of population on all the roads in the roads served
 
-.. TODO
-   Get the Mumbai data goes here
+Make sure you have the ``mumbai`` database ready. Follow the instructions in :doc:`data`
+to create and populate it with the required data.
 
 Simulation of census data
 ================================================================================
@@ -124,7 +124,7 @@ the population. Follow the steps given below to complete this task.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: population_function.txt
-    :end-before: skip1.txt
+    :end-before: show_population_100.txt
     :language: sql
     :force:
 
@@ -156,29 +156,6 @@ Testing the query with 300 square meters buildings
    of the apartments.
 
    Using census data can achieve more accurate estimation.
-
-2. Add a column for storing the population in the ``buildings_ways``
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after:  add_population_col.txt
-    :end-before: get_population.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/add_population_col.txt
-
-3. Use the ``population`` function to store the population in the new column created
-in the ``building_ways``.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: get_population.txt
-    :end-before: only_connected1.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/get_population.txt
 
 PostreSQL basics
 ================================================================================
@@ -295,106 +272,27 @@ be used to get an estimate of the population living in the building.
 Exercise 6: Use MATERIALIZED VIEW to create the buildings data
 ...............................................................................
 
-.. TODO
-   paragraph about the materialized view
+A materialized view stores the query result physically, unlike a regular view which
+re-evaluates each time. This improves performance when accessing the data multiple times.
 
-.. TODO
-   paragraph describing the function
+The query converts ``LINESTRING`` geometries to ``Polygon``, calculates the area using
+``ST_Area``, and estimates population using the ``population`` function. After creating
+the view, routing-related columns are removed from ``buildings_ways`` since they are
+not needed for building data.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
    :start-after: clean_buildings.txt
-   :end-before: exercise_6.txt
+   :end-before: skip1.txt
    :language: sql
+   :force:
 
 .. collapse:: Command output
 
   .. literalinclude:: ../scripts/un_sdg/sdg3/clean_buildings.txt
 
 
-Exercise 7: Add a spatial column to the table
-...............................................................................
-
-Add a spatial column named ``poly_geom`` to the table ``buildings_ways`` to store
-the Polygon Geometry
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-   :start-after: exercise_6.txt
-   :end-before:  buildings_description.txt
-   :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/exercise_6.txt
-
-Inspecting the table:
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-   :start-after: buildings_description.txt
-   :end-before: exercise_7.txt
-
-.. collapse:: Table structure
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/buildings_description.txt
-
-Exercise 8: Removing the polygons with less than 4 points
-...............................................................................
-
-``ST_NumPoints`` is used to find the number of points on a geometry. Also, polygons
-with less than 3 points/vertices are not considered valid polygons in PostgreSQL.
-Hence, the buildings having less than 3 vertices need to be cleaned up. Follow
-the steps given below to complete this task.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-   :start-after: exercise_7.txt
-   :end-before: exercise_8.txt
-   :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/exercise_7.txt
-
-Exercise 9: Creating the polygons
-...............................................................................
-
-``ST_MakePolygons`` is used to make the polygons. This step stores the geometry of
-polygons in the ``poly_geom`` column which was created earlier.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-   :start-after: exercise_8.txt
-   :end-before: add_area_col.txt
-   :language: sql
-   :linenos:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/exercise_8.txt
-
-Exercise 10: Calculating the area
-...............................................................................
-
-After getting the polygon geometry, next step is to find the area of the polygons.
-Follow the steps given below to complete this task.
-
-1. Adding a column for storing the area
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: add_area_col.txt
-    :end-before: get_area.txt
-    :language: sql
-
-2. Storing the area in the new column
-
-``ST_Area`` is used to calculate area of polygons. Area is stored in the
-new column
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: get_area.txt
-    :end-before: kind_of_buildings.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/get_area.txt
+Preparing roads information
+================================================================================
 
 Preprocessing Roads
 --------------------------------------------------------------------------------

@@ -64,6 +64,9 @@ SELECT id, name,
   geom, building
 FROM buildings_data;
 \o skip1.txt
+
+
+
 ALTER TABLE buildings.buildings_ways
 DROP source, DROP target,
 DROP source_osm, DROP target_osm,
@@ -112,6 +115,10 @@ FROM buildings
 JOIN buildings_ways USING (id, name, population) LIMIT 10;
 \o only_connected1.txt
 
+SELECT id, in_edges, out_edges, x, y, NULL::BIGINT osm_id, NULL::BIGINT component, geom
+INTO vertices
+FROM pgr_extractVertices('SELECT id, source, target FROM roads.roads_ways ORDER BY id');
+
 SELECT * INTO roads.roads_vertices
 FROM pgr_extractVertices(
   'SELECT id, source, target
@@ -119,6 +126,17 @@ FROM pgr_extractVertices(
 
 \o only_connected2.txt
 
+WITH
+get_data as (
+  SELECT source, source_osm, ST_startPoint(geom) as pt FROM roads.roads_ways
+  UNION ALL
+  SELECT target, target_osm, ST_endPoint(geom) FROM roads.roads_ways
+)
+UPDATE vertices SET
+(geom, osm_id, x, y) = (ST_startPoint(pt), source_osm, st_x(pt), st_y(pt))
+FROM get_data WHERE source = id;
+
+\o skip2.txt
 UPDATE roads_vertices v SET geom = ST_startPoint(w.geom)
 FROM roads_ways w WHERE source = v.id;
 
@@ -134,6 +152,13 @@ ALTER TABLE roads_vertices ADD COLUMN component BIGINT;
 
 \o only_connected4.txt
 
+UPDATE vertices SET component = c.component
+FROM (
+  SELECT * FROM pgr_connectedComponents(
+  'SELECT id, source, target, cost, reverse_cost FROM roads.roads_ways')
+) AS c
+WHERE id = node;
+
 UPDATE roads_vertices SET component = c.component
 FROM (
   SELECT * FROM pgr_connectedComponents(
@@ -148,6 +173,23 @@ FROM (SELECT id, component FROM roads_vertices) AS v
 WHERE source = v.id;
 
 \o only_connected6.txt
+
+CREATE OR REPLACE VIEW roads_net AS
+
+WITH
+all_components AS (SELECT component, count(*) FROM roads.roads_ways GROUP BY component),
+max_component AS (SELECT max(count) from all_components),
+the_component AS (
+  SELECT component FROM all_components
+  WHERE count = (SELECT max FROM max_component))
+
+SELECT
+  w.id, source, target,
+  length_m/60 AS cost, length_m/60 AS reverse_cost,
+  name, length_m AS length, tag_id, geom AS geom
+FROM roads.roads_ways w JOIN the_component USING (component);
+
+\o skip4.txt
 
 WITH
 all_components AS (SELECT component, count(*) FROM roads_ways GROUP BY component),
@@ -165,6 +207,10 @@ DELETE FROM roads_ways WHERE component != (SELECT component FROM the_component);
 \o only_connected8.txt
 
 WITH
+the_component AS (SELECT DISTINCT component FROM roads_net FROM max_component))
+DELETE FROM vertices WHERE component != (SELECT component FROM the_component LIMIT 1);
+
+WITH
 all_components AS (SELECT component, count(*) FROM roads_vertices GROUP BY component),
 max_component AS (SELECT max(count) from all_components),
 the_component AS (SELECT component FROM all_components WHERE count = (SELECT max FROM max_component))
@@ -172,6 +218,14 @@ DELETE FROM roads_vertices WHERE component != (SELECT component FROM the_compone
 
 \o nearest_vertex1.txt
 
+CREATE OR REPLACE FUNCTION get_vertex(geom GEOMETRY)
+RETURNS BIGINT AS
+$BODY$
+SELECT id FROM vertices ORDER BY geom <-> $1 LIMIT 1;
+$BODY$
+LANGUAGE SQL;
+
+\o skip5.txt
 CREATE OR REPLACE FUNCTION closest_vertex(geom GEOMETRY)
 RETURNS BIGINT AS
 $BODY$
@@ -181,6 +235,7 @@ LANGUAGE SQL;
 
 \o nearest_vertex2.txt
 
+SELECT get_vertex(building) FROM buildings;
 SELECT closest_vertex(poly_geom) FROM buildings_ways;
 
 \o prepare_edges.txt
@@ -190,6 +245,22 @@ SELECT id,source,target, length_m/60 AS cost,length_m/60 AS reverse_cost
 FROM roads.roads_ways;
 
 \o exercise_15.txt
+
+SELECT id, source, target, agg_cost AS minutes, geom
+FROM pgr_drivingDistance(
+  'SELECT * FROM roads_net',
+  (
+    -- the starting vertex
+    SELECT get_vertex(building)
+    FROM buildings
+    WHERE tag_id = '318'
+  ),
+  10,  -- 10 minutes
+  false -- graph is undirected
+) AS results
+JOIN roads_net ON (edge = id);
+
+\o skip11.txt
 
 SELECT id, source, target, agg_cost AS minutes, geom
 FROM pgr_drivingDistance(
@@ -205,6 +276,30 @@ FROM pgr_drivingDistance(
 JOIN roads.roads_ways AS r ON (edge = id);
 
 \o exercise_16.txt
+
+WITH
+subquery AS (
+  SELECT edge, source, target, agg_cost AS minutes, geom
+  FROM pgr_drivingDistance(
+    'edges',
+    (
+      SELECT get_vertex(building)
+      FROM buildings
+      WHERE tag_id = '318'
+    ), 10, FALSE
+  ) AS results
+  JOIN roads_net AS r ON (edge = id)
+),
+connected_edges AS (
+  SELECT r.id, r.source, r.target, length_m, r.geom
+  FROM subquery AS s JOIN roads_net AS r
+  ON ((s.source = r.source OR s.source = r.target))
+)
+SELECT * FROM subquery
+UNION ALL
+SELECT * FROM connected_edges;
+
+\o skip7.txt
 
 WITH
 subquery AS (
