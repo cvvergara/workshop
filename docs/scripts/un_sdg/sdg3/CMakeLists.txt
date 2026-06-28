@@ -31,9 +31,9 @@ add_custom_command(
     test_nearest_vertex.txt
     clean_buildings.txt
     roads_population.txt
-    exercise_15.txt
-    exercise_16.txt
-    exercise_20.txt
+    served_roads.txt
+    adjacent_roads.txt
+    population_served.txt
   COMMAND psql -d mumbai -f all_exercises_sdg3.sql
   COMMENT "running chapter sdg3 scripts"
 )

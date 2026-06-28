@@ -164,7 +164,7 @@ FROM (
 AS subquery
 WHERE id = road;
 
-\o exercise_15.txt
+\o served_roads.txt
 
 SELECT id, source, target, agg_cost AS minutes, geom
 FROM pgr_drivingDistance(
@@ -180,7 +180,7 @@ FROM pgr_drivingDistance(
 ) AS results
 JOIN roads_net ON (edge = id);
 
-\o exercise_16.txt
+\o adjacent_roads.txt
 
 WITH
 subquery AS (
@@ -204,7 +204,7 @@ SELECT * FROM subquery
 UNION ALL
 SELECT * FROM connected_edges;
 
-\o exercise_20.txt
+\o population_served.txt
 
 WITH
 subquery AS (

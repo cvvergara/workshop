@@ -445,7 +445,7 @@ Follow the steps given below to complete this task.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: roads_population.txt
-    :end-before: exercise_15.txt
+    :end-before: served_roads.txt
     :language: sql
     :force:
 
@@ -499,14 +499,14 @@ Using ``pgrdrivingDistance`` function from pgRouting extension.
 - ``10`` for 10 minutes, which is a threshold for ``agg_cost``
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: exercise_15.txt
-    :end-before:  exercise_16.txt
+    :start-after: served_roads.txt
+    :end-before:  adjacent_roads.txt
     :language: sql
     :force:
 
 .. collapse:: Query Results
 
-  .. literalinclude:: ../scripts/un_sdg/sdg3/exercise_15.txt
+  .. literalinclude:: ../scripts/un_sdg/sdg3/served_roads.txt
 
 Following figure shows the visualised output of the above query. The lines
 highlighted by red colour show the area from where the hospital can be reached
@@ -531,14 +531,14 @@ that have the same ``source`` and ``target`` to that of ``subquery`` (Line 14).
 
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: exercise_16.txt
-    :end-before:  exercise_20.txt
+    :start-after: adjacent_roads.txt
+    :end-before:  population_served.txt
     :language: sql
     :force:
 
 .. collapse:: Query Results
 
-  .. literalinclude:: ../scripts/un_sdg/sdg3/exercise_16.txt
+  .. literalinclude:: ../scripts/un_sdg/sdg3/adjacent_roads.txt
 
 Following figure shows the visualised output of the above query. Lines
 highlighted in ``yellow`` show the `generalised the roads served`. This gives a better
@@ -565,9 +565,9 @@ Final step is to find the total population served by the hospital based on
 travel time.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: exercise_20.txt
+    :start-after: population_served.txt
     :language: sql
 
 .. collapse:: Query Results
 
-  .. literalinclude:: ../scripts/un_sdg/sdg3/exercise_20.txt
+  .. literalinclude:: ../scripts/un_sdg/sdg3/population_served.txt
