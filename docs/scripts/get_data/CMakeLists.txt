@@ -2,9 +2,12 @@
 # Files
 #---------------------
 set(PGR_WORKSHOP_FILES
+  buildings.xml
   get_all_data.sh
   process_osgeolive_data.sh
+  setup_bangladesh.sh
   setup_mumbai.sh
+  waterways.xml
 )
 
 
@@ -63,4 +66,11 @@ execute_process(
   COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/setup_mumbai.sh > setup_mumbai.txt
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup_mumbai.sh
+  )
+
+execute_process(
+  OUTPUT_FILE setup_bangladesh.txt
+  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/setup_bangladesh.sh > setup_bangladesh.txt
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup_bangladesh.sh
   )
