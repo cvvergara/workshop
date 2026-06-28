@@ -262,7 +262,7 @@ with the component number with count less than maximum count will be removed
 
 Follow the steps given below to complete this task.
 
-Exercise 12: Remove disconnected components
+Exercise 6: Remove disconnected components
 ...............................................................................
 
 To remove the disconnected components on the road network, the following
@@ -360,12 +360,8 @@ The table ``buildings_ways`` contains the buildings in ``LINESTRING`` type.
 They have to be converted into polygons to get the area, as the area is going to
 be used to get an estimate of the population living in the building.
 
-Exercise 6: Get the nearest road to a building
+Exercise 7: Get the nearest road to a building
 ...............................................................................
-
-.. TODO description of function
-
-.. TODO explain: a more complex can be done function based on address information
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
    :start-after: building_road.txt
@@ -377,12 +373,13 @@ Exercise 6: Get the nearest road to a building
    :start-after: test_building_road.txt
    :end-before: clean_buildings.txt
    :language: sql
+   :force:
 
 .. collapse:: Query results
 
    .. literalinclude:: ../scripts/un_sdg/sdg3/test_building_road.txt
 
-Exercise 13: Find the closest road vertex
+Exercise 8: Find the closest road vertex
 --------------------------------------------------------------------------------
 
 There are multiple road vertices near the hospital. Create a function to find
@@ -414,7 +411,7 @@ Testing the function
 
   .. literalinclude:: ../scripts/un_sdg/sdg3/test_nearest_vertex.txt
 
-Exercise 6: Use MATERIALIZED VIEW to create the buildings data
+Exercise 9: Use MATERIALIZED VIEW to create the buildings data
 ...............................................................................
 
 A materialized view stores the query result physically, unlike a regular view which
@@ -431,7 +428,7 @@ not needed for building data.
    :language: sql
    :force:
 
-Exercise 17: Storing the population in the roads
+Exercise 10: Storing the population in the roads
 --------------------------------------------------------------------------------
 After finding the nearest road, the sum of population of all the nearest
 buildings is stored in the population column of the roads table. Following image
@@ -484,7 +481,7 @@ can be found at this link for more information.
 
 
 
-Exercise 14: Finding the served roads using pgr_drivingDistance
+Exercise 11: Finding the served roads using pgr_drivingDistance
 --------------------------------------------------------------------------------
 
 .. rubric:: Problem
@@ -524,7 +521,7 @@ query.
   :align: center
   :scale: 50%
 
-Exercise 15: Adding adjacent roads
+Exercise 12: Adding adjacent roads
 --------------------------------------------------------------------------------
 
 The edges which are near to to hospital should also be selected in the roads served
@@ -561,7 +558,7 @@ This area will be stored in the nearest roads. Following steps explain this
 process in detail.
 
 
-Exercise 18: Find total population served by the hospital
+Exercise 13: Find total population served by the hospital
 --------------------------------------------------------------------------------
 
 Final step is to find the total population served by the hospital based on
@@ -569,7 +566,6 @@ travel time.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: exercise_20.txt
-    :end-before: \o
     :language: sql
 
 .. collapse:: Query Results
