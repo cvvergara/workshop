@@ -178,8 +178,7 @@ pgRouting and PostGIS in the database. Then add the ``SCHEMA`` for each table.
 Get the Bangladesh Data
 -------------------------------------------------------------------------------
 
-Downloading Bangladesh data from OSGeo
-...............................................................................
+.. rubric:: Downloading Bangladesh data from OSGeo
 
 The following command is used to download the snapshot of the Bangladesh area data
 used in this workshop, using the download service of OSGeo.
@@ -193,10 +192,8 @@ used in this workshop, using the download service of OSGeo.
     :language: bash
     :linenos:
 
-Downloading Bangladesh data from OpenStreetMap
-...............................................................................
-The following command is used to download the OSM data of the area in Munshigang,
-Bangladesh.
+The following command was used in June 2021 to download the OpenStreetMap data
+of the area in Munshigang, Bangladesh.
 
 .. code-block:: bash
     :linenos:
@@ -217,15 +214,16 @@ See :doc:`../appendix/appendix-3` for additional information about ``osm2pgrouti
 
 For this step the following is used:
 
-* ``waterways.xml`` configuration file
+* Configuration file: ``waterways.xml``
 * ``~/Desktop/workshop/bangladesh.osm`` - OSM data from the previous step
 * ``bangladesh`` database
 
-Contents of the configuration files are given in the `Appendix`_. Create an XML file
-using these contents and save it into the root directory ``~/Desktop/workshop``.
+Copy the ``waterways.xml`` configuration file.
 
-Open a terminal window by ``ctrl-alt-t`` and move to the workshop directory by ``cd ~/Desktop/workshop``.
+.. collapse:: waterways.xml
 
+   .. literalinclude:: ../scripts/get_data/waterways.xml
+      :language: xml
 
 Importing Bangladesh Waterways
 ...............................................................................
@@ -237,15 +235,12 @@ from the OpenStreetMap file to the pgRouting database which we will use for furt
     :start-after: import_bangladesh_waterways from-here
     :end-before:  import_bangladesh_waterways to-here
     :language: bash
-    :linenos:
 
-.. note:: Depending on the osm2pgrouting version `-W password` is needed
+.. collapse:: Output of the command
 
-.. rubric:: Output:
-
-.. literalinclude:: ../scripts/get_data/setup_bangladesh.txt
-    :language: bash
-    :linenos:
+   .. literalinclude:: ../scripts/get_data/setup_bangladesh.txt
+      :start-after: import_bangladesh_waterways from-here
+      :end-before: import_bangladesh_waterways to-here
 
 To connect to the database, type the following in the terminal.
 
