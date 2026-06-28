@@ -92,11 +92,12 @@ OpenStreetMap data changes on a day to day basis, therefore if this data is used
 the results might change and some queries might need adjustments.
 The command was used to take the snapshot of the data on June 2021.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/get_mumbai.sh
-    :start-after: get_mumbai from-here
-    :end-before:  get_mumbai to-here
-    :language: bash
+.. code-block:: bash
     :linenos:
+
+    CITY="mumbai"
+    BBOX="72.8263,19.1021,72.8379,19.1166"
+    wget --progress=dot:mega -O "$CITY.osm" "http://www.overpass-api.de/api/xapi?*[bbox=${BBOX}][@meta]"
 
 Upload Mumbai data to the database
 -------------------------------------------------------------------------------

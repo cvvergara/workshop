@@ -5,7 +5,6 @@ add_custom_target(un_sdg3_scripts)
 #---------------------
 set(PGR_WORKSHOP_FILES
   create_mumbai.sh
-  get_mumbai.sh
   import_mumbai_roads.sh
   import_mumbai_buildings.sh
   all_exercises_sdg3.sql
