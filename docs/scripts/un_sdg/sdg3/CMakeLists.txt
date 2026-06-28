@@ -1,6 +1,6 @@
 add_custom_target(un_sdg3_scripts)
 
-configure_file(all_exercises_sdg3.sql all_exercises_sdg3.sql)
+configure_file(sdg3.sql sdg3.sql)
 
 add_custom_command(
   TARGET un_sdg3_scripts
@@ -34,6 +34,6 @@ add_custom_command(
     served_roads.txt
     adjacent_roads.txt
     population_served.txt
-  COMMAND psql -d mumbai -f all_exercises_sdg3.sql
+  COMMAND psql -d mumbai -f sdg3.sql
   COMMENT "running chapter sdg3 scripts"
 )

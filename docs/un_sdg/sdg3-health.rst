@@ -63,7 +63,7 @@ kind of use the building gets.
 
 Buildings of OpenStreetMap data are classified into various categories.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: kind_of_buildings.txt
     :end-before: population_function.txt
     :language: sql
@@ -122,7 +122,7 @@ the population. Follow the steps given below to complete this task.
 
 1. Create a function to find population using class-specific factor and area.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: population_function.txt
     :end-before: show_population_100.txt
     :language: sql
@@ -130,7 +130,7 @@ the population. Follow the steps given below to complete this task.
 
 Testing the query with 100 square meters buildings
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: show_population_100.txt
    :end-before: show_population_300.txt
    :language: sql
@@ -141,7 +141,7 @@ Testing the query with 100 square meters buildings
 
 Testing the query with 300 square meters buildings
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: show_population_300.txt
    :end-before: show_schemas.txt
    :language: sql
@@ -173,7 +173,7 @@ Exercise 2: Inspecting schemas
 Inspect the schemas by displaying all the present schemas using the following
 command
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: show_schemas.txt
    :end-before:  show_path1.txt
 
@@ -189,7 +189,7 @@ Exercise 3: Inspecting the search path
 
 Display the current search path using the following query.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: show_path1.txt
    :end-before:  set_path.txt
    :language: sql
@@ -207,7 +207,7 @@ Exercise 4: Fixing the search path
 In this case, the search path needs to include ``roads`` and
 ``buildings`` schemas. The following query is used to adjust the search path.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: set_path.txt
    :end-before: show_path2.txt
    :language: sql
@@ -218,7 +218,7 @@ In this case, the search path needs to include ``roads`` and
 
 Checking the search path again
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: show_path2.txt
    :end-before: enumerate_tables.txt
    :language: sql
@@ -233,7 +233,7 @@ Exercise 5: Enumerating tables
 
 With ``\dt`` the tables are listed showing the schema and the owner
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: enumerate_tables.txt
    :end-before: count1.txt
 
@@ -273,14 +273,14 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
 
 .. rubric:: Add a components column.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: only_connected0.txt
    :end-before: only_connected1.txt
    :language: sql
 
 .. rubric:: Create a vertices table.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: only_connected1.txt
    :end-before: only_connected2.txt
    :language: sql
@@ -288,7 +288,7 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
 
 .. rubric:: Fill up the ``x``, ``y`` and ``geom`` columns.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: only_connected2.txt
     :end-before: only_connected3.txt
     :language: sql
@@ -296,7 +296,7 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
 
 .. rubric:: Fill up the ``component`` column on the vertices table.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: only_connected3.txt
     :end-before: only_connected4.txt
     :language: sql
@@ -304,7 +304,7 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
 
 .. rubric:: Fill up the ``component`` column on the edges table.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: only_connected4.txt
     :end-before: only_connected5.txt
     :language: sql
@@ -317,7 +317,7 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
   - As ``time`` = ``distance/speed``, ``length_m`` / ``1 m/s`` / ``60`` gives
     the time in minutes.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: only_connected5.txt
     :end-before: only_connected6.txt
     :language: sql
@@ -325,7 +325,7 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
 
 .. rubric:: Delete vertices not belonging to the most connected component.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: only_connected6.txt
     :end-before: building_road.txt
     :language: sql
@@ -363,13 +363,13 @@ be used to get an estimate of the population living in the building.
 Exercise 7: Get the nearest road to a building
 ...............................................................................
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: building_road.txt
    :end-before: test_building_road.txt
    :language: sql
    :force:
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: test_building_road.txt
    :end-before: clean_buildings.txt
    :language: sql
@@ -393,7 +393,7 @@ comparing ``geom`` of both the tables.
 
 The following query creates a function to find the closest road vertex.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: nearest_vertex.txt
    :end-before:  test_nearest_vertex.txt
    :language: sql
@@ -401,7 +401,7 @@ The following query creates a function to find the closest road vertex.
 
 Testing the function
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: test_nearest_vertex.txt
     :end-before: clean_buildings.txt
     :language: sql
@@ -422,7 +422,7 @@ The query converts ``LINESTRING`` geometries to ``Polygon``, calculates the area
 the view, routing-related columns are removed from ``buildings_ways`` since they are
 not needed for building data.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: clean_buildings.txt
    :end-before: roads_population.txt
    :language: sql
@@ -443,7 +443,7 @@ Follow the steps given below to complete this task.
 
 .. rubric:: Update the population of the roads.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: roads_population.txt
     :end-before: served_roads.txt
     :language: sql
@@ -498,7 +498,7 @@ Using ``pgrdrivingDistance`` function from pgRouting extension.
   table of the buildings.
 - ``10`` for 10 minutes, which is a threshold for ``agg_cost``
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: served_roads.txt
     :end-before:  adjacent_roads.txt
     :language: sql
@@ -530,7 +530,7 @@ from previous section as a ``subquery`` and selects all the edges from ``roads_w
 that have the same ``source`` and ``target`` to that of ``subquery`` (Line 14).
 
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: adjacent_roads.txt
     :end-before:  population_served.txt
     :language: sql
@@ -564,7 +564,7 @@ Exercise 13: Find total population served by the hospital
 Final step is to find the total population served by the hospital based on
 travel time.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+.. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: population_served.txt
     :language: sql
 
