@@ -349,8 +349,6 @@ For this exercise, the population will be set as follows:
   - Population: At least 10 persons.
 
 
-Reference: :ref:`un_sdg/data:Appendix`
-
 This class-specific factor is multiplied with the area of each building to get
 the population. Follow the steps given below to complete this task.
 

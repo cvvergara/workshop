@@ -247,23 +247,3 @@ To connect to the database, type the following in the terminal.
 .. code-block:: bash
 
   psql bangladesh
-
-
-
-Appendix
-===============================================================================
-
-Configuration information for Buildings
--------------------------------------------------------------------------------
-
-.. literalinclude:: ../scripts/get_data/buildings.xml
-    :language: xml
-    :linenos:
-
-
-Configuration information for Waterways
--------------------------------------------------------------------------------
-
-.. literalinclude:: ../scripts/get_data/waterways.xml
-    :language: xml
-    :linenos:
