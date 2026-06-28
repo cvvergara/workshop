@@ -115,7 +115,7 @@ For this exercise, the population will be set as follows:
   - Population: At least 10 persons.
 
 Exercise 1: Estimating the population
-...............................................................................
+-------------------------------------------------------------------------------
 
 This class-specific factor is multiplied with the area of each building to get
 the population. Follow the steps given below to complete this task.
@@ -264,45 +264,22 @@ With ``\dt`` the tables are listed showing the schema and the owner
 
   .. literalinclude:: ../scripts/un_sdg/sdg3/enumerate_tables.txt
 
-Preparing roads and buildings data
+Preparing buildings population information
 ================================================================================
 
 First step is to prepare the data obtained from :doc:`data`.
 
 This section will work the graph and data that is going to be used for processing.
+
 While building the graph, the data has to be inspected to determine if there is any
 invalid data.
+
 This is a very important step to make sure that the data is of
 required quality.
+
 pgRouting can also be used to do some Data Adjustments.
 
-Exercise 5: Counting the number of roads and buildings
---------------------------------------------------------------------------------
-
-The importance of counting the information on this workshop is to make sure that
-the same data is used and consequently the results are same.
-Also, some of the rows can be seen to understand the structure of the table and
-how the data is stored in it.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-   :start-after: count1.txt
-   :end-before: count2.txt
-   :language: sql
-
-.. collapse:: Command output
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/count1.txt
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-   :start-after: count2.txt
-   :end-before: clean_buildings.txt
-   :language: sql
-
-.. collapse:: Command output
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/count2.txt
-
-Following image shows the roads and buildings visualised.
+Following image shows the roads and buildings.
 
 .. image:: images/sdg3/roads_and_buildings.png
   :align: center
@@ -311,16 +288,18 @@ Following image shows the roads and buildings visualised.
 Preprocessing Buildings
 --------------------------------------------------------------------------------
 
-The table ``buildings_ways`` contains the buildings in ``LINGSTING`` type.
+The table ``buildings_ways`` contains the buildings in ``LINESTRING`` type.
 They have to be converted into polygons to get the area, as the area is going to
 be used to get an estimate of the population living in the building.
 
-Exercise 6: Removing columns
+Exercise 6: Use MATERIALIZED VIEW to create the buildings data
 ...............................................................................
 
-Columns can be deleted from a table. In this case instead of creating a view,
-columns that are not related to a **buidling** concept are dropped from
-``buildings_ways``.
+.. TODO
+   paragraph about the materialized view
+
+.. TODO
+   paragraph describing the function
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
    :start-after: clean_buildings.txt

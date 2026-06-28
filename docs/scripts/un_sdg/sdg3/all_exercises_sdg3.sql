@@ -48,13 +48,13 @@ SELECT COUNT(*) FROM roads_ways;
 \o count2.txt
 SELECT COUNT(*) FROM buildings_ways;
 \o clean_buildings.txt
-CREATE TABLE buildings AS
+CREATE OR REPLACE MATERIALIZED VIEW buildings AS
 WITH
 buildings_data AS (
 SELECT id, name, tag_id, geom, ST_MakePolygon(geom) AS building
 FROM buildings_ways
 WHERE ST_NumPoints(geom) >= 4
-AND ST_IsClosed(geom) = TRUE)
+  AND ST_IsClosed(geom) = TRUE)
 SELECT id, name,
   ST_Area(building::geography)::INTEGER AS area,
   population(tag_id, ST_Area(building::geography)::INTEGER) AS population,

@@ -159,6 +159,27 @@ To connect to the database, type the following in the terminal.
 
   psql mumbai
 
+The importance of counting the information on this workshop is to make sure that
+the same data is used and consequently the results are same.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+   :start-after: count1.txt
+   :end-before: count2.txt
+   :language: sql
+
+.. collapse:: Command output
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/count1.txt
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+   :start-after: count2.txt
+   :end-before: clean_buildings.txt
+   :language: sql
+
+.. collapse:: Command output
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/count2.txt
+
 Continue with the workshop:
 
 - :doc:`sdg3-health`
