@@ -128,25 +128,23 @@ the population. Follow the steps given below to complete this task.
     :language: sql
     :force:
 
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/population_function.txt
-
 Testing the query with 100 square meters buildings
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: show_population_100.txt
-    :end-before: show_population_300.txt
+   :start-after: show_population_100.txt
+   :end-before: show_population_300.txt
+   :language: sql
 
 .. collapse:: Query Results
 
-  .. literalinclude:: ../scripts/un_sdg/sdg3/show_population_100.txt
+   .. literalinclude:: ../scripts/un_sdg/sdg3/show_population_100.txt
 
 Testing the query with 300 square meters buildings
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: show_population_300.txt
-    :end-before: show_schemas.txt
+   :start-after: show_population_300.txt
+   :end-before: show_schemas.txt
+   :language: sql
 
 .. collapse:: Query Results
 
@@ -212,20 +210,22 @@ In this case, the search path needs to include ``roads`` and
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
    :start-after: set_path.txt
    :end-before: show_path2.txt
+   :language: sql
 
 .. collapse:: Command output
 
-  .. literalinclude:: ../scripts/un_sdg/sdg3/set_path.txt
+   .. literalinclude:: ../scripts/un_sdg/sdg3/set_path.txt
 
 Checking the search path again
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: show_path2.txt
-    :end-before: enumerate_tables.txt
+   :start-after: show_path2.txt
+   :end-before: enumerate_tables.txt
+   :language: sql
 
 .. collapse:: Command output
 
-  .. literalinclude:: ../scripts/un_sdg/sdg3/show_path2.txt
+   .. literalinclude:: ../scripts/un_sdg/sdg3/show_path2.txt
 
 
 Exercise 5: Enumerating tables
@@ -271,6 +271,13 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
 * ``pgr_extractVertices``
 * ``pgr_connectedComponents``
 
+.. rubric:: Add a components column.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+   :start-after: only_connected0.txt
+   :end-before: only_connected1.txt
+   :language: sql
+
 .. rubric:: Create a vertices table.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
@@ -278,10 +285,6 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
    :end-before: only_connected2.txt
    :language: sql
    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected1.txt
 
 .. rubric:: Fill up the ``x``, ``y`` and ``geom`` columns.
 
@@ -291,11 +294,7 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
     :language: sql
     :force:
 
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected2.txt
-
-.. rubric:: Add a ``component`` column on the edges and vertices tables.
+.. rubric:: Fill up the ``component`` column on the vertices table.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: only_connected3.txt
@@ -303,11 +302,7 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
     :language: sql
     :force:
 
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected3.txt
-
-.. rubric:: Fill up the ``component`` column on the vertices table.
+.. rubric:: Fill up the ``component`` column on the edges table.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: only_connected4.txt
@@ -315,11 +310,12 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
     :language: sql
     :force:
 
-.. collapse:: Query Results
+.. rubric:: Create a roads_net table.
 
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected4.txt
+- Pedestrian speed is set to be ``1 m/s``.
 
-.. rubric:: Fill up the ``component`` column on the edges table.
+  - As ``time`` = ``distance/speed``, ``length_m`` / ``1 m/s`` / ``60`` gives
+    the time in minutes.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: only_connected5.txt
@@ -327,11 +323,7 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
     :language: sql
     :force:
 
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected5.txt
-
-.. rubric:: Get the component number with the most number of edges.
+.. rubric:: Delete vertices not belonging to the most connected component.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: only_connected6.txt
@@ -339,13 +331,6 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
     :language: sql
     :force:
 
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected6.txt
-
-.. rubric:: Delete edges not belonging to the most connected component.
-
-.. rubric:: Delete vertices not belonging to the most connected component.
 
 Preparing buildings population information
 ================================================================================
@@ -375,6 +360,60 @@ The table ``buildings_ways`` contains the buildings in ``LINESTRING`` type.
 They have to be converted into polygons to get the area, as the area is going to
 be used to get an estimate of the population living in the building.
 
+Exercise 6: Get the nearest road to a building
+...............................................................................
+
+.. TODO description of function
+
+.. TODO explain: a more complex can be done function based on address information
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+   :start-after: building_road.txt
+   :end-before: test_building_road.txt
+   :language: sql
+   :force:
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+   :start-after: test_building_road.txt
+   :end-before: clean_buildings.txt
+   :language: sql
+
+.. collapse:: Query results
+
+   .. literalinclude:: ../scripts/un_sdg/sdg3/test_building_road.txt
+
+Exercise 13: Find the closest road vertex
+--------------------------------------------------------------------------------
+
+There are multiple road vertices near the hospital. Create a function to find
+the geographically closest road vertex. ``closest_vertex`` function takes geometry
+of other table as input and gives the gid of the closest vertex as output by
+comparing ``geom`` of both the tables.
+
+.. image:: images/sdg3/finding_closest_vertex.png
+  :align: center
+  :scale: 50%
+
+The following query creates a function to find the closest road vertex.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+   :start-after: nearest_vertex.txt
+   :end-before:  test_nearest_vertex.txt
+   :language: sql
+   :force:
+
+Testing the function
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: test_nearest_vertex.txt
+    :end-before: clean_buildings.txt
+    :language: sql
+    :force:
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/test_nearest_vertex.txt
+
 Exercise 6: Use MATERIALIZED VIEW to create the buildings data
 ...............................................................................
 
@@ -387,23 +426,31 @@ the view, routing-related columns are removed from ``buildings_ways`` since they
 not needed for building data.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-   :start-after: building_road.txt
-   :end-before: clean_buildings.txt
+   :start-after: clean_buildings.txt
+   :end-before: roads_population.txt
    :language: sql
    :force:
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/building_road.txt
+Exercise 17: Storing the population in the roads
+--------------------------------------------------------------------------------
+After finding the nearest road, the sum of population of all the nearest
+buildings is stored in the population column of the roads table. Following image
+shows the visualised output where the blue colour labels shows the population
+stored in roads.
+
+.. image:: images/sdg3/road_population.png
+  :align: center
+  :scale: 50%
+
+Follow the steps given below to complete this task.
+
+.. rubric:: Update the population of the roads.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-   :start-after: clean_buildings.txt
-   :end-before: nearest_vertex1.txt
-   :language: sql
-   :force:
-
-.. collapse:: Command output
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/clean_buildings.txt
-
+    :start-after: roads_population.txt
+    :end-before: exercise_15.txt
+    :language: sql
+    :force:
 
 Find the roads served by the hospitals
 ================================================================================
@@ -435,40 +482,6 @@ conform to the corresponding spanning tree.
 `pgr_drivingDistance Documentation <https://docs.pgrouting.org/3.1/en/pgr_drivingDistance>`__
 can be found at this link for more information.
 
-Exercise 13: Find the closest road vertex
---------------------------------------------------------------------------------
-There are multiple road vertices near the hospital. Create a function to find
-the geographically closest road vertex. ``closest_vertex`` function takes geometry
-of other table as input and gives the gid of the closest vertex as output by
-comparing ``geom`` of both the tables.
-
-.. image:: images/sdg3/finding_closest_vertex.png
-  :align: center
-  :scale: 50%
-
-The following query creates a function to find the closest road vertex.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: nearest_vertex1.txt
-    :end-before:  nearest_vertex2.txt
-    :language: sql
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/nearest_vertex1.txt
-
-Testing the function
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: nearest_vertex2.txt
-    :end-before: prepare_edges.txt
-    :language: sql
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/nearest_vertex2.txt
 
 
 Exercise 14: Finding the served roads using pgr_drivingDistance
@@ -476,40 +489,16 @@ Exercise 14: Finding the served roads using pgr_drivingDistance
 
 .. rubric:: Problem
 
-Find the roads within 10 minutes walking distance from the hospitals. Use ``1
-m/s`` as walking speed.
+Find the roads within 10 minutes walking distance from the hospitals.
 
 .. rubric:: Solution
 
-In this exercise, the roads served are calculated based on a walking time of ``1
-m/s``, by using ``pgrdrivingDistance`` function from pgRouting extension.
+Using ``pgrdrivingDistance`` function from pgRouting extension.
 
 - Time in minutes is considered as ``cost``.
 - the graph is undirected.
-
-Preparing a query
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: prepare_edges.txt
-    :end-before:  exercise_16.txt
-    :language: sql
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/prepare_edges.txt
-
-For the following query,
-
-- The prepared statement is used.
-- Pedestrian speed is set to be ``1 m/s``.
-
-  - As ``time`` = ``distance/speed``, ``length_m`` / ``1 m/s`` / ``60`` gives
-    the time in minutes.
-
 - ``tag_id = '318'`` as 318 is the value for hospital in the configuration
   table of the buildings.
-
 - ``10`` for 10 minutes, which is a threshold for ``agg_cost``
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
@@ -535,7 +524,7 @@ query.
   :align: center
   :scale: 50%
 
-Exercise 15: Generalising the served roads
+Exercise 15: Adding adjacent roads
 --------------------------------------------------------------------------------
 
 The edges which are near to to hospital should also be selected in the roads served
@@ -546,7 +535,7 @@ that have the same ``source`` and ``target`` to that of ``subquery`` (Line 14).
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: exercise_16.txt
-    :end-before: closest_edge1.txt
+    :end-before:  exercise_20.txt
     :language: sql
     :force:
 
@@ -571,95 +560,6 @@ will be estimated from the ``area`` as well as the ``category`` of the building.
 This area will be stored in the nearest roads. Following steps explain this
 process in detail.
 
-
-Exercise 16: Finding the nearest roads of the buildings
---------------------------------------------------------------------------------
-
-To store the population of buildings in the roads, nearest road to a building
-is to be found. Follow the steps given below to complete this task.
-
-1. Create Function for finding the closest edge.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: closest_edge1.txt
-    :end-before: closest_edge2.txt
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/closest_edge1.txt
-
-2. Add a column in ``buildings_ways`` for storing the id of closest edge
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: closest_edge2.txt
-    :end-before:  closest_edge3.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/closest_edge2.txt
-
-3. Store the edge id of the closest edge in the new column of ``buildings_ways``
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: closest_edge3.txt
-    :end-before: add_road_population1.txt
-    :language: sql
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/closest_edge3.txt
-
-Exercise 17: Storing the population in the roads
---------------------------------------------------------------------------------
-After finding the nearest road, the sum of population of all the nearest
-buildings is stored in the population column of the roads table. Following image
-shows the visualised output where the blue colour labels shows the population
-stored in roads.
-
-.. image:: images/sdg3/road_population.png
-  :align: center
-  :scale: 50%
-
-Follow the steps given below to complete this task.
-
-1. Add a column in ``roads_ways`` for storing population
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: add_road_population1.txt
-    :end-before: add_road_population2.txt
-    :language: sql
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/add_road_population1.txt
-
-2. Update the roads with the sum of population of buildings closest to it
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: add_road_population2.txt
-    :end-before: add_road_population3.txt
-    :language: sql
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/add_road_population2.txt
-
-3. Verify is the population is stored using the following query.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: add_road_population3.txt
-    :end-before: exercise_20.txt
-    :language: sql
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/add_road_population3.txt
 
 Exercise 18: Find total population served by the hospital
 --------------------------------------------------------------------------------

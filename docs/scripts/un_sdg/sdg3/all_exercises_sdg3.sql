@@ -52,34 +52,11 @@ SELECT COUNT(*) FROM buildings_ways;
 \o skip1.txt
 
 
-
-\o exercise_6.txt
-
-\o buildings_description.txt
-
-\o exercise_7.txt
-
-
-
-\o exercise_8.txt
-
-
-\o add_area_col.txt
-
-
-\o get_area.txt
-
-
-
-\o add_population_col.txt
-
-
-\o get_population.txt
+\o only_connected0.txt
 
 ALTER TABLE roads.roads_ways ADD COLUMN component BIGINT;
 
 \o only_connected1.txt
-
 
 SELECT id, in_edges, out_edges, x, y, NULL::BIGINT osm_id, NULL::BIGINT component, geom
 INTO vertices
@@ -143,25 +120,11 @@ $BODY$
 $BODY$
 LANGUAGE SQL;
 
+\o test_building_road.txt
+
 SELECT id, building_road(geom) FROM buildings.buildings_ways LIMIT 3;
 
-\o clean_buildings.txt
--- DROP TABLE IF EXISTS buildings;
-CREATE TABLE buildings AS
-WITH
-buildings_data AS (
-SELECT id, name, building_road(geom) AS road, tag_id, geom, ST_MakePolygon(geom) AS building
-FROM buildings.buildings_ways
-WHERE ST_NumPoints(geom) >= 4
-  AND ST_IsClosed(geom) = TRUE)
-SELECT id, name,
-  ST_Area(building::geography)::INTEGER AS area,
-  population(tag_id, ST_Area(building::geography)::INTEGER) AS population,
-  road,
-  tag_id,
-  geom, building
-FROM buildings_data;
-\o nearest_vertex1.txt
+\o nearest_vertex.txt
 
 CREATE OR REPLACE FUNCTION get_vertex(geom GEOMETRY)
 RETURNS BIGINT AS
@@ -170,12 +133,36 @@ SELECT id FROM vertices ORDER BY geom <-> $1 LIMIT 1;
 $BODY$
 LANGUAGE SQL;
 
-\o nearest_vertex2.txt
+\o test_nearest_vertex.txt
 
-SELECT get_vertex(building) FROM buildings;
+SELECT get_vertex(geom) FROM buildings.buildings_ways LIMIT 3;
 
-\o prepare_edges.txt
+\o clean_buildings.txt
+-- DROP TABLE IF EXISTS buildings;
+CREATE TABLE buildings AS
+WITH
+buildings_data AS (
+SELECT id, name, building_road(geom) AS road, get_vertex(geom) AS vid, tag_id, geom, ST_MakePolygon(geom) AS building
+FROM buildings.buildings_ways
+WHERE ST_NumPoints(geom) >= 4
+  AND ST_IsClosed(geom) = TRUE)
+SELECT id, name,
+  ST_Area(building::geography)::INTEGER AS area,
+  population(tag_id, ST_Area(building::geography)::INTEGER) AS population,
+  road, vid,
+  tag_id,
+  geom, building
+FROM buildings_data;
 
+\o roads_population.txt
+
+UPDATE roads_net SET population = SUM
+FROM (
+  SELECT road, SUM(population)
+  FROM buildings GROUP BY road
+  )
+AS subquery
+WHERE id = road;
 
 \o exercise_15.txt
 
@@ -184,7 +171,7 @@ FROM pgr_drivingDistance(
   'SELECT * FROM roads_net',
   (
     -- the starting vertex
-    SELECT get_vertex(building)
+    SELECT vid
     FROM buildings
     WHERE tag_id = '318'
   ),
@@ -201,7 +188,7 @@ subquery AS (
   FROM pgr_drivingDistance(
     'SELECT * FROM roads_net',
     (
-      SELECT get_vertex(building)
+      SELECT vid
       FROM buildings
       WHERE tag_id = '318'
     ), 10, FALSE
@@ -217,29 +204,6 @@ SELECT * FROM subquery
 UNION ALL
 SELECT * FROM connected_edges;
 
-\o closest_edge1.txt
-
-
-\o closest_edge2.txt
-
-\o closest_edge3.txt
-
-\o add_road_population1.txt
-
-\o add_road_population2.txt
-
-UPDATE roads_net SET population = SUM
-FROM (
-	SELECT road, SUM(population)
-	FROM buildings GROUP BY road
-	)
-AS subquery
-WHERE id = road;
-
-\o add_road_population3.txt
-
-SELECT id, population FROM roads_net Limit 10;
-
 \o exercise_20.txt
 
 WITH
@@ -248,7 +212,7 @@ subquery AS (
   FROM pgr_drivingDistance(
     'SELECT * FROM roads_net',
     (
-      SELECT get_vertex(building)
+      SELECT vid
       FROM buildings
       WHERE tag_id = '318'
     ), 10, FALSE
@@ -265,5 +229,3 @@ connected_edges AS (
   )
 )
 SELECT SUM(population) FROM connected_edges;
-
-\o
