@@ -51,8 +51,8 @@ endif()
 endif()
 
 configure_file(${CMAKE_SOURCE_DIR}/downloads/${PGR_WORKSHOP_DOWNLOAD_DIR}/${PGR_WORKSHOP_CITY_FILE}.osm ${PGR_WORKSHOP_CITY_FILE}.osm)
-configure_file(${CMAKE_SOURCE_DIR}/downloads/${PGR_WORKSHOP_DOWNLOAD_DIR}/mumbai.osm ${CMAKE_CURRENT_BINARY_DIR}/../un_sdg/sdg3/mumbai.osm)
-configure_file(${CMAKE_SOURCE_DIR}/downloads/${PGR_WORKSHOP_DOWNLOAD_DIR}/bangladesh.osm ${CMAKE_CURRENT_BINARY_DIR}/../un_sdg/sdg11/bangladesh.osm)
+configure_file(${CMAKE_SOURCE_DIR}/downloads/${PGR_WORKSHOP_DOWNLOAD_DIR}/mumbai.osm mumbai.osm)
+configure_file(${CMAKE_SOURCE_DIR}/downloads/${PGR_WORKSHOP_DOWNLOAD_DIR}/bangladesh.osm bangladesh.osm)
 
 execute_process(
   OUTPUT_FILE process_osgeolive_data.txt
