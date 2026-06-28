@@ -4,6 +4,7 @@
 set(PGR_WORKSHOP_FILES
   get_all_data.sh
   process_osgeolive_data.sh
+  setup_mumbai.sh
 )
 
 
@@ -55,4 +56,11 @@ execute_process(
   COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/process_osgeolive_data.sh > processes_osgeolive_data.txt
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/process_osgeolive_data.sh
+  )
+
+execute_process(
+  OUTPUT_FILE setup_mumbai.txt
+  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/setup_mumbai.sh > setup_mumbai.txt
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup_mumbai.sh
   )

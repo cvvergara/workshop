@@ -4,7 +4,6 @@ add_custom_target(un_sdg3_scripts)
 # Files
 #---------------------
 set(PGR_WORKSHOP_FILES
-  setup_mumbai.sh
   all_exercises_sdg3.sql
 )
 
@@ -20,13 +19,6 @@ foreach (f ${PGR_WORKSHOP_FILES})
     configure_file(${f} ${f})
 endforeach()
 
-
-execute_process(
-  OUTPUT_FILE setup_mumbai.txt
-  COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/setup_mumbai.sh > setup_mumbai.txt
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-  INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup_mumbai.sh
-  )
 
 add_custom_command(
   TARGET un_sdg3_scripts

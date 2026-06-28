@@ -58,7 +58,7 @@ To connect to the database do the following
 After connecting to the database, first step is to create ``EXTENSION`` to enable
 pgRouting and PostGIS in the database. Then add the ``SCHEMA`` for each table.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/setup_mumbai.sh
+.. literalinclude:: ../scripts/get_data/setup_mumbai.sh
   :start-after: setup_mumbai from-here
   :end-before:  setup_mumbai to-here
   :language: postgresql
@@ -126,7 +126,7 @@ The following ``osm2pgrouting`` command will be used to import the Roads
 from OpenStreetMaps file to pgRouting database which we will use for further exercises.
 
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/setup_mumbai.sh
+.. literalinclude:: ../scripts/get_data/setup_mumbai.sh
     :start-after: import_roads from-here
     :end-before: import_roads to-here
     :language: bash
@@ -136,7 +136,7 @@ from OpenStreetMaps file to pgRouting database which we will use for further exe
 
 .. rubric:: Output:
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/setup_mumbai.txt
+.. literalinclude:: ../scripts/get_data/setup_mumbai.txt
     :linenos:
 
 
@@ -147,7 +147,7 @@ Similar to Roads, ``osm2pgrouting`` command will be used to import the Buildings
 from OpenStreetMaps file to pgRouting database which we will use for further exercises.
 
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/setup_mumbai.sh
+.. literalinclude:: ../scripts/get_data/setup_mumbai.sh
     :start-after: import_buildings from-here
     :end-before: import_buildings to-here
     :language: bash
@@ -157,7 +157,7 @@ from OpenStreetMaps file to pgRouting database which we will use for further exe
 
 .. rubric:: Output:
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/setup_mumbai.txt
+.. literalinclude:: ../scripts/get_data/setup_mumbai.txt
     :language: bash
     :linenos:
 
