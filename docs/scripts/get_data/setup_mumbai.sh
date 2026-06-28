@@ -19,7 +19,7 @@ CREATE EXTENSION hstore;
 -- setup_mumbai to-here
 EOF
 
-# import_roads from-here
+echo import_roads from-here
 @Osm2pgrouting_EXECUTABLE@ \
     -f "mumbai.osm" \
     -c "@Osm2pgrouting_mapconfig@" \
@@ -30,9 +30,9 @@ EOF
     --prefix "roads_" \
     --tags \
     --clean
-# import_roads to-here
+echo import_roads to-here
 
-# import_buildings from-here
+echo import_buildings from-here
 @Osm2pgrouting_EXECUTABLE@ \
     -f "mumbai.osm" \
     -c "buildings.xml" \
@@ -43,4 +43,4 @@ EOF
     -U user \
     -W user \
     --clean
-# import_buildings to-here
+echo import_buildings to-here
