@@ -241,6 +241,132 @@ With ``\dt`` the tables are listed showing the schema and the owner
 
   .. literalinclude:: ../scripts/un_sdg/sdg3/enumerate_tables.txt
 
+Preparing roads information
+================================================================================
+
+Preprocessing Roads
+--------------------------------------------------------------------------------
+pgRouting algorithms are only useful when the road network belongs to a single
+graph (or all the roads are connected to each other). Hence, the disconnected
+roads have to be removed from their network to get appropriate results.
+This image gives an example of the disconnected edges.
+
+.. image:: images/sdg3/remove_disconnected_roads.png
+  :align: center
+  :scale: 60%
+
+For example, in the above figure roads with label ``119`` are disconnected from
+the network. Hence they will have same connected component number. But the count
+of this number will be less count of fully connected network. All the edges
+with the component number with count less than maximum count will be removed
+
+Follow the steps given below to complete this task.
+
+Exercise 12: Remove disconnected components
+...............................................................................
+
+To remove the disconnected components on the road network, the following
+pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
+
+* ``pgr_extractVertices``
+* ``pgr_connectedComponents``
+
+.. rubric:: Create a vertices table.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+   :start-after: only_connected1.txt
+   :end-before: only_connected2.txt
+   :language: sql
+   :force:
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected1.txt
+
+.. rubric:: Fill up the ``x``, ``y`` and ``geom`` columns.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: only_connected2.txt
+    :end-before: only_connected3.txt
+    :language: sql
+    :force:
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected2.txt
+
+.. rubric:: Add a ``component`` column on the edges and vertices tables.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: only_connected3.txt
+    :end-before: only_connected4.txt
+    :language: sql
+    :force:
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected3.txt
+
+.. rubric:: Fill up the ``component`` column on the vertices table.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: only_connected4.txt
+    :end-before: only_connected5.txt
+    :language: sql
+    :force:
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected4.txt
+
+.. rubric:: Fill up the ``component`` column on the edges table.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: only_connected5.txt
+    :end-before: only_connected6.txt
+    :language: sql
+    :force:
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected5.txt
+
+.. rubric:: Get the component number with the most number of edges.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: only_connected6.txt
+    :end-before: skip4.txt
+    :language: sql
+    :force:
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected6.txt
+
+.. rubric:: Delete edges not belonging to the most connected component.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: only_connected7.txt
+    :end-before: only_connected8.txt
+    :language: sql
+    :force:
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected7.txt
+
+.. rubric:: Delete vertices not belonging to the most connected component.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: only_connected8.txt
+    :end-before: nearest_vertex1.txt
+    :language: sql
+    :force:
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected8.txt
+
 Preparing buildings population information
 ================================================================================
 
@@ -290,124 +416,6 @@ not needed for building data.
 
   .. literalinclude:: ../scripts/un_sdg/sdg3/clean_buildings.txt
 
-
-Preparing roads information
-================================================================================
-
-Preprocessing Roads
---------------------------------------------------------------------------------
-pgRouting algorithms are only useful when the road network belongs to a single
-graph (or all the roads are connected to each other). Hence, the disconnected
-roads have to be removed from their network to get appropriate results.
-This image gives an example of the disconnected edges.
-
-.. image:: images/sdg3/remove_disconnected_roads.png
-  :align: center
-  :scale: 60%
-
-For example, in the above figure roads with label ``119`` are disconnected from
-the network. Hence they will have same connected component number. But the count
-of this number will be less count of fully connected network. All the edges
-with the component number with count less than maximum count will be removed
-
-Follow the steps given below to complete this task.
-
-Exercise 12: Remove disconnected components
-...............................................................................
-
-To remove the disconnected components on the road network, the following
-pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
-
-* ``pgr_extractVertices``
-* ``pgr_connectedComponents``
-
-.. rubric:: Create a vertices table.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: only_connected1.txt
-    :end-before: only_connected2.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected1.txt
-
-.. rubric:: Fill up the ``x``, ``y`` and ``geom`` columns.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: only_connected2.txt
-    :end-before: only_connected3.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected2.txt
-
-.. rubric:: Add a ``component`` column on the edges and vertices tables.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: only_connected3.txt
-    :end-before: only_connected4.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected3.txt
-
-.. rubric:: Fill up the ``component`` column on the vertices table.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: only_connected4.txt
-    :end-before: only_connected5.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected4.txt
-
-.. rubric:: Fill up the ``component`` column on the edges table.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: only_connected5.txt
-    :end-before: only_connected6.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected5.txt
-
-.. rubric:: Get the component number with the most number of edges.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: only_connected6.txt
-    :end-before: only_connected7.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected6.txt
-
-.. rubric:: Delete edges not belonging to the most connected component.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: only_connected7.txt
-    :end-before: only_connected8.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected7.txt
-
-.. rubric:: Delete vertices not belonging to the most connected component.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: only_connected8.txt
-    :end-before: nearest_vertex1.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected8.txt
 
 Find the roads served by the hospitals
 ================================================================================
@@ -468,6 +476,7 @@ Testing the function
     :start-after: nearest_vertex2.txt
     :end-before: prepare_edges.txt
     :language: sql
+    :force:
 
 .. collapse:: Query Results
 
@@ -519,6 +528,7 @@ For the following query,
     :start-after: exercise_15.txt
     :end-before:  exercise_16.txt
     :language: sql
+    :force:
 
 .. collapse:: Query Results
 
@@ -550,6 +560,7 @@ that have the same ``source`` and ``target`` to that of ``subquery`` (Line 14).
     :start-after: exercise_16.txt
     :end-before: closest_edge1.txt
     :language: sql
+    :force:
 
 .. collapse:: Query Results
 
@@ -584,7 +595,7 @@ is to be found. Follow the steps given below to complete this task.
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: closest_edge1.txt
     :end-before: closest_edge2.txt
-    :linenos:
+    :force:
 
 .. collapse:: Query Results
 
@@ -596,7 +607,6 @@ is to be found. Follow the steps given below to complete this task.
     :start-after: closest_edge2.txt
     :end-before:  closest_edge3.txt
     :language: sql
-    :linenos:
 
 .. collapse:: Query Results
 
@@ -608,7 +618,7 @@ is to be found. Follow the steps given below to complete this task.
     :start-after: closest_edge3.txt
     :end-before: add_road_population1.txt
     :language: sql
-    :linenos:
+    :force:
 
 .. collapse:: Query Results
 
@@ -633,6 +643,7 @@ Follow the steps given below to complete this task.
     :start-after: add_road_population1.txt
     :end-before: add_road_population2.txt
     :language: sql
+    :force:
 
 .. collapse:: Query Results
 
@@ -644,7 +655,7 @@ Follow the steps given below to complete this task.
     :start-after: add_road_population2.txt
     :end-before: add_road_population3.txt
     :language: sql
-    :linenos:
+    :force:
 
 .. collapse:: Query Results
 
@@ -656,7 +667,7 @@ Follow the steps given below to complete this task.
     :start-after: add_road_population3.txt
     :end-before: exercise_20.txt
     :language: sql
-    :linenos:
+    :force:
 
 .. collapse:: Query Results
 

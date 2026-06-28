@@ -48,21 +48,6 @@ SHOW search_path;
 SELECT COUNT(*) FROM roads_ways;
 \o count2.txt
 SELECT COUNT(*) FROM buildings_ways;
-\o clean_buildings.txt
--- DROP MATERIALIZED VIEW IF EXISTS buildings;
-CREATE MATERIALIZED VIEW buildings AS
-WITH
-buildings_data AS (
-SELECT id, name, tag_id, geom, ST_MakePolygon(geom) AS building
-FROM buildings_ways
-WHERE ST_NumPoints(geom) >= 4
-  AND ST_IsClosed(geom) = TRUE)
-SELECT id, name,
-  ST_Area(building::geography)::INTEGER AS area,
-  population(tag_id, ST_Area(building::geography)::INTEGER) AS population,
-  tag_id,
-  geom, building
-FROM buildings_data;
 \o skip1.txt
 
 
@@ -83,7 +68,6 @@ DROP maxspeed_backward;
 SELECT AddGeometryColumn('buildings','buildings_ways','poly_geom',4326,'POLYGON',2);
 \o buildings_description.txt
 \dS+ buildings_ways
-\dS+ buildings
 \o exercise_7.txt
 DELETE FROM buildings_ways
 WHERE ST_NumPoints(geom) < 4
@@ -110,19 +94,48 @@ ALTER TABLE buildings_ways ADD COLUMN population INTEGER;
 UPDATE buildings_ways
 SET population = population(tag_id,area);
 
-SELECT id, name, population
-FROM buildings
-JOIN buildings_ways USING (id, name, population) LIMIT 10;
-\o only_connected1.txt
+ALTER TABLE roads.roads_ways ADD COLUMN component BIGINT;
 
-SELECT id, in_edges, out_edges, x, y, NULL::BIGINT osm_id, NULL::BIGINT component, geom
-INTO vertices
-FROM pgr_extractVertices('SELECT id, source, target FROM roads.roads_ways ORDER BY id');
+\o skip22.txt
 
 SELECT * INTO roads.roads_vertices
 FROM pgr_extractVertices(
   'SELECT id, source, target
   FROM roads.roads_ways ORDER BY id');
+
+-- old code
+UPDATE roads_vertices v SET geom = ST_startPoint(w.geom)
+FROM roads_ways w WHERE source = v.id;
+
+UPDATE roads_vertices v SET geom = ST_endPoint(w.geom)
+FROM roads_ways w WHERE v.geom IS NULL AND target = v.id;
+
+UPDATE roads_vertices set (x,y) = (ST_X(geom), ST_Y(geom));
+
+-- old code
+ALTER TABLE roads_vertices ADD COLUMN component BIGINT;
+
+-- old code
+UPDATE roads_vertices SET component = c.component
+FROM (
+  SELECT * FROM pgr_connectedComponents(
+  'SELECT id, source, target, cost, reverse_cost FROM roads_ways')
+) AS c
+WHERE id = node;
+
+UPDATE roads.roads_ways SET component = v.component
+FROM (SELECT id, component FROM roads_vertices) AS v
+WHERE source = v.id;
+
+
+
+---- NEW CODE
+\o only_connected1.txt
+
+
+SELECT id, in_edges, out_edges, x, y, NULL::BIGINT osm_id, NULL::BIGINT component, geom
+INTO vertices
+FROM pgr_extractVertices('SELECT id, source, target FROM roads.roads_ways ORDER BY id');
 
 \o only_connected2.txt
 
@@ -136,21 +149,7 @@ UPDATE vertices SET
 (geom, osm_id, x, y) = (ST_startPoint(pt), source_osm, st_x(pt), st_y(pt))
 FROM get_data WHERE source = id;
 
-\o skip2.txt
-UPDATE roads_vertices v SET geom = ST_startPoint(w.geom)
-FROM roads_ways w WHERE source = v.id;
-
-UPDATE roads_vertices v SET geom = ST_endPoint(w.geom)
-FROM roads_ways w WHERE v.geom IS NULL AND target = v.id;
-
-UPDATE roads_vertices set (x,y) = (ST_X(geom), ST_Y(geom));
-
 \o only_connected3.txt
-
-ALTER TABLE roads_ways ADD COLUMN component BIGINT;
-ALTER TABLE roads_vertices ADD COLUMN component BIGINT;
-
-\o only_connected4.txt
 
 UPDATE vertices SET component = c.component
 FROM (
@@ -159,20 +158,14 @@ FROM (
 ) AS c
 WHERE id = node;
 
-UPDATE roads_vertices SET component = c.component
-FROM (
-  SELECT * FROM pgr_connectedComponents(
-  'SELECT id, source, target, cost, reverse_cost FROM roads_ways')
-) AS c
-WHERE id = node;
 
-\o only_connected5.txt
+\o only_connected4.txt
 
-UPDATE roads_ways SET component = v.component
-FROM (SELECT id, component FROM roads_vertices) AS v
+UPDATE roads.roads_ways SET component = v.component
+FROM (SELECT id, component FROM vertices) AS v
 WHERE source = v.id;
 
-\o only_connected6.txt
+\o only_connected5.txt
 
 CREATE OR REPLACE VIEW roads_net AS
 
@@ -186,36 +179,62 @@ the_component AS (
 SELECT
   w.id, source, target,
   length_m/60 AS cost, length_m/60 AS reverse_cost,
-  name, length_m AS length, tag_id, geom AS geom
+  name, length_m AS length, tag_id, component, geom AS geom
 FROM roads.roads_ways w JOIN the_component USING (component);
+
+\o only_connected6.txt
+
+DELETE FROM vertices WHERE component != (SELECT DISTINCT component FROM roads_net LIMIT 1);
 
 \o skip4.txt
 
+-- old code
 WITH
 all_components AS (SELECT component, count(*) FROM roads_ways GROUP BY component),
 max_component AS (SELECT max(count) from all_components)
 SELECT component FROM all_components WHERE count = (SELECT max FROM max_component);
 
-\o only_connected7.txt
 
+-- old code
 WITH
 all_components AS (SELECT component, count(*) FROM roads_ways GROUP BY component),
 max_component AS (SELECT max(count) from all_components),
 the_component AS (SELECT component FROM all_components WHERE count = (SELECT max FROM max_component))
 DELETE FROM roads_ways WHERE component != (SELECT component FROM the_component);
 
-\o only_connected8.txt
-
-WITH
-the_component AS (SELECT DISTINCT component FROM roads_net FROM max_component))
-DELETE FROM vertices WHERE component != (SELECT component FROM the_component LIMIT 1);
-
+-- old code
 WITH
 all_components AS (SELECT component, count(*) FROM roads_vertices GROUP BY component),
 max_component AS (SELECT max(count) from all_components),
 the_component AS (SELECT component FROM all_components WHERE count = (SELECT max FROM max_component))
 DELETE FROM roads_vertices WHERE component != (SELECT component FROM the_component);
 
+
+\o building_road.txt
+CREATE OR REPLACE FUNCTION building_road(building GEOMETRY)
+RETURNS BIGINT AS
+$BODY$
+  SELECT id FROM roads_net ORDER BY geom <-> $1 LIMIT 1;
+$BODY$
+LANGUAGE SQL;
+
+SELECT id, building_road(geom) FROM buildings.buildings_ways LIMIT 3;
+
+\o clean_buildings.txt
+-- DROP MATERIALIZED VIEW IF EXISTS buildings;
+CREATE MATERIALIZED VIEW buildings AS
+WITH
+buildings_data AS (
+SELECT id, name, building_road(geom) AS road, tag_id, geom, ST_MakePolygon(geom) AS building
+FROM buildings.buildings_ways
+WHERE ST_NumPoints(geom) >= 4
+  AND ST_IsClosed(geom) = TRUE)
+SELECT id, name,
+  ST_Area(building::geography)::INTEGER AS area,
+  population(tag_id, ST_Area(building::geography)::INTEGER) AS population,
+  tag_id,
+  geom, building
+FROM buildings_data;
 \o nearest_vertex1.txt
 
 CREATE OR REPLACE FUNCTION get_vertex(geom GEOMETRY)
@@ -226,6 +245,7 @@ $BODY$
 LANGUAGE SQL;
 
 \o skip5.txt
+-- old code
 CREATE OR REPLACE FUNCTION closest_vertex(geom GEOMETRY)
 RETURNS BIGINT AS
 $BODY$
@@ -236,10 +256,12 @@ LANGUAGE SQL;
 \o nearest_vertex2.txt
 
 SELECT get_vertex(building) FROM buildings;
+-- old code
 SELECT closest_vertex(poly_geom) FROM buildings_ways;
 
 \o prepare_edges.txt
 
+-- old code
 PREPARE edges AS
 SELECT id,source,target, length_m/60 AS cost,length_m/60 AS reverse_cost
 FROM roads.roads_ways;
@@ -291,7 +313,7 @@ subquery AS (
   JOIN roads_net AS r ON (edge = id)
 ),
 connected_edges AS (
-  SELECT r.id, r.source, r.target, length_m, r.geom
+  SELECT r.id, r.source, r.target, length, r.geom
   FROM subquery AS s JOIN roads_net AS r
   ON ((s.source = r.source OR s.source = r.target))
 )
