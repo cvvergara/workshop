@@ -193,7 +193,7 @@ To connect to the database do the following
 After connecting to the database, first step is to create ``EXTENSION`` to enable
 pgRouting and PostGIS in the database. Then add the ``SCHEMA`` for each table.
 
-.. literalinclude:: ../scripts/un_sdg/sdg11/create_bangladesh.sh
+.. literalinclude:: ../scripts/un_sdg/sdg11/setup_bangladesh.sh
   :start-after: -- Commands inside the database
   :end-before:  -- create_bangladesh to-here
   :language: postgresql
@@ -222,11 +222,15 @@ Downloading Bangladesh data from OpenStreetMap
 The following command is used to download the OSM data of the area in Munshigang,
 Bangladesh.
 
-.. literalinclude:: ../scripts/un_sdg/sdg11/get_bangladesh.sh
-    :start-after: get_bangladesh from-here
-    :end-before:  get_bangladesh to-here
-    :language: bash
+.. code-block:: bash
     :linenos:
+
+    CITY="bangladesh"
+    BBOX="88.9515,22.2192,89.3806,22.4310"
+    wget --progress=dot:mega -O "$CITY.osm" "http://www.overpass-api.de/api/xapi?*[bbox=${BBOX}][@meta]"
+
+    osmconvert --drop-author --drop-version bangladesh.osm -o=bangladesh_pass1.osm
+    osmfilter bangladesh_pass1.osm -o=bangladesh.osm --drop="highway= building="
 
 Upload Bangladesh data to the database
 -------------------------------------------------------------------------------
@@ -253,9 +257,9 @@ Importing Bangladesh Waterways
 The following ``osm2pgrouting`` command will be used to import the Waterways
 from OpenStreetMaps file to pgRouting database which we will use for further exercises.
 
-.. literalinclude:: ../scripts/un_sdg/sdg11/import_bangladesh_waterways.sh
-    :start-after: from-here
-    :end-before:  to-here
+.. literalinclude:: ../scripts/un_sdg/sdg11/setup_bangladesh.sh
+    :start-after: import_bangladesh_waterways from-here
+    :end-before:  import_bangladesh_waterways to-here
     :language: bash
     :linenos:
 
@@ -263,7 +267,7 @@ from OpenStreetMaps file to pgRouting database which we will use for further exe
 
 .. rubric:: Output:
 
-.. literalinclude:: ../scripts/un_sdg/sdg11/import_bangladesh_waterways.txt
+.. literalinclude:: ../scripts/un_sdg/sdg11/setup_bangladesh.txt
     :language: bash
     :linenos:
 
