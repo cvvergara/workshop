@@ -181,7 +181,7 @@ the_component AS (
 SELECT
   w.id, source, target,
   length_m/60 AS cost, length_m/60 AS reverse_cost,
-  name, length_m AS length, tag_id, component, geom AS geom
+  name, length_m AS length, NULL::BIGINT population, tag_id, component, geom AS geom
 FROM roads.roads_ways w JOIN the_component USING (component);
 
 \o only_connected6.txt
@@ -234,6 +234,7 @@ WHERE ST_NumPoints(geom) >= 4
 SELECT id, name,
   ST_Area(building::geography)::INTEGER AS area,
   population(tag_id, ST_Area(building::geography)::INTEGER) AS population,
+  road,
   tag_id,
   geom, building
 FROM buildings_data;
@@ -255,18 +256,86 @@ SELECT id FROM roads_vertices ORDER BY geom <-> $1 LIMIT 1;
 $BODY$
 LANGUAGE SQL;
 
-\o nearest_vertex2.txt
-
-SELECT get_vertex(building) FROM buildings;
 -- old code
 SELECT closest_vertex(poly_geom) FROM buildings_ways;
-
-\o prepare_edges.txt
 
 -- old code
 PREPARE edges AS
 SELECT id,source,target, length_m/60 AS cost,length_m/60 AS reverse_cost
 FROM roads.roads_ways;
+
+-- old code
+SELECT id, source, target, agg_cost AS minutes, geom
+FROM pgr_drivingDistance(
+  'edges', -- the prepared statement
+  (
+    SELECT closest_vertex(poly_geom)
+    FROM buildings.buildings_ways
+    WHERE tag_id = '318'
+  ), -- the starting vertex
+  10,  -- 10 minutes
+  false -- graph is undirected
+) AS results
+JOIN roads.roads_ways AS r ON (edge = id);
+
+-- old code
+WITH
+subquery AS (
+  SELECT edge, source, target, agg_cost AS minutes, geom
+  FROM pgr_drivingDistance(
+    'edges',
+    (
+      SELECT closest_vertex(poly_geom)
+      FROM buildings.buildings_ways
+      WHERE tag_id = '318'
+    ), 10, FALSE
+  ) AS results
+  JOIN roads.roads_ways AS r ON (edge = id)
+),
+connected_edges AS (
+  SELECT r.id, r.source, r.target, length_m/60, r.geom
+  FROM subquery AS s JOIN roads.roads_ways AS r
+  ON ((s.source = r.source OR s.source = r.target))
+)
+SELECT * FROM subquery
+UNION ALL
+SELECT * FROM connected_edges;
+
+
+-- old code
+CREATE OR REPLACE FUNCTION closest_edge(geom GEOMETRY)
+RETURNS BIGINT AS
+$BODY$
+  SELECT id FROM roads_ways ORDER BY geom <-> geom LIMIT 1;
+$BODY$
+LANGUAGE SQL;
+
+
+ALTER TABLE buildings_ways
+ADD COLUMN edge_id INTEGER;
+UPDATE buildings_ways SET edge_id = closest_edge(poly_geom);
+
+
+ALTER TABLE roads_ways ADD COLUMN population INTEGER;
+
+
+UPDATE roads_ways SET population = SUM
+FROM (
+	SELECT edge_id, SUM(population)
+	FROM buildings_ways GROUP BY edge_id
+	)
+AS subquery
+WHERE id = edge_id;
+
+SELECT population FROM roads_ways WHERE id = 441;
+
+
+\o nearest_vertex2.txt
+
+SELECT get_vertex(building) FROM buildings;
+
+\o prepare_edges.txt
+
 
 \o exercise_15.txt
 
@@ -283,21 +352,6 @@ FROM pgr_drivingDistance(
   false -- graph is undirected
 ) AS results
 JOIN roads_net ON (edge = id);
-
-\o skip11.txt
-
-SELECT id, source, target, agg_cost AS minutes, geom
-FROM pgr_drivingDistance(
-  'edges', -- the prepared statement
-  (
-    SELECT closest_vertex(poly_geom)
-    FROM buildings.buildings_ways
-    WHERE tag_id = '318'
-  ), -- the starting vertex
-  10,  -- 10 minutes
-  false -- graph is undirected
-) AS results
-JOIN roads.roads_ways AS r ON (edge = id);
 
 \o exercise_16.txt
 
@@ -323,68 +377,16 @@ SELECT * FROM subquery
 UNION ALL
 SELECT * FROM connected_edges;
 
-\o skip7.txt
-
-WITH
-subquery AS (
-  SELECT edge, source, target, agg_cost AS minutes, geom
-  FROM pgr_drivingDistance(
-    'edges',
-    (
-      SELECT closest_vertex(poly_geom)
-      FROM buildings.buildings_ways
-      WHERE tag_id = '318'
-    ), 10, FALSE
-  ) AS results
-  JOIN roads.roads_ways AS r ON (edge = id)
-),
-connected_edges AS (
-  SELECT r.id, r.source, r.target, length_m/60, r.geom
-  FROM subquery AS s JOIN roads.roads_ways AS r
-  ON ((s.source = r.source OR s.source = r.target))
-)
-SELECT * FROM subquery
-UNION ALL
-SELECT * FROM connected_edges;
-
 \o closest_edge1.txt
 
-CREATE OR REPLACE FUNCTION closest_edge(geom GEOMETRY)
-RETURNS BIGINT AS
-$BODY$
-  SELECT id FROM roads_ways ORDER BY geom <-> geom LIMIT 1;
-$BODY$
-LANGUAGE SQL;
 
 \o closest_edge2.txt
 
-ALTER TABLE buildings_ways
-ADD COLUMN edge_id INTEGER;
-
 \o closest_edge3.txt
-
-UPDATE buildings_ways SET edge_id = closest_edge(poly_geom);
 
 \o add_road_population1.txt
 
-ALTER TABLE roads_ways ADD COLUMN population INTEGER;
-
-\o add_road_population2.txt
-
-UPDATE roads_ways SET population = SUM
-FROM (
-	SELECT edge_id, SUM(population)
-	FROM buildings_ways GROUP BY edge_id
-	)
-AS subquery
-WHERE id = edge_id;
-
-\o add_road_population3.txt
-
-SELECT population FROM roads_ways WHERE id = 441;
-
-\o exercise_20.txt
-
+-- OLD RESULT
 WITH
 subquery AS (
   SELECT source, target
@@ -398,6 +400,48 @@ subquery AS (
   )
   AS results
   JOIN roads.roads_ways AS r ON (edge = id)
+),
+connected_edges AS (
+  SELECT DISTINCT id, population
+  FROM subquery AS s JOIN roads.roads_ways AS r
+  ON (
+    (s.source = r.source OR s.source = r.target) OR
+    (s.target = r.source OR s.target = r.target)
+  )
+)
+SELECT SUM(population) FROM connected_edges;
+
+
+
+\o add_road_population2.txt
+
+UPDATE roads_net SET population = SUM
+FROM (
+	SELECT road, SUM(population)
+	FROM buildings GROUP BY road
+	)
+AS subquery
+WHERE id = road;
+
+\o add_road_population3.txt
+
+SELECT id, population FROM roads_net Limit 10;
+
+\o exercise_20.txt
+
+WITH
+subquery AS (
+  SELECT source, target
+  FROM pgr_drivingDistance(
+    'edges',
+    (
+      SELECT get_vertex(building)
+      FROM buildings
+      WHERE tag_id = '318'
+    ), 10, FALSE
+  )
+  AS results
+  JOIN roads_net AS r ON (edge = id)
 ),
 connected_edges AS (
   SELECT DISTINCT id, population
