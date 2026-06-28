@@ -1,3 +1,4 @@
+DROP MATERIALIZED VIEW IF EXISTS buildings;
 \o kind_of_buildings.txt
 
 SELECT DISTINCT tag_id, tag_value
@@ -48,7 +49,8 @@ SELECT COUNT(*) FROM roads_ways;
 \o count2.txt
 SELECT COUNT(*) FROM buildings_ways;
 \o clean_buildings.txt
-CREATE OR REPLACE MATERIALIZED VIEW buildings AS
+-- DROP MATERIALIZED VIEW IF EXISTS buildings;
+CREATE MATERIALIZED VIEW buildings AS
 WITH
 buildings_data AS (
 SELECT id, name, tag_id, geom, ST_MakePolygon(geom) AS building
@@ -61,7 +63,7 @@ SELECT id, name,
   tag_id,
   geom, building
 FROM buildings_data;
-
+\o skip1.txt
 ALTER TABLE buildings.buildings_ways
 DROP source, DROP target,
 DROP source_osm, DROP target_osm,

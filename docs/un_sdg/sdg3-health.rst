@@ -124,7 +124,7 @@ the population. Follow the steps given below to complete this task.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: population_function.txt
-    :end-before: show_population.txt
+    :end-before: skip1.txt
     :language: sql
     :force:
 
