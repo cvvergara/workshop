@@ -27,6 +27,22 @@ instructions. Information about installing OSGeoLive can be found in
   <https://docs.pgrouting.org/latest/en/pgRouting-installation.html>`__
 
 .. contents:: Chapter Contents
+   :depth: 1
+
+The database to install depends on the UN SDG chapter you are working on:
+
+.. list-table::
+   :widths: 50 50
+   :header-rows: 1
+
+   * - Chapter
+     - Database
+   * - :doc:`sdg3-health`
+     - ``mumbai``
+   * - :doc:`sdg7-energy`
+     - ``mumbai``
+   * - :doc:`sdg11-cities`
+     - ``bangladesh``
 
 Mumbai database
 ===============================================================================
