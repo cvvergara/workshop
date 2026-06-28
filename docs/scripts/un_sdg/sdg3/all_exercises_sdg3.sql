@@ -1,59 +1,12 @@
-\o show_schemas.txt
-\dn
-\o show_path1.txt
-SHOW search_path;
-\o set_path.txt
-SET search_path TO roads,buildings,public,contrib,postgis;
-\o show_path2.txt
-SHOW search_path;
-\o enumerate_tables.txt
-\dt
-\o count1.txt
-SELECT COUNT(*) FROM roads_ways;
-\o count2.txt
-SELECT COUNT(*) FROM buildings_ways;
-\o clean_buildings.txt
-ALTER TABLE buildings.buildings_ways
-DROP source, DROP target,
-DROP source_osm, DROP target_osm,
-DROP length, DROP length_m,
-DROP cost, DROP reverse_cost,
-DROP cost_s, DROP reverse_cost_s,
-DROP one_way, DROP oneway,
-DROP priority, DROP osm_id, DROP rule,
-DROP x1, DROP x2,
-DROP y1, DROP y2,
-DROP maxspeed_forward,
-DROP maxspeed_backward;
-\o exercise_6.txt
-SELECT AddGeometryColumn('buildings','buildings_ways','poly_geom',4326,'POLYGON',2);
-\o buildings_description.txt
-\dS+ buildings_ways
-\o exercise_7.txt
-DELETE FROM buildings_ways
-WHERE ST_NumPoints(geom) < 4
-OR ST_IsClosed(geom) = FALSE;
-\o exercise_8.txt
-UPDATE buildings_ways
-SET poly_geom = ST_MakePolygon(geom);
-\o add_area_col.txt
-
-ALTER TABLE buildings_ways ADD COLUMN area INTEGER;
-
-\o get_area.txt
-
-UPDATE buildings_ways
-SET area = ST_Area(poly_geom::geography)::INTEGER;
-
 \o kind_of_buildings.txt
 
 SELECT DISTINCT tag_id, tag_value
-FROM buildings_ways JOIN buildings.configuration USING (tag_id)
+FROM buildings.buildings_ways JOIN buildings.configuration USING (tag_id)
 ORDER BY tag_id;
 
 \o population_function.txt
 
-CREATE OR REPLACE FUNCTION  population(tag_id INTEGER,area INTEGER)
+CREATE OR REPLACE FUNCTION  population(tag_id INTEGER, area INTEGER)
 RETURNS INTEGER AS
 $BODY$
 DECLARE
@@ -72,6 +25,77 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 
+\o show_population_100.txt
+SELECT tag_id, tag_value, population(tag_id, 100)
+FROM buildings.configuration
+ORDER BY tag_id;
+\o show_population_300.txt
+SELECT tag_id, tag_value, population(tag_id, 300)
+FROM buildings.configuration
+ORDER BY tag_id;
+\o show_schemas.txt
+\dn
+\o show_path1.txt
+SHOW search_path;
+\o set_path.txt
+SET search_path TO public,roads,buildings,contrib,postgis;
+\o show_path2.txt
+SHOW search_path;
+\o enumerate_tables.txt
+\dt
+\o count1.txt
+SELECT COUNT(*) FROM roads_ways;
+\o count2.txt
+SELECT COUNT(*) FROM buildings_ways;
+\o clean_buildings.txt
+CREATE TABLE buildings AS
+WITH
+buildings_data AS (
+SELECT id, name, tag_id, geom, ST_MakePolygon(geom) AS building
+FROM buildings_ways
+WHERE ST_NumPoints(geom) >= 4
+AND ST_IsClosed(geom) = TRUE)
+SELECT id, name,
+  ST_Area(building::geography)::INTEGER AS area,
+  population(tag_id, ST_Area(building::geography)::INTEGER) AS population,
+  tag_id,
+  geom, building
+FROM buildings_data;
+
+ALTER TABLE buildings.buildings_ways
+DROP source, DROP target,
+DROP source_osm, DROP target_osm,
+DROP length, DROP length_m,
+DROP cost, DROP reverse_cost,
+DROP cost_s, DROP reverse_cost_s,
+DROP one_way, DROP oneway,
+DROP priority, DROP osm_id, DROP rule,
+DROP x1, DROP x2,
+DROP y1, DROP y2,
+DROP maxspeed_forward,
+DROP maxspeed_backward;
+\o exercise_6.txt
+SELECT AddGeometryColumn('buildings','buildings_ways','poly_geom',4326,'POLYGON',2);
+\o buildings_description.txt
+\dS+ buildings_ways
+\dS+ buildings
+\o exercise_7.txt
+DELETE FROM buildings_ways
+WHERE ST_NumPoints(geom) < 4
+OR ST_IsClosed(geom) = FALSE;
+\o exercise_8.txt
+UPDATE buildings_ways
+SET poly_geom = ST_MakePolygon(geom);
+\o add_area_col.txt
+
+ALTER TABLE buildings_ways ADD COLUMN area INTEGER;
+
+\o get_area.txt
+
+UPDATE buildings_ways
+SET area = ST_Area(poly_geom::geography)::INTEGER;
+
+
 \o add_population_col.txt
 
 ALTER TABLE buildings_ways ADD COLUMN population INTEGER;
@@ -81,6 +105,9 @@ ALTER TABLE buildings_ways ADD COLUMN population INTEGER;
 UPDATE buildings_ways
 SET population = population(tag_id,area);
 
+SELECT id, name, population
+FROM buildings
+JOIN buildings_ways USING (id, name, population) LIMIT 10;
 \o only_connected1.txt
 
 SELECT * INTO roads.roads_vertices

@@ -38,11 +38,11 @@ The database to install depends on the UN SDG chapter you are working on:
    * - Chapter
      - Database
    * - :doc:`sdg3-health`
-     - ``mumbai``
+     - `Mumbai database`_
    * - :doc:`sdg7-energy`
-     - ``mumbai``
+     - `Mumbai database`_
    * - :doc:`sdg11-cities`
-     - ``bangladesh``
+     - `Bangladesh database`_
 
 Mumbai database
 ===============================================================================
@@ -159,6 +159,10 @@ To connect to the database, type the following in the terminal.
 
   psql mumbai
 
+Continue with the workshop:
+
+- :doc:`sdg3-health`
+- :doc:`sdg7-energy`
 
 Bangladesh database
 ===============================================================================
@@ -263,3 +267,7 @@ To connect to the database, type the following in the terminal.
 .. code-block:: bash
 
   psql bangladesh
+
+Continue with the workshop:
+
+- :doc:`sdg11-cities`

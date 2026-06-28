@@ -5,6 +5,12 @@
 Good Health and Well Being
 ###############################################################################
 
+.. image:: images/sdg3/un_sdg3.png
+  :align: center
+  :alt: Sustainable Development Goal 3: Good Health and Well Being
+
+`Image Source <https://sdgs.un.org/goals/goal3>`__
+
 `Good Health and Well Being` is the 3rd Sustainable Development Goal which aspires
 to ensure health and well-being for all, including a bold commitment to end the
 epidemics like AIDS, tuberculosis, malaria and other communicable diseases by 2030.
@@ -17,12 +23,6 @@ of the population of an area to its hospitals. Hence, it is very important to es
 the number of dependant people living near the hospital for better planning which
 would ultimately help in achieving universal coverage of health services. This chapter
 will focus on solving one of such problems.
-
-.. image:: images/sdg3/un_sdg3.png
-  :align: center
-  :alt: Sustainable Development Goal 3: Good Health and Well Being
-
-`Image Source <https://sdgs.un.org/goals/goal3>`__
 
 .. contents:: Chapter Contents
 
@@ -51,6 +51,135 @@ time is dependant on that hospital.
 * Store the sum of population of nearest buildings in roads table
 * Find the sum of population on all the roads in the roads served
 
+.. TODO
+   Get the Mumbai data goes here
+
+Simulation of census data
+================================================================================
+
+Due to the lack of census data, this exercise will estimate the
+population, based on the area size of the building and the
+kind of use the building gets.
+
+Buildings of OpenStreetMap data are classified into various categories.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: kind_of_buildings.txt
+    :end-before: population_function.txt
+    :language: sql
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/kind_of_buildings.txt
+
+
+For this exercise, the population will be set as follows:
+
+- Negligible:
+
+  - People do not live in these places.
+  - Population: 1 person
+
+    - There may be people guarding the place.
+
+- Very Sparse:
+
+  - ``retail``, ``commercial``, ``school``
+  - People do not live in these places.
+  - Population: At least 2 persons.
+
+    - Because there may be people guarding the place.
+
+- Sparse:
+
+  - Buildings with low population density, like ``university``.
+  - Population: At least 3 persons.
+
+    - Because there may be people guarding the place.
+    - Students might live there.
+
+- Moderate:
+
+  - Location where people might be living temporarly, like ``hotel`` and
+    ``hospital``.
+  - Population: At least 5 persons.
+
+- Dense:
+
+  - A medium sized residential building.
+  - Population: At least 7 persons.
+
+- Very Dense:
+
+  - A large sized residential building, like ``apartments``.
+  - Population: At least 10 persons.
+
+Exercise 1: Estimating the population
+...............................................................................
+
+This class-specific factor is multiplied with the area of each building to get
+the population. Follow the steps given below to complete this task.
+
+1. Create a function to find population using class-specific factor and area.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: population_function.txt
+    :end-before: show_population.txt
+    :language: sql
+    :force:
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/population_function.txt
+
+Testing the query with 100 square meters buildings
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: show_population_100.txt
+    :end-before: show_population_300.txt
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/show_population_100.txt
+
+Testing the query with 300 square meters buildings
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: show_population_300.txt
+    :end-before: show_schemas.txt
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/show_population_300.txt
+
+.. note:: More complicated estimation functions can be done that consider height
+   of the apartments.
+
+   Using census data can achieve more accurate estimation.
+
+2. Add a column for storing the population in the ``buildings_ways``
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after:  add_population_col.txt
+    :end-before: get_population.txt
+    :language: sql
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/add_population_col.txt
+
+3. Use the ``population`` function to store the population in the new column created
+in the ``building_ways``.
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+    :start-after: get_population.txt
+    :end-before: only_connected1.txt
+    :language: sql
+
+.. collapse:: Query Results
+
+  .. literalinclude:: ../scripts/un_sdg/sdg3/get_population.txt
+
 PostreSQL basics
 ================================================================================
 
@@ -63,7 +192,7 @@ schemas are searched for objects.
 By setting the ``search_path`` to appropriate values, prepending the schema name
 to tables can be avoided.
 
-Exercise 1: Inspecting schemas
+Exercise 2: Inspecting schemas
 ...............................................................................
 
 Inspect the schemas by displaying all the present schemas using the following
@@ -80,7 +209,7 @@ command
 The schema names are ``buildings``, ``roads`` and ``public``. The owner depends
 on who has the rights to the database.
 
-Exercise 2: Inspecting the search path
+Exercise 3: Inspecting the search path
 ...............................................................................
 
 Display the current search path using the following query.
@@ -97,7 +226,7 @@ Display the current search path using the following query.
 This is the current search path. Tables in other schemas cannot be accessed with
 this path.
 
-Exercise 3: Fixing the search path
+Exercise 4: Fixing the search path
 ...............................................................................
 
 In this case, the search path needs to include ``roads`` and
@@ -122,7 +251,7 @@ Checking the search path again
   .. literalinclude:: ../scripts/un_sdg/sdg3/show_path2.txt
 
 
-Exercise 4: Enumerating tables
+Exercise 5: Enumerating tables
 ...............................................................................
 
 With ``\dt`` the tables are listed showing the schema and the owner
@@ -287,110 +416,6 @@ new column
 .. collapse:: Query Results
 
   .. literalinclude:: ../scripts/un_sdg/sdg3/get_area.txt
-
-Exercise 11: Estimating the population
-...............................................................................
-
-Due to the lack of census data, this exercise will fill up and estimate of the
-population living on the buildings, based on the area of the building and the
-kind of use the building gets.
-
-Buildings of OpenStreetMap data are classified into various categories.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: kind_of_buildings.txt
-    :end-before: population_function.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/kind_of_buildings.txt
-
-
-For this exercise, the population will be set as follows:
-
-- Negligible:
-
-  - People do not live in these places.
-  - Population: 1 person
-
-    - There may be people guarding the place.
-
-- Very Sparse:
-
-  - ``retail``, ``commercial``, ``school``
-  - People do not live in these places.
-  - Population: At least 2 persons.
-
-    - Because there may be people guarding the place.
-
-- Sparse:
-
-  - Buildings with low population density, like ``university``.
-  - Population: At least 3 persons.
-
-    - Because there may be people guarding the place.
-    - Students might live there.
-
-- Moderate:
-
-  - Location where people might be living temporarly, like ``hotel`` and
-    ``hospital``.
-  - Population: At least 5 persons.
-
-- Dense:
-
-  - A medium sized residential building.
-  - Population: At least 7 persons.
-
-- Very Dense:
-
-  - A large sized residential building, like ``apartments``.
-  - Population: At least 10 persons.
-
-
-This class-specific factor is multiplied with the area of each building to get
-the population. Follow the steps given below to complete this task.
-
-1. Create a function to find population using class-specific factor and area.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: population_function.txt
-    :end-before: add_population_col.txt
-    :language: sql
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/population_function.txt
-
-.. note:: All these are estimations based on this particular area. More complicated
-          functions can be done that consider height of the apartments but the
-          design of a function is going to depend on the availability of the data.
-          For example, using census data can achieve more accurate estimation.
-
-2. Add a column for storing the population in the ``buildings_ways``
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after:  add_population_col.txt
-    :end-before: get_population.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/add_population_col.txt
-
-3. Use the ``population`` function to store the population in the new column created
-in the ``building_ways``.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: get_population.txt
-    :end-before: only_connected1.txt
-    :language: sql
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/get_population.txt
 
 Preprocessing Roads
 --------------------------------------------------------------------------------

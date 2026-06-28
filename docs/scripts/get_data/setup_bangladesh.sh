@@ -25,7 +25,7 @@ EOF
 
 echo "End create_bangladesh"
 
-# import_bangladesh_waterways from-here
+echo import_bangladesh_waterways from-here
 @Osm2pgrouting_EXECUTABLE@ \
     -f "bangladesh.osm" \
     -c "waterways.xml" \
@@ -36,4 +36,4 @@ echo "End create_bangladesh"
     -U user \
     -W user \
     --clean
-# import_bangladesh_waterways to-here
+echo import_bangladesh_waterways to-here
