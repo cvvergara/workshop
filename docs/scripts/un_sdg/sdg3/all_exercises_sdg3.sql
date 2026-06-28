@@ -53,84 +53,31 @@ SELECT COUNT(*) FROM buildings_ways;
 
 
 
-ALTER TABLE buildings.buildings_ways
-DROP source, DROP target,
-DROP source_osm, DROP target_osm,
-DROP length, DROP length_m,
-DROP cost, DROP reverse_cost,
-DROP cost_s, DROP reverse_cost_s,
-DROP one_way, DROP oneway,
-DROP priority, DROP osm_id, DROP rule,
-DROP x1, DROP x2,
-DROP y1, DROP y2,
-DROP maxspeed_forward,
-DROP maxspeed_backward;
 \o exercise_6.txt
-SELECT AddGeometryColumn('buildings','buildings_ways','poly_geom',4326,'POLYGON',2);
+
 \o buildings_description.txt
-\dS+ buildings_ways
+
 \o exercise_7.txt
-DELETE FROM buildings_ways
-WHERE ST_NumPoints(geom) < 4
-OR ST_IsClosed(geom) = FALSE;
+
+
+
 \o exercise_8.txt
-UPDATE buildings_ways
-SET poly_geom = ST_MakePolygon(geom);
+
+
 \o add_area_col.txt
 
-ALTER TABLE buildings_ways ADD COLUMN area INTEGER;
 
 \o get_area.txt
 
-UPDATE buildings_ways
-SET area = ST_Area(poly_geom::geography)::INTEGER;
 
 
 \o add_population_col.txt
 
-ALTER TABLE buildings_ways ADD COLUMN population INTEGER;
 
 \o get_population.txt
 
-UPDATE buildings_ways
-SET population = population(tag_id,area);
-
 ALTER TABLE roads.roads_ways ADD COLUMN component BIGINT;
 
-\o skip22.txt
-
-SELECT * INTO roads.roads_vertices
-FROM pgr_extractVertices(
-  'SELECT id, source, target
-  FROM roads.roads_ways ORDER BY id');
-
--- old code
-UPDATE roads_vertices v SET geom = ST_startPoint(w.geom)
-FROM roads_ways w WHERE source = v.id;
-
-UPDATE roads_vertices v SET geom = ST_endPoint(w.geom)
-FROM roads_ways w WHERE v.geom IS NULL AND target = v.id;
-
-UPDATE roads_vertices set (x,y) = (ST_X(geom), ST_Y(geom));
-
--- old code
-ALTER TABLE roads_vertices ADD COLUMN component BIGINT;
-
--- old code
-UPDATE roads_vertices SET component = c.component
-FROM (
-  SELECT * FROM pgr_connectedComponents(
-  'SELECT id, source, target, cost, reverse_cost FROM roads_ways')
-) AS c
-WHERE id = node;
-
-UPDATE roads.roads_ways SET component = v.component
-FROM (SELECT id, component FROM roads_vertices) AS v
-WHERE source = v.id;
-
-
-
----- NEW CODE
 \o only_connected1.txt
 
 
@@ -188,30 +135,6 @@ FROM roads.roads_ways w JOIN the_component USING (component);
 
 DELETE FROM vertices WHERE component != (SELECT DISTINCT component FROM roads_net LIMIT 1);
 
-\o skip4.txt
-
--- old code
-WITH
-all_components AS (SELECT component, count(*) FROM roads_ways GROUP BY component),
-max_component AS (SELECT max(count) from all_components)
-SELECT component FROM all_components WHERE count = (SELECT max FROM max_component);
-
-
--- old code
-WITH
-all_components AS (SELECT component, count(*) FROM roads_ways GROUP BY component),
-max_component AS (SELECT max(count) from all_components),
-the_component AS (SELECT component FROM all_components WHERE count = (SELECT max FROM max_component))
-DELETE FROM roads_ways WHERE component != (SELECT component FROM the_component);
-
--- old code
-WITH
-all_components AS (SELECT component, count(*) FROM roads_vertices GROUP BY component),
-max_component AS (SELECT max(count) from all_components),
-the_component AS (SELECT component FROM all_components WHERE count = (SELECT max FROM max_component))
-DELETE FROM roads_vertices WHERE component != (SELECT component FROM the_component);
-
-
 \o building_road.txt
 CREATE OR REPLACE FUNCTION building_road(building GEOMETRY)
 RETURNS BIGINT AS
@@ -247,89 +170,6 @@ SELECT id FROM vertices ORDER BY geom <-> $1 LIMIT 1;
 $BODY$
 LANGUAGE SQL;
 
-\o skip5.txt
--- old code
-CREATE OR REPLACE FUNCTION closest_vertex(geom GEOMETRY)
-RETURNS BIGINT AS
-$BODY$
-SELECT id FROM roads_vertices ORDER BY geom <-> $1 LIMIT 1;
-$BODY$
-LANGUAGE SQL;
-
--- old code
-SELECT closest_vertex(poly_geom) FROM buildings_ways;
-
--- old code
-PREPARE edges AS
-SELECT id,source,target, length_m/60 AS cost,length_m/60 AS reverse_cost
-FROM roads.roads_ways;
-
--- old code
-SELECT id, source, target, agg_cost AS minutes, geom
-FROM pgr_drivingDistance(
-  'edges', -- the prepared statement
-  (
-    SELECT closest_vertex(poly_geom)
-    FROM buildings.buildings_ways
-    WHERE tag_id = '318'
-  ), -- the starting vertex
-  10,  -- 10 minutes
-  false -- graph is undirected
-) AS results
-JOIN roads.roads_ways AS r ON (edge = id);
-
--- old code
-WITH
-subquery AS (
-  SELECT edge, source, target, agg_cost AS minutes, geom
-  FROM pgr_drivingDistance(
-    'edges',
-    (
-      SELECT closest_vertex(poly_geom)
-      FROM buildings.buildings_ways
-      WHERE tag_id = '318'
-    ), 10, FALSE
-  ) AS results
-  JOIN roads.roads_ways AS r ON (edge = id)
-),
-connected_edges AS (
-  SELECT r.id, r.source, r.target, length_m/60, r.geom
-  FROM subquery AS s JOIN roads.roads_ways AS r
-  ON ((s.source = r.source OR s.source = r.target))
-)
-SELECT * FROM subquery
-UNION ALL
-SELECT * FROM connected_edges;
-
-
--- old code
-CREATE OR REPLACE FUNCTION closest_edge(geom GEOMETRY)
-RETURNS BIGINT AS
-$BODY$
-  SELECT id FROM roads_ways ORDER BY geom <-> geom LIMIT 1;
-$BODY$
-LANGUAGE SQL;
-
-
-ALTER TABLE buildings_ways
-ADD COLUMN edge_id INTEGER;
-UPDATE buildings_ways SET edge_id = closest_edge(poly_geom);
-
-
-ALTER TABLE roads_ways ADD COLUMN population INTEGER;
-
-
-UPDATE roads_ways SET population = SUM
-FROM (
-	SELECT edge_id, SUM(population)
-	FROM buildings_ways GROUP BY edge_id
-	)
-AS subquery
-WHERE id = edge_id;
-
-SELECT population FROM roads_ways WHERE id = 441;
-
-
 \o nearest_vertex2.txt
 
 SELECT get_vertex(building) FROM buildings;
@@ -359,7 +199,7 @@ WITH
 subquery AS (
   SELECT edge, source, target, agg_cost AS minutes, geom
   FROM pgr_drivingDistance(
-    'edges',
+    'SELECT * FROM roads_net',
     (
       SELECT get_vertex(building)
       FROM buildings
@@ -386,33 +226,6 @@ SELECT * FROM connected_edges;
 
 \o add_road_population1.txt
 
--- OLD RESULT
-WITH
-subquery AS (
-  SELECT source, target
-  FROM pgr_drivingDistance(
-    'edges',
-    (
-      SELECT closest_vertex(poly_geom)
-      FROM buildings.buildings_ways
-      WHERE tag_id = '318'
-    ), 10, FALSE
-  )
-  AS results
-  JOIN roads.roads_ways AS r ON (edge = id)
-),
-connected_edges AS (
-  SELECT DISTINCT id, population
-  FROM subquery AS s JOIN roads.roads_ways AS r
-  ON (
-    (s.source = r.source OR s.source = r.target) OR
-    (s.target = r.source OR s.target = r.target)
-  )
-)
-SELECT SUM(population) FROM connected_edges;
-
-
-
 \o add_road_population2.txt
 
 UPDATE roads_net SET population = SUM
@@ -433,7 +246,7 @@ WITH
 subquery AS (
   SELECT source, target
   FROM pgr_drivingDistance(
-    'edges',
+    'SELECT * FROM roads_net',
     (
       SELECT get_vertex(building)
       FROM buildings
@@ -445,7 +258,7 @@ subquery AS (
 ),
 connected_edges AS (
   SELECT DISTINCT id, population
-  FROM subquery AS s JOIN roads.roads_ways AS r
+  FROM subquery AS s JOIN roads_net AS r
   ON (
     (s.source = r.source OR s.source = r.target) OR
     (s.target = r.source OR s.target = r.target)

@@ -335,7 +335,7 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
     :start-after: only_connected6.txt
-    :end-before: skip4.txt
+    :end-before: building_road.txt
     :language: sql
     :force:
 

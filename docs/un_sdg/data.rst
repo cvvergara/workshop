@@ -173,7 +173,7 @@ the same data is used and consequently the results are same.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
    :start-after: count2.txt
-   :end-before: clean_buildings.txt
+   :end-before: skip1.txt
    :language: sql
 
 .. collapse:: Command output
