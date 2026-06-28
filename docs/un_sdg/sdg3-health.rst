@@ -345,27 +345,7 @@ pgRouting functions, discussed on :doc:`../basic/graphs`, will be used:
 
 .. rubric:: Delete edges not belonging to the most connected component.
 
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: only_connected7.txt
-    :end-before: only_connected8.txt
-    :language: sql
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected7.txt
-
 .. rubric:: Delete vertices not belonging to the most connected component.
-
-.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
-    :start-after: only_connected8.txt
-    :end-before: nearest_vertex1.txt
-    :language: sql
-    :force:
-
-.. collapse:: Query Results
-
-  .. literalinclude:: ../scripts/un_sdg/sdg3/only_connected8.txt
 
 Preparing buildings population information
 ================================================================================
@@ -407,8 +387,16 @@ the view, routing-related columns are removed from ``buildings_ways`` since they
 not needed for building data.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
+   :start-after: building_road.txt
+   :end-before: clean_buildings.txt
+   :language: sql
+   :force:
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/building_road.txt
+
+.. literalinclude:: ../scripts/un_sdg/sdg3/all_exercises_sdg3.sql
    :start-after: clean_buildings.txt
-   :end-before: skip1.txt
+   :end-before: nearest_vertex1.txt
    :language: sql
    :force:
 

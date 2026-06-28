@@ -1,4 +1,5 @@
-DROP MATERIALIZED VIEW IF EXISTS buildings;
+DROP TABLE IF EXISTS buildings;
+DROP TABLE IF EXISTS roads_net;
 \o kind_of_buildings.txt
 
 SELECT DISTINCT tag_id, tag_value
@@ -167,7 +168,8 @@ WHERE source = v.id;
 
 \o only_connected5.txt
 
-CREATE OR REPLACE VIEW roads_net AS
+-- DROP TABLE IF EXISTS roads_net;
+CREATE TABLE roads_net AS
 
 WITH
 all_components AS (SELECT component, count(*) FROM roads.roads_ways GROUP BY component),
@@ -221,8 +223,8 @@ LANGUAGE SQL;
 SELECT id, building_road(geom) FROM buildings.buildings_ways LIMIT 3;
 
 \o clean_buildings.txt
--- DROP MATERIALIZED VIEW IF EXISTS buildings;
-CREATE MATERIALIZED VIEW buildings AS
+-- DROP TABLE IF EXISTS buildings;
+CREATE TABLE buildings AS
 WITH
 buildings_data AS (
 SELECT id, name, building_road(geom) AS road, tag_id, geom, ST_MakePolygon(geom) AS building
