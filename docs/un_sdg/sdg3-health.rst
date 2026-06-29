@@ -383,9 +383,9 @@ Exercise 8: Find the closest road vertex
 --------------------------------------------------------------------------------
 
 There are multiple road vertices near the hospital. Create a function to find
-the geographically closest road vertex. ``closest_vertex`` function takes geometry
-of other table as input and gives the gid of the closest vertex as output by
-comparing ``geom`` of both the tables.
+the geographically closest road vertex. ``get_vertex`` function takes a geometry
+as input and returns the id of the closest vertex by
+comparing ``geom`` of both tables.
 
 .. image:: images/sdg3/finding_closest_vertex.png
   :align: center
@@ -411,16 +411,13 @@ Testing the function
 
   .. literalinclude:: ../scripts/un_sdg/sdg3/test_nearest_vertex.txt
 
-Exercise 9: Use MATERIALIZED VIEW to create the buildings data
+Exercise 9: Create the buildings table
 ...............................................................................
 
-A materialized view stores the query result physically, unlike a regular view which
-re-evaluates each time. This improves performance when accessing the data multiple times.
-
 The query converts ``LINESTRING`` geometries to ``Polygon``, calculates the area using
-``ST_Area``, and estimates population using the ``population`` function. After creating
-the view, routing-related columns are removed from ``buildings_ways`` since they are
-not needed for building data.
+``ST_Area``, and estimates population using the ``population`` function. The result
+is stored in the ``buildings`` table for efficient access throughout the remaining
+exercises.
 
 .. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
    :start-after: clean_buildings.txt
