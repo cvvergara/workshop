@@ -3,4 +3,3 @@
 
 ALTER TABLE ways RENAME COLUMN gid TO id;
 ALTER TABLE ways RENAME COLUMN the_geom TO geom;
-ALTER TABLE ways_vertices_pgr RENAME COLUMN the_geom TO geom;
