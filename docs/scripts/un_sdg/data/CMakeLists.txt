@@ -66,7 +66,7 @@ execute_process(
 if (Osm2pgrouting_VERSION VERSION_LESS "3.0.0")
   execute_process(
     COMMAND psql -d city_routing
-      -f ${CMAKE_CURRENT_BINARY_DIR}/../../basic/graphs/osm2pgrouting_compat.sql
+      -f ${CMAKE_CURRENT_SOURCE_DIR}/../../basic/graphs/osm2pgrouting_compat.sql
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   )
 endif()
