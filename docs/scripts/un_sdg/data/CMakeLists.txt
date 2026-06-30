@@ -63,6 +63,14 @@ execute_process(
   INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/process_osgeolive_data.sh
   )
 
+if (Osm2pgrouting_VERSION VERSION_LESS "3.0.0")
+  execute_process(
+    COMMAND psql -d city_routing
+      -f ${CMAKE_CURRENT_BINARY_DIR}/../../basic/graphs/osm2pgrouting_compat.sql
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  )
+endif()
+
 execute_process(
   OUTPUT_FILE setup_mumbai.txt
   COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/setup_mumbai.sh > setup_mumbai.txt
@@ -70,9 +78,25 @@ execute_process(
   INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup_mumbai.sh
   )
 
+if (Osm2pgrouting_VERSION VERSION_LESS "3.0.0")
+  execute_process(
+    COMMAND psql -d mumbai
+      -f ${CMAKE_CURRENT_BINARY_DIR}/osm2pgrouting_compat_mumbai.sql
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  )
+endif()
+
 execute_process(
   OUTPUT_FILE setup_bangladesh.txt
   COMMAND bash ${CMAKE_CURRENT_BINARY_DIR}/setup_bangladesh.sh > setup_bangladesh.txt
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   INPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup_bangladesh.sh
   )
+
+if (Osm2pgrouting_VERSION VERSION_LESS "3.0.0")
+  execute_process(
+    COMMAND psql -d bangladesh
+      -f ${CMAKE_CURRENT_BINARY_DIR}/osm2pgrouting_compat_bangladesh.sql
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  )
+endif()
