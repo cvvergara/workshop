@@ -1,7 +1,7 @@
 #---------------------
 # Files
 #---------------------
-add_custom_target(basic_pedestrian_scripts)
+add_custom_target(basic_pedestrian_scripts DEPENDS pedestrian.sql)
 
 configure_file(pedestrian.sql pedestrian.sql)
 
@@ -25,5 +25,4 @@ add_custom_command(
     stars.txt
 
   COMMAND psql -d city_routing -f pedestrian.sql
-  COMMENT "running chapter pedestrian scripts"
-  DEPENDS pedestrian.sql)
+  COMMENT "running chapter pedestrian scripts")
