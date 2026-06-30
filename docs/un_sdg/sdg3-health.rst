@@ -236,8 +236,7 @@ the population. Follow the steps given below to complete this task.
 .. literalinclude:: ../scripts/un_sdg/sdg3/sdg3.sql
     :start-after: population_function.txt
     :end-before: show_population_100.txt
-    :language: sql
-    :force:
+    :language: postgresql
 
 .. rubric:: Testing the function with 100 square meters buildings.
 

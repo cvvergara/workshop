@@ -173,8 +173,10 @@ workshop:
 
 Run the following script to rename them:
 
-.. literalinclude:: ../scripts/un_sdg/data/osm2pgrouting_compat_mumbai.sql
-   :language: postgresql
+.. collapse:: Script
+
+   .. literalinclude:: ../scripts/un_sdg/data/osm2pgrouting_compat_mumbai.sql
+      :language: postgresql
 
 Verify the data (Mumbai)
 -------------------------------------------------------------------------------
@@ -326,8 +328,13 @@ workshop:
 
 Run the following script to rename them:
 
-.. literalinclude:: ../scripts/un_sdg/data/osm2pgrouting_compat_bangladesh.sql
-   :language: postgresql
+.. collapse:: Script
+
+   .. literalinclude:: ../scripts/un_sdg/data/osm2pgrouting_compat_bangladesh.sql
+      :language: postgresql
+
+Verify the data (Bangladesh)
+-------------------------------------------------------------------------------
 
 To connect to the database, type the following in the terminal.
 
