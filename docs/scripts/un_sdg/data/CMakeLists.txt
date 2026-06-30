@@ -4,6 +4,7 @@
 set(PGR_WORKSHOP_FILES
   buildings.xml
   get_all_data.sh
+  osm2pgrouting_compat.sql
   osm2pgrouting_compat_bangladesh.sql
   osm2pgrouting_compat_mumbai.sql
   process_osgeolive_data.sh
@@ -66,7 +67,7 @@ execute_process(
 if (Osm2pgrouting_VERSION VERSION_LESS "3.0.0")
   execute_process(
     COMMAND psql -d city_routing
-      -f ${CMAKE_CURRENT_SOURCE_DIR}/../../basic/graphs/osm2pgrouting_compat.sql
+      -f ${CMAKE_CURRENT_BINARY_DIR}/osm2pgrouting_compat.sql
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   )
 endif()

@@ -147,7 +147,7 @@ Run the following script to rename them:
 
 .. collapse:: Script
 
-   .. literalinclude:: ../scripts/basic/graphs/osm2pgrouting_compat.sql
+   .. literalinclude:: ../scripts/un_sdg/data/osm2pgrouting_compat.sql
       :language: postgresql
 
 Tables on the database

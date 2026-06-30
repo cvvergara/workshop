@@ -4,7 +4,6 @@
 add_custom_target(basic_graphs_scripts DEPENDS graphs.sql)
 
 configure_file(graphs.sql graphs.sql)
-configure_file(osm2pgrouting_compat.sql osm2pgrouting_compat.sql)
 
 #----------------------------------------------
 # Generating the results files
