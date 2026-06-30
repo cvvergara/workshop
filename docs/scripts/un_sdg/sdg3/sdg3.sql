@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS roads_net;
 \o kind_of_buildings.txt
 
 SELECT DISTINCT tag_id, tag_value
-FROM buildings.buildings_ways JOIN buildings.configuration USING (tag_id)
+FROM buildings.ways JOIN buildings.configuration USING (tag_id)
 ORDER BY tag_id;
 
 \o population_function.txt
@@ -48,7 +48,7 @@ SHOW search_path;
 \o count1.txt
 SELECT COUNT(*) FROM roads_ways;
 \o count2.txt
-SELECT COUNT(*) FROM buildings_ways;
+SELECT COUNT(*) FROM buildings.ways;
 \o skip1.txt
 
 
@@ -122,7 +122,7 @@ LANGUAGE SQL;
 
 \o test_building_road.txt
 
-SELECT id, building_road(geom) FROM buildings.buildings_ways LIMIT 3;
+SELECT id, building_road(geom) FROM buildings.ways LIMIT 3;
 
 \o nearest_vertex.txt
 
@@ -135,7 +135,7 @@ LANGUAGE SQL;
 
 \o test_nearest_vertex.txt
 
-SELECT get_vertex(geom) FROM buildings.buildings_ways LIMIT 3;
+SELECT get_vertex(geom) FROM buildings.ways LIMIT 3;
 
 \o clean_buildings.txt
 -- DROP TABLE IF EXISTS buildings;
@@ -143,7 +143,7 @@ CREATE TABLE buildings AS
 WITH
 buildings_data AS (
 SELECT id, name, building_road(geom) AS road, get_vertex(geom) AS vid, tag_id, geom, ST_MakePolygon(geom) AS building
-FROM buildings.buildings_ways
+FROM buildings.ways
 WHERE ST_NumPoints(geom) >= 4
   AND ST_IsClosed(geom) = TRUE)
 SELECT id, name,

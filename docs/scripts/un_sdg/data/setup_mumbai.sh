@@ -37,7 +37,6 @@ echo import_buildings from-here
     -f "mumbai.osm" \
     -c "buildings.xml" \
     --schema "buildings" \
-    --prefix "buildings_"  \
     --tags \
     -d mumbai \
     -U user \
