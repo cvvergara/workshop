@@ -31,6 +31,8 @@ add_custom_command(
     exercise_10.txt
     exercise_11.txt
     exercise_12.txt
+    only_connected7.txt
+    only_connected8.txt
   COMMAND psql -d mumbai -f sdg7.sql
   COMMENT "running chapter sdg7 scripts"
 )
