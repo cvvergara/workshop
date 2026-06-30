@@ -4,6 +4,8 @@
 set(PGR_WORKSHOP_FILES
   buildings.xml
   get_all_data.sh
+  osm2pgrouting_compat_bangladesh.sql
+  osm2pgrouting_compat_mumbai.sql
   process_osgeolive_data.sh
   setup_bangladesh.sh
   setup_mumbai.sh

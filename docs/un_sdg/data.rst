@@ -26,9 +26,6 @@ instructions. Information about installing OSGeoLive can be found in
   procedure at this `link
   <https://docs.pgrouting.org/latest/en/pgRouting-installation.html>`__
 
-.. contents:: Chapter Contents
-   :depth: 1
-
 The database to install depends on the UN SDG chapter you are working on:
 
 .. list-table::
@@ -44,8 +41,14 @@ The database to install depends on the UN SDG chapter you are working on:
    * - :doc:`sdg11-cities`
      - `Bangladesh database`_
 
+.. contents:: Chapter Contents
+   :depth: 2
+
 Mumbai database
 ===============================================================================
+
+.. contents:: Contents
+   :local:
 
 Create Mumbai database compatible with pgRouting
 -------------------------------------------------------------------------------
@@ -120,7 +123,7 @@ Copy the ``buildings.xml`` configuration file.
       :language: xml
 
 Importing Mumbai Roads
-...............................................................................
+-------------------------------------------------------------------------------
 
 The following ``osm2pgrouting`` command will be used to import the
 ``mumbai.osm`` roads into a pgRouting compatible database.
@@ -137,7 +140,7 @@ The following ``osm2pgrouting`` command will be used to import the
       :end-before: import_roads to-here
 
 Importing Mumbai Buildings
-...............................................................................
+-------------------------------------------------------------------------------
 
 The following ``osm2pgrouting`` command will be used to import the
 ``mumbai.osm`` buildings into a pgRouting compatible database.
@@ -152,6 +155,29 @@ The following ``osm2pgrouting`` command will be used to import the
    .. literalinclude:: ../scripts/un_sdg/data/setup_mumbai.txt
       :start-after: import_buildings from-here
       :end-before: import_buildings to-here
+
+Compatibility with older osm2pgrouting versions (Mumbai)
+-------------------------------------------------------------------------------
+
+Check the installed version:
+
+.. code-block:: bash
+
+   osm2pgrouting --version
+
+If you are using version 2.x, the column names differ from those used in this
+workshop:
+
+- ``gid`` instead of ``id``
+- ``the_geom`` instead of ``geom``
+
+Run the following script to rename them:
+
+.. literalinclude:: ../scripts/un_sdg/data/osm2pgrouting_compat_mumbai.sql
+   :language: postgresql
+
+Verify the data (Mumbai)
+-------------------------------------------------------------------------------
 
 To connect to the database, type the following in the terminal.
 
@@ -188,8 +214,8 @@ Continue with the workshop:
 Bangladesh database
 ===============================================================================
 
-Now download the data for an area in Bangladesh by following the same steps as
-those of Mumbai.
+.. contents:: Contents
+   :local:
 
 Create Bangladesh area database compatible with pgRouting
 -------------------------------------------------------------------------------
@@ -267,7 +293,7 @@ Copy the ``waterways.xml`` configuration file.
       :language: xml
 
 Importing Bangladesh Waterways
-...............................................................................
+-------------------------------------------------------------------------------
 
 The following ``osm2pgrouting`` command will be used to import the Waterways
 from the OpenStreetMap file to the pgRouting database which we will use for further exercises.
@@ -282,6 +308,26 @@ from the OpenStreetMap file to the pgRouting database which we will use for furt
    .. literalinclude:: ../scripts/un_sdg/data/setup_bangladesh.txt
       :start-after: import_bangladesh_waterways from-here
       :end-before: import_bangladesh_waterways to-here
+
+Compatibility with older osm2pgrouting versions (Bangladesh)
+-------------------------------------------------------------------------------
+
+Check the installed version:
+
+.. code-block:: bash
+
+   osm2pgrouting --version
+
+If you are using version 2.x, the column names differ from those used in this
+workshop:
+
+- ``gid`` instead of ``id``
+- ``the_geom`` instead of ``geom``
+
+Run the following script to rename them:
+
+.. literalinclude:: ../scripts/un_sdg/data/osm2pgrouting_compat_bangladesh.sql
+   :language: postgresql
 
 To connect to the database, type the following in the terminal.
 
