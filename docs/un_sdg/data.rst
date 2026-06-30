@@ -68,7 +68,7 @@ To connect to the database do the following
 After connecting to the database, the first step is to create ``EXTENSION`` to enable
 pgRouting and PostGIS in the database. Then add the ``SCHEMA`` that are needed.
 
-.. literalinclude:: ../scripts/un_sdg/data/setup_mumbai.sh
+.. literalinclude:: ../scripts/get_data/setup_mumbai.sh
   :start-after: setup_mumbai from-here
   :end-before:  setup_mumbai to-here
   :language: postgresql
@@ -87,7 +87,7 @@ used in this workshop, using the download service of OSGeo.
 .. note:: The Mumbai data for this workshop depends on this `snapshot
    <http://download.osgeo.org/pgrouting/workshops/mumbai.osm.bz2>`__.
 
-.. literalinclude:: ../scripts/un_sdg/data/get_all_data.sh
+.. literalinclude:: ../scripts/get_data/get_all_data.sh
     :start-after: mumbai data from-here
     :end-before:  mumbai data to-here
     :language: bash
@@ -119,7 +119,7 @@ Copy the ``buildings.xml`` configuration file.
 
 .. collapse:: buildings.xml
 
-   .. literalinclude:: ../scripts/un_sdg/data/buildings.xml
+   .. literalinclude:: ../scripts/get_data/buildings.xml
       :language: xml
 
 Importing Mumbai Roads
@@ -128,14 +128,14 @@ Importing Mumbai Roads
 The following ``osm2pgrouting`` command will be used to import the
 ``mumbai.osm`` roads into a pgRouting compatible database.
 
-.. literalinclude:: ../scripts/un_sdg/data/setup_mumbai.sh
+.. literalinclude:: ../scripts/get_data/setup_mumbai.sh
     :start-after: import_roads from-here
     :end-before: import_roads to-here
     :language: bash
 
 .. collapse:: Output of the command
 
-   .. literalinclude:: ../scripts/un_sdg/data/setup_mumbai.txt
+   .. literalinclude:: ../scripts/get_data/setup_mumbai.txt
       :start-after: import_roads from-here
       :end-before: import_roads to-here
 
@@ -145,14 +145,14 @@ Importing Mumbai Buildings
 The following ``osm2pgrouting`` command will be used to import the
 ``mumbai.osm`` buildings into a pgRouting compatible database.
 
-.. literalinclude:: ../scripts/un_sdg/data/setup_mumbai.sh
+.. literalinclude:: ../scripts/get_data/setup_mumbai.sh
     :start-after: import_buildings from-here
     :end-before: import_buildings to-here
     :language: bash
 
 .. collapse:: Output of the command
 
-   .. literalinclude:: ../scripts/un_sdg/data/setup_mumbai.txt
+   .. literalinclude:: ../scripts/get_data/setup_mumbai.txt
       :start-after: import_buildings from-here
       :end-before: import_buildings to-here
 
@@ -175,7 +175,7 @@ Run the following script to rename them:
 
 .. collapse:: Script
 
-   .. literalinclude:: ../scripts/un_sdg/data/osm2pgrouting_compat_mumbai.sql
+   .. literalinclude:: ../scripts/get_data/osm2pgrouting_compat_mumbai.sql
       :language: postgresql
 
 Verify the data (Mumbai)
@@ -238,7 +238,7 @@ To connect to the database do the following
 After connecting to the database, the first step is to create ``EXTENSION`` to enable
 pgRouting and PostGIS in the database. Then add the ``SCHEMA`` for each table.
 
-.. literalinclude:: ../scripts/un_sdg/data/setup_bangladesh.sh
+.. literalinclude:: ../scripts/get_data/setup_bangladesh.sh
   :start-after: -- Commands inside the database
   :end-before:  -- create_bangladesh to-here
   :language: postgresql
@@ -255,7 +255,7 @@ used in this workshop, using the download service of OSGeo.
 .. note:: The Bangladesh data for this workshop depends on this `snapshot
    <http://download.osgeo.org/pgrouting/workshops/bangladesh.osm.bz2>`__.
 
-.. literalinclude:: ../scripts/un_sdg/data/get_all_data.sh
+.. literalinclude:: ../scripts/get_data/get_all_data.sh
     :start-after: bangladesh data from-here
     :end-before:  bangladesh data to-here
     :language: bash
@@ -291,7 +291,7 @@ Copy the ``waterways.xml`` configuration file.
 
 .. collapse:: waterways.xml
 
-   .. literalinclude:: ../scripts/un_sdg/data/waterways.xml
+   .. literalinclude:: ../scripts/get_data/waterways.xml
       :language: xml
 
 Importing Bangladesh Waterways
@@ -300,14 +300,14 @@ Importing Bangladesh Waterways
 The following ``osm2pgrouting`` command will be used to import the Waterways
 from the OpenStreetMap file to the pgRouting database which we will use for further exercises.
 
-.. literalinclude:: ../scripts/un_sdg/data/setup_bangladesh.sh
+.. literalinclude:: ../scripts/get_data/setup_bangladesh.sh
     :start-after: import_bangladesh_waterways from-here
     :end-before:  import_bangladesh_waterways to-here
     :language: bash
 
 .. collapse:: Output of the command
 
-   .. literalinclude:: ../scripts/un_sdg/data/setup_bangladesh.txt
+   .. literalinclude:: ../scripts/get_data/setup_bangladesh.txt
       :start-after: import_bangladesh_waterways from-here
       :end-before: import_bangladesh_waterways to-here
 
@@ -330,7 +330,7 @@ Run the following script to rename them:
 
 .. collapse:: Script
 
-   .. literalinclude:: ../scripts/un_sdg/data/osm2pgrouting_compat_bangladesh.sql
+   .. literalinclude:: ../scripts/get_data/osm2pgrouting_compat_bangladesh.sql
       :language: postgresql
 
 Verify the data (Bangladesh)

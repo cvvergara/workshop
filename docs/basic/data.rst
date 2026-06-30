@@ -34,7 +34,7 @@ Create a pgRouting compatible database
 
 Create ``city_routing`` database that will be used on the workshop.
 
-.. literalinclude:: ../scripts/un_sdg/data/process_osgeolive_data.sh
+.. literalinclude:: ../scripts/get_data/process_osgeolive_data.sh
    :start-after: create city_routing
    :end-before: connect city_routing
    :language: bash
@@ -48,7 +48,7 @@ Connect to the database
 Install pgRouting and its requirements. (otpionally check the version that is
 being used)
 
-.. literalinclude:: ../scripts/un_sdg/data/process_osgeolive_data.sh
+.. literalinclude:: ../scripts/get_data/process_osgeolive_data.sh
    :start-after: << EOF
    :end-before: EOF
    :language: bash
@@ -73,7 +73,7 @@ Download data form pgRouting download
 
 The exact same data can be found on the OSGeoLive download page.
 
-.. literalinclude:: ../scripts/un_sdg/data/get_all_data.sh
+.. literalinclude:: ../scripts/get_data/get_all_data.sh
    :start-after: city from-here
    :end-before:  city to-here
    :language: bash
@@ -115,7 +115,7 @@ From a terminal window :code:`ctrl-alt-t`.
 Run the osm2pgrouting converter
 -------------------------------------------------------------------------------
 
-.. literalinclude:: ../scripts/un_sdg/data/process_osgeolive_data.sh
+.. literalinclude:: ../scripts/get_data/process_osgeolive_data.sh
    :start-after: import city from-here
    :end-before:  import city to-here
    :language: bash
@@ -124,7 +124,7 @@ Run the osm2pgrouting converter
 
 .. collapse:: Output:
 
-  .. literalinclude:: ../scripts/un_sdg/data/process_osgeolive_data.txt
+  .. literalinclude:: ../scripts/get_data/process_osgeolive_data.txt
      :start-after: import city from-here
      :end-before:  import city to-here
 
@@ -147,7 +147,7 @@ Run the following script to rename them:
 
 .. collapse:: Script
 
-   .. literalinclude:: ../scripts/un_sdg/data/osm2pgrouting_compat.sql
+   .. literalinclude:: ../scripts/get_data/osm2pgrouting_compat.sql
       :language: postgresql
 
 Tables on the database

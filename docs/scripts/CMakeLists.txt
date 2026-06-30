@@ -15,7 +15,7 @@ set(PGR_WORKSHOP_SUBDIRS
 #---------------------
 # Needed to at configuration time
 #---------------------
-add_subdirectory(un_sdg/data)
+add_subdirectory(get_data)
 add_subdirectory(configuration)
 include(workshop/OsmidConf)
 
