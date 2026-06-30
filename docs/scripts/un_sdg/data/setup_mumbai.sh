@@ -27,7 +27,6 @@ echo import_roads from-here
     -d mumbai \
     -U user \
     -W user \
-    --prefix "roads_" \
     --tags \
     --clean
 echo import_roads to-here

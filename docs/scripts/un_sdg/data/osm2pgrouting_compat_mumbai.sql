@@ -5,10 +5,10 @@ DO $$
 BEGIN
   IF EXISTS (
     SELECT 1 FROM information_schema.columns
-    WHERE table_schema = 'roads' AND table_name = 'roads_ways' AND column_name = 'gid'
+    WHERE table_schema = 'roads' AND table_name = 'ways' AND column_name = 'gid'
   ) THEN
-    ALTER TABLE roads.roads_ways RENAME COLUMN gid TO id;
-    RAISE NOTICE 'Renamed roads.roads_ways.gid -> id';
+    ALTER TABLE roads.ways RENAME COLUMN gid TO id;
+    RAISE NOTICE 'Renamed roads.ways.gid -> id';
   END IF;
 END $$;
 
@@ -16,10 +16,10 @@ DO $$
 BEGIN
   IF EXISTS (
     SELECT 1 FROM information_schema.columns
-    WHERE table_schema = 'roads' AND table_name = 'roads_ways' AND column_name = 'the_geom'
+    WHERE table_schema = 'roads' AND table_name = 'ways' AND column_name = 'the_geom'
   ) THEN
-    ALTER TABLE roads.roads_ways RENAME COLUMN the_geom TO geom;
-    RAISE NOTICE 'Renamed roads.roads_ways.the_geom -> geom';
+    ALTER TABLE roads.ways RENAME COLUMN the_geom TO geom;
+    RAISE NOTICE 'Renamed roads.ways.the_geom -> geom';
   END IF;
 END $$;
 
@@ -27,10 +27,10 @@ DO $$
 BEGIN
   IF EXISTS (
     SELECT 1 FROM information_schema.columns
-    WHERE table_schema = 'roads' AND table_name = 'roads_ways_vertices_pgr' AND column_name = 'the_geom'
+    WHERE table_schema = 'roads' AND table_name = 'ways_vertices_pgr' AND column_name = 'the_geom'
   ) THEN
-    ALTER TABLE roads.roads_ways_vertices_pgr RENAME COLUMN the_geom TO geom;
-    RAISE NOTICE 'Renamed roads.roads_ways_vertices_pgr.the_geom -> geom';
+    ALTER TABLE roads.ways_vertices_pgr RENAME COLUMN the_geom TO geom;
+    RAISE NOTICE 'Renamed roads.ways_vertices_pgr.the_geom -> geom';
   END IF;
 END $$;
 

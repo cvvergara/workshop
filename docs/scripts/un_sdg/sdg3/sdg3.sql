@@ -46,7 +46,7 @@ SHOW search_path;
 \o enumerate_tables.txt
 \dt
 \o count1.txt
-SELECT COUNT(*) FROM roads_ways;
+SELECT COUNT(*) FROM roads.ways;
 \o count2.txt
 SELECT COUNT(*) FROM buildings.ways;
 \o skip1.txt
@@ -54,21 +54,21 @@ SELECT COUNT(*) FROM buildings.ways;
 
 \o only_connected0.txt
 
-ALTER TABLE roads.roads_ways ADD COLUMN component BIGINT;
+ALTER TABLE roads.ways ADD COLUMN component BIGINT;
 
 \o only_connected1.txt
 
 SELECT id, in_edges, out_edges, x, y, NULL::BIGINT osm_id, NULL::BIGINT component, geom
 INTO vertices
-FROM pgr_extractVertices('SELECT id, source, target FROM roads.roads_ways ORDER BY id');
+FROM pgr_extractVertices('SELECT id, source, target FROM roads.ways ORDER BY id');
 
 \o only_connected2.txt
 
 WITH
 get_data as (
-  SELECT source, source_osm, ST_startPoint(geom) as pt FROM roads.roads_ways
+  SELECT source, source_osm, ST_startPoint(geom) as pt FROM roads.ways
   UNION ALL
-  SELECT target, target_osm, ST_endPoint(geom) FROM roads.roads_ways
+  SELECT target, target_osm, ST_endPoint(geom) FROM roads.ways
 )
 UPDATE vertices SET
 (geom, osm_id, x, y) = (ST_startPoint(pt), source_osm, st_x(pt), st_y(pt))
@@ -79,14 +79,14 @@ FROM get_data WHERE source = id;
 UPDATE vertices SET component = c.component
 FROM (
   SELECT * FROM pgr_connectedComponents(
-  'SELECT id, source, target, cost, reverse_cost FROM roads.roads_ways')
+  'SELECT id, source, target, cost, reverse_cost FROM roads.ways')
 ) AS c
 WHERE id = node;
 
 
 \o only_connected4.txt
 
-UPDATE roads.roads_ways SET component = v.component
+UPDATE roads.ways SET component = v.component
 FROM (SELECT id, component FROM vertices) AS v
 WHERE source = v.id;
 
@@ -96,7 +96,7 @@ WHERE source = v.id;
 CREATE TABLE roads_net AS
 
 WITH
-all_components AS (SELECT component, count(*) FROM roads.roads_ways GROUP BY component),
+all_components AS (SELECT component, count(*) FROM roads.ways GROUP BY component),
 max_component AS (SELECT max(count) from all_components),
 the_component AS (
   SELECT component FROM all_components
@@ -106,7 +106,7 @@ SELECT
   w.id, source, target,
   length_m/60 AS cost, length_m/60 AS reverse_cost,
   name, length_m AS length, NULL::BIGINT population, tag_id, component, geom AS geom
-FROM roads.roads_ways w JOIN the_component USING (component);
+FROM roads.ways w JOIN the_component USING (component);
 
 \o only_connected6.txt
 
