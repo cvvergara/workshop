@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-echo "Processing create_bangladesh"
+echo "setup_bangladesh"
 
 dropdb --if-exists bangladesh
 
@@ -22,8 +22,6 @@ CREATE SCHEMA waterways;
 -- create_bangladesh to-here
 
 EOF
-
-echo "End create_bangladesh"
 
 echo import_bangladesh_waterways from-here
 @Osm2pgrouting_EXECUTABLE@ \
