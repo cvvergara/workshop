@@ -1,22 +1,6 @@
-add_custom_target(un_sdg11_scripts)
+add_custom_target(un_sdg11_scripts DEPENDS sdg11.sql)
 
-#---------------------
-# Files
-#---------------------
-set(PGR_WORKSHOP_FILES
-  sdg11.sql
-)
-
-#---------------------------------------------
-# Adding the documentation files
-#---------------------------------------------
-
-foreach (f ${PGR_WORKSHOP_FILES})
-    if (PGR_WORKSHOP_VERBOSE_DEBUG)
-        message(STATUS "    Adding file ${f}")
-    endif()
-    configure_file(${f} ${f})
-endforeach()
+configure_file(sdg11.sql  sdg11.sql)
 
 add_custom_command(
   TARGET un_sdg11_scripts

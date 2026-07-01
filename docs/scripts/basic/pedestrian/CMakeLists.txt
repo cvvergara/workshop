@@ -1,13 +1,6 @@
-#---------------------
-# Files
-#---------------------
 add_custom_target(basic_pedestrian_scripts DEPENDS pedestrian.sql)
 
 configure_file(pedestrian.sql pedestrian.sql)
-
-#----------------------------------------------
-# Generating the results files
-#---------------------------------------------
 
 add_custom_command(
   TARGET basic_pedestrian_scripts

@@ -1,13 +1,6 @@
-#---------------------
-# Files
-#---------------------
 add_custom_target(basic_graphs_scripts DEPENDS graphs.sql)
 
 configure_file(graphs.sql graphs.sql)
-
-#----------------------------------------------
-# Generating the results files
-#---------------------------------------------
 
 add_custom_command(
   TARGET basic_graphs_scripts

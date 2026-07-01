@@ -1,6 +1,3 @@
-#---------------------
-# Files
-#---------------------
 add_custom_target(basic_withPoints_scripts DEPENDS withPoints.sql)
 
 configure_file(withPoints.sql withPoints.sql)

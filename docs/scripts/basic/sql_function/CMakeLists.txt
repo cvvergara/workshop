@@ -1,8 +1,5 @@
 add_custom_target(basic_sql_function_scripts DEPENDS sql_function.sql)
 
-#---------------------
-# Files
-#---------------------
 configure_file(sql_function.sql sql_function.sql)
 
 add_custom_command(
